@@ -1,0 +1,29 @@
+//
+//  Prefix.pch
+//  LARGruop
+//
+//  Created by piero.sifuentes on 7/09/15.
+//  Copyright (c) 2015 prsp.org. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+#import "ExtendedCategories.h"
+//#import "Model+EntityMethods.h"
+//#import "User+EntityMethods.h"
+//#import "ApplicationConstants.h"
+
+#define MR_ENABLE_ACTIVE_RECORD_LOGGING 1
+#import "CoreData+MagicalRecord.h"
+#endif
