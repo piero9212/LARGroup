@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "TopBarProtocol.h"
 
 @interface TopBarViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
-
+@property (weak, nonatomic) id<TopBarProtocolDelegate> delegate;
 @end

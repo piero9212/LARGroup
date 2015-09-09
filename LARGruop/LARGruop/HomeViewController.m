@@ -99,6 +99,32 @@
 }
 
 #pragma mark -
+#pragma mark - Top Bar Delegate
+#pragma mark -
+
+- (void)showAddCustomerViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AnnouncementDetailViewController *announcementDetailViewController = [storyboard instantiateViewControllerWithIdentifier:ANNOUNCEMENT_DETAIL_CONTROLLER_MODAL_SEGUE_IDENTIFIER];
+    announcementDetailViewController.announcement = announcement;
+    announcementDetailViewController.delegate = self;
+    
+    announcementDetailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:announcementDetailViewController animated:YES completion:nil];
+    
+    CGSize temporalPopoverSize = ANNOUNCEMENT_MODAL_SIZE;
+    [announcementDetailViewController setPopOverViewSize:temporalPopoverSize];
+}
+
+- (void)showFilterViewController
+{
+}
+
+- (void)showSearch
+{
+}
+
+#pragma mark -
 #pragma mark - Navigation
 #pragma mark -
 

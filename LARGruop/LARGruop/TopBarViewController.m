@@ -44,11 +44,14 @@
 #pragma mark -
 
 - (IBAction)doFilter:(id)sender {
+    [self.delegate showFilterViewController];
 }
 
 - (IBAction)search:(id)sender {
+    [self.delegate showSearch];
 }
 
 - (IBAction)addCustomer:(id)sender {
+    [self.delegate showAddCustomerViewController];
 }
 @end
