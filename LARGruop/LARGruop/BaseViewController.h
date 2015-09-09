@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ExtendedCategories.h"
+#import "ApplicationConstants.h"
 
 @interface BaseViewController : UIViewController
 

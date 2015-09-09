@@ -1,15 +1,21 @@
 //
-//  ProfileViewController.m
+//  CustomerContainerViewController.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 8/09/15.
+//  Created by piero.sifuentes on 9/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "CustomerContainerViewController.h"
 #import "NewCustomerViewController.h"
 #import "TopBarViewController.h"
-@implementation ProfileViewController
+
+@interface CustomerContainerViewController ()
+
+@end
+
+@implementation CustomerContainerViewController
+
 
 #pragma mark -
 #pragma mark - View Life Cycle
@@ -31,7 +37,7 @@
 
 -(void)setupViews
 {
-    [self.navigationController setNavigationBarHidden:TRUE];
+    [self.navigationController setNavigationBarHidden:TRUE];\
     [[UITabBar appearance] setTintColor:[UIColor orangeLARColor]];
 }
 
@@ -39,20 +45,6 @@
 {
     
 }
-
-
-
-#pragma mark -
-#pragma mark - IBActions
-#pragma mark -
-
-
-
-#pragma mark -
-#pragma mark - Actions
-#pragma mark -
-
-
 
 #pragma mark -
 #pragma mark - Top Bar Delegate
@@ -86,9 +78,8 @@
     if([segue.destinationViewController isKindOfClass:[TopBarViewController class]])
     {
         ((TopBarViewController*)segue.destinationViewController).delegate = self;
-        ((TopBarViewController*)segue.destinationViewController).currentControllerIndex = 2;
+        ((TopBarViewController*)segue.destinationViewController).currentControllerIndex = 1;
     }
 }
-
 
 @end

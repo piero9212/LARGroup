@@ -9,6 +9,9 @@
 #import "HomeViewController.h"
 #import "MapViewController.h"
 #import "ProyectsViewController.h"
+#import "NewCustomerViewController.h"
+#import "TopBarViewController.h"
+#import "FilterViewController.h"
 
 @interface HomeViewController ()
 
@@ -47,6 +50,8 @@
 {
     
 }
+
+
 
 #pragma mark -
 #pragma mark - IBActions
@@ -98,6 +103,7 @@
     return fromVC;
 }
 
+
 #pragma mark -
 #pragma mark - Top Bar Delegate
 #pragma mark -
@@ -105,19 +111,35 @@
 - (void)showAddCustomerViewController
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AnnouncementDetailViewController *announcementDetailViewController = [storyboard instantiateViewControllerWithIdentifier:ANNOUNCEMENT_DETAIL_CONTROLLER_MODAL_SEGUE_IDENTIFIER];
-    announcementDetailViewController.announcement = announcement;
-    announcementDetailViewController.delegate = self;
+    NewCustomerViewController *newCustomerViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewCustomerViewController"];
     
-    announcementDetailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:announcementDetailViewController animated:YES completion:nil];
+    newCustomerViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:newCustomerViewController animated:YES completion:nil];
     
-    CGSize temporalPopoverSize = ANNOUNCEMENT_MODAL_SIZE;
-    [announcementDetailViewController setPopOverViewSize:temporalPopoverSize];
+    CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
+    [newCustomerViewController setPopOverViewSize:temporalPopoverSize];
 }
 
 - (void)showFilterViewController
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FilterViewController *filterViewController = [storyboard instantiateViewControllerWithIdentifier:@"FilterViewController"];
+    CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
+    filterViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+    filterViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    filterViewController.view.superview.autoresizingMask =
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin;
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    filterViewController.view.superview.frame = CGRectMake(0, 0, 450.0f, 540.0f);
+//    CGPoint center = CGPointMake(CGRectGetMidX(screenBounds), CGRectGetMidY(screenBounds));
+//    filterViewController.view.superview.center = UIDeviceOrientationIsPortrait(self.interfaceOrientation) ? center : CGPointMake(center.y, center.x);
+    [self presentViewController:filterViewController animated:NO completion:nil];
+    
+    
+
 }
 
 - (void)showSearch
@@ -129,5 +151,10 @@
 #pragma mark -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.destinationViewController isKindOfClass:[TopBarViewController class]])
+    {
+        ((TopBarViewController*)segue.destinationViewController).delegate = self;
+        ((TopBarViewController*)segue.destinationViewController).currentControllerIndex = 0;
+    }
 }
 @end

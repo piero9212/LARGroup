@@ -32,12 +32,28 @@
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
+    switch (self.currentControllerIndex) {
+        case 0:
+            self.titleLabel.text = @"Proyectos";
+            break;
+        case 1:
+            self.titleLabel.text = @"Mis Clientes";
+            break;
+        case 2:
+            self.titleLabel.text = @"Mi Perfil";
+            break;
+            
+        default:
+            self.titleLabel.text = @"Proyectos";
+            break;
+    }
 }
 
 -(void)setupVars
 {
     
 }
+
 
 #pragma mark -
 #pragma mark - IBActions

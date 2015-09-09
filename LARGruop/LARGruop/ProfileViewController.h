@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "TopBarProtocol.h"
 
-@interface ProfileViewController : BaseViewController
+@interface ProfileViewController : BaseViewController<TopBarProtocolDelegate>
 
 @end
