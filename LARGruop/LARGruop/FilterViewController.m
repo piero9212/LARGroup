@@ -73,9 +73,22 @@
 #pragma mark - IBActions
 #pragma mark -
 
-- (IBAction)saveCustomer:(UIButton *)sender {
+- (IBAction)applyFilters:(UIButton *)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)resetFilter:(UIButton *)sender {
+}
+
+- (IBAction)addRooms:(UIButton *)sender {
+}
+
+- (IBAction)removeRooms:(UIButton *)sender {
+}
+
+- (IBAction)avaibleProyectsValueChanged:(UISwitch *)sender {
+    
 }
 
 #pragma mark -
