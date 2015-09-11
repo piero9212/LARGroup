@@ -6,8 +6,5 @@
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
-#ifndef LARGruop_NotificationConstants_h
-#define LARGruop_NotificationConstants_h
-
-
-#endif
+static NSString * const kNotificationApplyFilters = @"ApplyFiltersNotification";
+static NSString * const kNotificationDismissFilterWithoutApply = @"DismissFilterWithoutApplyNotification";

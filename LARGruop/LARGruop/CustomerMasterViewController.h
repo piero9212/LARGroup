@@ -10,7 +10,7 @@
 
 @class CustomerDetailViewController;
 
-@interface CustomerMasterViewController : BaseViewController
+@interface CustomerMasterViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
 
 @property (strong, nonatomic) CustomerDetailViewController *detailViewController;

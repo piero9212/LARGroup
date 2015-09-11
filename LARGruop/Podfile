@@ -9,4 +9,5 @@ pod 'MRProgress'
 pod 'MagicalRecord'
 pod 'SCLAlertView-Objective-C'
 pod 'JTCalendar', '~> 2.0'
+pod 'CGLAlphabetizer', '~> 0.1'
 end

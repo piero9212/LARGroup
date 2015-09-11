@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ExtendedCategories.h"
 #import "ApplicationConstants.h"
+#import "NotificationConstants.h"
+#import "ErrorConstants.h"
+#import "Entities.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @interface BaseViewController : UIViewController
 

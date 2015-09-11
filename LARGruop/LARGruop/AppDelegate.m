@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "Entities.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setupApp];
+    [self firstRunApp];
     return YES;
 }
 
@@ -44,7 +48,111 @@
     [self saveContext];
 }
 
+-(void)firstRunApp
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"firstRun"])
+    {
+        
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+            
+            Customer *testCust1 =[Customer MR_createEntityInContext:localContext];
+            testCust1.firstName = @"Jose";
+            testCust1.lastName = @"Perez";
+            
+            Customer *testCust2 =[Customer MR_createEntityInContext:localContext];
+            testCust2.firstName = @"Sofia";
+            testCust2.lastName = @"Vergara";
+            
+            Customer *testCust3 =[Customer MR_createEntityInContext:localContext];
+            testCust3.firstName = @"Fredy";
+            testCust3.lastName = @"Juarez";
+            
+            Customer *testCust4 =[Customer MR_createEntityInContext:localContext];
+            testCust4.firstName = @"Laura";
+            testCust4.lastName = @"Paez";
+            
+            Customer *testCust5 =[Customer MR_createEntityInContext:localContext];
+            testCust5.firstName = @"Rosa";
+            testCust5.lastName = @"Orto";
+            
+            Customer *testCust6 =[Customer MR_createEntityInContext:localContext];
+            testCust6.firstName = @"Ana";
+            testCust6.lastName = @"Solano";
+            
+            Customer *testCust7 =[Customer MR_createEntityInContext:localContext];
+            testCust7.firstName = @"Miguel";
+            testCust7.lastName = @"Vionee";
+            
+            Customer *testCust8 =[Customer MR_createEntityInContext:localContext];
+            testCust8.firstName = @"Lucas";
+            testCust8.lastName = @"Volucas";
+            
+        } completion:nil];
+        [defaults setObject:[NSDate date] forKey:@"firstRun"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    //[[NSManagedObjectContext defaultContext] saveNestedContexts];
+}
+
+-(void)setupApp
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self MR_SetupDatabase];
+    //[[GenericService sharedService] MR_SetupDatabase];
+    //[[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    //AFNetworkActivityIndicatorManager.sharedManager.enabled = YES;
+    
+    // Preloads keyboard so there's no lag on initial keyboard appearance.
+    UITextField *lagFreeField = [[UITextField alloc] init];
+    [self.window addSubview:lagFreeField];
+    [lagFreeField becomeFirstResponder];
+    [lagFreeField resignFirstResponder];
+    [lagFreeField removeFromSuperview];
+}
+
+- (void)registerDefaultsFromSettingsBundle {
+    // this function writes default settings as settings
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+            NSLog(@"writing as default %@ to the key %@",[prefSpecification objectForKey:@"DefaultValue"],key);
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    
+}
+
+- (void)MR_SetupDatabase
+{
+    [MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"LARGruop"];
+    
+    if ([[[NSPersistentStoreCoordinator MR_defaultStoreCoordinator] persistentStores] count] == 0){
+        [MagicalRecord cleanUp];
+        NSError *error;
+        NSURL *fileURL = [NSPersistentStore MR_urlForStoreName:@"LARGruop"];
+        [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
+        [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"LARGruop"];
+        [MagicalRecord setupCoreDataStackWithStoreNamed:@"LARGruop"];
+    }
+}
+
+#pragma mark -
 #pragma mark - Core Data stack
+#pragma mark - 
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -109,7 +217,9 @@
     return _managedObjectContext;
 }
 
+#pragma mark -
 #pragma mark - Core Data Saving support
+#pragma mark -
 
 - (void)saveContext {
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;

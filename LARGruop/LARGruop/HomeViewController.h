@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 #import "TopBarProtocol.h"
 
-@interface HomeViewController : BaseViewController <TopBarProtocolDelegate>
+@interface HomeViewController : BaseViewController <TopBarProtocolDelegate,UIGestureRecognizerDelegate>
 
 @end

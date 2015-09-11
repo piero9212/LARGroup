@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-LARGruop-CGLAlphabetizer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LARGruop-JTCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F02C425073C709FBF6AB760</key>
+		<key>00BCA342CC59ABDF5B8FB12D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>23845FEE7780F9CF19DCD3A5</key>
+		<key>41AF7688E961294E7AC2DD44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>301E23C83470BA41B1797C17</key>
+		<key>52A38EF2E6A7DA1688A4A87F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>388AC6D7FD15E7AB797E280A</key>
+		<key>5C45DDD0C9CB620B7724BF91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D956BC598363498145E0AE5</key>
+		<key>62A8C5C0E4F7384514D5DA97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>878CFDCAB1FC16AE7D9B5F17</key>
+		<key>673CDF90DA35AF2AD0C88E4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9C480AB9983219EBCF084A1</key>
+		<key>92AD7614F7D29A5EA5E1C7FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E139C43ECD4D1CD7A2A5E0A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

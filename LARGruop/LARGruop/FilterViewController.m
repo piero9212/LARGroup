@@ -9,7 +9,11 @@
 #import "FilterViewController.h"
 
 @interface FilterViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *lowValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *highValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roomsLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *avaibleProyectsSwitch;
+@property (nonatomic) int rommsSelected;
 @end
 
 @implementation FilterViewController
@@ -21,6 +25,12 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureMetalSlider];
+    if(self.rommsSelected == 0)
+        self.roomsLabel.text= @"No seleccionado";
+    else
+        self.roomsLabel.text = [NSNumber numberWithInt:self.rommsSelected ].stringValue;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -28,11 +38,11 @@
     [super viewWillAppear:TRUE];
     [self setupViews];
     [self setupVars];
+    [self setupNotifications];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self setupDismissOnTouch];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,101 +52,100 @@
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
-}
+    self.lowValueLabel.text = [NSString stringWithFormat:@"%f", (float)self.sliderView.lowerValue];
+    self.highValueLabel.text =[NSString stringWithFormat:@"%f", (float)self.sliderView.upperValue];
+    }
 
 -(void)setupVars
 {
-   
+    self.rommsSelected = 0;
 }
 
-- (void)viewWillLayoutSubviews
+-(void)setupNotifications
 {
-    [super viewWillLayoutSubviews];
-    self.view.superview.bounds = CGRectMake(0, 0, _popOverViewSize.width, _popOverViewSize.height);
-    
-    self.view.superview.layer.cornerRadius  = 5.0;
-    self.view.superview.layer.masksToBounds = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanFilters:)
+                                                 name:kNotificationDismissFilterWithoutApply object:nil];
 }
-
-
--(void)setupDismissOnTouch
-{
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapBehind:)];
-    [recognizer setNumberOfTapsRequired:1];
-    recognizer.cancelsTouchesInView = NO; //So the user can still interact with controls in the modal view
-    [self.view.window addGestureRecognizer:recognizer];
-    recognizer.delegate = self;
-}
-
-
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -
 
 - (IBAction)applyFilters:(UIButton *)sender {
+    NSDictionary *userInfo = @{NOTIFICATION_SENDER: FILTER_SENDER, FILTER_MODE: @TRUE};
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationApplyFilters object:self userInfo:userInfo];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //TODO APPLY FILTERS
 }
 
 - (IBAction)resetFilter:(UIButton *)sender {
+    [self cleanFilters:nil];
 }
 
 - (IBAction)addRooms:(UIButton *)sender {
+    if(self.rommsSelected+1 <MAX_ROOM_FILTER)
+        self.rommsSelected +=1;
+    self.roomsLabel.text = [NSNumber numberWithInt:self.rommsSelected ].stringValue;
 }
 
 - (IBAction)removeRooms:(UIButton *)sender {
+    if(self.rommsSelected-1>=0)
+        self.rommsSelected -=1;
+    self.roomsLabel.text = [NSNumber numberWithInt:self.rommsSelected ].stringValue;
 }
 
 - (IBAction)avaibleProyectsValueChanged:(UISwitch *)sender {
     
+}
+- (IBAction)sliderValueChanged:(NMRangeSlider *)sender {
+    
+    self.lowValueLabel.text = [NSString stringWithFormat:@"%f", (float)sender.lowerValue];
+    self.highValueLabel.text =[NSString stringWithFormat:@"%f", (float)sender.upperValue];
 }
 
 #pragma mark -
 #pragma mark - Actions
 #pragma mark -
 
-- (void)handleTapBehind:(UITapGestureRecognizer *)sender
+-(void)cleanFilters:(NSNotification*)notification
 {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        
-        // passing nil gives us coordinates in the window
-        CGPoint location = [sender locationInView:nil];
-        
-        // swap (x,y) on iOS 8 in landscape
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-            if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
-                location = CGPointMake(location.y, location.x);
-            }
-        }
-        
-        // convert the tap's location into the local view's coordinate system, and test to see if it's in or outside. If outside, dismiss the view.
-        if (![self.view pointInside:[self.view convertPoint:location fromView:self.view.window] withEvent:nil]) {
-            
-            // remove the recognizer first so it's view.window is valid
-            [self.view.window removeGestureRecognizer:sender];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    }
+    [self.avaibleProyectsSwitch setOn:FALSE];
+    self.roomsLabel.text= @"No seleccionado";
+    //TODO CLEAN SLIDER
 }
 
 #pragma mark -
-#pragma mark - Gesture Recognizer Delegate
+#pragma mark - Slider View Setup
 #pragma mark -
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+- (void) configureMetalThemeForSlider:(NMRangeSlider*) slider
 {
-    return YES;
+    UIImage* image = nil;
+    
+//    image = [UIImage imageNamed:@"slider-metal-trackBackground"];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 5.0, 0.0, 5.0)];
+//    slider.trackBackgroundImage = image;
+    
+//    image = [UIImage imageNamed:@"slider-metal-track"];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 7.0, 0.0, 7.0)];
+//    slider.trackImage = image;
+    
+    image = [UIImage imageNamed:@"slider"];
+    image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(-1, 2, 1, 2)];
+    slider.lowerHandleImageNormal = image;
+    slider.upperHandleImageNormal = image;
+    
+    image = [UIImage imageNamed:@"slider-highlighted"];
+    image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(-1, 2, 1, 2)];
+    slider.lowerHandleImageHighlighted = image;
+    slider.upperHandleImageHighlighted = image;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+- (void) configureMetalSlider
 {
-    return YES;
+    [self configureMetalThemeForSlider:self.sliderView];
+    
+    self.sliderView.lowerValue = 0;
+    self.sliderView.upperValue = 1;
 }
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    return YES;
-}
-
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "NMRangeSlider.h"
 
-@interface FilterViewController : BaseViewController <UIGestureRecognizerDelegate>
+@interface FilterViewController : BaseViewController 
 
 
-@property (readwrite) CGSize popOverViewSize;
+@property (weak, nonatomic) IBOutlet NMRangeSlider *sliderView;
 @end
