@@ -13,12 +13,55 @@
         <attribute name="lastModified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Flat" representedClassName="Flat" parentEntity="Entity" syncable="YES">
+        <attribute name="flatDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flatID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flatImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="range" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="flatPlains" inverseEntity="Proyect" syncable="YES"/>
+    </entity>
     <entity name="MarketRates" representedClassName="MarketRates" parentEntity="Entity" syncable="YES">
+        <attribute name="interestLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="marketRateID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="promo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="marketRates" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="marketRates" inverseEntity="Proyect" syncable="YES"/>
+    </entity>
+    <entity name="Outside" representedClassName="Outside" parentEntity="Entity" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outsideDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="outsideImages" inverseEntity="Proyect" syncable="YES"/>
+    </entity>
+    <entity name="Proyect" representedClassName="Proyect" parentEntity="Entity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="district" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="leftDepartaments" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="listImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mapDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mapImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pointCoordinate" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="proyectDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="features" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProyectFeature" inverseName="proyect" inverseEntity="ProyectFeature" syncable="YES"/>
+        <relationship name="flatPlains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flat" inverseName="proyect" inverseEntity="Flat" syncable="YES"/>
+        <relationship name="marketRates" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketRates" inverseName="proyect" inverseEntity="MarketRates" syncable="YES"/>
+        <relationship name="outsideImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Outside" inverseName="proyect" inverseEntity="Outside" syncable="YES"/>
+    </entity>
+    <entity name="ProyectFeature" representedClassName="ProyectFeature" parentEntity="Entity" syncable="YES">
+        <attribute name="featureDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="proyect" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Proyect" inverseName="features" inverseEntity="Proyect" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="MarketRates" positionX="-36" positionY="54" width="128" height="60"/>
         <element name="Customer" positionX="-18" positionY="18" width="128" height="135"/>
+        <element name="Entity" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="MarketRates" positionX="-36" positionY="54" width="128" height="135"/>
+        <element name="Proyect" positionX="-36" positionY="54" width="128" height="285"/>
+        <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
+        <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
+        <element name="Flat" positionX="-9" positionY="117" width="128" height="120"/>
     </elements>
 </model>

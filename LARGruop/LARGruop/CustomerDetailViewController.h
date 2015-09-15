@@ -10,5 +10,6 @@
 
 @interface CustomerDetailViewController : BaseViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Customer* detailItem;
+-(void)reloadTable;
 @end

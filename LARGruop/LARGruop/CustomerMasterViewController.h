@@ -7,8 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
-@class CustomerDetailViewController;
+#import "CustomerDetailViewController.h"
 
 @interface CustomerMasterViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
