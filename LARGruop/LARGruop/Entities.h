@@ -13,3 +13,4 @@
 #import "Outside.h"
 #import "MarketRates.h"
 #import "Entity.h"
+#import "User.h"

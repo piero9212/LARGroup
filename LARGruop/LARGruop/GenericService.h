@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ErrorConstants.h"
+#import "NotificationConstants.h"
+#import "ApplicationConstants.h"
 #import <CoreData/CoreData.h>
 
 @class AFHTTPRequestOperation;

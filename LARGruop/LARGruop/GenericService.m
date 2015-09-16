@@ -12,6 +12,8 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "Entities.h"
 #import "NotificationConstants.h"
+#import "GenericConnectionManager.h"
+#import "LoginService.h"
 
 static NSString * const STORE_NAME = @"LARGruop";
 
@@ -122,11 +124,7 @@ static NSString * const STORE_NAME = @"LARGruop";
 
 - (void)setupDatabase
 {
-    
-    //for migration -> http://9elements.com/io/index.php/customizing-core-data-migrations/
-    //Apple Documentation -> https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreDataVersioning/Articles/vmCustomizing.html
-    //Stackoverflow example -> http://stackoverflow.com/questions/5995231/example-or-explanation-of-core-data-migration-with-multiple-passes
-    
+
     NSPersistentStoreCoordinator *psc = [NSPersistentStoreCoordinator MR_coordinatorWithSqliteStoreNamed:STORE_NAME];
     NSString *sourceStoreType = NSSQLiteStoreType;
     NSURL *sourceStoreURL = [NSPersistentStore MR_urlForStoreName:STORE_NAME];
@@ -230,18 +228,13 @@ static NSString * const STORE_NAME = @"LARGruop";
 - (void)resetDatabase
 {
     [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-        User *user = [[LoginService sharedService] lastLoggedInUser];
-        if (user.userTypeInt == UserTypeParent){
-            NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF.parent == %@", user];
-            [User MR_deleteAllMatchingPredicate:predicate inContext:localContext];
-        }
-        
         [Proyect MR_truncateAllInContext:localContext];
         [ProyectFeature MR_truncateAllInContext:localContext];
         [Outside MR_truncateAllInContext:localContext];
         [MarketRates MR_truncateAllInContext:localContext];
         [Flat MR_truncateAllInContext:localContext];
-        [Customer MR_truncateAllInContext:localContext];\
+        [Customer MR_truncateAllInContext:localContext];
+        [User MR_truncateAllInContext:localContext];
         
     }];
 }

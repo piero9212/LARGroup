@@ -17,7 +17,9 @@ static NSString * const FILTER_SENDER = @"Filter_Sender";
 static NSString * const HOME_SENDER = @"Home_Sender";
 
 
+#pragma mark - USER INFO
 
+static NSString * const USER_INFO_SHOW_ALERT_VIEW = @"ShowAlertView";
 
 
 
