@@ -173,12 +173,12 @@ static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad"
                                               [self dropDatabase];
                                               
                                           }
-                                          
-                                          [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-                                              User *lastLoggedInUser = [self lastLoggedInUserFromContext:localContext];
+                                        
+                                          [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                                            User *lastLoggedInUser = [self lastLoggedInUserFromContext:localContext];
                                               
                                               if (!(lastLoggedInUser && [userId isEqualToString:lastLoggedInUser.uid])) {
-                                                  User *user = [User MR_createInContext:localContext];
+                                                  User *user = [User MR_createEntityInContext:localContext];
                                                   [LoginTranslator userDictionary:userDictionary toUserEntity:user];
                                               }
                                               else {
@@ -255,7 +255,7 @@ static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad"
         userToReturn = [context objectWithID:user.objectID];
     }
     else {
-        NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_contextForCurrentThread];
+        NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
         userToReturn = [defaultContext objectWithID:user.objectID];
     }
     

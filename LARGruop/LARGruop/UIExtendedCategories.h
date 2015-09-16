@@ -9,3 +9,4 @@
 #import "UIButton+ExtendedMethods.h"
 #import "UITextField+ExtendedMethods.h"
 #import "UIColor+ExtendedMethods.h"
+#import "UILabel+ExtendedMethods.h"

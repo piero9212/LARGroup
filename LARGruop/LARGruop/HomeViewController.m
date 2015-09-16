@@ -49,7 +49,14 @@
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
-    self.containerSegmentedControl.selectedSegmentIndex = 0;
+    if([[self getCurrentViewController] isKindOfClass:[ProyectsViewController class]])
+    {
+        self.containerSegmentedControl.selectedSegmentIndex = 1;
+    }
+    else
+    {
+        self.containerSegmentedControl.selectedSegmentIndex = 0;
+    }
     [[UITabBar appearance] setTintColor:[UIColor orangeLARColor]];
 }
 

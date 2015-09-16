@@ -57,7 +57,7 @@
 
 - (void)cancelAllHTTPOperationsWithMethod:(NSString*)method path:(NSString*)path{
     
-    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:(method ?: @"GET") URLString:[[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString] parameters:@{}];
+    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:(method ?: @"GET") URLString:[[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString] parameters:@{} error:nil];
     NSString *URLStringToMatched = [[request URL] absoluteString];
     
     for (NSOperation *operation in [self.operationQueue operations]) {

@@ -9,7 +9,6 @@
 #import "GenericService.h"
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFHTTPRequestOperation.h>
-#import <MagicalRecord/MagicalRecord.h>
 #import "Entities.h"
 #import "NotificationConstants.h"
 #import "GenericConnectionManager.h"
@@ -220,14 +219,14 @@ static NSString * const STORE_NAME = @"LARGruop";
 
 - (void)dropDatabase
 {
-    [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         [Entity MR_truncateAllInContext:localContext];
     }];
 }
 
 - (void)resetDatabase
 {
-    [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         [Proyect MR_truncateAllInContext:localContext];
         [ProyectFeature MR_truncateAllInContext:localContext];
         [Outside MR_truncateAllInContext:localContext];
@@ -265,7 +264,7 @@ static NSString * const STORE_NAME = @"LARGruop";
         return nil;
     }
     
-    return [[NSManagedObjectContext MR_contextForCurrentThread] objectWithID:object.objectID];
+    return [[NSManagedObjectContext MR_defaultContext] objectWithID:object.objectID];
 }
 
 @end

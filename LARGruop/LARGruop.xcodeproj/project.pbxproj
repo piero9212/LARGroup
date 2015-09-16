@@ -17,7 +17,6 @@
 		352F77D41BA8C5DF0080B004 /* ProyectFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77D31BA8C5DF0080B004 /* ProyectFeature.m */; };
 		352F77DB1BA8C6940080B004 /* MarketRates.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77DA1BA8C6940080B004 /* MarketRates.m */; };
 		352F77DE1BA8C6950080B004 /* Outside.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77DD1BA8C6950080B004 /* Outside.m */; };
-		352F77E11BA8CD980080B004 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77E01BA8CD980080B004 /* Proyect.m */; };
 		352F77E91BA8DD1D0080B004 /* GenericService.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77E81BA8DD1D0080B004 /* GenericService.m */; };
 		352FA6411BA07A3B00FEC040 /* NewCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 352FA6401BA07A3B00FEC040 /* NewCustomerViewController.m */; };
 		352FA6491BA09AF900FEC040 /* NewCustomerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 352FA6481BA09AF900FEC040 /* NewCustomerTableViewCell.m */; };
@@ -49,13 +48,23 @@
 		353E64FC1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E64FB1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m */; };
 		353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65001B9F6BB70004E4F2 /* ProyectCollectionViewCell.m */; };
 		353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65041B9F729F0004E4F2 /* TopBarViewController.m */; };
+		3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F77D1BA9B1960061BAD4 /* ProyectService.m */; };
+		3560F7871BA9B1DF0061BAD4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7861BA9B1DF0061BAD4 /* User.m */; };
+		3560F78A1BA9B1E70061BAD4 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7891BA9B1E70061BAD4 /* Proyect.m */; };
+		3560F78E1BA9B2150061BAD4 /* ProyectConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F78D1BA9B2150061BAD4 /* ProyectConnectionManager.m */; };
+		3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7901BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m */; };
+		3560F7941BA9D4130061BAD4 /* ProyectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7931BA9D4130061BAD4 /* ProyectDetailViewController.m */; };
+		3560F7981BAA085E0061BAD4 /* ProyectFeaturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7971BAA085E0061BAD4 /* ProyectFeaturesViewController.m */; };
+		3560F79B1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F79A1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m */; };
+		3560F79E1BAA14450061BAD4 /* ProyectFeatureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F79D1BAA14450061BAD4 /* ProyectFeatureService.m */; };
+		3560F7A21BAA20B30061BAD4 /* FeatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7A11BAA20B30061BAD4 /* FeatureTableViewCell.m */; };
+		3560F7A51BAA25220061BAD4 /* ProyectDetailItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7A41BAA25220061BAD4 /* ProyectDetailItemViewController.m */; };
 		763EF9731BA91688003D1E4F /* GenericConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9721BA91688003D1E4F /* GenericConnectionManager.m */; };
 		763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97B1BA93151003D1E4F /* ServiceClient.m */; };
 		763EF9801BA9344B003D1E4F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97F1BA9344B003D1E4F /* LoginService.m */; };
-		763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9891BA9384E003D1E4F /* KeychainItemWrapper.m */; };
+		763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9891BA9384E003D1E4F /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		763EF98D1BA93933003D1E4F /* LoginConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF98C1BA93933003D1E4F /* LoginConnectionManager.m */; };
 		763EF9911BA93C29003D1E4F /* LoginTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9901BA93C29003D1E4F /* LoginTranslator.m */; };
-		763EF9941BA93CE7003D1E4F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9931BA93CE7003D1E4F /* User.m */; };
 		AB454D0776761BFCF8BD2AF7 /* libPods-LARGruop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A7C4E77596FE6656D2AE0F /* libPods-LARGruop.a */; };
 /* End PBXBuildFile section */
 
@@ -91,8 +100,6 @@
 		352F77DA1BA8C6940080B004 /* MarketRates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketRates.m; sourceTree = "<group>"; };
 		352F77DC1BA8C6950080B004 /* Outside.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outside.h; sourceTree = "<group>"; };
 		352F77DD1BA8C6950080B004 /* Outside.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outside.m; sourceTree = "<group>"; };
-		352F77DF1BA8CD980080B004 /* Proyect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Proyect.h; path = ../Proyect.h; sourceTree = "<group>"; };
-		352F77E01BA8CD980080B004 /* Proyect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Proyect.m; path = ../Proyect.m; sourceTree = "<group>"; };
 		352F77E71BA8DD1D0080B004 /* GenericService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericService.h; sourceTree = "<group>"; };
 		352F77E81BA8DD1D0080B004 /* GenericService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericService.m; sourceTree = "<group>"; };
 		352FA63F1BA07A3B00FEC040 /* NewCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCustomerViewController.h; sourceTree = "<group>"; };
@@ -157,6 +164,28 @@
 		353E65031B9F729F0004E4F2 /* TopBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarViewController.h; sourceTree = "<group>"; };
 		353E65041B9F729F0004E4F2 /* TopBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarViewController.m; sourceTree = "<group>"; };
 		353E65071B9F76BD0004E4F2 /* TopBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBarProtocol.h; sourceTree = "<group>"; };
+		3560F77C1BA9B1960061BAD4 /* ProyectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectService.h; sourceTree = "<group>"; };
+		3560F77D1BA9B1960061BAD4 /* ProyectService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectService.m; sourceTree = "<group>"; };
+		3560F7851BA9B1DF0061BAD4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		3560F7861BA9B1DF0061BAD4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		3560F7881BA9B1E70061BAD4 /* Proyect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proyect.h; sourceTree = "<group>"; };
+		3560F7891BA9B1E70061BAD4 /* Proyect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proyect.m; sourceTree = "<group>"; };
+		3560F78C1BA9B2150061BAD4 /* ProyectConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectConnectionManager.h; sourceTree = "<group>"; };
+		3560F78D1BA9B2150061BAD4 /* ProyectConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectConnectionManager.m; sourceTree = "<group>"; };
+		3560F78F1BA9CFC40061BAD4 /* UILabel+ExtendedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ExtendedMethods.h"; sourceTree = "<group>"; };
+		3560F7901BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ExtendedMethods.m"; sourceTree = "<group>"; };
+		3560F7921BA9D4130061BAD4 /* ProyectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailViewController.h; sourceTree = "<group>"; };
+		3560F7931BA9D4130061BAD4 /* ProyectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailViewController.m; sourceTree = "<group>"; };
+		3560F7961BAA085E0061BAD4 /* ProyectFeaturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectFeaturesViewController.h; sourceTree = "<group>"; };
+		3560F7971BAA085E0061BAD4 /* ProyectFeaturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectFeaturesViewController.m; sourceTree = "<group>"; };
+		3560F7991BAA13740061BAD4 /* ProyectFeatureConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectFeatureConnectionManager.h; sourceTree = "<group>"; };
+		3560F79A1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectFeatureConnectionManager.m; sourceTree = "<group>"; };
+		3560F79C1BAA14450061BAD4 /* ProyectFeatureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectFeatureService.h; sourceTree = "<group>"; };
+		3560F79D1BAA14450061BAD4 /* ProyectFeatureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectFeatureService.m; sourceTree = "<group>"; };
+		3560F7A01BAA20B30061BAD4 /* FeatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureTableViewCell.h; sourceTree = "<group>"; };
+		3560F7A11BAA20B30061BAD4 /* FeatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureTableViewCell.m; sourceTree = "<group>"; };
+		3560F7A31BAA25220061BAD4 /* ProyectDetailItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailItemViewController.h; sourceTree = "<group>"; };
+		3560F7A41BAA25220061BAD4 /* ProyectDetailItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailItemViewController.m; sourceTree = "<group>"; };
 		763EF9711BA91688003D1E4F /* GenericConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericConnectionManager.h; sourceTree = "<group>"; };
 		763EF9721BA91688003D1E4F /* GenericConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericConnectionManager.m; sourceTree = "<group>"; };
 		763EF97A1BA93151003D1E4F /* ServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceClient.h; sourceTree = "<group>"; };
@@ -169,8 +198,6 @@
 		763EF98C1BA93933003D1E4F /* LoginConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginConnectionManager.m; sourceTree = "<group>"; };
 		763EF98F1BA93C29003D1E4F /* LoginTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTranslator.h; sourceTree = "<group>"; };
 		763EF9901BA93C29003D1E4F /* LoginTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTranslator.m; sourceTree = "<group>"; };
-		763EF9921BA93CE7003D1E4F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
-		763EF9931BA93CE7003D1E4F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
 		CD31549C272CA3C4F1194907 /* Pods-LARGruop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LARGruop.release.xcconfig"; path = "Pods/Target Support Files/Pods-LARGruop/Pods-LARGruop.release.xcconfig"; sourceTree = "<group>"; };
 		CF64EA82B3B8C40FB8298D3F /* Pods-LARGruop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LARGruop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LARGruop/Pods-LARGruop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +267,10 @@
 				352F77E81BA8DD1D0080B004 /* GenericService.m */,
 				763EF97E1BA9344B003D1E4F /* LoginService.h */,
 				763EF97F1BA9344B003D1E4F /* LoginService.m */,
+				3560F77C1BA9B1960061BAD4 /* ProyectService.h */,
+				3560F77D1BA9B1960061BAD4 /* ProyectService.m */,
+				3560F79C1BAA14450061BAD4 /* ProyectFeatureService.h */,
+				3560F79D1BAA14450061BAD4 /* ProyectFeatureService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -261,6 +292,10 @@
 				763EF9721BA91688003D1E4F /* GenericConnectionManager.m */,
 				763EF98B1BA93933003D1E4F /* LoginConnectionManager.h */,
 				763EF98C1BA93933003D1E4F /* LoginConnectionManager.m */,
+				3560F78C1BA9B2150061BAD4 /* ProyectConnectionManager.h */,
+				3560F78D1BA9B2150061BAD4 /* ProyectConnectionManager.m */,
+				3560F7991BAA13740061BAD4 /* ProyectFeatureConnectionManager.h */,
+				3560F79A1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m */,
 			);
 			name = "Connection Managers";
 			sourceTree = "<group>";
@@ -268,6 +303,7 @@
 		352FA63D1BA07A1900FEC040 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				3560F7951BAA08380061BAD4 /* Proyect Features */,
 				352FA63E1BA07A2300FEC040 /* Add Customer */,
 			);
 			name = Modals;
@@ -294,6 +330,7 @@
 		352FA6461BA093EC00FEC040 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3560F79F1BAA20730061BAD4 /* Feature Cell */,
 				352FA6421BA093B000FEC040 /* New Customer Cell */,
 			);
 			name = "Table View Cells";
@@ -507,10 +544,10 @@
 		353D96751B9DFC9D00E4A618 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				763EF9921BA93CE7003D1E4F /* User.h */,
-				763EF9931BA93CE7003D1E4F /* User.m */,
-				352F77DF1BA8CD980080B004 /* Proyect.h */,
-				352F77E01BA8CD980080B004 /* Proyect.m */,
+				3560F7881BA9B1E70061BAD4 /* Proyect.h */,
+				3560F7891BA9B1E70061BAD4 /* Proyect.m */,
+				3560F7851BA9B1DF0061BAD4 /* User.h */,
+				3560F7861BA9B1DF0061BAD4 /* User.m */,
 				352F77DC1BA8C6950080B004 /* Outside.h */,
 				352F77DD1BA8C6950080B004 /* Outside.m */,
 				352F77D91BA8C6940080B004 /* MarketRates.h */,
@@ -608,6 +645,8 @@
 				353D968A1B9E1C2D00E4A618 /* UIExtendedCategories.h */,
 				353D96901B9E2B1F00E4A618 /* UITextField+ExtendedMethods.h */,
 				353D96911B9E2B1F00E4A618 /* UITextField+ExtendedMethods.m */,
+				3560F78F1BA9CFC40061BAD4 /* UILabel+ExtendedMethods.h */,
+				3560F7901BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m */,
 			);
 			name = UICategories;
 			sourceTree = "<group>";
@@ -686,6 +725,10 @@
 			children = (
 				353E64F41B9F4BE30004E4F2 /* ProyectsViewController.h */,
 				353E64F51B9F4BE30004E4F2 /* ProyectsViewController.m */,
+				3560F7921BA9D4130061BAD4 /* ProyectDetailViewController.h */,
+				3560F7931BA9D4130061BAD4 /* ProyectDetailViewController.m */,
+				3560F7A31BAA25220061BAD4 /* ProyectDetailItemViewController.h */,
+				3560F7A41BAA25220061BAD4 /* ProyectDetailItemViewController.m */,
 			);
 			name = Proyects;
 			sourceTree = "<group>";
@@ -714,6 +757,24 @@
 				353E65041B9F729F0004E4F2 /* TopBarViewController.m */,
 			);
 			name = "Top Bar";
+			sourceTree = "<group>";
+		};
+		3560F7951BAA08380061BAD4 /* Proyect Features */ = {
+			isa = PBXGroup;
+			children = (
+				3560F7961BAA085E0061BAD4 /* ProyectFeaturesViewController.h */,
+				3560F7971BAA085E0061BAD4 /* ProyectFeaturesViewController.m */,
+			);
+			name = "Proyect Features";
+			sourceTree = "<group>";
+		};
+		3560F79F1BAA20730061BAD4 /* Feature Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3560F7A01BAA20B30061BAD4 /* FeatureTableViewCell.h */,
+				3560F7A11BAA20B30061BAD4 /* FeatureTableViewCell.m */,
+			);
+			name = "Feature Cell";
 			sourceTree = "<group>";
 		};
 		3851064E127162C714D9F4AA /* Frameworks */ = {
@@ -892,20 +953,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				352F77C21BA8C5600080B004 /* Entity.m in Sources */,
+				3560F7941BA9D4130061BAD4 /* ProyectDetailViewController.m in Sources */,
 				352FA6491BA09AF900FEC040 /* NewCustomerTableViewCell.m in Sources */,
 				353D964A1B9DF8B800E4A618 /* LARGruop.xcdatamodeld in Sources */,
+				3560F7981BAA085E0061BAD4 /* ProyectFeaturesViewController.m in Sources */,
 				353D967F1B9E154A00E4A618 /* BaseViewController.m in Sources */,
 				353D96821B9E157A00E4A618 /* InitViewController.m in Sources */,
+				3560F7A21BAA20B30061BAD4 /* FeatureTableViewCell.m in Sources */,
 				353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */,
+				3560F79B1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m in Sources */,
+				3560F78E1BA9B2150061BAD4 /* ProyectConnectionManager.m in Sources */,
+				3560F78A1BA9B1E70061BAD4 /* Proyect.m in Sources */,
 				352F77B51BA872A80080B004 /* CustomerMarketRateViewController.m in Sources */,
 				353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */,
-				763EF9941BA93CE7003D1E4F /* User.m in Sources */,
+				3560F7871BA9B1DF0061BAD4 /* User.m in Sources */,
+				3560F7A51BAA25220061BAD4 /* ProyectDetailItemViewController.m in Sources */,
 				763EF9801BA9344B003D1E4F /* LoginService.m in Sources */,
 				352FA68B1BA0CFF800FEC040 /* CustomerMasterViewController.m in Sources */,
 				352FA6881BA0CFE400FEC040 /* CustomerDetailViewController.m in Sources */,
+				3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */,
 				763EF9911BA93C29003D1E4F /* LoginTranslator.m in Sources */,
 				352F77BA1BA8AECE0080B004 /* ProyectAnnotationView.m in Sources */,
 				352F77DB1BA8C6940080B004 /* MarketRates.m in Sources */,
+				3560F79E1BAA14450061BAD4 /* ProyectFeatureService.m in Sources */,
 				353D969E1B9E4B1500E4A618 /* HomeViewController.m in Sources */,
 				352F77E91BA8DD1D0080B004 /* GenericService.m in Sources */,
 				353D96871B9E1B0100E4A618 /* UIButton+ExtendedMethods.m in Sources */,
@@ -915,6 +985,7 @@
 				352F77DE1BA8C6950080B004 /* Outside.m in Sources */,
 				353D96441B9DF8B800E4A618 /* main.m in Sources */,
 				352FA6921BA0E3E000FEC040 /* FilterViewController.m in Sources */,
+				3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */,
 				353E64F61B9F4BE30004E4F2 /* ProyectsViewController.m in Sources */,
 				763EF98D1BA93933003D1E4F /* LoginConnectionManager.m in Sources */,
 				763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */,
@@ -923,7 +994,6 @@
 				352F77D11BA8C5600080B004 /* Flat.m in Sources */,
 				763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */,
 				353E64F11B9F46F40004E4F2 /* ProfileViewController.m in Sources */,
-				352F77E11BA8CD980080B004 /* Proyect.m in Sources */,
 				352F77CB1BA8C5600080B004 /* Customer.m in Sources */,
 				353D96921B9E2B1F00E4A618 /* UITextField+ExtendedMethods.m in Sources */,
 				353E64F91B9F4C470004E4F2 /* MapViewController.m in Sources */,

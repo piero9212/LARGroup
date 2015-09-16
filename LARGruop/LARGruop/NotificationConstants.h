@@ -35,3 +35,4 @@ static NSString * const kNotificationSearchReturn = @"SearchReturnNotification";
 
 static NSString * const kNotificationApplyFilters = @"ApplyFiltersNotification";
 static NSString * const kNotificationDismissFilterWithoutApply = @"DismissFilterWithoutApplyNotification";
+static NSString * const kNotificationFilterProyectsChanged = @"FilterProyectsChangedNotification";

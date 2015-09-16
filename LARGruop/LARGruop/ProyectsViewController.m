@@ -8,6 +8,9 @@
 
 #import "ProyectsViewController.h"
 #import "ProyectCollectionViewCell.h"
+#import "ProyectService.h"
+#import "ProyectDetailViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 static NSString* const PROYECT_CELL = @"PROYECT_CELL";
 static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
@@ -34,6 +37,7 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
 {
     [super viewWillAppear:TRUE];
     [self setupViews];
+    [self setupVars];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -46,7 +50,7 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
 
 -(void)setupVars
 {
-    
+    self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
 }
 
 #pragma mark -
@@ -74,7 +78,31 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     
     ProyectCollectionViewCell *cell = [self.proyectsCollectionView dequeueReusableCellWithReuseIdentifier:PROYECT_CELL forIndexPath:indexPath];
     
+    Proyect* proyect = [self.proyects objectAtIndex:indexPath.row];
     
+    cell.proyectNameLabel.text = [NSString stringWithFormat:@"Proyecto %@",proyect.name];
+    cell.proyectAddressLabel.text = proyect.address;
+    cell.districtLabel.text = proyect.district;
+    [cell.districtLabel resizeToStretch];
+    UIColor* leftDepartmentsColor;
+    switch (proyect.leftDepartaments.intValue) {
+        case 0:
+        case 1:
+            leftDepartmentsColor = [UIColor redColor];
+            break;
+        case 2:
+            leftDepartmentsColor = [UIColor yellowColor];
+            break;
+        case 3:
+            leftDepartmentsColor = [UIColor greenColor];
+            break;
+        default:
+            leftDepartmentsColor = [UIColor greenColor];
+            break;
+    }
+    cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: 0%@",proyect.leftDepartaments.stringValue];
+    [cell.departamentsLeftLabel setTextColor:leftDepartmentsColor];
+    [cell.buildImageView setImageWithURL:[NSURL URLWithString:proyect.listImageURL]];
     return cell;
     
     
@@ -83,9 +111,23 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-   
+    [self performSegueWithIdentifier:PROYECT_DETAIL_SEGUE sender:indexPath];
     
 }
 
+
+#pragma mark -
+#pragma mark - Navigation
+#pragma mark -
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.destinationViewController isKindOfClass:[ProyectDetailViewController class]])
+    {
+        ProyectDetailViewController* destinationVC = segue.destinationViewController;
+        NSInteger index = ((NSIndexPath*)sender).row;
+        destinationVC.selectedProyect = [self.proyects objectAtIndex:index];
+    }
+}
 
 @end

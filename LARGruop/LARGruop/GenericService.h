@@ -11,6 +11,8 @@
 #import "NotificationConstants.h"
 #import "ApplicationConstants.h"
 #import <CoreData/CoreData.h>
+#import "Entities.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @class AFHTTPRequestOperation;
 
