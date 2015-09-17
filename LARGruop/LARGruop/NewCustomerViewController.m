@@ -37,6 +37,7 @@ static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [self setupDismissOnTouch];
 }
 

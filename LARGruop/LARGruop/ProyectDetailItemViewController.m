@@ -7,16 +7,25 @@
 //
 
 #import "ProyectDetailItemViewController.h"
+#import "ProyectDetailDepartamentsViewController.h"
+#import "ProyectDetailLocateViewController.h"
+#import "ProyectDetailOutsideViewController.h"
 
 @interface ProyectDetailItemViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *proyectDetailItemLabel;
 @end
 
 @implementation ProyectDetailItemViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self presentSelectedViewController];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +41,64 @@
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
+#pragma mark -
+#pragma mark - Actions
+#pragma mark -
 
+-(void)setViewControllerChildWith:(UIViewController*)newChildViewController from:(UIViewController*)fromViewController
+{
+    [fromViewController willMoveToParentViewController:nil];
+    [self addChildViewController:newChildViewController];
+    [self transitionFromViewController:fromViewController toViewController:newChildViewController duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^
+     {
+         [fromViewController removeFromParentViewController];
+         [newChildViewController didMoveToParentViewController:self];
+     } completion:nil];
+}
+
+-(UIViewController*)getCurrentViewController
+{
+    UIViewController* fromVC;
+    for (UIViewController*  vc in self.childViewControllers)
+    {
+        if([vc isKindOfClass:[ProyectDetailOutsideViewController class]] || [vc isKindOfClass:[ProyectDetailDepartamentsViewController class]] ||  [vc isKindOfClass:[ProyectDetailLocateViewController class]])
+            fromVC =vc;
+        
+    }
+    return fromVC;
+}
+
+-(void)presentSelectedViewController
+{
+    UIViewController* destinationVC;
+    UIViewController* currentVC = [self getCurrentViewController];
+    
+    switch (self.itemType) {
+        case ProyectDetailItemTypeDepartaments:
+            self.proyectDetailItemLabel.text = @"Departamentos";
+            destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];
+            break;
+        case ProyectDetailItemTypeLocate:
+            self.proyectDetailItemLabel.text = @"Ubicación";
+            destinationVC = (ProyectDetailLocateViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailLocateViewController"];
+            break;
+        case ProyectDetailItemTypeOutside:
+            self.proyectDetailItemLabel.text = @"Imagenes de Exteriores";
+            destinationVC = (ProyectDetailOutsideViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailOutsideViewController"];
+            break;
+//        case ProyectDetailItemTypePanoramic:
+//            destinationVC = (pro*)[self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+//            break;
+//        case ProyectDetailItemTypeVideo:
+//            destinationVC = (MapViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+//            break;
+        default:
+            destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];
+            break;
+    }
+    
+    [self setViewControllerChildWith:destinationVC from:currentVC];
+}
 #pragma mark -
 #pragma mark - Navigation
 #pragma mark -

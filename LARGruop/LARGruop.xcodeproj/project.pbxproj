@@ -59,6 +59,9 @@
 		3560F79E1BAA14450061BAD4 /* ProyectFeatureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F79D1BAA14450061BAD4 /* ProyectFeatureService.m */; };
 		3560F7A21BAA20B30061BAD4 /* FeatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7A11BAA20B30061BAD4 /* FeatureTableViewCell.m */; };
 		3560F7A51BAA25220061BAD4 /* ProyectDetailItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7A41BAA25220061BAD4 /* ProyectDetailItemViewController.m */; };
+		7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */; };
+		7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */; };
+		760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */; };
 		763EF9731BA91688003D1E4F /* GenericConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9721BA91688003D1E4F /* GenericConnectionManager.m */; };
 		763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97B1BA93151003D1E4F /* ServiceClient.m */; };
 		763EF9801BA9344B003D1E4F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97F1BA9344B003D1E4F /* LoginService.m */; };
@@ -186,6 +189,12 @@
 		3560F7A11BAA20B30061BAD4 /* FeatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureTableViewCell.m; sourceTree = "<group>"; };
 		3560F7A31BAA25220061BAD4 /* ProyectDetailItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailItemViewController.h; sourceTree = "<group>"; };
 		3560F7A41BAA25220061BAD4 /* ProyectDetailItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailItemViewController.m; sourceTree = "<group>"; };
+		7601584A1BAA672300411629 /* ProyectDetailLocateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailLocateViewController.h; sourceTree = "<group>"; };
+		7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailLocateViewController.m; sourceTree = "<group>"; };
+		7601584D1BAA67A500411629 /* ProyectDetailOutsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailOutsideViewController.h; sourceTree = "<group>"; };
+		7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailOutsideViewController.m; sourceTree = "<group>"; };
+		760158501BAA67C200411629 /* ProyectDetailDepartamentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailDepartamentsViewController.h; sourceTree = "<group>"; };
+		760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailDepartamentsViewController.m; sourceTree = "<group>"; };
 		763EF9711BA91688003D1E4F /* GenericConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericConnectionManager.h; sourceTree = "<group>"; };
 		763EF9721BA91688003D1E4F /* GenericConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericConnectionManager.m; sourceTree = "<group>"; };
 		763EF97A1BA93151003D1E4F /* ServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceClient.h; sourceTree = "<group>"; };
@@ -723,6 +732,7 @@
 		353E64F31B9F4BCD0004E4F2 /* Proyects */ = {
 			isa = PBXGroup;
 			children = (
+				760158491BAA66DC00411629 /* Detail Items */,
 				353E64F41B9F4BE30004E4F2 /* ProyectsViewController.h */,
 				353E64F51B9F4BE30004E4F2 /* ProyectsViewController.m */,
 				3560F7921BA9D4130061BAD4 /* ProyectDetailViewController.h */,
@@ -785,6 +795,19 @@
 				05A7C4E77596FE6656D2AE0F /* libPods-LARGruop.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		760158491BAA66DC00411629 /* Detail Items */ = {
+			isa = PBXGroup;
+			children = (
+				7601584A1BAA672300411629 /* ProyectDetailLocateViewController.h */,
+				7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */,
+				7601584D1BAA67A500411629 /* ProyectDetailOutsideViewController.h */,
+				7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */,
+				760158501BAA67C200411629 /* ProyectDetailDepartamentsViewController.h */,
+				760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */,
+			);
+			name = "Detail Items";
 			sourceTree = "<group>";
 		};
 		763EF97D1BA9315E003D1E4F /* Client */ = {
@@ -865,7 +888,7 @@
 				TargetAttributes = {
 					353D963D1B9DF8B800E4A618 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = GGA47A9M92;
+						DevelopmentTeam = PDKJ4D5B5H;
 					};
 					353D96591B9DF8B900E4A618 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -952,6 +975,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */,
 				352F77C21BA8C5600080B004 /* Entity.m in Sources */,
 				3560F7941BA9D4130061BAD4 /* ProyectDetailViewController.m in Sources */,
 				352FA6491BA09AF900FEC040 /* NewCustomerTableViewCell.m in Sources */,
@@ -969,8 +993,10 @@
 				3560F7871BA9B1DF0061BAD4 /* User.m in Sources */,
 				3560F7A51BAA25220061BAD4 /* ProyectDetailItemViewController.m in Sources */,
 				763EF9801BA9344B003D1E4F /* LoginService.m in Sources */,
+				7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */,
 				352FA68B1BA0CFF800FEC040 /* CustomerMasterViewController.m in Sources */,
 				352FA6881BA0CFE400FEC040 /* CustomerDetailViewController.m in Sources */,
+				760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */,
 				3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */,
 				763EF9911BA93C29003D1E4F /* LoginTranslator.m in Sources */,
 				352F77BA1BA8AECE0080B004 /* ProyectAnnotationView.m in Sources */,

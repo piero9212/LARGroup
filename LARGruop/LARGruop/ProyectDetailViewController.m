@@ -83,7 +83,7 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 
 }
 - (IBAction)presentModalDetailView:(id)sender {
-    [self performSegueWithIdentifier:FEATURE_MORE_DETAIL_SEGUE sender:self];
+    [self performSegueWithIdentifier:FEATURE_MORE_DETAIL_SEGUE sender:sender];
 }
 
 

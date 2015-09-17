@@ -113,7 +113,7 @@
             testProyect.district = @"Jesus Maria";
             testProyect.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_a.jpg";
             testProyect.leftDepartaments=@3;
-            testProyect.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01.jpg";
+            testProyect.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_d.jpg";
             testProyect.mapDescription = @"El proyecto cuenta con departamentos de 1, 2 y 3 dormitorios disenados para satisfacer las necesidades de nuestros clientes";
             testProyect.mapImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01.jpg";
             testProyect.maxPrice = @"150000";
@@ -136,7 +136,7 @@
             testProyect2.district = @"San Isidro";
             testProyect2.imageURL = @"http://www.nesta.com.pe/images/departamentos/departamento-fachada-zoom.jpg";
             testProyect2.leftDepartaments=@2;
-            testProyect2.listImageURL = @"images/departamentos/departamento-fachada.jpg";
+            testProyect2.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_g.jpg";
             testProyect2.mapDescription = @"El proyecto cuenta con departamentos de 1, 2 y 3, ademas de habitaciones con jacuzi y sauna";
             testProyect2.mapImageURL = @"images/departamentos/departamento-fachada.jpg";
             testProyect2.maxPrice = @"165000";
@@ -158,7 +158,7 @@
             testProyect3.district = @"Jesus Maria";
             testProyect3.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_b.jpg";
             testProyect3.leftDepartaments=@1;
-            testProyect3.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_02.jpg";
+            testProyect3.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_h.jpg";
             testProyect3.mapDescription = @"El proyecto cuenta con departamentos de 1, 2 y 3 dormitorios creados con marmol y cal";
             testProyect3.mapImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_02.jpg";
             testProyect3.maxPrice = @"190000";
