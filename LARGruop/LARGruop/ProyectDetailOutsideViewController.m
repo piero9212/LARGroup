@@ -9,6 +9,8 @@
 #import "ProyectDetailOutsideViewController.h"
 
 @interface ProyectDetailOutsideViewController ()
+@property (weak, nonatomic) IBOutlet UIPageControl *outsidePageControl;
+@property (weak, nonatomic) IBOutlet UIImageView *outsideImageView;
 
 @end
 
@@ -22,6 +24,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)imagePageControlChanged:(UIPageControl *)sender {
+    
 }
 
 /*

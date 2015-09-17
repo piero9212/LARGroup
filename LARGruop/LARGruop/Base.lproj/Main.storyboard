@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hU3-Ki-d50">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hU3-Ki-d50">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1616,7 +1616,7 @@
                                             <constraint firstAttribute="width" constant="87" id="tKS-L3-MiQ"/>
                                         </constraints>
                                         <state key="normal" title="Atras" image="backPush">
-                                            <color key="titleColor" red="0.90196078430000004" green="0.29803921570000003" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.90196078431372551" green="0.29803921568627451" blue="0.035294117647058823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1637,7 +1637,7 @@
                                             <constraint firstAttribute="width" constant="250" id="lbk-HM-OEP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1672,7 +1672,7 @@
                                             <constraint firstAttribute="height" constant="37" id="vXe-uI-hpK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="27"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1753,7 +1753,7 @@
                                             <constraint firstAttribute="height" constant="29" id="qLz-qJ-7hQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXI-oN-sR0">
@@ -1881,17 +1881,33 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9nt-iv-3tX">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-X9-oLW">
+                                <rect key="frame" x="225" y="543" width="150" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="WPk-go-SyC"/>
+                                    <constraint firstAttribute="height" constant="37" id="qsI-ar-Sph"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="imagePageControlChanged:" destination="4gT-lv-oNh" eventType="valueChanged" id="Kbw-g5-Kth"/>
+                                </connections>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9nt-iv-3tX" firstAttribute="top" secondItem="Kp7-5I-zAJ" secondAttribute="top" id="4P4-aH-3QO"/>
+                            <constraint firstAttribute="centerX" secondItem="vkY-X9-oLW" secondAttribute="centerX" id="9lU-Sg-rj4"/>
                             <constraint firstAttribute="trailing" secondItem="9nt-iv-3tX" secondAttribute="trailing" id="CKM-HJ-ai3"/>
                             <constraint firstItem="9nt-iv-3tX" firstAttribute="leading" secondItem="Kp7-5I-zAJ" secondAttribute="leading" id="gBa-Gw-uGM"/>
                             <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="9nt-iv-3tX" secondAttribute="bottom" id="hvy-sz-dkI"/>
+                            <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="vkY-X9-oLW" secondAttribute="bottom" constant="20" id="wDu-f4-Zyo"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="outsideImageView" destination="9nt-iv-3tX" id="8hj-0I-GBY"/>
+                        <outlet property="outsidePageControl" destination="vkY-X9-oLW" id="LOr-It-bFG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObJ-WZ-V7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1934,7 +1950,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9c-II-hPp">
                                                     <rect key="frame" x="27" y="7" width="333" height="16"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1967,7 +1983,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">DSAD ADA DASda sdas dasd asd ad as das df qfqd ferqgf dsf ergwdsfcewrg yh ryujrhg sfds fsdf sd ret fg g fsg asdsa dasd ad arew sf safa dfasdf er fef sg eq</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CARACTERISTICAS:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a1-Dr-TW3">
