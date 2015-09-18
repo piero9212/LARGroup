@@ -10,4 +10,5 @@
 
 @interface ProyectDetailOutsideViewController : BaseViewController
 
+@property (nonatomic,strong) Proyect* currentSelectedProyect;
 @end

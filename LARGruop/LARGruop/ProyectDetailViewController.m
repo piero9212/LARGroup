@@ -108,7 +108,7 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
         {
             destinationVC.itemType = ProyectDetailItemTypeDepartaments;
         }
-        
+        destinationVC.currentSelectedProyect = self.selectedProyect;
     }
 }
 @end

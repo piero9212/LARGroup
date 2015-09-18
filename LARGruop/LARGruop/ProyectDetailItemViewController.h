@@ -19,4 +19,5 @@ typedef NS_ENUM(NSInteger,ProyectDetailItemType) {
 @interface ProyectDetailItemViewController : BaseViewController
 
 @property (nonatomic) ProyectDetailItemType itemType;
+@property (nonatomic,strong) Proyect* currentSelectedProyect;
 @end
