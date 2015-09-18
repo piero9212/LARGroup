@@ -27,6 +27,7 @@
 		352FA6921BA0E3E000FEC040 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 352FA6911BA0E3E000FEC040 /* FilterViewController.m */; };
 		352FA6971BA0E59E00FEC040 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352FA6961BA0E59E00FEC040 /* QuartzCore.framework */; };
 		353335A41BA21A32006EE4FC /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 353335A31BA21A32006EE4FC /* NMRangeSlider.m */; };
+		353B36CD1BACA5E300719C57 /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 353B36CC1BACA5E300719C57 /* FXPageControl.m */; };
 		353D96441B9DF8B800E4A618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D96431B9DF8B800E4A618 /* main.m */; };
 		353D96471B9DF8B800E4A618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D96461B9DF8B800E4A618 /* AppDelegate.m */; };
 		353D964A1B9DF8B800E4A618 /* LARGruop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 353D96481B9DF8B800E4A618 /* LARGruop.xcdatamodeld */; };
@@ -124,6 +125,8 @@
 		352FA6961BA0E59E00FEC040 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		353335A21BA21A32006EE4FC /* NMRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMRangeSlider.h; sourceTree = "<group>"; };
 		353335A31BA21A32006EE4FC /* NMRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMRangeSlider.m; sourceTree = "<group>"; };
+		353B36CB1BACA5E300719C57 /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
+		353B36CC1BACA5E300719C57 /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
 		353D963E1B9DF8B800E4A618 /* LARGruop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LARGruop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		353D96421B9DF8B800E4A618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		353D96431B9DF8B800E4A618 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -365,6 +368,7 @@
 		353335A01BA219B4006EE4FC /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				353B36CA1BACA5CA00719C57 /* FXPage Controller */,
 				763EF9871BA937F2003D1E4F /* Keychain */,
 				353335A11BA21A0E006EE4FC /* NMRange Slider */,
 			);
@@ -378,6 +382,15 @@
 				353335A31BA21A32006EE4FC /* NMRangeSlider.m */,
 			);
 			name = "NMRange Slider";
+			sourceTree = "<group>";
+		};
+		353B36CA1BACA5CA00719C57 /* FXPage Controller */ = {
+			isa = PBXGroup;
+			children = (
+				353B36CB1BACA5E300719C57 /* FXPageControl.h */,
+				353B36CC1BACA5E300719C57 /* FXPageControl.m */,
+			);
+			name = "FXPage Controller";
 			sourceTree = "<group>";
 		};
 		353D96351B9DF8B800E4A618 = {
@@ -1013,6 +1026,7 @@
 				352FA6921BA0E3E000FEC040 /* FilterViewController.m in Sources */,
 				3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */,
 				353E64F61B9F4BE30004E4F2 /* ProyectsViewController.m in Sources */,
+				353B36CD1BACA5E300719C57 /* FXPageControl.m in Sources */,
 				763EF98D1BA93933003D1E4F /* LoginConnectionManager.m in Sources */,
 				763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */,
 				353D96961B9E3AD200E4A618 /* ForgetViewController.m in Sources */,

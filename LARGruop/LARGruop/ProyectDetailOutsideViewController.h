@@ -8,7 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface ProyectDetailOutsideViewController : BaseViewController
+@interface ProyectDetailOutsideViewController : BaseViewController <UIScrollViewDelegate>
 
 @property (nonatomic,strong) Proyect* currentSelectedProyect;
+@property (nonatomic) CGSize containerSize;
 @end

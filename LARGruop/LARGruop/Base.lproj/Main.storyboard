@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hU3-Ki-d50">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hU3-Ki-d50">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1793,6 +1793,7 @@
                     </view>
                     <connections>
                         <outlet property="proyectDetailItemLabel" destination="QUg-xb-2k6" id="Hnh-Ri-Ie8"/>
+                        <outlet property="proyectItemContainerView" destination="YkX-2t-oql" id="eUk-Yz-Y4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDc-5w-Nri" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1876,40 +1877,46 @@
                         <viewControllerLayoutGuide type="top" id="6Uc-DK-9zz"/>
                         <viewControllerLayoutGuide type="bottom" id="lve-Zo-913"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Kp7-5I-zAJ">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="Kp7-5I-zAJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9nt-iv-3tX">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-gG-BXB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
-                            </imageView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-X9-oLW">
-                                <rect key="frame" x="280.5" y="193" width="39" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="WPk-go-SyC"/>
-                                    <constraint firstAttribute="height" constant="37" id="qsI-ar-Sph"/>
-                                </constraints>
-                                <color key="currentPageIndicatorTintColor" red="0.95686274510000002" green="0.1960784314" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="WPk-go-SyC"/>
-                                        <exclude reference="qsI-ar-Sph"/>
-                                    </mask>
-                                </variation>
                                 <connections>
-                                    <action selector="imagePageControlChanged:" destination="4gT-lv-oNh" eventType="valueChanged" id="Kbw-g5-Kth"/>
+                                    <outlet property="delegate" destination="4gT-lv-oNh" id="Czz-ch-r68"/>
                                 </connections>
-                            </pageControl>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUC-Ts-dMu" customClass="FXPageControl">
+                                <rect key="frame" x="140" y="394" width="320" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="OPj-20-G4l"/>
+                                    <constraint firstAttribute="width" constant="320" id="xZS-gz-0z2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9nt-iv-3tX" firstAttribute="top" secondItem="Kp7-5I-zAJ" secondAttribute="top" id="4P4-aH-3QO"/>
-                            <constraint firstAttribute="centerX" secondItem="vkY-X9-oLW" secondAttribute="centerX" id="9lU-Sg-rj4"/>
-                            <constraint firstAttribute="trailing" secondItem="9nt-iv-3tX" secondAttribute="trailing" id="CKM-HJ-ai3"/>
-                            <constraint firstItem="9nt-iv-3tX" firstAttribute="leading" secondItem="Kp7-5I-zAJ" secondAttribute="leading" id="gBa-Gw-uGM"/>
-                            <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="9nt-iv-3tX" secondAttribute="bottom" id="hvy-sz-dkI"/>
-                            <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="vkY-X9-oLW" secondAttribute="bottom" constant="300" id="wDu-f4-Zyo"/>
+                            <constraint firstAttribute="centerX" secondItem="cUC-Ts-dMu" secondAttribute="centerX" id="KbY-8y-szF"/>
+                            <constraint firstItem="vS0-gG-BXB" firstAttribute="top" secondItem="Kp7-5I-zAJ" secondAttribute="top" id="LrU-og-woA"/>
+                            <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="cUC-Ts-dMu" secondAttribute="bottom" constant="100" id="UPK-xb-UQf"/>
+                            <constraint firstItem="vS0-gG-BXB" firstAttribute="leading" secondItem="Kp7-5I-zAJ" secondAttribute="leading" id="WC7-xl-msR"/>
+                            <constraint firstAttribute="trailing" secondItem="vS0-gG-BXB" secondAttribute="trailing" id="b2f-fr-Gs0"/>
+                            <constraint firstItem="vS0-gG-BXB" firstAttribute="leading" secondItem="Kp7-5I-zAJ" secondAttribute="leading" id="cz2-kA-x0q"/>
+                            <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="vS0-gG-BXB" secondAttribute="bottom" id="h27-Ta-j6x"/>
+                            <constraint firstItem="vS0-gG-BXB" firstAttribute="top" secondItem="6Uc-DK-9zz" secondAttribute="bottom" id="sad-jA-fAl"/>
+                            <constraint firstAttribute="trailing" secondItem="vS0-gG-BXB" secondAttribute="trailing" id="vXb-Tr-8YC"/>
+                            <constraint firstItem="lve-Zo-913" firstAttribute="top" secondItem="vS0-gG-BXB" secondAttribute="bottom" id="xUe-3D-sF7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LrU-og-woA"/>
+                                <exclude reference="WC7-xl-msR"/>
+                                <exclude reference="b2f-fr-Gs0"/>
+                                <exclude reference="xUe-3D-sF7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -1917,8 +1924,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="530"/>
                     <connections>
-                        <outlet property="outsideImageView" destination="9nt-iv-3tX" id="8hj-0I-GBY"/>
-                        <outlet property="outsidePageControl" destination="vkY-X9-oLW" id="LOr-It-bFG"/>
+                        <outlet property="outsidePageControl" destination="cUC-Ts-dMu" id="eWn-CF-Ieh"/>
+                        <outlet property="scrollView" destination="vS0-gG-BXB" id="Axo-v3-W81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObJ-WZ-V7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
