@@ -70,7 +70,7 @@ static NSString* const HOME_SEGUE = @"HOME_SEGUE";
 
 - (IBAction)login:(id)sender {
 
-    if(self.userTextField.text && self.passwordTextField.text && ![self.userTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""])
+//    if(self.userTextField.text && self.passwordTextField.text && ![self.userTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""])
         canDoLogin= true;
     if(canDoLogin)
         [self performSegueWithIdentifier:HOME_SEGUE sender:self];

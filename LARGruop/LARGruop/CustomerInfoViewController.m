@@ -7,8 +7,10 @@
 //
 
 #import "CustomerInfoViewController.h"
+#import "CustomerInterestLevelTableViewCell.h"
 
 static NSString* const CUSTOMER_INFO_SELECTED_CELL= @"CUSTOMER_INFO_SELECTED_CELL";
+static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTED_CELL";
 
 @interface CustomerInfoViewController ()
 
@@ -63,38 +65,48 @@ static NSString* const CUSTOMER_INFO_SELECTED_CELL= @"CUSTOMER_INFO_SELECTED_CEL
         return 0;
     else
     {
-        if(!self.sections || section != self.sections.count-1)
-            return 1;
-        else
-            return 3;//TODO, RETURN THE NUMBER OF MARKET RATES OF CUSTOMER CLASS ARRAY
+        return 1;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
+    UITableViewCell *cell;
     
     if(self.customerSelected)
     {
         if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nombre"])
         {
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
             cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",self.customerSelected.firstName,self.customerSelected.lastName];
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Correo"])
         {
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
             cell.textLabel.text = self.customerSelected.email;
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Teléfono"])
         {
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
             cell.textLabel.text = self.customerSelected.phoneNumber;
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nivel de interes"])
         {
-            cell.textLabel.text = self.customerSelected.interestLevel.stringValue;
+            cell = [tableView dequeueReusableCellWithIdentifier:CUSTOMER_RATING_SELECTED_CELL forIndexPath:indexPath];
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.starImage = [UIImage imageNamed:@"unDot"];
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.starHighlightedImage = [UIImage imageNamed:@"dot"];
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.rating = self.customerSelected.interestLevel.floatValue;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.maxRating = 3.0;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.delegate = self;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.horizontalMargin = 12;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.editable=NO;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.displayMode=EDStarRatingDisplayFull;
             
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Cotizaciones enviadas"])
         {
-            cell.textLabel.text = @"asd";
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
+            NSInteger marketRates = [NSArray arrayWithArray:[self.customerSelected.marketRates allObjects]].count;
+            cell.textLabel.text = [NSString stringWithFormat:@"%ld",marketRates];
         }
 
     }
@@ -102,24 +114,37 @@ static NSString* const CUSTOMER_INFO_SELECTED_CELL= @"CUSTOMER_INFO_SELECTED_CEL
     {
         if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nombre"])
         {
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
             cell.textLabel.text = @"Nombre Apellido";
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Correo"])
         {
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
             cell.textLabel.text = @"cliente@correo.com";
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Teléfono"])
         {
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
             cell.textLabel.text = @"999666999";
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nivel de interes"])
         {
-            cell.textLabel.text = @"0";
+            cell = [tableView dequeueReusableCellWithIdentifier:CUSTOMER_RATING_SELECTED_CELL forIndexPath:indexPath];
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.starImage = [UIImage imageNamed:@"unDot"];
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.starHighlightedImage = [UIImage imageNamed:@"dot"];
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.rating = 0;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.maxRating = 3.0;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.delegate = self;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.horizontalMargin = 12;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.editable=NO;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.displayMode=EDStarRatingDisplayFull;
+
             
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Cotizaciones enviadas"])
         {
-            cell.textLabel.text = @"Cotizaciones";
+            cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
+            cell.textLabel.text = @"0";
         }
         
     }

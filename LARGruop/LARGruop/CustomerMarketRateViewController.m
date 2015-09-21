@@ -8,6 +8,97 @@
 
 #import "CustomerMarketRateViewController.h"
 
+static NSString* const CUSTOMER_MARKET_RATES_CELL = @"CUSTOMER_MARKET_RATES_CELL";
+static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
+
+@interface  CustomerMarketRateViewController ()
+@property (nonatomic,strong) NSArray* marketRates;
+@end
+
 @implementation CustomerMarketRateViewController
+
+#pragma mark -
+#pragma mark - View Life Cycle
+#pragma mark -
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupVars];
+    
+    CGRect frame = self.view.frame;
+    frame.size.width = self.containerSize.width;
+    frame.size.height = self.containerSize.height;
+    self.view.frame = frame;
+}
+
+-(void)setupVars
+{
+    self.marketRates = [NSArray arrayWithArray:[self.selectedCustomer.marketRates allObjects]];
+}
+
+-(void)getCustomersFromWebService
+{
+    
+}
+
+#pragma mark -
+#pragma mark - Table View Delegate
+#pragma mark -
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(!self.marketRates)
+        return 0;
+    else
+    {
+        return self.marketRates.count;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.customerMarketRatesTableView dequeueReusableCellWithIdentifier:CUSTOMER_MARKET_RATES_CELL forIndexPath:indexPath];
+    
+    MarketRates* rate = [self.marketRates objectAtIndex:indexPath.row];
+    cell.textLabel.text = rate.name;
+    NSString* status;
+    UIColor* statusColor = [UIColor yellowColor];
+    switch (rate.interestLevel.integerValue) {
+        case 1:
+            status = @"No esta interesado";
+            statusColor = [UIColor redColor];
+            break;
+        case 2:
+            status = @"Negociación";
+            statusColor = [UIColor yellowColor];
+            break;
+        case 3:
+            status = @"Va a comprar";
+            statusColor = [UIColor greenColor];
+            break;
+        default:
+            status = @"No esta interesado";
+            statusColor = [UIColor yellowColor];
+            break;
+    }
+    cell.detailTextLabel.text = status;
+    cell.detailTextLabel.textColor = statusColor;
+    
+    return cell;
+}
+
 
 @end

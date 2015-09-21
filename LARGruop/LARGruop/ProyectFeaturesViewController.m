@@ -44,12 +44,14 @@ static NSString* const FEATURE_CELL = @"FEATURE_CELL";
 
 -(void)setupViews
 {
-    self.featureDescriptionLabel.text = self.currentSelectedProyect.proyectDescription;
+    Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
+    self.featureDescriptionLabel.text = selectedProyect.proyectDescription;
 }
 
 -(void)setupVars
 {
-    self.features = [[ProyectFeatureService sharedService]getAllFeaturesWithProyect:self.currentSelectedProyect];
+    Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
+    self.features = [[ProyectFeatureService sharedService]getAllFeaturesWithProyect:selectedProyect];
 }
 
 

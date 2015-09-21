@@ -86,7 +86,7 @@
         case ProyectDetailItemTypeOutside:
             self.proyectDetailItemLabel.text = @"Imagenes de Exteriores";
             destinationVC = (ProyectDetailOutsidesViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailOutsidesViewController"];
-            ((ProyectDetailOutsidesViewController*)destinationVC).currentSelectedProyect = self.currentSelectedProyect;
+            ((ProyectDetailOutsidesViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
             ((ProyectDetailOutsidesViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
 //        case ProyectDetailItemTypePanoramic:

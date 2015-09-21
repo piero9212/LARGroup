@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UIPageControl appearance] setPageIndicatorTintColor:[UIColor redColor]];
+    [[UIPageControl appearance] setCurrentPageIndicatorTintColor:[UIColor orangeColor]];
     [self setupApp];
     [self firstRunApp];
     return YES;
@@ -109,6 +111,7 @@
             
             
             Proyect* testProyect = [Proyect MR_createEntityInContext:localContext];
+            testProyect.uid = @"12345";
             testProyect.address = @"Avenida Brasil 840";
             testProyect.district = @"Jesus Maria";
             testProyect.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_a.jpg";
@@ -132,6 +135,7 @@
             [testProyect addOutsideImagesObject:testOutside3];
             
             Proyect* testProyect2 = [Proyect MR_createEntityInContext:localContext];
+            testProyect2.uid = @"23456";
             testProyect2.address = @"Avenida Salaverry 475";
             testProyect2.district = @"San Isidro";
             testProyect2.imageURL = @"http://www.nesta.com.pe/images/departamentos/departamento-fachada-zoom.jpg";
@@ -154,6 +158,7 @@
             [testProyect2 addOutsideImagesObject:testOutside5];
             
             Proyect* testProyect3 = [Proyect MR_createEntityInContext:localContext];
+            testProyect3.uid = @"34567";
             testProyect3.address = @"Avenida Sanchez Cerro 365";
             testProyect3.district = @"Jesus Maria";
             testProyect3.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_b.jpg";

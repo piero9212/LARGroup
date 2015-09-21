@@ -22,7 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.outsideImageView.image = self.image;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {

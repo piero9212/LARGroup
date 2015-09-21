@@ -20,5 +20,5 @@ typedef NS_ENUM(NSInteger,ProyectDetailItemType) {
 
 @property (weak, nonatomic) IBOutlet UIView *proyectItemContainerView;
 @property (nonatomic) ProyectDetailItemType itemType;
-@property (nonatomic,strong) Proyect* currentSelectedProyect;
+@property (nonatomic,strong) NSString* selectedProyectID;
 @end

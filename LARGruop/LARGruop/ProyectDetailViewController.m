@@ -7,9 +7,9 @@
 //
 
 #import "ProyectDetailViewController.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
 #import "ProyectFeaturesViewController.h"
 #import "ProyectDetailItemViewController.h"
+#import <Haneke/Haneke.h>
 
 static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 
@@ -50,8 +50,9 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
-    self.proyectSubTitleLabel.text = self.proyectTitleLabel.text = [NSString stringWithFormat:@"Proyecto %@",self.selectedProyect.name];
-    [self.proyectBackgroundImageView setImageWithURL:[NSURL URLWithString:self.selectedProyect.imageURL]];
+    Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
+    self.proyectSubTitleLabel.text = self.proyectTitleLabel.text = [NSString stringWithFormat:@"Proyecto %@",selectedProyect.name];
+    [self.proyectBackgroundImageView hnk_setImageFromURL:[NSURL URLWithString:selectedProyect.imageURL]];
 }
 
 -(void)setupVars
@@ -65,14 +66,14 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 
 - (IBAction)goBack:(UIButton *)sender {
 
-    self.selectedProyect =nil;
+    self.selectedProyectID =nil;
     self.proyectTitleLabel.text =@"";
     [self.navigationController popToRootViewControllerAnimated:TRUE];
 }
 
 - (IBAction)presentFeatures:(id)sender {
     ProyectFeaturesViewController *featureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProyectFeaturesViewController"];
-    featureViewController.currentSelectedProyect = self.selectedProyect;
+    featureViewController.selectedProyectID = self.selectedProyectID;
     self.featuresPopover = [[UIPopoverController alloc] initWithContentViewController:featureViewController];
     
     self.featuresPopover.popoverContentSize = CGSizeMake(400, 500);
@@ -108,7 +109,7 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
         {
             destinationVC.itemType = ProyectDetailItemTypeDepartaments;
         }
-        destinationVC.currentSelectedProyect = self.selectedProyect;
+        destinationVC.selectedProyectID = self.selectedProyectID;
     }
 }
 @end

@@ -8,9 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface ProyectDetailOutsidesViewController : UIPageViewController <UIPageViewControllerDataSource>
+@interface ProyectDetailOutsidesViewController : UIPageViewController <UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
-@property (nonatomic,strong) Proyect* currentSelectedProyect;
+@property (nonatomic,strong) NSString* selectedProyectID;
 @property (nonatomic) CGSize containerSize;
 
 @end

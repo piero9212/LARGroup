@@ -8,7 +8,10 @@
 
 #import "BaseViewController.h"
 
-@interface CustomerMarketRateViewController : BaseViewController
+@interface CustomerMarketRateViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *customerMarketRatesTableView;
+@property (nonatomic,strong) Customer* selectedCustomer;
+
+@property (nonatomic) CGSize containerSize;
 @end

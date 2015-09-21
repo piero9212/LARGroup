@@ -12,6 +12,7 @@
 
 @interface CustomerDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIView *selectedSecondFilterView;
+@property (weak, nonatomic) IBOutlet UIView *customerInfoContainerView;
 
 @end
 
@@ -58,13 +59,19 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             destinationVC = (CustomerInfoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CustomerInfoViewController"];
+            ((CustomerInfoViewController*)destinationVC).customerSelected =  self.detailItem;
+            [self reloadTable];
             break;
         case 1:
             destinationVC = (CustomerMarketRateViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CustomerMarketRateViewController"];
+            ((CustomerMarketRateViewController*)destinationVC).selectedCustomer =  self.detailItem;
+            ((CustomerMarketRateViewController*)destinationVC).containerSize = self.customerInfoContainerView.frame.size;
+            [self reloadTable];
             break;
             
         default:
             destinationVC = (CustomerInfoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CustomerInfoViewController"];
+            ((CustomerInfoViewController*)destinationVC).customerSelected =  self.detailItem;
             break;
     }
     [self setViewControllerChildWith:destinationVC from:currentVC];
@@ -120,10 +127,11 @@
 #pragma mark -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    UIViewController* destVC= segue.destinationViewController;
     if([segue.destinationViewController isKindOfClass:[CustomerInfoViewController class]])
     {
-        CustomerInfoViewController* destinationVC = segue.destinationViewController;
-        destinationVC.customerSelected = self.detailItem;
+        ((CustomerInfoViewController*)destVC).customerSelected=self.detailItem;
     }
 }
 

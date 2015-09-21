@@ -54,6 +54,18 @@
 #define COCOAPODS_VERSION_MINOR_CGLAlphabetizer 2
 #define COCOAPODS_VERSION_PATCH_CGLAlphabetizer 0
 
+// EDStarRating
+#define COCOAPODS_POD_AVAILABLE_EDStarRating
+#define COCOAPODS_VERSION_MAJOR_EDStarRating 1
+#define COCOAPODS_VERSION_MINOR_EDStarRating 1
+#define COCOAPODS_VERSION_PATCH_EDStarRating 0
+
+// Haneke
+#define COCOAPODS_POD_AVAILABLE_Haneke
+#define COCOAPODS_VERSION_MAJOR_Haneke 1
+#define COCOAPODS_VERSION_MINOR_Haneke 0
+#define COCOAPODS_VERSION_PATCH_Haneke 1
+
 // JTCalendar
 #define COCOAPODS_POD_AVAILABLE_JTCalendar
 #define COCOAPODS_VERSION_MAJOR_JTCalendar 2
@@ -136,5 +148,5 @@
 #define COCOAPODS_POD_AVAILABLE_SCLAlertView_Objective_C
 #define COCOAPODS_VERSION_MAJOR_SCLAlertView_Objective_C 0
 #define COCOAPODS_VERSION_MINOR_SCLAlertView_Objective_C 7
-#define COCOAPODS_VERSION_PATCH_SCLAlertView_Objective_C 5
+#define COCOAPODS_VERSION_PATCH_SCLAlertView_Objective_C 7
 

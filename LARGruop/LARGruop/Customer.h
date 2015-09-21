@@ -2,7 +2,7 @@
 //  Customer.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 15/09/15.
+//  Created by piero.sifuentes on 21/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
@@ -19,6 +19,14 @@
 @property (nonatomic, retain) NSNumber * interestLevel;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * phoneNumber;
-@property (nonatomic, retain) MarketRates *marketRates;
+@property (nonatomic, retain) NSSet *marketRates;
+@end
+
+@interface Customer (CoreDataGeneratedAccessors)
+
+- (void)addMarketRatesObject:(MarketRates *)value;
+- (void)removeMarketRatesObject:(MarketRates *)value;
+- (void)addMarketRates:(NSSet *)values;
+- (void)removeMarketRates:(NSSet *)values;
 
 @end

@@ -10,5 +10,5 @@
 
 @interface ProyectFeaturesViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) Proyect* currentSelectedProyect;
+@property (nonatomic,strong) NSString* selectedProyectID;
 @end

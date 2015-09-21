@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-LARGruop-EDStarRating.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-LARGruop-Haneke.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LARGruop-JTCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00BCA342CC59ABDF5B8FB12D</key>
+		<key>1BEE2E765AB4BABEED44A978</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41AF7688E961294E7AC2DD44</key>
+		<key>206201D7C4EBD70202017642</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>52A38EF2E6A7DA1688A4A87F</key>
+		<key>271847FE91893C9E5EA8FCC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5C45DDD0C9CB620B7724BF91</key>
+		<key>45A6B08CC552E2AB267F6B65</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62A8C5C0E4F7384514D5DA97</key>
+		<key>8A8D167448F3D48F9BFD6F4C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>673CDF90DA35AF2AD0C88E4F</key>
+		<key>938929CC3F87D0BB89661D34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92AD7614F7D29A5EA5E1C7FD</key>
+		<key>C8F6879A742F6CB0905071B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E139C43ECD4D1CD7A2A5E0A7</key>
+		<key>D0911F6BF2B2DB3E7DB36E07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0F2EFABA33A66BBD02E2D37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9826CEA156F310FD3FF770C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import <EDStarRating/EDStarRating.h>
 
-@interface CustomerInfoViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
+@interface CustomerInfoViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,EDStarRatingProtocol>
 
 @property (nonatomic,strong) Customer* customerSelected;
 @property (weak, nonatomic) IBOutlet UITableView *customerInfoTableView;

@@ -10,7 +10,7 @@
 #import "ProyectCollectionViewCell.h"
 #import "ProyectService.h"
 #import "ProyectDetailViewController.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <Haneke/Haneke.h>
 
 static NSString* const PROYECT_CELL = @"PROYECT_CELL";
 static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
@@ -102,7 +102,7 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     }
     cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: 0%@",proyect.leftDepartaments.stringValue];
     [cell.departamentsLeftLabel setTextColor:leftDepartmentsColor];
-    [cell.buildImageView setImageWithURL:[NSURL URLWithString:proyect.listImageURL]];
+    [cell.buildImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.listImageURL]];
     return cell;
     
     
@@ -126,7 +126,8 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     {
         ProyectDetailViewController* destinationVC = segue.destinationViewController;
         NSInteger index = ((NSIndexPath*)sender).row;
-        destinationVC.selectedProyect = [self.proyects objectAtIndex:index];
+        Proyect* selectedProyect = [self.proyects objectAtIndex:index];
+        destinationVC.selectedProyectID = selectedProyect.uid;
     }
 }
 

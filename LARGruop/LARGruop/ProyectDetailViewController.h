@@ -10,5 +10,5 @@
 
 @interface ProyectDetailViewController : BaseViewController
 
-@property (nonatomic,strong) Proyect* selectedProyect;
+@property (nonatomic,strong) NSString* selectedProyectID;
 @end

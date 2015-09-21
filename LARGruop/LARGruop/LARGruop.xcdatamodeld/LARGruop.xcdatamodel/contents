@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Customer" representedClassName="Customer" parentEntity="Entity" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="interestLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="marketRates" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketRates" inverseName="customer" inverseEntity="MarketRates" syncable="YES"/>
+        <relationship name="marketRates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MarketRates" inverseName="customer" inverseEntity="MarketRates" syncable="YES"/>
     </entity>
     <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
         <attribute name="changeState" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>

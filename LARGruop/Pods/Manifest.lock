@@ -21,6 +21,8 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CGLAlphabetizer (0.2.0)
+  - EDStarRating (1.1)
+  - Haneke (1.0.1)
   - JTCalendar (2.1.4)
   - MagicalRecord (2.3.0)
   - MRProgress (0.8.2):
@@ -52,11 +54,13 @@ PODS:
   - MRProgress/Stopable (0.8.2):
     - MRProgress/Helper
   - Reachability (3.1.1)
-  - SCLAlertView-Objective-C (0.7.5)
+  - SCLAlertView-Objective-C (0.7.7)
 
 DEPENDENCIES:
   - AFNetworking
   - CGLAlphabetizer (~> 0.1)
+  - EDStarRating
+  - Haneke (~> 1.0)
   - JTCalendar (~> 2.0)
   - MagicalRecord
   - MRProgress
@@ -66,10 +70,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   CGLAlphabetizer: 944706922004b02e5b5af39bb2b25adaaac71038
+  EDStarRating: a41a6440a945020745d0e9ff8ada7d1afa952114
+  Haneke: d60be8b96b228633b24708dd153169d6849d6f78
   JTCalendar: 9b1352c7ec41cc26b19c189d6608ba48060a53d9
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   MRProgress: f4cfe862082418e8f542f077772283f425d6c699
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
-  SCLAlertView-Objective-C: 5692f7b848999537af0079d6891c3a11040e3a22
+  SCLAlertView-Objective-C: 062808b4664add2d38d44b7867267985a02267ad
 
 COCOAPODS: 0.36.4
