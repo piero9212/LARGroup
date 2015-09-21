@@ -69,6 +69,7 @@
 		763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9891BA9384E003D1E4F /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		763EF98D1BA93933003D1E4F /* LoginConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF98C1BA93933003D1E4F /* LoginConnectionManager.m */; };
 		763EF9911BA93C29003D1E4F /* LoginTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9901BA93C29003D1E4F /* LoginTranslator.m */; };
+		769681AB1BAF9F320035C86F /* ProyectDetailOutsidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769681AA1BAF9F320035C86F /* ProyectDetailOutsidesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AB454D0776761BFCF8BD2AF7 /* libPods-LARGruop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A7C4E77596FE6656D2AE0F /* libPods-LARGruop.a */; };
 /* End PBXBuildFile section */
 
@@ -210,6 +211,8 @@
 		763EF98C1BA93933003D1E4F /* LoginConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginConnectionManager.m; sourceTree = "<group>"; };
 		763EF98F1BA93C29003D1E4F /* LoginTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTranslator.h; sourceTree = "<group>"; };
 		763EF9901BA93C29003D1E4F /* LoginTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTranslator.m; sourceTree = "<group>"; };
+		769681A91BAF9F320035C86F /* ProyectDetailOutsidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailOutsidesViewController.h; sourceTree = "<group>"; };
+		769681AA1BAF9F320035C86F /* ProyectDetailOutsidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailOutsidesViewController.m; sourceTree = "<group>"; };
 		CD31549C272CA3C4F1194907 /* Pods-LARGruop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LARGruop.release.xcconfig"; path = "Pods/Target Support Files/Pods-LARGruop/Pods-LARGruop.release.xcconfig"; sourceTree = "<group>"; };
 		CF64EA82B3B8C40FB8298D3F /* Pods-LARGruop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LARGruop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LARGruop/Pods-LARGruop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -819,6 +822,8 @@
 				7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */,
 				760158501BAA67C200411629 /* ProyectDetailDepartamentsViewController.h */,
 				760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */,
+				769681A91BAF9F320035C86F /* ProyectDetailOutsidesViewController.h */,
+				769681AA1BAF9F320035C86F /* ProyectDetailOutsidesViewController.m */,
 			);
 			name = "Detail Items";
 			sourceTree = "<group>";
@@ -1024,6 +1029,7 @@
 				352F77DE1BA8C6950080B004 /* Outside.m in Sources */,
 				353D96441B9DF8B800E4A618 /* main.m in Sources */,
 				352FA6921BA0E3E000FEC040 /* FilterViewController.m in Sources */,
+				769681AB1BAF9F320035C86F /* ProyectDetailOutsidesViewController.m in Sources */,
 				3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */,
 				353E64F61B9F4BE30004E4F2 /* ProyectsViewController.m in Sources */,
 				353B36CD1BACA5E300719C57 /* FXPageControl.m in Sources */,

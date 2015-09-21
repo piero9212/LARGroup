@@ -10,6 +10,7 @@
 #import "ProyectDetailDepartamentsViewController.h"
 #import "ProyectDetailLocateViewController.h"
 #import "ProyectDetailOutsideViewController.h"
+#import "ProyectDetailOutsidesViewController.h"
 
 @interface ProyectDetailItemViewController ()
 
@@ -84,9 +85,9 @@
             break;
         case ProyectDetailItemTypeOutside:
             self.proyectDetailItemLabel.text = @"Imagenes de Exteriores";
-            destinationVC = (ProyectDetailOutsideViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailOutsideViewController"];
-            ((ProyectDetailOutsideViewController*)destinationVC).currentSelectedProyect = self.currentSelectedProyect;
-            ((ProyectDetailOutsideViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
+            destinationVC = (ProyectDetailOutsidesViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailOutsidesViewController"];
+            ((ProyectDetailOutsidesViewController*)destinationVC).currentSelectedProyect = self.currentSelectedProyect;
+            ((ProyectDetailOutsidesViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
 //        case ProyectDetailItemTypePanoramic:
 //            destinationVC = (pro*)[self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];

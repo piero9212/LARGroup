@@ -8,8 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface ProyectDetailOutsideViewController : BaseViewController <UIScrollViewDelegate>
+@interface ProyectDetailOutsideViewController : BaseViewController
 
-@property (nonatomic,strong) Proyect* currentSelectedProyect;
-@property (nonatomic) CGSize containerSize;
+@property (assign, nonatomic) NSInteger index;
+@property (strong, nonatomic) IBOutlet UIImageView *outsideImageView;
+@property (assign, nonatomic) UIImage* image;
 @end
