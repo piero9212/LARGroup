@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface CustomerRateDetailViewController : BaseViewController 
+@interface CustomerRateDetailViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) MarketRates* rate;
 
