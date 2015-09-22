@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface CustomerRateDetailViewController : BaseViewController  <UIGestureRecognizerDelegate>
+@interface CustomerRateDetailViewController : BaseViewController 
+
+@property (nonatomic,strong) MarketRates* rate;
 
 @end

@@ -48,11 +48,6 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     self.marketRates = [NSArray arrayWithArray:[self.selectedCustomer.marketRates allObjects]];
 }
 
--(void)getCustomersFromWebService
-{
-    
-}
-
 #pragma mark -
 #pragma mark - Table View Delegate
 #pragma mark -
@@ -117,7 +112,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     if([segue.destinationViewController isKindOfClass:[CustomerRateDetailViewController class]])
     {
         CustomerRateDetailViewController* destinatopnVC = segue.destinationViewController;
-        
+        destinatopnVC.rate = sender;
         NSLog(@"ENTRO");
     }
 }
