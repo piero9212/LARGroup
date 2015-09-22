@@ -7,6 +7,7 @@
 //
 
 #import "CustomerMarketRateViewController.h"
+#import "CustomerRateDetailViewController.h"
 
 static NSString* const CUSTOMER_MARKET_RATES_CELL = @"CUSTOMER_MARKET_RATES_CELL";
 static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
@@ -98,6 +99,27 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     cell.detailTextLabel.textColor = statusColor;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+    MarketRates* rate = [self.marketRates objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:MARKET_RATE_DETAIL_SEGUE sender:rate];
+}
+
+#pragma mark -
+#pragma mark - Navigation
+#pragma mark -
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.destinationViewController isKindOfClass:[CustomerRateDetailViewController class]])
+    {
+        CustomerRateDetailViewController* destinatopnVC = segue.destinationViewController;
+        
+        NSLog(@"ENTRO");
+    }
 }
 
 

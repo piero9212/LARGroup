@@ -216,7 +216,7 @@
             testCust1.interestLevel = @3;
             testRate1.customer = testCust1;
             testRate2.customer = testCust1;
-            testRate3.customer = testCust1;
+            testRate4.customer = testCust1;
             
             Customer *testCust2 =[Customer MR_createEntityInContext:localContext];
             testCust2.firstName = @"Sofia";

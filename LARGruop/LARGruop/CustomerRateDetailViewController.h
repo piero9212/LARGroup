@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface CustomerRateDetailViewController : BaseViewController <UIGestureRecognizerDelegate>
+@interface CustomerRateDetailViewController : BaseViewController  <UIGestureRecognizerDelegate>
 
 @end
