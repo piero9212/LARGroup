@@ -7,7 +7,9 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "ProyectPointAnnotation.h"
 
 @interface AnnotationView : MKAnnotationView
 
+@property (nonatomic,strong) ProyectPointAnnotation* annotation;
 @end

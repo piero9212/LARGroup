@@ -10,12 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <MapKit/MKAnnotation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "ProyectAnnotationView.h"
 #import "AnnotationView.h"
+#import "ProyectAnnotationProtocol.h"
 
-@interface MapViewController : BaseViewController <MKMapViewDelegate,CLLocationManagerDelegate>
+@interface MapViewController : BaseViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIPopoverControllerDelegate,ProyectAnnotationDelegate>
 
-@property (strong, nonatomic) IBOutlet ProyectAnnotationView *annotationView;
-
-- (IBAction)displayProyectTouch:(UIButton *)sender;
 @end

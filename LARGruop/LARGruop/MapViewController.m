@@ -9,16 +9,19 @@
 #import "MapViewController.h"
 #import "ProyectService.h"
 #import "ProyectPointAnnotation.h"
+#import "MapMarkDetailViewController.h"
+#import "ProyectDetailViewController.h"
 #import <Haneke/Haneke.h>
 
 static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
+static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
 
 @interface MapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *proyectsMapView;
 @property CLLocationManager *locationManager;
 @property NSMutableArray* proyects;
-
+@property (nonatomic,strong) UIPopoverController* popover;
 @end
 
 @implementation MapViewController
@@ -64,19 +67,15 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
         self.locationManager.delegate =self;
         [self.locationManager startMonitoringSignificantLocationChanges];
         [self.locationManager startUpdatingLocation];
-        self.proyectsMapView.showsUserLocation = YES;
         
         for (Proyect* proyect in self.proyects) {
             CLLocationCoordinate2D location = CLLocationCoordinate2DMake(proyect.latitud.doubleValue, proyect.longitude.doubleValue);
-            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location, 40000, 40000);
-            MKCoordinateRegion adjustedRegion = [self.proyectsMapView regionThatFits:viewRegion];
-            [self.proyectsMapView setRegion:adjustedRegion animated:NO];
-            ProyectPointAnnotation *annotation1 = [[ProyectPointAnnotation alloc] init];
-            [annotation1 setCoordinate:location]; //Add cordinates
-            annotation1.proyectImage = proyect.mapImageURL;
-            annotation1.proyectUID = proyect.uid;
-            annotation1.leftDepartments = proyect.leftDepartaments;
-            [self.proyectsMapView addAnnotation:annotation1];
+            ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
+            [annotation setCoordinate:location]; //Add cordinates
+            annotation.proyectImage = proyect.mapImageURL;
+            annotation.proyectUID = proyect.uid;
+            annotation.leftDepartments = proyect.leftDepartaments;
+            [self.proyectsMapView addAnnotation:annotation];
         }
     }
     [self displayCorrectZoom];
@@ -127,77 +126,36 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
         [pinView addSubview:border];
         [pinView sendSubviewToBack:border];
         pinView.image = image;
-        
+        pinView.annotation = annotation;
     }
     return pinView;
     
     
-    
-//    
-//    MKAnnotationView *annotationView = (MKAnnotationView *)[self.proyectsMapView dequeueReusableAnnotationViewWithIdentifier:MAP_ANNOTATION_IDENTIFIER];
-//    
-//    if (annotationView == nil)
-//    {
-//        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:MAP_ANNOTATION_IDENTIFIER] ;
-//        
-//    }
-//    
-//    if([[annotation title]  isEqual:@"anotacion1"])
-//        
-//    {
-//        annotationView.image = [UIImage imageNamed:@"hospital.png"];
-//        
-//        //  annotationView.tag=3;
-//    }
-//    if([[annotation title]  isEqual:@"anotacion2"])
-//    {
-//        annotationView.image = [UIImage imageNamed:@"annotation2.png"];
-//        //  annotationView.tag=4;
-//    }
-//    
-//    
-//    if (annotation ==self.proyectsMapView.userLocation)
-//    {
-//        annotationView.image = [UIImage imageNamed:@"gps.png"];
-//    }
-//    annotationView.frame = CGRectMake(0.0, 0.0, 64, 64);
-//    
-//    annotationView.tag = [[annotation subtitle] integerValue];
-//    
-//    annotationView.annotation = annotation;
-//    
-//    
-//    return annotationView;
-}
+    }
 
 
 - (void)mapView:(MKMapView *)mapView1 didSelectAnnotationView:(MKAnnotationView *)mapView2
 {
-
-//    UILabel *label = [[UILabel alloc] init];
-//    label.backgroundColor=[UIColor clearColor];
-//    label.frame = CGRectMake(0, 26, 120, 30);
-//    [label setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10]];
-//    label.textColor=[UIColor whiteColor];
-//    [label setTextAlignment:NSTextAlignmentCenter];
-//    NSString *sede = [[NSUserDefaults standardUserDefaults]
-//                      stringForKey:@"sede"];
-//    label.text = sede;
-//    
-//    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 2, 32, 32)];
-//    img.image = [UIImage imageNamed:@"doc.png"];
-//    CGSize  calloutSize = CGSizeMake(120.0, 60.0);
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(mapa.center.x  +5.0, mapa.center.y -90.0, calloutSize.width, calloutSize.height)];
-//    view.tag=1;
-//    view.layer.cornerRadius = 5;
-//    view.layer.masksToBounds = YES;
-//    //    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50, 180, 80)];
-//    view.backgroundColor = [UIColor colorWithRed:114.0/255 green:30.0/255 blue:30.0/255 alpha:1];
-//    [mapa addSubview:view];
-//    [view addSubview:label];
-//    [view addSubview:img];
+    if([mapView2 isKindOfClass:[AnnotationView class]])
+    {
+        NSString* uid = ((AnnotationView*)mapView2).annotation.proyectUID;
+        [mapView1 deselectAnnotation:mapView2.annotation animated:YES];
+        MapMarkDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MapMarkDetailViewController"];
+        controller.proyectUID = uid;
+        controller.delegate = self;
+        CGSize temporalPopoverSize = CGSizeMake(300.0f, 200.0f);
+        [controller setPopOverViewSize:temporalPopoverSize];
+        self.popover = [[UIPopoverController alloc] initWithContentViewController:controller];
+        [self.popover setPopoverContentSize:temporalPopoverSize animated:TRUE];
+        self.popover.backgroundColor = controller.view.backgroundColor;
+        self.popover.delegate = self;
+        
+        [self.popover presentPopoverFromRect:mapView2.frame
+                                      inView:mapView2.superview
+                    permittedArrowDirections:UIPopoverArrowDirectionAny
+                                    animated:YES];
+    }
     
-    NSLog(@"selected");
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
@@ -219,5 +177,28 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 }
 
 - (IBAction)displayProyectTouch:(UIButton *)sender {
+}
+
+#pragma mark -
+#pragma mark - Proyect Annotation Delegate
+#pragma mark -
+
+-(void)showProyectDetailControllerWithProyecUID:(NSString *)proyectUID
+{
+    [self.popover dismissPopoverAnimated:TRUE];
+    [self performSegueWithIdentifier:MAP_PROYECT_DETAIL_SEGUE sender:proyectUID];
+}
+
+#pragma mark -
+#pragma mark - Navigation
+#pragma mark -
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.destinationViewController isKindOfClass:[ProyectDetailViewController class]])
+    {
+        ProyectDetailViewController* destinationVC = segue.destinationViewController;
+        destinationVC.selectedProyectID = sender;
+    }
 }
 @end

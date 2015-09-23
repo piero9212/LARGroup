@@ -12,4 +12,8 @@
 
 @interface ProyectDetailLocateViewController : BaseViewController <MKMapViewDelegate,CLLocationManagerDelegate>
 
+
+@property (nonatomic,strong) NSString* selectedProyectID;
+@property (nonatomic) CGSize containerSize;
+
 @end

@@ -19,6 +19,10 @@
 
 @implementation ProyectDetailOutsidesViewController
 
+#pragma mark -
+#pragma mark - View Life Cicle
+#pragma mark -
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }

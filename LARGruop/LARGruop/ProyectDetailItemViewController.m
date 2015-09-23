@@ -82,6 +82,8 @@
         case ProyectDetailItemTypeLocate:
             self.proyectDetailItemLabel.text = @"Ubicación";
             destinationVC = (ProyectDetailLocateViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailLocateViewController"];
+            ((ProyectDetailLocateViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
+            ((ProyectDetailLocateViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
         case ProyectDetailItemTypeOutside:
             self.proyectDetailItemLabel.text = @"Imagenes de Exteriores";

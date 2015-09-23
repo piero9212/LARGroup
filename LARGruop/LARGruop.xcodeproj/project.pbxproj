@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		352F77B21BA872910080B004 /* CustomerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77B11BA872910080B004 /* CustomerInfoViewController.m */; };
 		352F77B51BA872A80080B004 /* CustomerMarketRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77B41BA872A80080B004 /* CustomerMarketRateViewController.m */; };
-		352F77BA1BA8AECE0080B004 /* ProyectAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77B91BA8AECE0080B004 /* ProyectAnnotationView.m */; };
-		352F77BC1BA8B3010080B004 /* ProyectAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352F77BB1BA8B3010080B004 /* ProyectAnnotationView.xib */; };
 		352F77C21BA8C5600080B004 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77C11BA8C5600080B004 /* Entity.m */; };
 		352F77D11BA8C5600080B004 /* Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77D01BA8C5600080B004 /* Flat.m */; };
 		352F77D41BA8C5DF0080B004 /* ProyectFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 352F77D31BA8C5DF0080B004 /* ProyectFeature.m */; };
@@ -65,6 +63,7 @@
 		35FC0F9A1BB3093600F67EA9 /* ProyectPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0F991BB3093600F67EA9 /* ProyectPointAnnotation.m */; };
 		35FC0F9D1BB31C9800F67EA9 /* MKMapView+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0F9C1BB31C9800F67EA9 /* MKMapView+ExtendedMethods.m */; };
 		35FC0FA01BB31E4500F67EA9 /* UIImage+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0F9F1BB31E4500F67EA9 /* UIImage+ExtendedMethods.m */; };
+		35FC0FA31BB34D3A00F67EA9 /* MapMarkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0FA21BB34D3900F67EA9 /* MapMarkDetailViewController.m */; };
 		7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */; };
 		7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */; };
 		760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */; };
@@ -94,9 +93,6 @@
 		352F77B11BA872910080B004 /* CustomerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfoViewController.m; sourceTree = "<group>"; };
 		352F77B31BA872A80080B004 /* CustomerMarketRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerMarketRateViewController.h; sourceTree = "<group>"; };
 		352F77B41BA872A80080B004 /* CustomerMarketRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerMarketRateViewController.m; sourceTree = "<group>"; };
-		352F77B81BA8AECE0080B004 /* ProyectAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectAnnotationView.h; sourceTree = "<group>"; };
-		352F77B91BA8AECE0080B004 /* ProyectAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectAnnotationView.m; sourceTree = "<group>"; };
-		352F77BB1BA8B3010080B004 /* ProyectAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProyectAnnotationView.xib; sourceTree = "<group>"; };
 		352F77C01BA8C5600080B004 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		352F77C11BA8C5600080B004 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
 		352F77CF1BA8C5600080B004 /* Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flat.h; sourceTree = "<group>"; };
@@ -208,6 +204,9 @@
 		35FC0F9C1BB31C9800F67EA9 /* MKMapView+ExtendedMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ExtendedMethods.m"; sourceTree = "<group>"; };
 		35FC0F9E1BB31E4500F67EA9 /* UIImage+ExtendedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ExtendedMethods.h"; sourceTree = "<group>"; };
 		35FC0F9F1BB31E4500F67EA9 /* UIImage+ExtendedMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ExtendedMethods.m"; sourceTree = "<group>"; };
+		35FC0FA11BB34D3900F67EA9 /* MapMarkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapMarkDetailViewController.h; sourceTree = "<group>"; };
+		35FC0FA21BB34D3900F67EA9 /* MapMarkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapMarkDetailViewController.m; sourceTree = "<group>"; };
+		35FC0FA41BB3598100F67EA9 /* ProyectAnnotationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProyectAnnotationProtocol.h; sourceTree = "<group>"; };
 		7601584A1BAA672300411629 /* ProyectDetailLocateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailLocateViewController.h; sourceTree = "<group>"; };
 		7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailLocateViewController.m; sourceTree = "<group>"; };
 		7601584D1BAA67A500411629 /* ProyectDetailOutsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailOutsideViewController.h; sourceTree = "<group>"; };
@@ -287,11 +286,10 @@
 			children = (
 				35FC0F951BB305FE00F67EA9 /* AnnotationView.h */,
 				35FC0F961BB305FE00F67EA9 /* AnnotationView.m */,
-				352F77B81BA8AECE0080B004 /* ProyectAnnotationView.h */,
-				352F77B91BA8AECE0080B004 /* ProyectAnnotationView.m */,
-				352F77BB1BA8B3010080B004 /* ProyectAnnotationView.xib */,
 				35FC0F981BB3093600F67EA9 /* ProyectPointAnnotation.h */,
 				35FC0F991BB3093600F67EA9 /* ProyectPointAnnotation.m */,
+				35FC0FA11BB34D3900F67EA9 /* MapMarkDetailViewController.h */,
+				35FC0FA21BB34D3900F67EA9 /* MapMarkDetailViewController.m */,
 			);
 			name = "Map Annotation View";
 			sourceTree = "<group>";
@@ -481,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				353E65071B9F76BD0004E4F2 /* TopBarProtocol.h */,
+				35FC0FA41BB3598100F67EA9 /* ProyectAnnotationProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -967,7 +966,6 @@
 				352FA64F1BA0C25700FEC040 /* UIElements.strings in Resources */,
 				353D96551B9DF8B900E4A618 /* LaunchScreen.xib in Resources */,
 				353D96521B9DF8B900E4A618 /* Images.xcassets in Resources */,
-				352F77BC1BA8B3010080B004 /* ProyectAnnotationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,9 +1039,9 @@
 				352FA68B1BA0CFF800FEC040 /* CustomerMasterViewController.m in Sources */,
 				352FA6881BA0CFE400FEC040 /* CustomerDetailViewController.m in Sources */,
 				760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */,
+				35FC0FA31BB34D3A00F67EA9 /* MapMarkDetailViewController.m in Sources */,
 				3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */,
 				763EF9911BA93C29003D1E4F /* LoginTranslator.m in Sources */,
-				352F77BA1BA8AECE0080B004 /* ProyectAnnotationView.m in Sources */,
 				35FC0F971BB305FE00F67EA9 /* AnnotationView.m in Sources */,
 				3560F79E1BAA14450061BAD4 /* ProyectFeatureService.m in Sources */,
 				353D969E1B9E4B1500E4A618 /* HomeViewController.m in Sources */,
