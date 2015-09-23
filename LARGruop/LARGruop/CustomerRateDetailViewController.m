@@ -48,33 +48,17 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
 {
     float radius = self.redShapeView.frame.size.width/2;
     self.redShapeView.layer.cornerRadius = self.yellowShapeView.layer.cornerRadius= self.greenShapeView.layer.cornerRadius=  radius;
-    self.redShapeView.layer.borderWidth = self.yellowShapeView.layer.borderWidth = self.greenShapeView.layer.borderWidth = 1.0f;
-    self.redShapeView.layer.borderColor = [UIColor redColor].CGColor;
-    self.greenShapeView.layer.borderColor = [UIColor greenColor].CGColor;
-    self.yellowShapeView.layer.borderColor = [UIColor yellowColor].CGColor;
+    self.redShapeView.layer.borderWidth = self.yellowShapeView.layer.borderWidth = self.greenShapeView.layer.borderWidth = 2.0f;
+    self.redShapeView.layer.borderColor = [UIColor LARRedColor].CGColor;
+    self.greenShapeView.layer.borderColor = [UIColor LARGreenColor].CGColor;
+    self.yellowShapeView.layer.borderColor = [UIColor LARYellowColor].CGColor;
     self.proyectNameLabel.text = [NSString stringWithFormat:@"Proyecto %@",self.rate.proyect.name];
     self.rateNameLabel.text = self.rate.name;
     self.codeLabel.text = self.rate.marketRateID;
     self.promotionLabel.text = self.rate.promo;
-    switch (self.rate.interestLevel.integerValue) {
-        case 1:
-            self.redShapeView.backgroundColor = [UIColor redColor];
-            self.yellowShapeView.backgroundColor = [UIColor clearColor];
-            self.greenShapeView.backgroundColor = [UIColor clearColor];
-            break;
-        case 2:
-            self.yellowShapeView.backgroundColor = [UIColor yellowColor];
-            self.redShapeView.backgroundColor = [UIColor clearColor];
-            self.greenShapeView.backgroundColor = [UIColor clearColor];
-            break;
-        case 3:
-            self.greenShapeView.backgroundColor = [UIColor greenColor];
-            self.redShapeView.backgroundColor = [UIColor clearColor];
-            self.yellowShapeView.backgroundColor = [UIColor clearColor];
-            break;
-        default:
-            break;
-    }
+    self.redShapeView.backgroundColor = [UIColor colorForInterestLevel:self.rate.interestLevel.integerValue andColorShape:[UIColor redColor]];
+    self.yellowShapeView.backgroundColor = [UIColor colorForInterestLevel:self.rate.interestLevel.integerValue andColorShape:[UIColor yellowColor]];
+    self.greenShapeView.backgroundColor = [UIColor colorForInterestLevel:self.rate.interestLevel.integerValue andColorShape:[UIColor greenColor]];
 }
 
 -(void)setupVars

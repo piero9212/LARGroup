@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface ProyectAnnotationView : MKAnnotationView
+@interface ProyectAnnotationView : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *proyectAnnotationImageView;
 @property (weak, nonatomic) IBOutlet UILabel *proyectAnnotationTitleLabel;

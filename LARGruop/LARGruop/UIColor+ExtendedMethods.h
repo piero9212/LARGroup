@@ -15,5 +15,12 @@
 
 +(UIColor *)orangeLARColor;
 + (UIColor *)colorWithColor:(UIColor *)color andAlpha:(CGFloat)alpha;
-
++(UIColor*)colorForAvaibleDepartmentsCount:(NSInteger)leftDepartments;
++(UIColor*)LARYellowColor;
++(UIColor*)LARGreenColor;
++(UIColor*)LARRedColor;
++(UIColor*)LAROrangeColor;
++(UIColor*)LARGreyColor;
++(UIColor*)colorForInterestLevel:(NSInteger)interestLevel;
++(UIColor*)colorForInterestLevel:(NSInteger)interestLevel andColorShape:(UIColor*)color;
 @end

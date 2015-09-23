@@ -71,27 +71,22 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     MarketRates* rate = [self.marketRates objectAtIndex:indexPath.row];
     cell.textLabel.text = rate.name;
     NSString* status;
-    UIColor* statusColor = [UIColor yellowColor];
     switch (rate.interestLevel.integerValue) {
         case 1:
             status = @"No esta interesado";
-            statusColor = [UIColor redColor];
             break;
         case 2:
             status = @"Negociación";
-            statusColor = [UIColor yellowColor];
             break;
         case 3:
             status = @"Va a comprar";
-            statusColor = [UIColor greenColor];
             break;
         default:
             status = @"No esta interesado";
-            statusColor = [UIColor yellowColor];
             break;
     }
     cell.detailTextLabel.text = status;
-    cell.detailTextLabel.textColor = statusColor;
+    cell.detailTextLabel.textColor = [UIColor colorForInterestLevel:rate.interestLevel.integerValue];
     
     return cell;
 }

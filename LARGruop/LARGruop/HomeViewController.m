@@ -57,7 +57,7 @@
     {
         self.containerSegmentedControl.selectedSegmentIndex = 0;
     }
-    [[UITabBar appearance] setTintColor:[UIColor orangeLARColor]];
+    [[UITabBar appearance] setTintColor:[UIColor LAROrangeColor]];
 }
 
 -(void)setupVars

@@ -19,8 +19,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[UIPageControl appearance] setPageIndicatorTintColor:[UIColor redColor]];
-    [[UIPageControl appearance] setCurrentPageIndicatorTintColor:[UIColor orangeColor]];
     [self setupApp];
     [self firstRunApp];
     return YES;
@@ -123,8 +121,8 @@
             testProyect.minPrice = @"100000";
             testProyect.name = @"Duplo";
             testProyect.proyectDescription = @"Ahora tu espacio interior te impulsa a crecer. Duplo esta ubicado en la avenida Brasil, un espacio privilegiado, cerca de los principales centros culturales, de esparcimiento y comercio de Lima";
-            testProyect.longitude = @-77.019525;
-            testProyect.latitud = @-12.101693;
+            testProyect.longitude = @-77.0195246;
+            testProyect.latitud = @-12.1016933;
             [testProyect addFeaturesObject:testFeature1];
             [testProyect addFeaturesObject:testFeature3];
             [testProyect addFeaturesObject:testFeature4];
@@ -140,16 +138,16 @@
             testProyect2.address = @"Avenida Salaverry 475";
             testProyect2.district = @"San Isidro";
             testProyect2.imageURL = @"http://www.nesta.com.pe/images/departamentos/departamento-fachada-zoom.jpg";
-            testProyect2.leftDepartaments=@2;
+            testProyect2.leftDepartaments=@0;
             testProyect2.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_g.jpg";
             testProyect2.mapDescription = @"El proyecto cuenta con departamentos de 1, 2 y 3, ademas de habitaciones con jacuzi y sauna";
-            testProyect2.mapImageURL = @"images/departamentos/departamento-fachada.jpg";
+            testProyect2.mapImageURL = @"http://www.nesta.com.pe/images/departamentos/departamento-fachada.jpg";
             testProyect2.maxPrice = @"165000";
             testProyect2.minPrice = @"40000";
             testProyect2.name = @"Nesta";
             testProyect2.proyectDescription = @"Todo lo que quieres en un departamento, mas las comodidad de tener el real plaza salaverry a un par de cuadras de tu casa, eso y mas aqui";
-            testProyect2.latitud =@-12.127299;
-            testProyect2.longitude = @-77.000679;
+            testProyect2.longitude = @-77.0199669;
+            testProyect2.latitud =@-12.116381;
             
             [testProyect2 addFeaturesObject:testFeature1];
             [testProyect2 addFeaturesObject:testFeature2];
@@ -165,7 +163,7 @@
             testProyect3.address = @"Avenida Sanchez Cerro 365";
             testProyect3.district = @"Jesus Maria";
             testProyect3.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_b.jpg";
-            testProyect3.leftDepartaments=@1;
+            testProyect3.leftDepartaments=@8;
             testProyect3.listImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_h.jpg";
             testProyect3.mapDescription = @"El proyecto cuenta con departamentos de 1, 2 y 3 dormitorios creados con marmol y cal";
             testProyect3.mapImageURL = @"http://www.duplo.com.pe/images/multimedia_foto_02.jpg";
@@ -173,8 +171,8 @@
             testProyect3.minPrice = @"70000";
             testProyect3.name = @"Velia";
             testProyect3.proyectDescription = @"Ahora intentamos parafrasear otra descripcion bonita para que puedas comprar este departamento y lleves a tu familia al siguiente nivel de confort";
-            testProyect3.longitude = @-12.104162;
-            testProyect3.latitud = @-76.963046;
+            testProyect3.longitude = @-76.9630458;
+            testProyect3.latitud = @-12.1041621;
             
             [testProyect3 addFeaturesObject:testFeature1];
             [testProyect3 addFeaturesObject:testFeature5];

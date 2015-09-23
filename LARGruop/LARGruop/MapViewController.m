@@ -7,6 +7,9 @@
 //
 
 #import "MapViewController.h"
+#import "ProyectService.h"
+#import "ProyectPointAnnotation.h"
+#import <Haneke/Haneke.h>
 
 static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 
@@ -14,6 +17,7 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 
 @property (weak, nonatomic) IBOutlet MKMapView *proyectsMapView;
 @property CLLocationManager *locationManager;
+@property NSMutableArray* proyects;
 
 @end
 
@@ -26,20 +30,13 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupViews];
-    [self setupVars];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    #ifdef __IPHONE_8_0
-    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        [self.locationManager requestAlwaysAuthorization];
-    }
-#endif
+    [self setupVars];
+    [self setupViews];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,71 +45,90 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
+    [self loadPins];
+}
+
+-(void)setupVars
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
+}
+
+-(void)loadPins
+{
     CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
     
     if (authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
         authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
         self.locationManager.delegate =self;
-        [self.locationManager requestWhenInUseAuthorization];
         [self.locationManager startMonitoringSignificantLocationChanges];
         [self.locationManager startUpdatingLocation];
         self.proyectsMapView.showsUserLocation = YES;
-        //    CLLocationCoordinate2D coordinate;
-        //    NSString *Latitud = @"-12.080614";
-        //    NSString *Longitud = @"-77.029506";
-        //    coordinate.latitude = [Latitud floatValue];
-        //    coordinate.longitude = [Longitud floatValue];
         
-        //    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-        //    point.coordinate = coordinate;
-        //    [mapa addAnnotation:point];
-        //
-        //    MKCoordinateRegion region;
-        //    MKCoordinateSpan span;
-        //    span.latitudeDelta=0.15;
-        //    span.longitudeDelta=0.15;
-        //
-        //    CLLocationCoordinate2D location= point.coordinate = coordinate;
-        //    region.span=span;
-        //    region.center=location;
-        //
-        //    [mapa setRegion:region animated:YES];
-        //    [mapa regionThatFits:region];
-        //    [self getHospital];
-        //Set Default location to zoom
-        CLLocationCoordinate2D noLocation = CLLocationCoordinate2DMake(51.900708, -2.083160); //Create the CLLocation from user cordinates
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 50000, 50000); //Set zooming level
-        MKCoordinateRegion adjustedRegion = [self.proyectsMapView regionThatFits:viewRegion]; //add location to map
-        [self.proyectsMapView setRegion:adjustedRegion animated:YES]; // create animation zooming
-        
-        // Place Annotation Point
-        MKPointAnnotation *annotation1 = [[MKPointAnnotation alloc] init]; //Setting Sample location Annotation
-        [annotation1 setCoordinate:CLLocationCoordinate2DMake(51.900708, -2.083160)]; //Add cordinates
-        [self.proyectsMapView addAnnotation:annotation1];
-        
+        for (Proyect* proyect in self.proyects) {
+            CLLocationCoordinate2D location = CLLocationCoordinate2DMake(proyect.latitud.doubleValue, proyect.longitude.doubleValue);
+            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location, 40000, 40000);
+            MKCoordinateRegion adjustedRegion = [self.proyectsMapView regionThatFits:viewRegion];
+            [self.proyectsMapView setRegion:adjustedRegion animated:NO];
+            ProyectPointAnnotation *annotation1 = [[ProyectPointAnnotation alloc] init];
+            [annotation1 setCoordinate:location]; //Add cordinates
+            annotation1.proyectImage = proyect.mapImageURL;
+            annotation1.proyectUID = proyect.uid;
+            annotation1.leftDepartments = proyect.leftDepartaments;
+            [self.proyectsMapView addAnnotation:annotation1];
+        }
     }
-
+    [self displayCorrectZoom];
 }
 
--(void)setupVars
+-(void)displayCorrectZoom
 {
-    
+    MKMapRect zoomRect = MKMapRectNull;
+    for (id <MKAnnotation> annotation in self.proyectsMapView.annotations)
+    {
+        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
+        zoomRect = MKMapRectUnion(zoomRect, pointRect);
+    }
+    [self.proyectsMapView setVisibleMapRect:zoomRect animated:YES];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    
-    ProyectAnnotationView *pinView = nil; //create MKAnnotationView Property
-    
-    pinView = (ProyectAnnotationView *)[self.proyectsMapView dequeueReusableAnnotationViewWithIdentifier:MAP_ANNOTATION_IDENTIFIER]; //Setting custom MKAnnotationView to the ID
-    if ( pinView == nil )
-        pinView = [[ProyectAnnotationView alloc]
-                   initWithAnnotation:annotation reuseIdentifier:MAP_ANNOTATION_IDENTIFIER];     
-    [pinView addSubview:self.annotationView];
-    addSubview:self.annotationView.center = CGPointMake(self.annotationView.bounds.size.width*0.1f, -self.annotationView.bounds.size.height*0.5f);
-    
-    pinView.image = self.annotationView.proyectAnnotationImageView.image;
-    
+    AnnotationView *pinView = nil;
+    if ([annotation isKindOfClass:[ProyectPointAnnotation class]])
+    {
+        
+        pinView = (AnnotationView *)[self.proyectsMapView dequeueReusableAnnotationViewWithIdentifier:MAP_ANNOTATION_IDENTIFIER];
+        if ( pinView == nil )
+            pinView = [[AnnotationView alloc]
+                       initWithAnnotation:annotation reuseIdentifier:MAP_ANNOTATION_IDENTIFIER];
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        
+        pinView.enabled = YES;
+        pinView.canShowCallout = NO;
+        
+        NSURL* url = [NSURL URLWithString:((ProyectPointAnnotation*)annotation).proyectImage];
+        UIImage* image;
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        image = [UIImage imageWithData:data];
+        image = [image resizedImage:CGSizeMake(70, 70) interpolationQuality:kCGInterpolationHigh ];
+        image = [image roundedCornerImage:35 borderSize:2];
+        CGRect frame = CGRectMake(0, 0,image.size.width,image.size.height);
+        UIView* border = [[UIView alloc]initWithFrame:frame];
+        border.layer.cornerRadius = border.bounds.size.width/2;
+        border.layer.masksToBounds = YES;
+        border.layer.borderWidth = 5.0;
+        border.layer.borderColor = [UIColor colorForAvaibleDepartmentsCount:((ProyectPointAnnotation*)annotation).leftDepartments.integerValue].CGColor;
+        [pinView addSubview:border];
+        [pinView sendSubviewToBack:border];
+        pinView.image = image;
+        
+    }
     return pinView;
     
     
@@ -181,7 +197,7 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 //    [view addSubview:label];
 //    [view addSubview:img];
     
-    
+    NSLog(@"selected");
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
@@ -196,7 +212,6 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 #pragma mark -
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"Project location was updated");
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{

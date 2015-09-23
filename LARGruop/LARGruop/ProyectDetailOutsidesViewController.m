@@ -39,6 +39,8 @@
 }
 
 -(void)setupViews{
+    [[UIPageControl appearance] setPageIndicatorTintColor:[UIColor LARGreyColor]];
+    [[UIPageControl appearance] setCurrentPageIndicatorTintColor:[UIColor LAROrangeColor]];
     self.delegate = self;
     self.dataSource = self;
     ProyectDetailOutsideViewController *initialViewController = [self viewControllerAtIndex:0];

@@ -17,6 +17,7 @@ static NSString* const HOME_SEGUE = @"HOME_SEGUE";
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property CLLocationManager *locationManager;
 
 @end
 
@@ -44,6 +45,13 @@ static NSString* const HOME_SEGUE = @"HOME_SEGUE";
 
 -(void)setupViews
 {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    #ifdef __IPHONE_8_0
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    #endif
     [self.navigationController setNavigationBarHidden:TRUE];
     [self.loginButton makeCircleShapeWithBorderWidth:1 borderColor:[UIColor blackColor] andBorderRadius:10];
     [self.userTextField makeUnderlineWithBordeWidth:1 color:[UIColor grayColor] andAlpha:0.3];

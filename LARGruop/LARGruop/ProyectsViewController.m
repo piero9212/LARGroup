@@ -84,24 +84,8 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     cell.proyectAddressLabel.text = proyect.address;
     cell.districtLabel.text = proyect.district;
     [cell.districtLabel resizeToStretch];
-    UIColor* leftDepartmentsColor;
-    switch (proyect.leftDepartaments.intValue) {
-        case 0:
-        case 1:
-            leftDepartmentsColor = [UIColor redColor];
-            break;
-        case 2:
-            leftDepartmentsColor = [UIColor yellowColor];
-            break;
-        case 3:
-            leftDepartmentsColor = [UIColor greenColor];
-            break;
-        default:
-            leftDepartmentsColor = [UIColor greenColor];
-            break;
-    }
     cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: 0%@",proyect.leftDepartaments.stringValue];
-    [cell.departamentsLeftLabel setTextColor:leftDepartmentsColor];
+    [cell.departamentsLeftLabel setTextColor:[UIColor colorForAvaibleDepartmentsCount:proyect.leftDepartaments.integerValue]];
     [cell.buildImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.listImageURL]];
     return cell;
     

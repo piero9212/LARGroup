@@ -10,3 +10,5 @@
 #import "UITextField+ExtendedMethods.h"
 #import "UIColor+ExtendedMethods.h"
 #import "UILabel+ExtendedMethods.h"
+#import "MKMapView+ExtendedMethods.h"
+#import "UIImage+ExtendedMethods.h"
