@@ -2,51 +2,23 @@
 //  Proyect.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 15/09/15.
-//  Copyright (c) 2015 prsp.org. All rights reserved.
+//  Created by Piero on 22/09/15.
+//  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 #import "Entity.h"
 
 @class Flat, MarketRates, Outside, ProyectFeature;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface Proyect : Entity
 
-@property (nonatomic, retain) NSString * imageURL;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSNumber * leftDepartaments;
-@property (nonatomic, retain) NSString * district;
-@property (nonatomic, retain) NSString * proyectDescription;
-@property (nonatomic, retain) id pointCoordinate;
-@property (nonatomic, retain) NSString * mapDescription;
-@property (nonatomic, retain) NSString * mapImageURL;
-@property (nonatomic, retain) NSString * minPrice;
-@property (nonatomic, retain) NSString * maxPrice;
-@property (nonatomic, retain) NSString * listImageURL;
-@property (nonatomic, retain) NSSet *features;
-@property (nonatomic, retain) NSSet *outsideImages;
-@property (nonatomic, retain) NSSet *flatPlains;
-@property (nonatomic, retain) MarketRates *marketRates;
-@end
-
-@interface Proyect (CoreDataGeneratedAccessors)
-
-- (void)addFeaturesObject:(ProyectFeature *)value;
-- (void)removeFeaturesObject:(ProyectFeature *)value;
-- (void)addFeatures:(NSSet *)values;
-- (void)removeFeatures:(NSSet *)values;
-
-- (void)addOutsideImagesObject:(Outside *)value;
-- (void)removeOutsideImagesObject:(Outside *)value;
-- (void)addOutsideImages:(NSSet *)values;
-- (void)removeOutsideImages:(NSSet *)values;
-
-- (void)addFlatPlainsObject:(Flat *)value;
-- (void)removeFlatPlainsObject:(Flat *)value;
-- (void)addFlatPlains:(NSSet *)values;
-- (void)removeFlatPlains:(NSSet *)values;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "Proyect+CoreDataProperties.h"

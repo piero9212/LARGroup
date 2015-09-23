@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
     <entity name="Customer" representedClassName="Customer" parentEntity="Entity" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,8 +37,10 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="district" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitud" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="leftDepartaments" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="listImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="mapDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mapImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="maxPrice" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,7 +70,7 @@
         <element name="Flat" positionX="-9" positionY="117" width="128" height="120"/>
         <element name="MarketRates" positionX="-36" positionY="54" width="128" height="135"/>
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
-        <element name="Proyect" positionX="-36" positionY="54" width="128" height="285"/>
+        <element name="Proyect" positionX="-36" positionY="54" width="128" height="315"/>
         <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
         <element name="User" positionX="-36" positionY="135" width="128" height="120"/>
     </elements>

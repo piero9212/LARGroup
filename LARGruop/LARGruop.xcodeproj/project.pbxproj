@@ -48,7 +48,6 @@
 		353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65041B9F729F0004E4F2 /* TopBarViewController.m */; };
 		3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F77D1BA9B1960061BAD4 /* ProyectService.m */; };
 		3560F7871BA9B1DF0061BAD4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7861BA9B1DF0061BAD4 /* User.m */; };
-		3560F78A1BA9B1E70061BAD4 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7891BA9B1E70061BAD4 /* Proyect.m */; };
 		3560F78E1BA9B2150061BAD4 /* ProyectConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F78D1BA9B2150061BAD4 /* ProyectConnectionManager.m */; };
 		3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7901BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m */; };
 		3560F7941BA9D4130061BAD4 /* ProyectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F7931BA9D4130061BAD4 /* ProyectDetailViewController.m */; };
@@ -64,6 +63,8 @@
 		7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */; };
 		7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */; };
 		760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */; };
+		76018C661BB23BB9001D8C58 /* Proyect+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 76018C631BB23BB9001D8C58 /* Proyect+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		76018C671BB23BB9001D8C58 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 76018C651BB23BB9001D8C58 /* Proyect.m */; settings = {ASSET_TAGS = (); }; };
 		763EF9731BA91688003D1E4F /* GenericConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9721BA91688003D1E4F /* GenericConnectionManager.m */; };
 		763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97B1BA93151003D1E4F /* ServiceClient.m */; };
 		763EF9801BA9344B003D1E4F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97F1BA9344B003D1E4F /* LoginService.m */; };
@@ -170,8 +171,6 @@
 		3560F77D1BA9B1960061BAD4 /* ProyectService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectService.m; sourceTree = "<group>"; };
 		3560F7851BA9B1DF0061BAD4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3560F7861BA9B1DF0061BAD4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		3560F7881BA9B1E70061BAD4 /* Proyect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proyect.h; sourceTree = "<group>"; };
-		3560F7891BA9B1E70061BAD4 /* Proyect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proyect.m; sourceTree = "<group>"; };
 		3560F78C1BA9B2150061BAD4 /* ProyectConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectConnectionManager.h; sourceTree = "<group>"; };
 		3560F78D1BA9B2150061BAD4 /* ProyectConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectConnectionManager.m; sourceTree = "<group>"; };
 		3560F78F1BA9CFC40061BAD4 /* UILabel+ExtendedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ExtendedMethods.h"; sourceTree = "<group>"; };
@@ -202,6 +201,10 @@
 		7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailOutsideViewController.m; sourceTree = "<group>"; };
 		760158501BAA67C200411629 /* ProyectDetailDepartamentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailDepartamentsViewController.h; sourceTree = "<group>"; };
 		760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailDepartamentsViewController.m; sourceTree = "<group>"; };
+		76018C621BB23BB9001D8C58 /* Proyect+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Proyect+CoreDataProperties.h"; sourceTree = "<group>"; };
+		76018C631BB23BB9001D8C58 /* Proyect+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Proyect+CoreDataProperties.m"; sourceTree = "<group>"; };
+		76018C641BB23BB9001D8C58 /* Proyect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proyect.h; sourceTree = "<group>"; };
+		76018C651BB23BB9001D8C58 /* Proyect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proyect.m; sourceTree = "<group>"; };
 		763EF9711BA91688003D1E4F /* GenericConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericConnectionManager.h; sourceTree = "<group>"; };
 		763EF9721BA91688003D1E4F /* GenericConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericConnectionManager.m; sourceTree = "<group>"; };
 		763EF97A1BA93151003D1E4F /* ServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceClient.h; sourceTree = "<group>"; };
@@ -565,12 +568,14 @@
 		353D96751B9DFC9D00E4A618 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				76018C621BB23BB9001D8C58 /* Proyect+CoreDataProperties.h */,
+				76018C631BB23BB9001D8C58 /* Proyect+CoreDataProperties.m */,
+				76018C641BB23BB9001D8C58 /* Proyect.h */,
+				76018C651BB23BB9001D8C58 /* Proyect.m */,
 				3584DFB01BB0A06E00DDE5CD /* Customer.h */,
 				3584DFB11BB0A06E00DDE5CD /* Customer.m */,
 				3584DFAD1BB0A05800DDE5CD /* MarketRates.h */,
 				3584DFAE1BB0A05800DDE5CD /* MarketRates.m */,
-				3560F7881BA9B1E70061BAD4 /* Proyect.h */,
-				3560F7891BA9B1E70061BAD4 /* Proyect.m */,
 				3560F7851BA9B1DF0061BAD4 /* User.h */,
 				3560F7861BA9B1DF0061BAD4 /* User.m */,
 				352F77DC1BA8C6950080B004 /* Outside.h */,
@@ -998,6 +1003,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76018C661BB23BB9001D8C58 /* Proyect+CoreDataProperties.m in Sources */,
 				7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */,
 				352F77C21BA8C5600080B004 /* Entity.m in Sources */,
 				3584DFAC1BB094F700DDE5CD /* CustomerInterestLevelTableViewCell.m in Sources */,
@@ -1011,7 +1017,6 @@
 				353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */,
 				3560F79B1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m in Sources */,
 				3560F78E1BA9B2150061BAD4 /* ProyectConnectionManager.m in Sources */,
-				3560F78A1BA9B1E70061BAD4 /* Proyect.m in Sources */,
 				352F77B51BA872A80080B004 /* CustomerMarketRateViewController.m in Sources */,
 				353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */,
 				3560F7871BA9B1DF0061BAD4 /* User.m in Sources */,
@@ -1019,6 +1024,7 @@
 				763EF9801BA9344B003D1E4F /* LoginService.m in Sources */,
 				7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */,
 				352FA68B1BA0CFF800FEC040 /* CustomerMasterViewController.m in Sources */,
+				76018C671BB23BB9001D8C58 /* Proyect.m in Sources */,
 				352FA6881BA0CFE400FEC040 /* CustomerDetailViewController.m in Sources */,
 				760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */,
 				3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */,

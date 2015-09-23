@@ -123,7 +123,8 @@
             testProyect.minPrice = @"100000";
             testProyect.name = @"Duplo";
             testProyect.proyectDescription = @"Ahora tu espacio interior te impulsa a crecer. Duplo esta ubicado en la avenida Brasil, un espacio privilegiado, cerca de los principales centros culturales, de esparcimiento y comercio de Lima";
-            
+            testProyect.longitude = @-77.019525;
+            testProyect.latitud = @-12.101693;
             [testProyect addFeaturesObject:testFeature1];
             [testProyect addFeaturesObject:testFeature3];
             [testProyect addFeaturesObject:testFeature4];
@@ -147,6 +148,8 @@
             testProyect2.minPrice = @"40000";
             testProyect2.name = @"Nesta";
             testProyect2.proyectDescription = @"Todo lo que quieres en un departamento, mas las comodidad de tener el real plaza salaverry a un par de cuadras de tu casa, eso y mas aqui";
+            testProyect2.latitud =@-12.127299;
+            testProyect2.longitude = @-77.000679;
             
             [testProyect2 addFeaturesObject:testFeature1];
             [testProyect2 addFeaturesObject:testFeature2];
@@ -170,6 +173,8 @@
             testProyect3.minPrice = @"70000";
             testProyect3.name = @"Velia";
             testProyect3.proyectDescription = @"Ahora intentamos parafrasear otra descripcion bonita para que puedas comprar este departamento y lleves a tu familia al siguiente nivel de confort";
+            testProyect3.longitude = @-12.104162;
+            testProyect3.latitud = @-76.963046;
             
             [testProyect3 addFeaturesObject:testFeature1];
             [testProyect3 addFeaturesObject:testFeature5];

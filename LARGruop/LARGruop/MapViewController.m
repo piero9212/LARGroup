@@ -26,12 +26,20 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupViews];
+    [self setupVars];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
-    [self setupViews];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    #ifdef __IPHONE_8_0
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+#endif
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -40,48 +48,55 @@ static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
+    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
+    
+    if (authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.locationManager.delegate =self;
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager startMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
+        self.proyectsMapView.showsUserLocation = YES;
+        //    CLLocationCoordinate2D coordinate;
+        //    NSString *Latitud = @"-12.080614";
+        //    NSString *Longitud = @"-77.029506";
+        //    coordinate.latitude = [Latitud floatValue];
+        //    coordinate.longitude = [Longitud floatValue];
+        
+        //    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        //    point.coordinate = coordinate;
+        //    [mapa addAnnotation:point];
+        //
+        //    MKCoordinateRegion region;
+        //    MKCoordinateSpan span;
+        //    span.latitudeDelta=0.15;
+        //    span.longitudeDelta=0.15;
+        //
+        //    CLLocationCoordinate2D location= point.coordinate = coordinate;
+        //    region.span=span;
+        //    region.center=location;
+        //
+        //    [mapa setRegion:region animated:YES];
+        //    [mapa regionThatFits:region];
+        //    [self getHospital];
+        //Set Default location to zoom
+        CLLocationCoordinate2D noLocation = CLLocationCoordinate2DMake(51.900708, -2.083160); //Create the CLLocation from user cordinates
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 50000, 50000); //Set zooming level
+        MKCoordinateRegion adjustedRegion = [self.proyectsMapView regionThatFits:viewRegion]; //add location to map
+        [self.proyectsMapView setRegion:adjustedRegion animated:YES]; // create animation zooming
+        
+        // Place Annotation Point
+        MKPointAnnotation *annotation1 = [[MKPointAnnotation alloc] init]; //Setting Sample location Annotation
+        [annotation1 setCoordinate:CLLocationCoordinate2DMake(51.900708, -2.083160)]; //Add cordinates
+        [self.proyectsMapView addAnnotation:annotation1];
+        
+    }
+
 }
 
 -(void)setupVars
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate =self;
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    [self.locationManager startUpdatingLocation];
-    self.proyectsMapView.showsUserLocation = YES;
-//    CLLocationCoordinate2D coordinate;
-//    NSString *Latitud = @"-12.080614";
-//    NSString *Longitud = @"-77.029506";
-//    coordinate.latitude = [Latitud floatValue];
-//    coordinate.longitude = [Longitud floatValue];
     
-//    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-//    point.coordinate = coordinate;
-//    [mapa addAnnotation:point];
-//    
-//    MKCoordinateRegion region;
-//    MKCoordinateSpan span;
-//    span.latitudeDelta=0.15;
-//    span.longitudeDelta=0.15;
-//    
-//    CLLocationCoordinate2D location= point.coordinate = coordinate;
-//    region.span=span;
-//    region.center=location;
-//    
-//    [mapa setRegion:region animated:YES];
-//    [mapa regionThatFits:region];
-//    [self getHospital];
-    //Set Default location to zoom
-    CLLocationCoordinate2D noLocation = CLLocationCoordinate2DMake(51.900708, -2.083160); //Create the CLLocation from user cordinates
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 50000, 50000); //Set zooming level
-    MKCoordinateRegion adjustedRegion = [self.proyectsMapView regionThatFits:viewRegion]; //add location to map
-    [self.proyectsMapView setRegion:adjustedRegion animated:YES]; // create animation zooming
-    
-    // Place Annotation Point
-    MKPointAnnotation *annotation1 = [[MKPointAnnotation alloc] init]; //Setting Sample location Annotation
-    [annotation1 setCoordinate:CLLocationCoordinate2DMake(51.900708, -2.083160)]; //Add cordinates
-    [self.proyectsMapView addAnnotation:annotation1];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation

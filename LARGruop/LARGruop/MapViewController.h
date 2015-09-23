@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import <MapKit/MapKit.h>
+#import <MapKit/MKAnnotation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ProyectAnnotationView.h"
 
