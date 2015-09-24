@@ -13,6 +13,10 @@
 @interface CustomerDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIView *selectedSecondFilterView;
 @property (weak, nonatomic) IBOutlet UIView *customerInfoContainerView;
+@property (weak, nonatomic) IBOutlet UIButton *todayButton;
+@property (weak, nonatomic) IBOutlet UIButton *allButton;
+@property (nonatomic) CGRect todayFrame;
+@property (nonatomic) CGRect allFrame;
 
 @end
 
@@ -26,6 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.todayFrame = self.todayButton.frame;
+    self.allFrame = self.allButton.frame;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,9 +84,23 @@
 }
 
 - (IBAction)allTouch:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 //Time for the animation
+                     animations:^{
+                         self.selectedSecondFilterView.frame = CGRectMake (sender.frame.origin.x-10,self.selectedSecondFilterView.frame.origin.y,self.selectedSecondFilterView.frame.size.width,self.selectedSecondFilterView.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                         //Do stuff when the animation completes
+                     }];
 }
 
-- (IBAction)todayTouch:(id)sender {
+- (IBAction)todayTouch:(UIButton*)sender {
+    [UIView animateWithDuration:0.3 //Time for the animation
+                     animations:^{
+                         self.selectedSecondFilterView.frame = CGRectMake (0,self.selectedSecondFilterView.frame.origin.y,self.selectedSecondFilterView.frame.size.width,self.selectedSecondFilterView.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                         //Do stuff when the animation completes
+                     }];
 }
 
 #pragma mark -

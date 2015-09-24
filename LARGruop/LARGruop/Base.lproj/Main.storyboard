@@ -470,8 +470,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="hP6-KX-W65"/>
                     <connections>
+                        <outlet property="allButton" destination="otC-Mm-Uqh" id="jH5-65-24Z"/>
                         <outlet property="customerInfoContainerView" destination="XS0-sP-hqF" id="VHw-pI-v7n"/>
                         <outlet property="selectedSecondFilterView" destination="JAZ-N0-Vz4" id="Ou5-xc-MtC"/>
+                        <outlet property="todayButton" destination="oYI-w6-cJA" id="cMT-eA-W7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qf7-1n-pMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1745,13 +1747,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-2t-oql">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-2t-oql">
                                 <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                                 <connections>
                                     <segue destination="LA0-EN-YqQ" kind="embed" id="d14-eJ-cbo"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBv-D5-w4i">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBv-D5-w4i">
                                 <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-xb-2k6">
