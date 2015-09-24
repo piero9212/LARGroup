@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "send4-13.png"
+      "filename" : "record13-4.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "send4-14.png"
+      "filename" : "record13-5.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "send4-2.png"
+      "filename" : "record13-6.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
