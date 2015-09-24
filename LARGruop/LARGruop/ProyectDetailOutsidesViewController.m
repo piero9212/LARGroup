@@ -36,13 +36,13 @@
     [super viewWillAppear:animated];
     [self setupVars];
     [self setupViews];
+}
+
+-(void)setupViews{
     CGRect frame = self.view.frame;
     frame.size.width = self.containerSize.width;
     frame.size.height = self.containerSize.height;
     self.view.frame = frame;
-}
-
--(void)setupViews{
     [[UIPageControl appearance] setPageIndicatorTintColor:[UIColor LARGreyColor]];
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor:[UIColor LAROrangeColor]];
     self.delegate = self;
@@ -71,7 +71,7 @@
     Outside* outside = self.outsides[index];
     if([outside isFault])
         outside = (Outside *)[[NSManagedObjectContext MR_defaultContext] objectWithID:outside.objectID];
-    NSURL* url = [NSURL URLWithString:outside.image];
+    NSURL* url = [NSURL URLWithString:outside.imageURL];
 
     CGRect frame = childViewController.view.frame;
     childViewController.outsideImageView.frame = frame;
@@ -117,10 +117,6 @@
     return 0;
 }
 
-
-#pragma mark -
-#pragma mark - Actions
-#pragma mark -
 
 
 @end

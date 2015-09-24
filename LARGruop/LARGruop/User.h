@@ -2,7 +2,7 @@
 //  User.h
 //  LARGruop
 //
-//  Created by Piero on 16/09/15.
+//  Created by piero.sifuentes on 24/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @interface User : Entity
 
-@property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSString * imageURL;
+@property (nonatomic, retain) NSString * password;
+@property (nonatomic, retain) NSString * profileImageURL;
+@property (nonatomic, retain) NSString * username;
 
 @end

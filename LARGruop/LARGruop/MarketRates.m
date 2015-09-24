@@ -2,12 +2,14 @@
 //  MarketRates.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 21/09/15.
+//  Created by piero.sifuentes on 24/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
 #import "MarketRates.h"
 #import "Customer.h"
+#import "Flat.h"
+#import "Floor.h"
 #import "Proyect.h"
 
 
@@ -16,8 +18,9 @@
 @dynamic interestLevel;
 @dynamic marketRateID;
 @dynamic name;
-@dynamic promo;
 @dynamic customer;
+@dynamic flat;
+@dynamic floor;
 @dynamic proyect;
 
 @end

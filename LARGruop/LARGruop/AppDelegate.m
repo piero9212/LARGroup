@@ -57,36 +57,36 @@
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
             
             Outside* testOutside1 = [Outside MR_createEntityInContext:localContext];
-            testOutside1.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_c.jpg";
+            testOutside1.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_c.jpg";
             testOutside1.outsideDescription = @"Una descripcion";
             
             Outside* testOutside2 = [Outside MR_createEntityInContext:localContext];
-            testOutside2.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_d.jpg";
+            testOutside2.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_d.jpg";
             testOutside2.outsideDescription = @"Otra descripcion";
             
             Outside* testOutside3 = [Outside MR_createEntityInContext:localContext];
-            testOutside3.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_e.jpg";
+            testOutside3.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_e.jpg";
             testOutside3.outsideDescription = @"Otra descripcion mas";
             
             
             Outside* testOutside4 = [Outside MR_createEntityInContext:localContext];
-            testOutside4.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_f.jpg";
+            testOutside4.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_f.jpg";
             testOutside4.outsideDescription = @"Nueva descripcion";
             
             Outside* testOutside5 = [Outside MR_createEntityInContext:localContext];
-            testOutside5.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_g.jpg";
+            testOutside5.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_g.jpg";
             testOutside5.outsideDescription = @"Nueva descripcion 2";
             
             Outside* testOutside6 = [Outside MR_createEntityInContext:localContext];
-            testOutside6.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_h.jpg";
+            testOutside6.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_h.jpg";
             testOutside6.outsideDescription = @"Una descripcion alterna";
             
             Outside* testOutside7 = [Outside MR_createEntityInContext:localContext];
-            testOutside7.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_c.jpg";
+            testOutside7.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_c.jpg";
             testOutside7.outsideDescription = @"Otra descripcion alterna";
             
             Outside* testOutside8 = [Outside MR_createEntityInContext:localContext];
-            testOutside8.image = @"http://www.duplo.com.pe/images/multimedia_foto_01_g.jpg";
+            testOutside8.imageURL = @"http://www.duplo.com.pe/images/multimedia_foto_01_g.jpg";
             testOutside8.outsideDescription = @"Algo mas";
             
             ProyectFeature* testFeature1 = [ProyectFeature MR_createEntityInContext:localContext];
@@ -105,7 +105,6 @@
             testFeature7.featureDescription =@"Baños de servicio para empleados.";
             ProyectFeature* testFeature8 = [ProyectFeature MR_createEntityInContext:localContext];
             testFeature8.featureDescription=@"Lavandería.";
-            
             
             
             Proyect* testProyect = [Proyect MR_createEntityInContext:localContext];
@@ -132,6 +131,100 @@
             [testProyect addOutsideImagesObject:testOutside1];
             [testProyect addOutsideImagesObject:testOutside2];
             [testProyect addOutsideImagesObject:testOutside3];
+            
+            Plant* testPlant1 = [Plant MR_createEntityInContext:localContext];
+            testPlant1.name = @"Planta Tipica 1";
+            testPlant1.plainURL = @"https://github.com";
+            testPlant1.proyect = testProyect;
+            
+            Flat* testFlat1 = [Flat MR_createEntityInContext:localContext];
+            testFlat1.name = @"Modelo 01";
+            testFlat1.size = @"75m2";
+            testFlat1.status = @"disponible";
+            testFlat1.flatImageURL = @"http://images6.postadsuk.com/2015/04/30/postadsuk.com-1-femaie-london-house-flat-share-3-double-size-room-at-single-price-mint-pie.JPG";
+            testFlat1.plant = testPlant1;
+            
+            Floor* testFloor1 = [Floor MR_createEntityInContext:localContext];
+            testFloor1.number = @1;
+            testFloor1.name =@"Piso 01";
+            testFloor1.flat = testFlat1;
+            
+            Floor* testFloor2 = [Floor MR_createEntityInContext:localContext];
+            testFloor2.number = @5;
+            testFloor2.name =@"Piso 05";
+            testFloor2.flat = testFlat1;
+            
+            Floor* testFloor3 = [Floor MR_createEntityInContext:localContext];
+            testFloor3.number = @6;
+            testFloor3.name =@"Piso 06";
+            testFloor3.flat = testFlat1;
+            
+            Plant* testPlant2 = [Plant MR_createEntityInContext:localContext];
+            testPlant2.name = @"Planta Tipica 2";
+            testPlant2.plainURL = @"https://bitbucket.org";
+            testPlant2.proyect = testProyect;
+            
+            Flat* testFlat2 = [Flat MR_createEntityInContext:localContext];
+            testFlat2.name = @"Modelo 02";
+            testFlat2.size = @"90m2";
+            testFlat2.status = @"disponible";
+            testFlat2.flatImageURL = @"http://images6.postadsuk.com/2015/04/30/postadsuk.com-1-femaie-london-house-flat-share-3-double-size-room-at-single-price-mint-pie.JPG";
+            testFlat2.plant = testPlant2;
+            
+            Floor* testFloor4 = [Floor MR_createEntityInContext:localContext];
+            testFloor4.number = @15;
+            testFloor4.name =@"Piso 14";
+            testFloor4.flat = testFlat2;
+            
+            Floor* testFloor5 = [Floor MR_createEntityInContext:localContext];
+            testFloor5.number = @15;
+            testFloor5.name =@"Piso 15";
+            testFloor5.flat = testFlat2;
+            
+            Plant* testPlant3 = [Plant MR_createEntityInContext:localContext];
+            testPlant3.name = @"Planta Tipica 3";
+            testPlant3.plainURL = @"https://www.google.com.pe";
+            testPlant3.proyect = testProyect;
+            
+            Flat* testFlat3 = [Flat MR_createEntityInContext:localContext];
+            testFlat3.name = @"Modelo 03";
+            testFlat3.size = @"90m2";
+            testFlat3.status = @"disponible";
+            testFlat3.flatImageURL = @"http://images6.postadsuk.com/2015/04/30/postadsuk.com-1-femaie-london-house-flat-share-3-double-size-room-at-single-price-mint-pie.JPG";
+            testFlat3.plant = testPlant3;
+            
+            Floor* testFloor6 = [Floor MR_createEntityInContext:localContext];
+            testFloor6.number = @21;
+            testFloor6.name =@"Piso 21";
+            testFloor6.flat = testFlat3;
+            
+            Floor* testFloor7 = [Floor MR_createEntityInContext:localContext];
+            testFloor7.number = @20;
+            testFloor7.name =@"Piso 20";
+            testFloor7.flat = testFlat3;
+            
+            Floor* testFloor8 = [Floor MR_createEntityInContext:localContext];
+            testFloor8.number = @24;
+            testFloor8.name =@"Piso 24";
+            testFloor8.flat = testFlat3;
+            
+            Plant* testPlant4 = [Plant MR_createEntityInContext:localContext];
+            testPlant4.name = @"Planta Tipica 4";
+            testPlant4.plainURL = @"http://www.apple.com";
+            testPlant4.proyect = testProyect;
+            
+            Flat* testFlat4 = [Flat MR_createEntityInContext:localContext];
+            testFlat4.name = @"Modelo 02";
+            testFlat4.size = @"90m2";
+            testFlat4.status = @"disponible";
+            testFlat4.flatImageURL = @"http://images6.postadsuk.com/2015/04/30/postadsuk.com-1-femaie-london-house-flat-share-3-double-size-room-at-single-price-mint-pie.JPG";
+            testFlat4.plant = testPlant4;
+            
+            Floor* testFloor9 = [Floor MR_createEntityInContext:localContext];
+            testFloor9.number = @30;
+            testFloor9.name =@"Piso 30";
+            testFloor9.flat = testFlat4;
+
             
             Proyect* testProyect2 = [Proyect MR_createEntityInContext:localContext];
             testProyect2.uid = @"23456";
@@ -187,28 +280,24 @@
             MarketRates* testRate1 = [MarketRates MR_createEntityInContext:localContext];
             testRate1.interestLevel = @3;
             testRate1.name = @"Cotizacion 1";
-            testRate1.promo = @"2";
             testRate1.marketRateID = @"XASD31";
             testRate1.proyect = testProyect;
             
             MarketRates* testRate2 = [MarketRates MR_createEntityInContext:localContext];
             testRate2.interestLevel = @2;
             testRate2.name = @"Cotizacion 2";
-            testRate2.promo = @"1";
             testRate2.marketRateID = @"XASD12";
             testRate2.proyect = testProyect2;
             
             MarketRates* testRate3 = [MarketRates MR_createEntityInContext:localContext];
             testRate3.interestLevel = @1;
             testRate3.name = @"Cotizacion 3";
-            testRate3.promo = @"3";
             testRate3.marketRateID = @"XASD77";
             testRate3.proyect = testProyect3;
             
             MarketRates* testRate4 = [MarketRates MR_createEntityInContext:localContext];
             testRate4.interestLevel = @2;
             testRate4.name = @"Cotizacion 1";
-            testRate4.promo = @"2";
             testRate4.marketRateID = @"XASD00";
             testRate4.proyect = testProyect;
             

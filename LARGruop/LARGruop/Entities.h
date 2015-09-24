@@ -14,3 +14,7 @@
 #import "MarketRates.h"
 #import "Entity.h"
 #import "User.h"
+#import "Floor.h"
+#import "FlatFeature.h"
+#import "Promo.h"
+#import "Plant.h"

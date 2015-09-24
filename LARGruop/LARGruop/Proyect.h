@@ -2,7 +2,7 @@
 //  Proyect.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 23/09/15.
+//  Created by piero.sifuentes on 24/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Entity.h"
 
-@class Flat, MarketRates, Outside, ProyectFeature;
+@class MarketRates, Outside, Plant, ProyectFeature;
 
 @interface Proyect : Entity
 
@@ -26,12 +26,13 @@
 @property (nonatomic, retain) NSString * maxPrice;
 @property (nonatomic, retain) NSString * minPrice;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) id pointCoordinate;
+@property (nonatomic, retain) NSString * panoramicImageURL;
 @property (nonatomic, retain) NSString * proyectDescription;
+@property (nonatomic, retain) NSString * videoURL;
 @property (nonatomic, retain) NSSet *features;
-@property (nonatomic, retain) NSSet *flatPlains;
-@property (nonatomic, retain) MarketRates *marketRates;
+@property (nonatomic, retain) NSSet *marketRates;
 @property (nonatomic, retain) NSSet *outsideImages;
+@property (nonatomic, retain) NSSet *plants;
 @end
 
 @interface Proyect (CoreDataGeneratedAccessors)
@@ -41,14 +42,19 @@
 - (void)addFeatures:(NSSet *)values;
 - (void)removeFeatures:(NSSet *)values;
 
-- (void)addFlatPlainsObject:(Flat *)value;
-- (void)removeFlatPlainsObject:(Flat *)value;
-- (void)addFlatPlains:(NSSet *)values;
-- (void)removeFlatPlains:(NSSet *)values;
+- (void)addMarketRatesObject:(MarketRates *)value;
+- (void)removeMarketRatesObject:(MarketRates *)value;
+- (void)addMarketRates:(NSSet *)values;
+- (void)removeMarketRates:(NSSet *)values;
 
 - (void)addOutsideImagesObject:(Outside *)value;
 - (void)removeOutsideImagesObject:(Outside *)value;
 - (void)addOutsideImages:(NSSet *)values;
 - (void)removeOutsideImages:(NSSet *)values;
+
+- (void)addPlantsObject:(Plant *)value;
+- (void)removePlantsObject:(Plant *)value;
+- (void)addPlants:(NSSet *)values;
+- (void)removePlants:(NSSet *)values;
 
 @end

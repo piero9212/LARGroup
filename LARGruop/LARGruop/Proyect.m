@@ -2,14 +2,14 @@
 //  Proyect.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 23/09/15.
+//  Created by piero.sifuentes on 24/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
 #import "Proyect.h"
-#import "Flat.h"
 #import "MarketRates.h"
 #import "Outside.h"
+#import "Plant.h"
 #import "ProyectFeature.h"
 
 
@@ -27,11 +27,12 @@
 @dynamic maxPrice;
 @dynamic minPrice;
 @dynamic name;
-@dynamic pointCoordinate;
+@dynamic panoramicImageURL;
 @dynamic proyectDescription;
+@dynamic videoURL;
 @dynamic features;
-@dynamic flatPlains;
 @dynamic marketRates;
 @dynamic outsideImages;
+@dynamic plants;
 
 @end

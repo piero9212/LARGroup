@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "271847FE91893C9E5EA8FCC0"
+               BlueprintIdentifier = "FE908FCE227659A54F078B56"
                BuildableName = "libPods-LARGruop-CGLAlphabetizer.a"
                BlueprintName = "Pods-LARGruop-CGLAlphabetizer"
                ReferencedContainer = "container:Pods.xcodeproj">

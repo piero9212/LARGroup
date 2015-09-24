@@ -78,6 +78,8 @@
         case ProyectDetailItemTypeDepartaments:
             self.proyectDetailItemLabel.text = @"Departamentos";
             destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];
+            ((ProyectDetailDepartamentsViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
+            ((ProyectDetailDepartamentsViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
         case ProyectDetailItemTypeLocate:
             self.proyectDetailItemLabel.text = @"Ubicación";
