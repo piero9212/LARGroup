@@ -138,7 +138,7 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
 {
     if([mapView2 isKindOfClass:[AnnotationView class]])
     {
-        NSString* uid = ((AnnotationView*)mapView2).annotation.proyectUID;
+        NSString* uid = ((AnnotationView*)mapView2).proyectAnnotation.proyectUID;
         [mapView1 deselectAnnotation:mapView2.annotation animated:YES];
         MapMarkDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MapMarkDetailViewController"];
         controller.proyectUID = uid;

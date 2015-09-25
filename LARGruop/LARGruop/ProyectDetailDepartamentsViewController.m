@@ -50,6 +50,8 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 {
     Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
     self.proyectPlants =[NSArray arrayWithArray:[selectedProyect.plants allObjects]];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    self.proyectPlants=[self.proyectPlants sortedArrayUsingDescriptors:@[sort]];
     if(self.proyectPlants && self.proyectPlants.count!=0)
     {
         Plant* plant = [self.proyectPlants objectAtIndex:0];
@@ -70,6 +72,9 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 {
     DepartmentCollectionViewCell* cell = [self.departmentCollectionView dequeueReusableCellWithReuseIdentifier:DEPARTMENT_PLAIN_CELL forIndexPath:indexPath];
     Plant* plant = [self.proyectPlants objectAtIndex:indexPath.row];
+    
+    cell.layer.masksToBounds = YES;
+    cell.layer.cornerRadius = 6;
     cell.departmentNameLabel.text = plant.name;
     if([self.selectedPlantIndexPath isEqual:indexPath])
     {
@@ -88,11 +93,8 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.departmentCollectionView deselectItemAtIndexPath:self.selectedPlantIndexPath animated:false];
-    NSLog(@"Deselected %d",self.selectedPlantIndexPath.row);
-    NSLog(@"Seected %d",indexPath.row);
     self.selectedPlantIndexPath = indexPath;
-    [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+    [self.departmentCollectionView reloadData];
     Plant* plant = [self.proyectPlants objectAtIndex:indexPath.row];
     NSURL *websiteUrl = [NSURL URLWithString:plant.plainURL];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
@@ -117,4 +119,19 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
     return 1;
 }
 
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    UIEdgeInsets insets;
+    if(self.proyectPlants && self.proyectPlants.count!=0)
+    {
+        float space = self.containerSize.width/(self.proyectPlants.count);
+        space = space+20;
+        insets = UIEdgeInsetsMake(10, space, 0, space);
+    }
+    else
+        insets  = UIEdgeInsetsMake(10, 10, 0, 10);
+    
+    return  insets;
+    
+}
 @end

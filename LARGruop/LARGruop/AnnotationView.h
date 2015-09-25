@@ -11,5 +11,5 @@
 
 @interface AnnotationView : MKAnnotationView
 
-@property (nonatomic,strong) ProyectPointAnnotation* annotation;
+@property (nonatomic,strong) ProyectPointAnnotation* proyectAnnotation;
 @end

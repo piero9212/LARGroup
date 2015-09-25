@@ -10,5 +10,5 @@
 
 @interface DepartmentCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *departmentNameLabel;
-@property BOOL selected;
+@property (nonatomic) BOOL selectedPlant;
 @end

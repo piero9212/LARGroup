@@ -10,6 +10,4 @@
 
 @interface UILabel (ExtendedMethods)
 
--(void)resizeToStretch;
--(float)expectedWidth;
 @end
