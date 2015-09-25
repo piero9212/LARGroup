@@ -60,7 +60,7 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
         [self.departmentPlanWebView loadRequest:urlRequest];
     }
     self.selectedPlantIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.departmentCollectionView selectItemAtIndexPath:self.selectedPlantIndexPath animated:TRUE scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    [self.departmentCollectionView reloadData];
 }
 
 
@@ -76,9 +76,9 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
     cell.layer.masksToBounds = YES;
     cell.layer.cornerRadius = 6;
     cell.departmentNameLabel.text = plant.name;
-    if([self.selectedPlantIndexPath isEqual:indexPath])
+    if(self.selectedPlantIndexPath.row ==indexPath.row)
     {
-        cell.backgroundColor = [UIColor redColor];
+        cell.backgroundColor = [UIColor LARSkyBlueColor];
         cell.departmentNameLabel.textColor = [UIColor whiteColor];
         cell.selected =true;
     }
@@ -103,7 +103,6 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-    NSLog(@"deselected");
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

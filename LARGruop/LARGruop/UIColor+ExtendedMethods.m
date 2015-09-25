@@ -20,7 +20,10 @@
     
     return [UIColor colorWithRed:components[0] green:components[1] blue:components[2] alpha:alpha];
 }
-
++(UIColor*)LARSkyBlueColor
+{
+    return UIColorFromRGB(0x336FC7);
+}
 +(UIColor*)LAROrangeColor
 {
     return UIColorFromRGB(0xEE6F00);

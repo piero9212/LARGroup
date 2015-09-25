@@ -120,6 +120,8 @@
             testProyect.minPrice = @"100000";
             testProyect.name = @"Duplo";
             testProyect.proyectDescription = @"Ahora tu espacio interior te impulsa a crecer. Duplo esta ubicado en la avenida Brasil, un espacio privilegiado, cerca de los principales centros culturales, de esparcimiento y comercio de Lima";
+            testProyect.panoramicImageURL = @"http://osullivanproperty.co.uk/site/wp-content/uploads/2015/02/Queens-Wharf.jpg";
+            testProyect.videoURL =@"https://drive.google.com/open?id=0B9r-9LF3WWjwN3ZGdVV1NWhaR2s";
             testProyect.longitude = @-77.0195246;
             testProyect.latitud = @-12.1016933;
             [testProyect addFeaturesObject:testFeature1];
@@ -239,6 +241,8 @@
             testProyect2.minPrice = @"40000";
             testProyect2.name = @"Nesta";
             testProyect2.proyectDescription = @"Todo lo que quieres en un departamento, mas las comodidad de tener el real plaza salaverry a un par de cuadras de tu casa, eso y mas aqui";
+            testProyect2.panoramicImageURL = @"http://www.swinerton.com/uploads/BlogPost/150/headerImageFull/Header_Blog.jpg";
+            testProyect2.videoURL =@"https://drive.google.com/open?id=0B9r-9LF3WWjwN3ZGdVV1NWhaR2s";
             testProyect2.longitude = @-77.0199669;
             testProyect2.latitud =@-12.116381;
             
@@ -264,6 +268,8 @@
             testProyect3.minPrice = @"70000";
             testProyect3.name = @"Velia";
             testProyect3.proyectDescription = @"Ahora intentamos parafrasear otra descripcion bonita para que puedas comprar este departamento y lleves a tu familia al siguiente nivel de confort";
+            testProyect3.panoramicImageURL=@"http://www.hiltonhead.com/wp-content/uploads/folley-panoramic-2.jpg";
+            testProyect3.videoURL =@"https://drive.google.com/open?id=0B9r-9LF3WWjwN3ZGdVV1NWhaR2s";
             testProyect3.longitude = @-76.9630458;
             testProyect3.latitud = @-12.1041621;
             

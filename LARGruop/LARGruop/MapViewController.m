@@ -126,7 +126,7 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
         [pinView addSubview:border];
         [pinView sendSubviewToBack:border];
         pinView.image = image;
-        pinView.annotation = annotation;
+        pinView.proyectAnnotation = annotation;
     }
     return pinView;
     

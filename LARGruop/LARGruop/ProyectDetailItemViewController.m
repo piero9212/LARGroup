@@ -11,6 +11,8 @@
 #import "ProyectDetailLocateViewController.h"
 #import "ProyectDetailOutsideViewController.h"
 #import "ProyectDetailOutsidesViewController.h"
+#import "ProyectDetailPanoramicViewController.h"
+#import "ProyectDetailVideoViewController.h"
 
 @interface ProyectDetailItemViewController ()
 
@@ -93,12 +95,18 @@
             ((ProyectDetailOutsidesViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
             ((ProyectDetailOutsidesViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
-//        case ProyectDetailItemTypePanoramic:
-//            destinationVC = (pro*)[self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
-//            break;
-//        case ProyectDetailItemTypeVideo:
-//            destinationVC = (MapViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
-//            break;
+        case ProyectDetailItemTypePanoramic:
+            self.proyectDetailItemLabel.text = @"Vista Panorámica";
+            destinationVC = (ProyectDetailPanoramicViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailPanoramicViewController"];
+            ((ProyectDetailPanoramicViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
+            ((ProyectDetailPanoramicViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
+            break;
+        case ProyectDetailItemTypeVideo:
+            self.proyectDetailItemLabel.text = @"Video";
+            destinationVC = (ProyectDetailVideoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailVideoViewController"];
+            ((ProyectDetailVideoViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
+            ((ProyectDetailVideoViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
+            break;
         default:
             destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];
             break;

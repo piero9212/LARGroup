@@ -23,6 +23,8 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 @property (weak, nonatomic) IBOutlet UIButton *locateButton;
 @property (weak, nonatomic) IBOutlet UIButton *outsideButton;
 @property (weak, nonatomic) IBOutlet UIButton *departmentButton;
+@property (weak, nonatomic) IBOutlet UIButton *videoButton;
+@property (weak, nonatomic) IBOutlet UIButton *panoramicButton;
 @end
 
 @implementation ProyectDetailViewController
@@ -108,6 +110,14 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
         else if([sender isEqual:self.departmentButton])
         {
             destinationVC.itemType = ProyectDetailItemTypeDepartaments;
+        }
+        else if([sender isEqual:self.videoButton])
+        {
+            destinationVC.itemType = ProyectDetailItemTypeVideo;
+        }
+        else if([sender isEqual:self.panoramicButton])
+        {
+            destinationVC.itemType = ProyectDetailItemTypePanoramic;
         }
         destinationVC.selectedProyectID = self.selectedProyectID;
     }

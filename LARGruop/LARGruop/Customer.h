@@ -2,7 +2,7 @@
 //  Customer.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 24/09/15.
+//  Created by piero.sifuentes on 25/09/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * interestLevel;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * phoneNumber;
+@property (nonatomic, retain) NSDate * registerDate;
 @property (nonatomic, retain) NSSet *marketRates;
 @end
 
