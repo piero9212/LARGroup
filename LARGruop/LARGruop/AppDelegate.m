@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     [self setupApp];
     [self firstRunApp];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSLog(@"%@",[paths objectAtIndex:0]);
     return YES;
 }
 
@@ -283,7 +285,9 @@
             [testProyect3 addOutsideImagesObject:testOutside7];
             [testProyect3 addOutsideImagesObject:testOutside8];
             
-            MarketRates* testRate1 = [MarketRates MR_createEntityInContext:localContext];
+            
+            
+            MarketRates* testRate1 = [MarketRates MR_createEntity];
             testRate1.interestLevel = @3;
             testRate1.name = @"Cotizacion 1";
             testRate1.marketRateID = @"XASD31";
@@ -308,80 +312,94 @@
             testRate4.proyect = testProyect;
             
             Customer *testCust1 =[Customer MR_createEntityInContext:localContext];
+            testCust1.uid = @"c31233";
             testCust1.firstName = @"Jose";
             testCust1.lastName = @"Perez";
             testCust1.email = @"user@testCust1.com";
             testCust1.interestLevel = @3;
-            testRate1.customer = testCust1;
-            testRate2.customer = testCust1;
-            testRate4.customer = testCust1;
             
             Customer *testCust2 =[Customer MR_createEntityInContext:localContext];
+            testCust2.uid = @"c31234";
             testCust2.firstName = @"Sofia";
             testCust2.lastName = @"Vergara";
             testCust2.email = @"user@testCust2.com";
             testCust2.interestLevel = @1;
             
             Customer *testCust3 =[Customer MR_createEntityInContext:localContext];
+            testCust3.uid = @"c31235";
             testCust3.firstName = @"Fredy";
             testCust3.lastName = @"Juarez";
             testCust3.email = @"user@testCust3.com";
             testCust3.interestLevel = @3;
             
             Customer *testCust4 =[Customer MR_createEntityInContext:localContext];
+            testCust4.uid = @"c31236";
             testCust4.firstName = @"Laura";
             testCust4.lastName = @"Paez";
             testCust4.email = @"user@testCust4.com";
             testCust4.interestLevel = @1;
             
             Customer *testCust5 =[Customer MR_createEntityInContext:localContext];
+            testCust5.uid = @"c31237";
             testCust5.firstName = @"Rosa";
             testCust5.lastName = @"Orto";
             testCust5.email = @"user@testCust5.com";
             testCust5.interestLevel = @2;
             
             Customer *testCust6 =[Customer MR_createEntityInContext:localContext];
+            testCust6.uid = @"c31238";
             testCust6.firstName = @"Ana";
             testCust6.lastName = @"Solano";
             testCust6.email = @"user@testCust6.com";
             testCust6.interestLevel = @3;
             
             Customer *testCust7 =[Customer MR_createEntityInContext:localContext];
+            testCust7.uid = @"c31239";
             testCust7.firstName = @"Miguel";
             testCust7.lastName = @"Vionee";
             testCust7.email = @"user@testCust7.com";
             testCust7.interestLevel = @1;
             
             Customer *testCust8 =[Customer MR_createEntityInContext:localContext];
+            testCust8.uid = @"c31230";
             testCust8.firstName = @"Lucas";
             testCust8.lastName = @"Volucas";
             testCust8.email = @"user@testCust8.com";
             testCust8.interestLevel = @1;
             
             Customer *testCust9 =[Customer MR_createEntityInContext:localContext];
+            testCust9.uid = @"c31231";
             testCust9.firstName = @"Andre";
             testCust9.lastName = @"Torres";
             testCust9.email = @"user@testCust9.com";
             testCust9.interestLevel = @3;
             
             Customer *testCust10 =[Customer MR_createEntityInContext:localContext];
+            testCust10.uid = @"c31232";
             testCust10.firstName = @"Cristiano";
             testCust10.lastName = @"Ronaldo";
             testCust10.email = @"user@testCust10.com";
             testCust10.interestLevel = @2;
-            testRate3.customer = testCust10;
             
             Customer *testCust11 =[Customer MR_createEntityInContext:localContext];
+            testCust11.uid = @"c312310";
             testCust11.firstName = @"Andre";
             testCust11.lastName = @"Cevillano";
             testCust11.email = @"user@testCust11.com";
             testCust11.interestLevel = @2;
             
             Customer *testCust12 =[Customer MR_createEntityInContext:localContext];
+            testCust12.uid = @"c312311";
             testCust12.firstName = @"Carmen";
             testCust12.lastName = @"Electra";
             testCust12.email = @"user@testCust12.com";
             testCust12.interestLevel = @2;
+            
+            
+            [testCust1 addMarketRatesObject:testRate1];
+            [testCust1 addMarketRatesObject:testRate2];
+            [testCust6 addMarketRatesObject:testRate3];
+            [testCust4 addMarketRatesObject:testRate4];
             
         } completion:nil];
         [defaults setObject:[NSDate date] forKey:@"firstRun"];

@@ -115,7 +115,7 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
         NSIndexPath *indexPath = [self.customerTableView indexPathForSelectedRow];
         Customer *object = [self objectAtIndexPath:indexPath];
         CustomerDetailViewController *controller = (CustomerDetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
+        [controller setSelectedCustomerUID:object.uid];
         [controller reloadTable];
     }
 }

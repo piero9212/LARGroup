@@ -121,87 +121,6 @@ static NSString * const STORE_NAME = @"LARGruop";
     [MagicalRecord cleanUp];
 }
 
-- (void)setupDatabase
-{
-
-    NSPersistentStoreCoordinator *psc = [NSPersistentStoreCoordinator MR_coordinatorWithSqliteStoreNamed:STORE_NAME];
-    NSString *sourceStoreType = NSSQLiteStoreType;
-    NSURL *sourceStoreURL = [NSPersistentStore MR_urlForStoreName:STORE_NAME];
-    NSError *error = nil;
-    
-    NSDictionary *sourceMetadata =
-    [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:sourceStoreType
-                                                               URL:sourceStoreURL
-                                                             error:&error];
-    
-    if (sourceMetadata == nil) {
-        // deal with error
-    }
-    
-    NSString *configuration = nil;
-    NSManagedObjectModel *destinationModel = [psc managedObjectModel];
-    BOOL pscCompatibile = [destinationModel
-                           isConfiguration:configuration
-                           compatibleWithStoreMetadata:sourceMetadata];
-    
-    if (pscCompatibile) {
-        // no need to migrate
-        [MagicalRecord setupCoreDataStackWithStoreNamed:STORE_NAME];
-    }
-    else {
-        
-        //NSURL *storeURL = [sourceStoreURL URLByAppendingPathComponent:[STORE_NAME stringByAppendingString:@"mom"]];
-        
-        NSString *documentDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-        NSBundle *bundleSourceModel = [NSBundle bundleWithPath:[NSBundle pathForResource:STORE_NAME ofType:@"sqlite" inDirectory:documentDir]];
-        
-        NSArray *bundlesForSourceModel = @[bundleSourceModel];/* an array of bundles, or nil for the main bundle */
-        NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:bundlesForSourceModel
-                                                                        forStoreMetadata:sourceMetadata];
-        
-        if (sourceModel == nil) {
-            // deal with error
-        }
-        
-        NSMigrationManager *migrationManager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel
-                                                                              destinationModel:destinationModel];
-        
-        
-        NSMappingModel *firstMappingModel = [[NSMappingModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"MappingModel_1.1.6_1.3" withExtension:@"cdm"]];
-        NSArray *bundlesForMappingModel = @[firstMappingModel];/* an array of bundles, or nil for the main bundle */ ;
-        NSError *error = nil;
-        
-        NSMappingModel *mappingModel = [NSMappingModel mappingModelFromBundles:bundlesForMappingModel
-                                                                forSourceModel:sourceModel
-                                                              destinationModel:destinationModel];
-        
-        if (mappingModel == nil) {
-            // deal with the error
-        }
-        
-        
-        
-        NSDictionary *sourceStoreOptions = nil /* options for the source store */ ;
-        NSURL *destinationStoreURL = [NSPersistentStore MR_urlForStoreName:[STORE_NAME stringByAppendingString:@"migration"]]/* URL for the destination store */ ;
-        NSString *destinationStoreType = NSSQLiteStoreType /* type for the destination store */ ;
-        NSDictionary *destinationStoreOptions = nil; /* options for the destination store */ ;
-        
-        BOOL ok = [migrationManager migrateStoreFromURL:sourceStoreURL
-                                                   type:sourceStoreType
-                                                options:sourceStoreOptions
-                                       withMappingModel:mappingModel
-                                       toDestinationURL:destinationStoreURL
-                                        destinationType:destinationStoreType
-                                     destinationOptions:destinationStoreOptions
-                                                  error:&error];
-        
-        if (ok) {
-            //delete old store and rename the new store
-        }
-        
-        
-    }
-}
 
 - (void)MR_SetupDatabase
 {
@@ -240,7 +159,6 @@ static NSString * const STORE_NAME = @"LARGruop";
 
 - (BOOL)errorIsNotFoundErrorWithOperation:(AFHTTPRequestOperation *)operation error:(NSError *)error
 {
-    //HaikuClient *client = [HaikuClient sharedClient];
     BOOL networkIsReachable = [AFNetworkReachabilityManager sharedManager].reachable;
     
     if (networkIsReachable) {

@@ -45,7 +45,8 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 
 -(void)setupVars
 {
-    self.marketRates = [NSArray arrayWithArray:[self.selectedCustomer.marketRates allObjects]];
+    Customer* selectedCustomer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
+    self.marketRates = [NSArray arrayWithArray:[selectedCustomer.marketRates allObjects]];
 }
 
 #pragma mark -

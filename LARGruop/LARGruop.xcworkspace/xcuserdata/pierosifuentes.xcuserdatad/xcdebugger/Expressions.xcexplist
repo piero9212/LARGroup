@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[CustomerInfoViewController tableView:cellForRowAtIndexPath:]:CustomerInfoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedCustomer.firstName">
+            </PersistentString>
+            <PersistentString
+               value = "self.customerSelected.firstName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__26-[AppDelegate firstRunApp]_block_invoke:AppDelegate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "testRate2">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

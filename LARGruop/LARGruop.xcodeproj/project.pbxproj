@@ -40,6 +40,8 @@
 		353E64FC1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E64FB1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m */; };
 		353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65001B9F6BB70004E4F2 /* ProyectCollectionViewCell.m */; };
 		353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65041B9F729F0004E4F2 /* TopBarViewController.m */; };
+		353FB9261BBF143400DA94F5 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 353FB9251BBF143400DA94F5 /* Customer.m */; };
+		353FB9291BBF143500DA94F5 /* MarketRates.m in Sources */ = {isa = PBXBuildFile; fileRef = 353FB9281BBF143500DA94F5 /* MarketRates.m */; };
 		3541E21B1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E21A1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m */; };
 		3541E21E1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E21D1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m */; };
 		3541E2211BB59C0200BD6AF9 /* FlatFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2201BB59C0200BD6AF9 /* FlatFeature.m */; };
@@ -48,9 +50,7 @@
 		3541E22A1BB59C0300BD6AF9 /* Promo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2291BB59C0300BD6AF9 /* Promo.m */; };
 		3541E22D1BB59C0300BD6AF9 /* Outside.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E22C1BB59C0300BD6AF9 /* Outside.m */; };
 		3541E2301BB59C0300BD6AF9 /* ProyectFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E22F1BB59C0300BD6AF9 /* ProyectFeature.m */; };
-		3541E2331BB59C0300BD6AF9 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2321BB59C0300BD6AF9 /* Customer.m */; };
 		3541E2361BB59C0300BD6AF9 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2351BB59C0300BD6AF9 /* Entity.m */; };
-		3541E2391BB59C0300BD6AF9 /* MarketRates.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2381BB59C0300BD6AF9 /* MarketRates.m */; };
 		3541E23C1BB59C0300BD6AF9 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E23B1BB59C0300BD6AF9 /* Plant.m */; };
 		3541E23F1BB59C0300BD6AF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E23E1BB59C0300BD6AF9 /* User.m */; };
 		3541E2421BB59C0400BD6AF9 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2411BB59C0400BD6AF9 /* Proyect.m */; };
@@ -165,6 +165,10 @@
 		353E65031B9F729F0004E4F2 /* TopBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarViewController.h; sourceTree = "<group>"; };
 		353E65041B9F729F0004E4F2 /* TopBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarViewController.m; sourceTree = "<group>"; };
 		353E65071B9F76BD0004E4F2 /* TopBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBarProtocol.h; sourceTree = "<group>"; };
+		353FB9241BBF143400DA94F5 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		353FB9251BBF143400DA94F5 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		353FB9271BBF143500DA94F5 /* MarketRates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketRates.h; sourceTree = "<group>"; };
+		353FB9281BBF143500DA94F5 /* MarketRates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketRates.m; sourceTree = "<group>"; };
 		3541E2191BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailPanoramicViewController.h; sourceTree = "<group>"; };
 		3541E21A1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailPanoramicViewController.m; sourceTree = "<group>"; };
 		3541E21C1BB5951100BD6AF9 /* ProyectDetailVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailVideoViewController.h; sourceTree = "<group>"; };
@@ -181,12 +185,8 @@
 		3541E22C1BB59C0300BD6AF9 /* Outside.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outside.m; sourceTree = "<group>"; };
 		3541E22E1BB59C0300BD6AF9 /* ProyectFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectFeature.h; sourceTree = "<group>"; };
 		3541E22F1BB59C0300BD6AF9 /* ProyectFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectFeature.m; sourceTree = "<group>"; };
-		3541E2311BB59C0300BD6AF9 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
-		3541E2321BB59C0300BD6AF9 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
 		3541E2341BB59C0300BD6AF9 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		3541E2351BB59C0300BD6AF9 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
-		3541E2371BB59C0300BD6AF9 /* MarketRates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketRates.h; sourceTree = "<group>"; };
-		3541E2381BB59C0300BD6AF9 /* MarketRates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketRates.m; sourceTree = "<group>"; };
 		3541E23A1BB59C0300BD6AF9 /* Plant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
 		3541E23B1BB59C0300BD6AF9 /* Plant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
 		3541E23D1BB59C0300BD6AF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -602,18 +602,18 @@
 		353D96751B9DFC9D00E4A618 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				353FB9271BBF143500DA94F5 /* MarketRates.h */,
+				353FB9281BBF143500DA94F5 /* MarketRates.m */,
+				353FB9241BBF143400DA94F5 /* Customer.h */,
+				353FB9251BBF143400DA94F5 /* Customer.m */,
 				3541E2401BB59C0400BD6AF9 /* Proyect.h */,
 				3541E2411BB59C0400BD6AF9 /* Proyect.m */,
 				3541E23D1BB59C0300BD6AF9 /* User.h */,
 				3541E23E1BB59C0300BD6AF9 /* User.m */,
 				3541E23A1BB59C0300BD6AF9 /* Plant.h */,
 				3541E23B1BB59C0300BD6AF9 /* Plant.m */,
-				3541E2371BB59C0300BD6AF9 /* MarketRates.h */,
-				3541E2381BB59C0300BD6AF9 /* MarketRates.m */,
 				3541E2341BB59C0300BD6AF9 /* Entity.h */,
 				3541E2351BB59C0300BD6AF9 /* Entity.m */,
-				3541E2311BB59C0300BD6AF9 /* Customer.h */,
-				3541E2321BB59C0300BD6AF9 /* Customer.m */,
 				3541E22E1BB59C0300BD6AF9 /* ProyectFeature.h */,
 				3541E22F1BB59C0300BD6AF9 /* ProyectFeature.m */,
 				3541E22B1BB59C0300BD6AF9 /* Outside.h */,
@@ -1070,7 +1070,6 @@
 				3560F7981BAA085E0061BAD4 /* ProyectFeaturesViewController.m in Sources */,
 				353D967F1B9E154A00E4A618 /* BaseViewController.m in Sources */,
 				353D96821B9E157A00E4A618 /* InitViewController.m in Sources */,
-				3541E2391BB59C0300BD6AF9 /* MarketRates.m in Sources */,
 				3560F7A21BAA20B30061BAD4 /* FeatureTableViewCell.m in Sources */,
 				353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */,
 				3560F79B1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m in Sources */,
@@ -1084,6 +1083,7 @@
 				763EF9801BA9344B003D1E4F /* LoginService.m in Sources */,
 				7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */,
 				352FA68B1BA0CFF800FEC040 /* CustomerMasterViewController.m in Sources */,
+				353FB9291BBF143500DA94F5 /* MarketRates.m in Sources */,
 				352FA6881BA0CFE400FEC040 /* CustomerDetailViewController.m in Sources */,
 				354526051BB499DB00D14FF8 /* DepartmentCollectionViewCell.m in Sources */,
 				760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */,
@@ -1115,10 +1115,10 @@
 				3584DFB91BB0C4CE00DDE5CD /* CustomerRateDetailViewController.m in Sources */,
 				353D96961B9E3AD200E4A618 /* ForgetViewController.m in Sources */,
 				763EF9731BA91688003D1E4F /* GenericConnectionManager.m in Sources */,
+				353FB9261BBF143400DA94F5 /* Customer.m in Sources */,
 				763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */,
 				353E64F11B9F46F40004E4F2 /* ProfileViewController.m in Sources */,
 				3541E23C1BB59C0300BD6AF9 /* Plant.m in Sources */,
-				3541E2331BB59C0300BD6AF9 /* Customer.m in Sources */,
 				353D96921B9E2B1F00E4A618 /* UITextField+ExtendedMethods.m in Sources */,
 				353E64F91B9F4C470004E4F2 /* MapViewController.m in Sources */,
 				353E64FC1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m in Sources */,

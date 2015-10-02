@@ -2,7 +2,7 @@
 //  MarketRates.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 25/09/15.
+//  Created by piero.sifuentes on 2/10/15.
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
@@ -18,9 +18,9 @@
 @dynamic interestLevel;
 @dynamic marketRateID;
 @dynamic name;
-@dynamic customer;
 @dynamic flat;
 @dynamic floor;
 @dynamic proyect;
+@dynamic customer;
 
 @end

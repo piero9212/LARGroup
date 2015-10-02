@@ -72,29 +72,31 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
     
-    if(self.customerSelected)
+    Customer* selectedCustomer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
+    if(selectedCustomer)
     {
+        
         if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nombre"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",self.customerSelected.firstName,self.customerSelected.lastName];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",selectedCustomer.firstName,selectedCustomer.lastName];
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Correo"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            cell.textLabel.text = self.customerSelected.email;
+            cell.textLabel.text = selectedCustomer.email;
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Teléfono"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            cell.textLabel.text = self.customerSelected.phoneNumber;
+            cell.textLabel.text = selectedCustomer.phoneNumber;
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nivel de interes"])
         {
             cell = [tableView dequeueReusableCellWithIdentifier:CUSTOMER_RATING_SELECTED_CELL forIndexPath:indexPath];
             ((CustomerInterestLevelTableViewCell*)cell).startRating.starImage = [UIImage imageNamed:@"unDot"];
             ((CustomerInterestLevelTableViewCell*)cell).startRating.starHighlightedImage = [UIImage imageNamed:@"dot"];
-            ((CustomerInterestLevelTableViewCell*)cell).startRating.rating = self.customerSelected.interestLevel.floatValue;
+            ((CustomerInterestLevelTableViewCell*)cell).startRating.rating = selectedCustomer.interestLevel.floatValue;
             ((CustomerInterestLevelTableViewCell*)cell).startRating.maxRating = 3.0;
             ((CustomerInterestLevelTableViewCell*)cell).startRating.delegate = self;
             ((CustomerInterestLevelTableViewCell*)cell).startRating.horizontalMargin = 12;
@@ -105,8 +107,8 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Cotizaciones enviadas"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            NSInteger marketRates = [NSArray arrayWithArray:[self.customerSelected.marketRates allObjects]].count;
-            cell.textLabel.text = [NSString stringWithFormat:@"%ld",marketRates];
+            NSArray* customerMarketRates = [NSArray arrayWithArray:[selectedCustomer.marketRates allObjects]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)customerMarketRates.count];
         }
 
     }

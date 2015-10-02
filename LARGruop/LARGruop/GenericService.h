@@ -28,7 +28,6 @@ typedef void(^RequestSuccessErrorHandlingBlock)(NSManagedObjectContext *context,
 + (GenericService *)sharedService;
 
 - (void)cleanUpDatabase;
-- (void)setupDatabase;
 - (void)MR_SetupDatabase;
 - (void)dropDatabase;
 - (void)resetDatabase;

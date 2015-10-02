@@ -39,9 +39,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setDetailItem:(id)newDetailItem {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+- (void)setSelectedCustomerUID:(id)newSelectedCustomerUID {
+    if (_selectedCustomerUID != newSelectedCustomerUID) {
+        _selectedCustomerUID = newSelectedCustomerUID;
         
         // Update the view.
         [self configureView];
@@ -50,7 +50,7 @@
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    if (self.detailItem) {
+    if (self.selectedCustomerUID) {
     }
 }
 
@@ -65,19 +65,19 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             destinationVC = (CustomerInfoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CustomerInfoViewController"];
-            ((CustomerInfoViewController*)destinationVC).customerSelected =  self.detailItem;
+            ((CustomerInfoViewController*)destinationVC).selectedCustomerUID =  self.selectedCustomerUID;
             [self reloadTable];
             break;
         case 1:
             destinationVC = (CustomerMarketRateViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CustomerMarketRateViewController"];
-            ((CustomerMarketRateViewController*)destinationVC).selectedCustomer =  self.detailItem;
+            ((CustomerMarketRateViewController*)destinationVC).selectedCustomerUID =  self.selectedCustomerUID;
             ((CustomerMarketRateViewController*)destinationVC).containerSize = self.customerInfoContainerView.frame.size;
             [self reloadTable];
             break;
             
         default:
             destinationVC = (CustomerInfoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"CustomerInfoViewController"];
-            ((CustomerInfoViewController*)destinationVC).customerSelected =  self.detailItem;
+            ((CustomerInfoViewController*)destinationVC).selectedCustomerUID =  self.selectedCustomerUID;
             break;
     }
     [self setViewControllerChildWith:destinationVC from:currentVC];
@@ -151,7 +151,7 @@
     UIViewController* destVC= segue.destinationViewController;
     if([segue.destinationViewController isKindOfClass:[CustomerInfoViewController class]])
     {
-        ((CustomerInfoViewController*)destVC).customerSelected=self.detailItem;
+        ((CustomerInfoViewController*)destVC).selectedCustomerUID=self.selectedCustomerUID;
     }
 }
 

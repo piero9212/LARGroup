@@ -11,7 +11,7 @@
 
 @interface CustomerInfoViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,EDStarRatingProtocol>
 
-@property (nonatomic,strong) Customer* customerSelected;
+@property (nonatomic,strong) NSString* selectedCustomerUID;
 @property (weak, nonatomic) IBOutlet UITableView *customerInfoTableView;
 
 @end

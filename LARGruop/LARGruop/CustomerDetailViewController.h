@@ -10,6 +10,6 @@
 
 @interface CustomerDetailViewController : BaseViewController
 
-@property (strong, nonatomic) Customer* detailItem;
+@property (strong, nonatomic) NSString* selectedCustomerUID;
 -(void)reloadTable;
 @end

@@ -1755,13 +1755,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-2t-oql">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-2t-oql">
                                 <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                                 <connections>
                                     <segue destination="LA0-EN-YqQ" kind="embed" id="d14-eJ-cbo"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBv-D5-w4i">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBv-D5-w4i">
                                 <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-xb-2k6">
@@ -1804,7 +1804,7 @@
                             <constraint firstItem="YkX-2t-oql" firstAttribute="top" secondItem="pBv-D5-w4i" secondAttribute="bottom" id="UIa-hX-Tob"/>
                             <constraint firstAttribute="bottom" secondItem="YkX-2t-oql" secondAttribute="bottom" id="Z3a-6E-h9w"/>
                             <constraint firstItem="YkX-2t-oql" firstAttribute="leading" secondItem="1im-GR-N1o" secondAttribute="leading" id="dOp-3L-lHV"/>
-                            <constraint firstItem="pBv-D5-w4i" firstAttribute="top" secondItem="SJl-Lf-CQj" secondAttribute="bottom" id="fm9-nN-wxr"/>
+                            <constraint firstItem="pBv-D5-w4i" firstAttribute="top" secondItem="SJl-Lf-CQj" secondAttribute="bottom" constant="20" id="fm9-nN-wxr"/>
                             <constraint firstItem="pBv-D5-w4i" firstAttribute="leading" secondItem="1im-GR-N1o" secondAttribute="leading" id="sO8-1T-jup"/>
                             <constraint firstAttribute="trailing" secondItem="YkX-2t-oql" secondAttribute="trailing" id="udJ-gd-V1B"/>
                         </constraints>
@@ -1941,7 +1941,7 @@
                     <connections>
                         <outlet property="departmentCollectionView" destination="9Lf-nf-ay8" id="WKF-gv-nhc"/>
                         <outlet property="departmentPlanWebView" destination="94B-nk-XmZ" id="wFi-gh-4it"/>
-                        <segue destination="57l-YB-G0c" kind="presentation" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="SIJ-ZM-L8F"/>
+                        <segue destination="57l-YB-G0c" kind="presentation" identifier="FLAT_INFO_SEGUE" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="SIJ-ZM-L8F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pP7-O4-kkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
