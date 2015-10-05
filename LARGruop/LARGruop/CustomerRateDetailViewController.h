@@ -10,6 +10,6 @@
 
 @interface CustomerRateDetailViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) MarketRates* rate;
+@property (nonatomic,strong) Rate* rate;
 
 @end

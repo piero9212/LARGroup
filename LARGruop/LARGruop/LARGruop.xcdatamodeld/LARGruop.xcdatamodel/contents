@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14A389" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
     <entity name="Customer" representedClassName="Customer" parentEntity="Entity" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,7 +7,7 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="registerDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="marketRates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MarketRate" inverseName="customer" inverseEntity="MarketRate" syncable="YES"/>
+        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="customer" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
         <attribute name="changeState" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -21,8 +21,8 @@
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="floors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="flat" inverseEntity="Floor" syncable="YES"/>
-        <relationship name="markRates" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarketRate" inverseName="flat" inverseEntity="MarketRate" syncable="YES"/>
         <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="flats" inverseEntity="Plant" syncable="YES"/>
+        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="flat" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="FlatFeature" representedClassName="FlatFeature" parentEntity="Entity" syncable="YES">
         <attribute name="featureDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,16 +31,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="flat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flat" inverseName="floors" inverseEntity="Flat" syncable="YES"/>
-        <relationship name="marketRates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MarketRate" inverseName="floor" inverseEntity="MarketRate" syncable="YES"/>
-    </entity>
-    <entity name="MarketRate" representedClassName="MarketRates" parentEntity="Entity" syncable="YES">
-        <attribute name="interestLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="marketRateID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="marketRates" inverseEntity="Customer" syncable="YES"/>
-        <relationship name="flat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flat" inverseName="markRates" inverseEntity="Flat" syncable="YES"/>
-        <relationship name="floor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="marketRates" inverseEntity="Floor" syncable="YES"/>
-        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="marketRates" inverseEntity="Proyect" syncable="YES"/>
+        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="floor" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="Outside" representedClassName="Outside" parentEntity="Entity" syncable="YES">
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -73,13 +64,21 @@
         <attribute name="proyectDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="features" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProyectFeature" inverseName="proyect" inverseEntity="ProyectFeature" syncable="YES"/>
-        <relationship name="marketRates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MarketRate" inverseName="proyect" inverseEntity="MarketRate" syncable="YES"/>
         <relationship name="outsideImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Outside" inverseName="proyect" inverseEntity="Outside" syncable="YES"/>
         <relationship name="plants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Plant" inverseName="proyect" inverseEntity="Plant" syncable="YES"/>
+        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="proyect" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="ProyectFeature" representedClassName="ProyectFeature" parentEntity="Entity" syncable="YES">
         <attribute name="featureDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="proyect" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Proyect" inverseName="features" inverseEntity="Proyect" syncable="YES"/>
+    </entity>
+    <entity name="Rate" representedClassName="Rate" parentEntity="Entity" syncable="YES">
+        <attribute name="interestLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="rates" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="flat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flat" inverseName="rates" inverseEntity="Flat" syncable="YES"/>
+        <relationship name="floor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="rates" inverseEntity="Floor" syncable="YES"/>
+        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="rates" inverseEntity="Proyect" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" parentEntity="Entity" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -94,12 +93,12 @@
         <element name="Flat" positionX="-9" positionY="117" width="128" height="165"/>
         <element name="FlatFeature" positionX="-9" positionY="153" width="128" height="60"/>
         <element name="Floor" positionX="0" positionY="162" width="128" height="105"/>
-        <element name="MarketRate" positionX="-36" positionY="54" width="128" height="150"/>
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
         <element name="Plant" positionX="-27" positionY="144" width="128" height="105"/>
         <element name="Promo" positionX="-36" positionY="135" width="128" height="60"/>
         <element name="Proyect" positionX="-36" positionY="54" width="128" height="330"/>
         <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
         <element name="User" positionX="-36" positionY="135" width="128" height="120"/>
+        <element name="Rate" positionX="-27" positionY="135" width="128" height="135"/>
     </elements>
 </model>

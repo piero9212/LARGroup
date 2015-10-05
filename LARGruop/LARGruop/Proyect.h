@@ -2,59 +2,23 @@
 //  Proyect.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 25/09/15.
-//  Copyright (c) 2015 prsp.org. All rights reserved.
+//  Created by Piero on 4/10/15.
+//  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 #import "Entity.h"
 
-@class MarketRates, Outside, Plant, ProyectFeature;
+@class Outside, Plant, ProyectFeature, Rate;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface Proyect : Entity
 
-@property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSString * district;
-@property (nonatomic, retain) NSString * imageURL;
-@property (nonatomic, retain) NSNumber * latitud;
-@property (nonatomic, retain) NSNumber * leftDepartaments;
-@property (nonatomic, retain) NSString * listImageURL;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSString * mapDescription;
-@property (nonatomic, retain) NSString * mapImageURL;
-@property (nonatomic, retain) NSString * maxPrice;
-@property (nonatomic, retain) NSString * minPrice;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * panoramicImageURL;
-@property (nonatomic, retain) NSString * proyectDescription;
-@property (nonatomic, retain) NSString * videoURL;
-@property (nonatomic, retain) NSSet *features;
-@property (nonatomic, retain) NSSet *marketRates;
-@property (nonatomic, retain) NSSet *outsideImages;
-@property (nonatomic, retain) NSSet *plants;
-@end
-
-@interface Proyect (CoreDataGeneratedAccessors)
-
-- (void)addFeaturesObject:(ProyectFeature *)value;
-- (void)removeFeaturesObject:(ProyectFeature *)value;
-- (void)addFeatures:(NSSet *)values;
-- (void)removeFeatures:(NSSet *)values;
-
-- (void)addMarketRatesObject:(MarketRates *)value;
-- (void)removeMarketRatesObject:(MarketRates *)value;
-- (void)addMarketRates:(NSSet *)values;
-- (void)removeMarketRates:(NSSet *)values;
-
-- (void)addOutsideImagesObject:(Outside *)value;
-- (void)removeOutsideImagesObject:(Outside *)value;
-- (void)addOutsideImages:(NSSet *)values;
-- (void)removeOutsideImages:(NSSet *)values;
-
-- (void)addPlantsObject:(Plant *)value;
-- (void)removePlantsObject:(Plant *)value;
-- (void)addPlants:(NSSet *)values;
-- (void)removePlants:(NSSet *)values;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "Proyect+CoreDataProperties.h"

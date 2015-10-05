@@ -2,21 +2,21 @@
 //  User.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 25/09/15.
-//  Copyright (c) 2015 prsp.org. All rights reserved.
+//  Created by Piero on 4/10/15.
+//  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 #import "Entity.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface User : Entity
 
-@property (nonatomic, retain) NSString * firstName;
-@property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSString * password;
-@property (nonatomic, retain) NSString * profileImageURL;
-@property (nonatomic, retain) NSString * username;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "User+CoreDataProperties.h"

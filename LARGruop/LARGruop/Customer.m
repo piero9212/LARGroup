@@ -2,22 +2,15 @@
 //  Customer.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 2/10/15.
-//  Copyright (c) 2015 prsp.org. All rights reserved.
+//  Created by Piero on 4/10/15.
+//  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import "Customer.h"
-#import "MarketRates.h"
-
+#import "Rate.h"
 
 @implementation Customer
 
-@dynamic email;
-@dynamic firstName;
-@dynamic interestLevel;
-@dynamic lastName;
-@dynamic phoneNumber;
-@dynamic registerDate;
-@dynamic marketRates;
+// Insert code here to add functionality to your managed object subclass
 
 @end

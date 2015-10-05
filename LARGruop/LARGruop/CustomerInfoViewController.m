@@ -107,7 +107,7 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Cotizaciones enviadas"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            NSArray* customerMarketRates = [NSArray arrayWithArray:[selectedCustomer.marketRates allObjects]];
+            NSArray* customerMarketRates = [NSArray arrayWithArray:[selectedCustomer.rates allObjects]];
             cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)customerMarketRates.count];
         }
 

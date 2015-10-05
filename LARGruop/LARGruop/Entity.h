@@ -2,18 +2,21 @@
 //  Entity.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 25/09/15.
-//  Copyright (c) 2015 prsp.org. All rights reserved.
+//  Created by Piero on 4/10/15.
+//  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface Entity : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * changeState;
-@property (nonatomic, retain) NSDate * lastModified;
-@property (nonatomic, retain) NSString * uid;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "Entity+CoreDataProperties.h"

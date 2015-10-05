@@ -46,7 +46,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 -(void)setupVars
 {
     Customer* selectedCustomer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
-    self.marketRates = [NSArray arrayWithArray:[selectedCustomer.marketRates allObjects]];
+    self.marketRates = [NSArray arrayWithArray:[selectedCustomer.rates allObjects]];
 }
 
 #pragma mark -
@@ -69,7 +69,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.customerMarketRatesTableView dequeueReusableCellWithIdentifier:CUSTOMER_MARKET_RATES_CELL forIndexPath:indexPath];
     
-    MarketRates* rate = [self.marketRates objectAtIndex:indexPath.row];
+    Rate* rate = [self.marketRates objectAtIndex:indexPath.row];
     cell.textLabel.text = rate.name;
     NSString* status;
     switch (rate.interestLevel.integerValue) {
@@ -95,7 +95,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     
-    MarketRates* rate = [self.marketRates objectAtIndex:indexPath.row];
+    Rate* rate = [self.marketRates objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:MARKET_RATE_DETAIL_SEGUE sender:rate];
 }
 
@@ -108,7 +108,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     if([segue.destinationViewController isKindOfClass:[CustomerRateDetailViewController class]])
     {
         CustomerRateDetailViewController* destinatopnVC = segue.destinationViewController;
-        destinatopnVC.rate = sender;
+        destinatopnVC.rate = (Rate*)sender;
         NSLog(@"ENTRO");
     }
 }

@@ -2,18 +2,15 @@
 //  Outside.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 25/09/15.
-//  Copyright (c) 2015 prsp.org. All rights reserved.
+//  Created by Piero on 4/10/15.
+//  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import "Outside.h"
 #import "Proyect.h"
 
-
 @implementation Outside
 
-@dynamic imageURL;
-@dynamic outsideDescription;
-@dynamic proyect;
+// Insert code here to add functionality to your managed object subclass
 
 @end

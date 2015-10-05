@@ -1,5 +1,5 @@
 //
-//  FlatFeature.h
+//  Rate.h
 //  LARGruop
 //
 //  Created by Piero on 4/10/15.
@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Entity.h"
 
+@class Customer, Flat, Floor, Proyect;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FlatFeature : Entity
+@interface Rate : Entity
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -19,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "FlatFeature+CoreDataProperties.h"
+#import "Rate+CoreDataProperties.h"

@@ -285,30 +285,28 @@
             [testProyect3 addOutsideImagesObject:testOutside7];
             [testProyect3 addOutsideImagesObject:testOutside8];
             
-            
-            
-            MarketRates* testRate1 = [MarketRates MR_createEntity];
+            Rate* testRate1 = [Rate MR_createEntityInContext:localContext];
             testRate1.interestLevel = @3;
             testRate1.name = @"Cotizacion 1";
-            testRate1.marketRateID = @"XASD31";
+            testRate1.uid = @"XASD31";
             testRate1.proyect = testProyect;
             
-            MarketRates* testRate2 = [MarketRates MR_createEntityInContext:localContext];
+            Rate* testRate2 = [Rate MR_createEntityInContext:localContext];
             testRate2.interestLevel = @2;
             testRate2.name = @"Cotizacion 2";
-            testRate2.marketRateID = @"XASD12";
+            testRate2.uid = @"XASD12";
             testRate2.proyect = testProyect2;
             
-            MarketRates* testRate3 = [MarketRates MR_createEntityInContext:localContext];
+            Rate* testRate3 = [Rate MR_createEntityInContext:localContext];
             testRate3.interestLevel = @1;
             testRate3.name = @"Cotizacion 3";
-            testRate3.marketRateID = @"XASD77";
+            testRate3.uid = @"XASD77";
             testRate3.proyect = testProyect3;
             
-            MarketRates* testRate4 = [MarketRates MR_createEntityInContext:localContext];
+            Rate* testRate4 = [Rate MR_createEntityInContext:localContext];
             testRate4.interestLevel = @2;
             testRate4.name = @"Cotizacion 1";
-            testRate4.marketRateID = @"XASD00";
+            testRate4.uid = @"XASD00";
             testRate4.proyect = testProyect;
             
             Customer *testCust1 =[Customer MR_createEntityInContext:localContext];
@@ -396,10 +394,10 @@
             testCust12.interestLevel = @2;
             
             
-            [testCust1 addMarketRatesObject:testRate1];
-            [testCust1 addMarketRatesObject:testRate2];
-            [testCust6 addMarketRatesObject:testRate3];
-            [testCust4 addMarketRatesObject:testRate4];
+            [testCust1 addRatesObject:testRate1];
+            [testCust1 addRatesObject:testRate2];
+            [testCust6 addRatesObject:testRate3];
+            [testCust4 addRatesObject:testRate4];
             
         } completion:nil];
         [defaults setObject:[NSDate date] forKey:@"firstRun"];

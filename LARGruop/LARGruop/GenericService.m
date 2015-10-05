@@ -149,7 +149,7 @@ static NSString * const STORE_NAME = @"LARGruop";
         [Proyect MR_truncateAllInContext:localContext];
         [ProyectFeature MR_truncateAllInContext:localContext];
         [Outside MR_truncateAllInContext:localContext];
-        [MarketRates MR_truncateAllInContext:localContext];
+        [Rate MR_truncateAllInContext:localContext];
         [Flat MR_truncateAllInContext:localContext];
         [Customer MR_truncateAllInContext:localContext];
         [User MR_truncateAllInContext:localContext];

@@ -11,7 +11,7 @@
 #import "ProyectFeature.h"
 #import "Flat.h"
 #import "Outside.h"
-#import "MarketRates.h"
+#import "Rate.h"
 #import "Entity.h"
 #import "User.h"
 #import "Floor.h"

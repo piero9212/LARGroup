@@ -40,20 +40,8 @@
 		353E64FC1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E64FB1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m */; };
 		353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65001B9F6BB70004E4F2 /* ProyectCollectionViewCell.m */; };
 		353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E65041B9F729F0004E4F2 /* TopBarViewController.m */; };
-		353FB9261BBF143400DA94F5 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 353FB9251BBF143400DA94F5 /* Customer.m */; };
-		353FB9291BBF143500DA94F5 /* MarketRates.m in Sources */ = {isa = PBXBuildFile; fileRef = 353FB9281BBF143500DA94F5 /* MarketRates.m */; };
 		3541E21B1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E21A1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m */; };
 		3541E21E1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E21D1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m */; };
-		3541E2211BB59C0200BD6AF9 /* FlatFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2201BB59C0200BD6AF9 /* FlatFeature.m */; };
-		3541E2241BB59C0300BD6AF9 /* Floor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2231BB59C0300BD6AF9 /* Floor.m */; };
-		3541E2271BB59C0300BD6AF9 /* Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2261BB59C0300BD6AF9 /* Flat.m */; };
-		3541E22A1BB59C0300BD6AF9 /* Promo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2291BB59C0300BD6AF9 /* Promo.m */; };
-		3541E22D1BB59C0300BD6AF9 /* Outside.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E22C1BB59C0300BD6AF9 /* Outside.m */; };
-		3541E2301BB59C0300BD6AF9 /* ProyectFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E22F1BB59C0300BD6AF9 /* ProyectFeature.m */; };
-		3541E2361BB59C0300BD6AF9 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2351BB59C0300BD6AF9 /* Entity.m */; };
-		3541E23C1BB59C0300BD6AF9 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E23B1BB59C0300BD6AF9 /* Plant.m */; };
-		3541E23F1BB59C0300BD6AF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E23E1BB59C0300BD6AF9 /* User.m */; };
-		3541E2421BB59C0400BD6AF9 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3541E2411BB59C0400BD6AF9 /* Proyect.m */; };
 		354526051BB499DB00D14FF8 /* DepartmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 354526041BB499DB00D14FF8 /* DepartmentCollectionViewCell.m */; };
 		3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F77D1BA9B1960061BAD4 /* ProyectService.m */; };
 		3560F78E1BA9B2150061BAD4 /* ProyectConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3560F78D1BA9B2150061BAD4 /* ProyectConnectionManager.m */; };
@@ -74,6 +62,30 @@
 		7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */; };
 		7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */; };
 		760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */; };
+		7625492C1BC194270084CF31 /* Promo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762548FD1BC194270084CF31 /* Promo+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		7625492D1BC194270084CF31 /* Promo.m in Sources */ = {isa = PBXBuildFile; fileRef = 762548FF1BC194270084CF31 /* Promo.m */; settings = {ASSET_TAGS = (); }; };
+		7625492E1BC194270084CF31 /* Rate+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549011BC194270084CF31 /* Rate+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		7625492F1BC194270084CF31 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549031BC194270084CF31 /* Rate.m */; settings = {ASSET_TAGS = (); }; };
+		762549301BC194270084CF31 /* Customer+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549051BC194270084CF31 /* Customer+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549311BC194270084CF31 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549071BC194270084CF31 /* Customer.m */; settings = {ASSET_TAGS = (); }; };
+		762549321BC194270084CF31 /* Entity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549091BC194270084CF31 /* Entity+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549331BC194270084CF31 /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625490B1BC194270084CF31 /* Entity.m */; settings = {ASSET_TAGS = (); }; };
+		762549341BC194270084CF31 /* Flat+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625490D1BC194270084CF31 /* Flat+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549351BC194270084CF31 /* Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625490F1BC194270084CF31 /* Flat.m */; settings = {ASSET_TAGS = (); }; };
+		762549361BC194270084CF31 /* Plant+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549111BC194270084CF31 /* Plant+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549371BC194270084CF31 /* Plant.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549131BC194270084CF31 /* Plant.m */; settings = {ASSET_TAGS = (); }; };
+		762549381BC194270084CF31 /* FlatFeature+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549151BC194270084CF31 /* FlatFeature+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549391BC194270084CF31 /* FlatFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549171BC194270084CF31 /* FlatFeature.m */; settings = {ASSET_TAGS = (); }; };
+		7625493A1BC194270084CF31 /* ProyectFeature+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549191BC194270084CF31 /* ProyectFeature+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		7625493B1BC194270084CF31 /* ProyectFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625491B1BC194270084CF31 /* ProyectFeature.m */; settings = {ASSET_TAGS = (); }; };
+		7625493C1BC194270084CF31 /* Proyect+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625491D1BC194270084CF31 /* Proyect+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		7625493D1BC194270084CF31 /* Proyect.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625491F1BC194270084CF31 /* Proyect.m */; settings = {ASSET_TAGS = (); }; };
+		7625493E1BC194270084CF31 /* Floor+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549211BC194270084CF31 /* Floor+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		7625493F1BC194270084CF31 /* Floor.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549231BC194270084CF31 /* Floor.m */; settings = {ASSET_TAGS = (); }; };
+		762549401BC194270084CF31 /* Outside+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549251BC194270084CF31 /* Outside+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549411BC194270084CF31 /* Outside.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549271BC194270084CF31 /* Outside.m */; settings = {ASSET_TAGS = (); }; };
+		762549421BC194270084CF31 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762549291BC194270084CF31 /* User+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		762549431BC194270084CF31 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7625492B1BC194270084CF31 /* User.m */; settings = {ASSET_TAGS = (); }; };
 		763EF9731BA91688003D1E4F /* GenericConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9721BA91688003D1E4F /* GenericConnectionManager.m */; };
 		763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97B1BA93151003D1E4F /* ServiceClient.m */; };
 		763EF9801BA9344B003D1E4F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97F1BA9344B003D1E4F /* LoginService.m */; };
@@ -165,34 +177,10 @@
 		353E65031B9F729F0004E4F2 /* TopBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarViewController.h; sourceTree = "<group>"; };
 		353E65041B9F729F0004E4F2 /* TopBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarViewController.m; sourceTree = "<group>"; };
 		353E65071B9F76BD0004E4F2 /* TopBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBarProtocol.h; sourceTree = "<group>"; };
-		353FB9241BBF143400DA94F5 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
-		353FB9251BBF143400DA94F5 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
-		353FB9271BBF143500DA94F5 /* MarketRates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketRates.h; sourceTree = "<group>"; };
-		353FB9281BBF143500DA94F5 /* MarketRates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketRates.m; sourceTree = "<group>"; };
 		3541E2191BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailPanoramicViewController.h; sourceTree = "<group>"; };
 		3541E21A1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailPanoramicViewController.m; sourceTree = "<group>"; };
 		3541E21C1BB5951100BD6AF9 /* ProyectDetailVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailVideoViewController.h; sourceTree = "<group>"; };
 		3541E21D1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailVideoViewController.m; sourceTree = "<group>"; };
-		3541E21F1BB59C0200BD6AF9 /* FlatFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatFeature.h; sourceTree = "<group>"; };
-		3541E2201BB59C0200BD6AF9 /* FlatFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatFeature.m; sourceTree = "<group>"; };
-		3541E2221BB59C0300BD6AF9 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
-		3541E2231BB59C0300BD6AF9 /* Floor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Floor.m; sourceTree = "<group>"; };
-		3541E2251BB59C0300BD6AF9 /* Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flat.h; sourceTree = "<group>"; };
-		3541E2261BB59C0300BD6AF9 /* Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flat.m; sourceTree = "<group>"; };
-		3541E2281BB59C0300BD6AF9 /* Promo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Promo.h; sourceTree = "<group>"; };
-		3541E2291BB59C0300BD6AF9 /* Promo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Promo.m; sourceTree = "<group>"; };
-		3541E22B1BB59C0300BD6AF9 /* Outside.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outside.h; sourceTree = "<group>"; };
-		3541E22C1BB59C0300BD6AF9 /* Outside.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outside.m; sourceTree = "<group>"; };
-		3541E22E1BB59C0300BD6AF9 /* ProyectFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectFeature.h; sourceTree = "<group>"; };
-		3541E22F1BB59C0300BD6AF9 /* ProyectFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectFeature.m; sourceTree = "<group>"; };
-		3541E2341BB59C0300BD6AF9 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
-		3541E2351BB59C0300BD6AF9 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
-		3541E23A1BB59C0300BD6AF9 /* Plant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
-		3541E23B1BB59C0300BD6AF9 /* Plant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
-		3541E23D1BB59C0300BD6AF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		3541E23E1BB59C0300BD6AF9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		3541E2401BB59C0400BD6AF9 /* Proyect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proyect.h; sourceTree = "<group>"; };
-		3541E2411BB59C0400BD6AF9 /* Proyect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proyect.m; sourceTree = "<group>"; };
 		354526031BB499DB00D14FF8 /* DepartmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentCollectionViewCell.h; sourceTree = "<group>"; };
 		354526041BB499DB00D14FF8 /* DepartmentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentCollectionViewCell.m; sourceTree = "<group>"; };
 		3560F77C1BA9B1960061BAD4 /* ProyectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectService.h; sourceTree = "<group>"; };
@@ -234,6 +222,54 @@
 		7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailOutsideViewController.m; sourceTree = "<group>"; };
 		760158501BAA67C200411629 /* ProyectDetailDepartamentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailDepartamentsViewController.h; sourceTree = "<group>"; };
 		760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailDepartamentsViewController.m; sourceTree = "<group>"; };
+		762548FC1BC194270084CF31 /* Promo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Promo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762548FD1BC194270084CF31 /* Promo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Promo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762548FE1BC194270084CF31 /* Promo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Promo.h; sourceTree = "<group>"; };
+		762548FF1BC194270084CF31 /* Promo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Promo.m; sourceTree = "<group>"; };
+		762549001BC194270084CF31 /* Rate+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Rate+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549011BC194270084CF31 /* Rate+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Rate+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762549021BC194270084CF31 /* Rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rate.h; sourceTree = "<group>"; };
+		762549031BC194270084CF31 /* Rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rate.m; sourceTree = "<group>"; };
+		762549041BC194270084CF31 /* Customer+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Customer+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549051BC194270084CF31 /* Customer+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Customer+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762549061BC194270084CF31 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		762549071BC194270084CF31 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		762549081BC194270084CF31 /* Entity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549091BC194270084CF31 /* Entity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entity+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7625490A1BC194270084CF31 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		7625490B1BC194270084CF31 /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
+		7625490C1BC194270084CF31 /* Flat+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Flat+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7625490D1BC194270084CF31 /* Flat+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Flat+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7625490E1BC194270084CF31 /* Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flat.h; sourceTree = "<group>"; };
+		7625490F1BC194270084CF31 /* Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flat.m; sourceTree = "<group>"; };
+		762549101BC194270084CF31 /* Plant+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Plant+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549111BC194270084CF31 /* Plant+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Plant+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762549121BC194270084CF31 /* Plant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
+		762549131BC194270084CF31 /* Plant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plant.m; sourceTree = "<group>"; };
+		762549141BC194270084CF31 /* FlatFeature+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlatFeature+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549151BC194270084CF31 /* FlatFeature+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FlatFeature+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762549161BC194270084CF31 /* FlatFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatFeature.h; sourceTree = "<group>"; };
+		762549171BC194270084CF31 /* FlatFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatFeature.m; sourceTree = "<group>"; };
+		762549181BC194270084CF31 /* ProyectFeature+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProyectFeature+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549191BC194270084CF31 /* ProyectFeature+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProyectFeature+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7625491A1BC194270084CF31 /* ProyectFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectFeature.h; sourceTree = "<group>"; };
+		7625491B1BC194270084CF31 /* ProyectFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectFeature.m; sourceTree = "<group>"; };
+		7625491C1BC194270084CF31 /* Proyect+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Proyect+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7625491D1BC194270084CF31 /* Proyect+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Proyect+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7625491E1BC194270084CF31 /* Proyect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proyect.h; sourceTree = "<group>"; };
+		7625491F1BC194270084CF31 /* Proyect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proyect.m; sourceTree = "<group>"; };
+		762549201BC194270084CF31 /* Floor+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Floor+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549211BC194270084CF31 /* Floor+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Floor+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762549221BC194270084CF31 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
+		762549231BC194270084CF31 /* Floor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Floor.m; sourceTree = "<group>"; };
+		762549241BC194270084CF31 /* Outside+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Outside+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549251BC194270084CF31 /* Outside+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Outside+CoreDataProperties.m"; sourceTree = "<group>"; };
+		762549261BC194270084CF31 /* Outside.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outside.h; sourceTree = "<group>"; };
+		762549271BC194270084CF31 /* Outside.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outside.m; sourceTree = "<group>"; };
+		762549281BC194270084CF31 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		762549291BC194270084CF31 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7625492A1BC194270084CF31 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		7625492B1BC194270084CF31 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		763EF9711BA91688003D1E4F /* GenericConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericConnectionManager.h; sourceTree = "<group>"; };
 		763EF9721BA91688003D1E4F /* GenericConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericConnectionManager.m; sourceTree = "<group>"; };
 		763EF97A1BA93151003D1E4F /* ServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceClient.h; sourceTree = "<group>"; };
@@ -602,30 +638,54 @@
 		353D96751B9DFC9D00E4A618 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				353FB9271BBF143500DA94F5 /* MarketRates.h */,
-				353FB9281BBF143500DA94F5 /* MarketRates.m */,
-				353FB9241BBF143400DA94F5 /* Customer.h */,
-				353FB9251BBF143400DA94F5 /* Customer.m */,
-				3541E2401BB59C0400BD6AF9 /* Proyect.h */,
-				3541E2411BB59C0400BD6AF9 /* Proyect.m */,
-				3541E23D1BB59C0300BD6AF9 /* User.h */,
-				3541E23E1BB59C0300BD6AF9 /* User.m */,
-				3541E23A1BB59C0300BD6AF9 /* Plant.h */,
-				3541E23B1BB59C0300BD6AF9 /* Plant.m */,
-				3541E2341BB59C0300BD6AF9 /* Entity.h */,
-				3541E2351BB59C0300BD6AF9 /* Entity.m */,
-				3541E22E1BB59C0300BD6AF9 /* ProyectFeature.h */,
-				3541E22F1BB59C0300BD6AF9 /* ProyectFeature.m */,
-				3541E22B1BB59C0300BD6AF9 /* Outside.h */,
-				3541E22C1BB59C0300BD6AF9 /* Outside.m */,
-				3541E2281BB59C0300BD6AF9 /* Promo.h */,
-				3541E2291BB59C0300BD6AF9 /* Promo.m */,
-				3541E2251BB59C0300BD6AF9 /* Flat.h */,
-				3541E2261BB59C0300BD6AF9 /* Flat.m */,
-				3541E2221BB59C0300BD6AF9 /* Floor.h */,
-				3541E2231BB59C0300BD6AF9 /* Floor.m */,
-				3541E21F1BB59C0200BD6AF9 /* FlatFeature.h */,
-				3541E2201BB59C0200BD6AF9 /* FlatFeature.m */,
+				762548FC1BC194270084CF31 /* Promo+CoreDataProperties.h */,
+				762548FD1BC194270084CF31 /* Promo+CoreDataProperties.m */,
+				762548FE1BC194270084CF31 /* Promo.h */,
+				762548FF1BC194270084CF31 /* Promo.m */,
+				762549001BC194270084CF31 /* Rate+CoreDataProperties.h */,
+				762549011BC194270084CF31 /* Rate+CoreDataProperties.m */,
+				762549021BC194270084CF31 /* Rate.h */,
+				762549031BC194270084CF31 /* Rate.m */,
+				762549041BC194270084CF31 /* Customer+CoreDataProperties.h */,
+				762549051BC194270084CF31 /* Customer+CoreDataProperties.m */,
+				762549061BC194270084CF31 /* Customer.h */,
+				762549071BC194270084CF31 /* Customer.m */,
+				762549081BC194270084CF31 /* Entity+CoreDataProperties.h */,
+				762549091BC194270084CF31 /* Entity+CoreDataProperties.m */,
+				7625490A1BC194270084CF31 /* Entity.h */,
+				7625490B1BC194270084CF31 /* Entity.m */,
+				7625490C1BC194270084CF31 /* Flat+CoreDataProperties.h */,
+				7625490D1BC194270084CF31 /* Flat+CoreDataProperties.m */,
+				7625490E1BC194270084CF31 /* Flat.h */,
+				7625490F1BC194270084CF31 /* Flat.m */,
+				762549101BC194270084CF31 /* Plant+CoreDataProperties.h */,
+				762549111BC194270084CF31 /* Plant+CoreDataProperties.m */,
+				762549121BC194270084CF31 /* Plant.h */,
+				762549131BC194270084CF31 /* Plant.m */,
+				762549141BC194270084CF31 /* FlatFeature+CoreDataProperties.h */,
+				762549151BC194270084CF31 /* FlatFeature+CoreDataProperties.m */,
+				762549161BC194270084CF31 /* FlatFeature.h */,
+				762549171BC194270084CF31 /* FlatFeature.m */,
+				762549181BC194270084CF31 /* ProyectFeature+CoreDataProperties.h */,
+				762549191BC194270084CF31 /* ProyectFeature+CoreDataProperties.m */,
+				7625491A1BC194270084CF31 /* ProyectFeature.h */,
+				7625491B1BC194270084CF31 /* ProyectFeature.m */,
+				7625491C1BC194270084CF31 /* Proyect+CoreDataProperties.h */,
+				7625491D1BC194270084CF31 /* Proyect+CoreDataProperties.m */,
+				7625491E1BC194270084CF31 /* Proyect.h */,
+				7625491F1BC194270084CF31 /* Proyect.m */,
+				762549201BC194270084CF31 /* Floor+CoreDataProperties.h */,
+				762549211BC194270084CF31 /* Floor+CoreDataProperties.m */,
+				762549221BC194270084CF31 /* Floor.h */,
+				762549231BC194270084CF31 /* Floor.m */,
+				762549241BC194270084CF31 /* Outside+CoreDataProperties.h */,
+				762549251BC194270084CF31 /* Outside+CoreDataProperties.m */,
+				762549261BC194270084CF31 /* Outside.h */,
+				762549271BC194270084CF31 /* Outside.m */,
+				762549281BC194270084CF31 /* User+CoreDataProperties.h */,
+				762549291BC194270084CF31 /* User+CoreDataProperties.m */,
+				7625492A1BC194270084CF31 /* User.h */,
+				7625492B1BC194270084CF31 /* User.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1059,41 +1119,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				762549351BC194270084CF31 /* Flat.m in Sources */,
 				7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */,
 				3584DFAC1BB094F700DDE5CD /* CustomerInterestLevelTableViewCell.m in Sources */,
 				3560F7941BA9D4130061BAD4 /* ProyectDetailViewController.m in Sources */,
-				3541E2301BB59C0300BD6AF9 /* ProyectFeature.m in Sources */,
 				352FA6491BA09AF900FEC040 /* NewCustomerTableViewCell.m in Sources */,
+				762549391BC194270084CF31 /* FlatFeature.m in Sources */,
 				3541E21E1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m in Sources */,
 				353D964A1B9DF8B800E4A618 /* LARGruop.xcdatamodeld in Sources */,
 				3541E21B1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m in Sources */,
 				3560F7981BAA085E0061BAD4 /* ProyectFeaturesViewController.m in Sources */,
 				353D967F1B9E154A00E4A618 /* BaseViewController.m in Sources */,
+				7625492F1BC194270084CF31 /* Rate.m in Sources */,
 				353D96821B9E157A00E4A618 /* InitViewController.m in Sources */,
 				3560F7A21BAA20B30061BAD4 /* FeatureTableViewCell.m in Sources */,
 				353E65051B9F729F0004E4F2 /* TopBarViewController.m in Sources */,
+				762549401BC194270084CF31 /* Outside+CoreDataProperties.m in Sources */,
 				3560F79B1BAA13740061BAD4 /* ProyectFeatureConnectionManager.m in Sources */,
-				3541E22A1BB59C0300BD6AF9 /* Promo.m in Sources */,
 				3560F78E1BA9B2150061BAD4 /* ProyectConnectionManager.m in Sources */,
+				762549421BC194270084CF31 /* User+CoreDataProperties.m in Sources */,
 				35FC0FA01BB31E4500F67EA9 /* UIImage+ExtendedMethods.m in Sources */,
+				7625493F1BC194270084CF31 /* Floor.m in Sources */,
 				352F77B51BA872A80080B004 /* CustomerMarketRateViewController.m in Sources */,
-				3541E22D1BB59C0300BD6AF9 /* Outside.m in Sources */,
 				353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */,
 				3560F7A51BAA25220061BAD4 /* ProyectDetailItemViewController.m in Sources */,
 				763EF9801BA9344B003D1E4F /* LoginService.m in Sources */,
 				7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */,
+				762549381BC194270084CF31 /* FlatFeature+CoreDataProperties.m in Sources */,
+				7625493C1BC194270084CF31 /* Proyect+CoreDataProperties.m in Sources */,
 				352FA68B1BA0CFF800FEC040 /* CustomerMasterViewController.m in Sources */,
-				353FB9291BBF143500DA94F5 /* MarketRates.m in Sources */,
+				762549341BC194270084CF31 /* Flat+CoreDataProperties.m in Sources */,
 				352FA6881BA0CFE400FEC040 /* CustomerDetailViewController.m in Sources */,
 				354526051BB499DB00D14FF8 /* DepartmentCollectionViewCell.m in Sources */,
 				760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */,
-				3541E2241BB59C0300BD6AF9 /* Floor.m in Sources */,
 				35FC0FA31BB34D3A00F67EA9 /* MapMarkDetailViewController.m in Sources */,
+				762549321BC194270084CF31 /* Entity+CoreDataProperties.m in Sources */,
 				3560F7911BA9CFC40061BAD4 /* UILabel+ExtendedMethods.m in Sources */,
 				763EF9911BA93C29003D1E4F /* LoginTranslator.m in Sources */,
+				7625492E1BC194270084CF31 /* Rate+CoreDataProperties.m in Sources */,
 				35FC0F971BB305FE00F67EA9 /* AnnotationView.m in Sources */,
 				3560F79E1BAA14450061BAD4 /* ProyectFeatureService.m in Sources */,
+				762549411BC194270084CF31 /* Outside.m in Sources */,
 				353D969E1B9E4B1500E4A618 /* HomeViewController.m in Sources */,
+				762549431BC194270084CF31 /* User.m in Sources */,
 				35FC0F9D1BB31C9800F67EA9 /* MKMapView+ExtendedMethods.m in Sources */,
 				352F77E91BA8DD1D0080B004 /* GenericService.m in Sources */,
 				353D96871B9E1B0100E4A618 /* UIButton+ExtendedMethods.m in Sources */,
@@ -1101,31 +1169,35 @@
 				352FA68E1BA0DBCD00FEC040 /* CustomerContainerViewController.m in Sources */,
 				353D96471B9DF8B800E4A618 /* AppDelegate.m in Sources */,
 				353D96441B9DF8B800E4A618 /* main.m in Sources */,
+				7625492C1BC194270084CF31 /* Promo+CoreDataProperties.m in Sources */,
+				7625493B1BC194270084CF31 /* ProyectFeature.m in Sources */,
 				352FA6921BA0E3E000FEC040 /* FilterViewController.m in Sources */,
-				3541E2361BB59C0300BD6AF9 /* Entity.m in Sources */,
+				762549331BC194270084CF31 /* Entity.m in Sources */,
+				762549311BC194270084CF31 /* Customer.m in Sources */,
 				769681AB1BAF9F320035C86F /* ProyectDetailOutsidesViewController.m in Sources */,
-				3541E2271BB59C0300BD6AF9 /* Flat.m in Sources */,
 				35FC0F9A1BB3093600F67EA9 /* ProyectPointAnnotation.m in Sources */,
+				7625493E1BC194270084CF31 /* Floor+CoreDataProperties.m in Sources */,
 				3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */,
+				762549361BC194270084CF31 /* Plant+CoreDataProperties.m in Sources */,
 				353E64F61B9F4BE30004E4F2 /* ProyectsViewController.m in Sources */,
 				763EF98D1BA93933003D1E4F /* LoginConnectionManager.m in Sources */,
-				3541E23F1BB59C0300BD6AF9 /* User.m in Sources */,
-				3541E2211BB59C0200BD6AF9 /* FlatFeature.m in Sources */,
+				7625493D1BC194270084CF31 /* Proyect.m in Sources */,
 				763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */,
 				3584DFB91BB0C4CE00DDE5CD /* CustomerRateDetailViewController.m in Sources */,
 				353D96961B9E3AD200E4A618 /* ForgetViewController.m in Sources */,
 				763EF9731BA91688003D1E4F /* GenericConnectionManager.m in Sources */,
-				353FB9261BBF143400DA94F5 /* Customer.m in Sources */,
+				7625492D1BC194270084CF31 /* Promo.m in Sources */,
 				763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */,
 				353E64F11B9F46F40004E4F2 /* ProfileViewController.m in Sources */,
-				3541E23C1BB59C0300BD6AF9 /* Plant.m in Sources */,
 				353D96921B9E2B1F00E4A618 /* UITextField+ExtendedMethods.m in Sources */,
 				353E64F91B9F4C470004E4F2 /* MapViewController.m in Sources */,
 				353E64FC1B9F4FD50004E4F2 /* UIColor+ExtendedMethods.m in Sources */,
+				762549371BC194270084CF31 /* Plant.m in Sources */,
 				353335A41BA21A32006EE4FC /* NMRangeSlider.m in Sources */,
-				3541E2421BB59C0400BD6AF9 /* Proyect.m in Sources */,
+				762549301BC194270084CF31 /* Customer+CoreDataProperties.m in Sources */,
 				352F77B21BA872910080B004 /* CustomerInfoViewController.m in Sources */,
 				352FA6411BA07A3B00FEC040 /* NewCustomerViewController.m in Sources */,
+				7625493A1BC194270084CF31 /* ProyectFeature+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
