@@ -9,6 +9,8 @@
 #import "ProyectDetailOutsidesViewController.h"
 #import <Haneke/Haneke.h>
 #import <MagicalRecord/MagicalRecord.h>
+#import "Proyect.h"
+#import "Outside.h"
 
 @interface ProyectDetailOutsidesViewController ()
 

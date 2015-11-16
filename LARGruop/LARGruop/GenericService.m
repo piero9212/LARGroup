@@ -9,10 +9,16 @@
 #import "GenericService.h"
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFHTTPRequestOperation.h>
-#import "Entities.h"
 #import "NotificationConstants.h"
-#import "GenericConnectionManager.h"
+#import "BaseConnectionManager.h"
 #import "LoginService.h"
+#import "ErrorCodes.h"
+#import "Proyect.h"
+#import "ProyectFeature.h"
+#import "Outside.h"
+#import "Rate.h"
+#import "Flat.h"
+#import "Customer.h"
 
 static NSString * const STORE_NAME = @"LARGruop";
 
@@ -92,9 +98,6 @@ static NSString * const STORE_NAME = @"LARGruop";
             [context rollback];
         }
         self.requestFailureErrorHandler(nil, [NSError errorWithDomain:AFURLResponseSerializationErrorDomain  code:StatusCodeUnexpectedError userInfo:nil], showAlertView, userInfo);
-#if defined(HAIKU_DEBUG) || defined(TFLOG_ENABLED)
-        NSLog(@"REQUEST SUCCESS ERROR");
-#endif
         
     };
 }
@@ -122,17 +125,17 @@ static NSString * const STORE_NAME = @"LARGruop";
 }
 
 
-- (void)MR_SetupDatabase
+- (void)setupDatabase
 {
     [MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:STORE_NAME];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:STORE_NAME];
     
     if ([[[NSPersistentStoreCoordinator MR_defaultStoreCoordinator] persistentStores] count] == 0){
         [MagicalRecord cleanUp];
         NSError *error;
         NSURL *fileURL = [NSPersistentStore MR_urlForStoreName:STORE_NAME];
         [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
-        [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:STORE_NAME];
+        [MagicalRecord setupCoreDataStackWithStoreNamed:STORE_NAME];
     }
 }
 
@@ -173,7 +176,7 @@ static NSString * const STORE_NAME = @"LARGruop";
 
 - (void)cancelAllPreviousRequests
 {
-    [GenericConnectionManager cancelAllPreviousRequests];
+    [BaseConnectionManager cancelAllPreviousRequests];
 }
 
 - (NSManagedObject *)getManagedObjectFromCurrentThread:(NSManagedObject *)object

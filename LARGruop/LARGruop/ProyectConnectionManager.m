@@ -7,6 +7,9 @@
 //
 
 #import "ProyectConnectionManager.h"
+#import "ServiceClient.h"
+
+static NSString* const allProyectsPath = @"ws/getProyects";
 
 @implementation ProyectConnectionManager
 
@@ -14,7 +17,6 @@
 + (void)getAllProyectsWithsuccess:(void (^) (NSDictionary *responseDictionary))success
                           failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 {
-    NSString * const getProyectPath = @"path";
     
     ServiceClient *client = [ServiceClient sharedClient];
     
@@ -23,8 +25,8 @@
                                 @"",
                                 nil];
     
-    [client cancelAllHTTPOperationsWithMethod:@"GET" path:getProyectPath];
-    [client startRequestMethod:RequestMethodGet url:getProyectPath parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client cancelAllHTTPOperationsWithMethod:@"GET" path:allProyectsPath];
+    [client startRequestMethod:RequestMethodGet url:allProyectsPath parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
         
     } failure:failure];

@@ -7,6 +7,7 @@
 //
 
 #import "ProyectDetailVideoViewController.h"
+#import "Proyect.h"
 
 @interface ProyectDetailVideoViewController()
 @property (weak, nonatomic) IBOutlet UIWebView *proyectVideoWebView;

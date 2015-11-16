@@ -11,13 +11,9 @@
 #import "KeychainItemWrapper.h"
 #import "LoginConnectionManager.h"
 #import "LoginTranslator.h"
-
-static NSString * const LAST_TOKEN = @"LastToken";
-static NSString * const LAST_LOGGED_IN_USER_ID = @"LastLoggedInUserId";
-static NSString * const DATE_OF_LAST_LOGGED_IN = @"dateOfLastLoggedIn";
-static NSString * const LAST_USERNAME = @"LastUsername";
-static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad";
-
+#import "StandardDefaultConstants.h"
+#import "ErrorCodes.h"
+#import "Entity.h"
 
 @implementation LoginService
 
@@ -52,9 +48,7 @@ static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad"
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *lastLoggedInUserId = [defaults objectForKey:LAST_LOGGED_IN_USER_ID];
-    
     User *lastLoggedInUser = [User MR_findFirstByAttribute:@"uid" withValue:lastLoggedInUserId];
-    
     return lastLoggedInUser;
 }
 
@@ -132,9 +126,10 @@ static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad"
 #pragma mark -
 #pragma mark API Methods
 
-- (void)cancelLoginRequests
+- (void)cancelLoginRequestsWithUsername:(NSString *)username
+                               password:(NSString *)password
 {
-    [LoginConnectionManager cancelLoginRequests];
+    [LoginConnectionManager cancelLoginRequestsWithUsername:username password:password];
 }
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password
@@ -144,19 +139,14 @@ static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad"
                                      password:password
                                       success:^(NSDictionary *responseDictionary) {
                                           
-                                          id tokenObject = [responseDictionary valueForKeyPath:@"token"];
-                                          NSString *token = ([tokenObject isKindOfClass:[NSString class]])? tokenObject : nil;
                                           
-                                          id userIdObject = [responseDictionary valueForKeyPath:@"user.id"];
+                                          id userIdObject = [responseDictionary valueForKeyPath:@"id"];
                                           NSString *userId = ([userIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", userIdObject] : nil;
-                                          
-                                          id userObject = [responseDictionary valueForKeyPath:@"user"];
-                                          NSDictionary *userDictionary = ([userObject isKindOfClass:[NSDictionary class]])? userObject : nil;
                                           
                                           NSNumber *showAlertView = [NSNumber numberWithBool:NO];
                                           NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
                                           
-                                          if (!token || !userId || !userDictionary) {
+                                          if (!responseDictionary) {
                                               dispatch_async(dispatch_get_main_queue(), ^(void){
                                                   [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
                                               });
@@ -175,30 +165,35 @@ static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad"
                                           }
                                         
                                           [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-                                            User *lastLoggedInUser = [self lastLoggedInUserFromContext:localContext];
+                                              User *user = [self lastLoggedInUser];
+                                              if(user.isFault)
+                                                  user =(User *)[[NSManagedObjectContext MR_defaultContext] objectWithID:user.objectID];
+                                              if (user && [userId isEqualToString:user.uid])
+                                              {
+                                                  [LoginTranslator userDictionary:responseDictionary toUserEntity:user];
+                                              }
+                                              else
+                                              {
+                                                  if(!user)
+                                                      user = [User MR_createEntityInContext:localContext];
+                                                  [LoginTranslator userDictionary:responseDictionary toUserEntity:user];
+                                              }
+                                            } completion:^(BOOL success, NSError *error) {
                                               
-                                              if (!(lastLoggedInUser && [userId isEqualToString:lastLoggedInUser.uid])) {
-                                                  User *user = [User MR_createEntityInContext:localContext];
-                                                  [LoginTranslator userDictionary:userDictionary toUserEntity:user];
+                                              if (!error) {
+                                                  User *lastLoggedInUser = [self lastLoggedInUser];
+                                                  [self setLastLoggedInUserID:userId];
+                                                  [self setLastUsername:lastLoggedInUser.username];
+                                                  [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginSucceeded object:self userInfo:nil];
                                               }
                                               else {
-                                                  [LoginTranslator userDictionary:userDictionary toUserEntity:lastLoggedInUser];
+                                                  [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
+                                                  
+                                                  self.requestSuccessErrorHandler(nil, YES, nil);
                                               }
                                           }
-                                                                                     completion:^(BOOL success, NSError *error) {
-                                                                                         if (success) {
-                                                                                             [self setLastLoggedInUserID:userId];
-                                                                                             [self setLastToken:token];
-                                                                                             //[GenericConnectionManager setXHaikuAuthHeaderWithToken:token userId:userId];
-                                                                                             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginSucceeded object:self userInfo:nil];
-                                                                                         }
-                                                                                         else {
-                                                                                             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
-                                                                                             
-                                                                                             self.requestSuccessErrorHandler(nil, YES, nil);
-                                                                                         }
-                                                                                     }
                                            ];
+
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                           

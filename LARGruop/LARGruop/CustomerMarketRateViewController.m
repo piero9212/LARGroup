@@ -8,6 +8,8 @@
 
 #import "CustomerMarketRateViewController.h"
 #import "CustomerRateDetailViewController.h"
+#import "Customer.h"
+#import "Rate.h"
 
 static NSString* const CUSTOMER_MARKET_RATES_CELL = @"CUSTOMER_MARKET_RATES_CELL";
 static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
@@ -45,8 +47,8 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 
 -(void)setupVars
 {
-    Customer* selectedCustomer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
-    self.marketRates = [NSArray arrayWithArray:[selectedCustomer.rates allObjects]];
+    Customer* customer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
+    self.marketRates = [NSArray arrayWithArray:[customer.rates allObjects]];
 }
 
 #pragma mark -

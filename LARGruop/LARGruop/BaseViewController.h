@@ -7,13 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Reachability.h>
 #import "ExtendedCategories.h"
-#import "ApplicationConstants.h"
-#import "NotificationConstants.h"
 #import "ErrorConstants.h"
-#import "Entities.h"
+#import "ApplicationConstants.h"
+#import "UIConstants.h"
+#import "NotificationConstants.h"
+#import "StandardDefaultConstants.h"
+#import "AlertViewFactory.h"
+#import "AlertViewTags.h"
+#import "AlertViewSender.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import "ErrorCodes.h"
 
 @interface BaseViewController : UIViewController
+
+@property (nonatomic) BOOL isAlertReaded;
+@property (nonatomic) NSInteger alertViewSender;
+
+-(void)showHUDOnView:(UIView*)view;
+-(void)hideHUDOnView:(UIView*)view;
+- (void)showRequestErrorAlertViewWithNotification:(NSNotification *)notification;
+-(void)initSetup;
 
 @end

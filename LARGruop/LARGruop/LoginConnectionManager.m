@@ -7,14 +7,17 @@
 //
 
 #import "LoginConnectionManager.h"
+#import "ServiceClient.h"
+
+static NSString* const loginPath = @"ws/login?username=%@&password=%@";
 
 @implementation LoginConnectionManager
 
-+ (void)cancelLoginRequests
+
++ (void)cancelLoginRequestsWithUsername:(NSString *)username
+                               password:(NSString *)password
 {
-    //NSString *requestMethod = [LoginConnectionManager getRequestMethod:HLM_RequestMethodGet];
-    [[ServiceClient sharedClient] cancelAllHTTPOperationsWithMethod:@"GET" path:@"sessions"];
-    [[ServiceClient sharedClient] cancelAllHTTPOperationsWithMethod:@"GET" path:@"sessions/domains"];
+    [[ServiceClient sharedClient] cancelAllHTTPOperationsWithMethod:@"GET" path:[NSString stringWithFormat:loginPath,username,password]];
 }
 
 + (void)loginWithUsername:(NSString *)username
@@ -22,56 +25,23 @@
                   success:(void (^) (NSDictionary *responseDictionary))success
                   failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    NSString * const loginPath = @"sessions";
+    
+    NSDictionary *parameters = nil;
+    NSString* path = [NSString stringWithFormat:loginPath,username,password];
     
     ServiceClient *client = [ServiceClient sharedClient];
-    
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:password, @"password", username, @"username", nil];
-    //    NSString *requestMethod = [LoginConnectionManager getRequestMethod:HLM_RequestMethodPost];
-    //    NSURLRequest *request = [client requestWithMethod:requestMethod path:loginPath parameters:parameters];
-    //
-    //    AFHTTPRequestOperation *requestOperation = [client HTTPRequestOperationWithRequest:request
-    //                                                                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    //                                                                                   success(responseObject);
-    //                                                                               }
-    //                                                                               failure:failure
-    //                                                ];
-    //
-    //    [client enqueueHTTPRequestOperation:requestOperation];
-    [client startRequestMethod:RequestMethodPost url:loginPath parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client cancelAllHTTPOperationsWithMethod:@"GET" path:path];
+    [client.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    client.requestSerializer = [AFJSONRequestSerializer serializer];
+    [client startRequestMethod:RequestMethodGet url:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
     } failure:failure];
-    //    return requestOperation;
+    
 }
-
 
 + (void)logoutWithCompletion:(void (^) ())completion
 {
-    NSString * const logoutPath = @"sessions";
     
-    ServiceClient *client = [ServiceClient sharedClient];
-    //    NSString *requestMethod = [LoginConnectionManager getRequestMethod:HLM_RequestMethodDelete];
-    //    NSURLRequest *request = [client requestWithMethod:requestMethod path:logoutPath parameters:nil];
-    //
-    //    AFHTTPRequestOperation *requestOperation = [client HTTPRequestOperationWithRequest:request
-    //                                                                               success:completion
-    //                                                                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    //#ifdef HAIKU_DEBUG
-    //                                                                                   //NSLog(@"Logout Error detected - Code: %i", operation.response.statusCode);
-    //#endif
-    //                                                                                   completion();
-    //                                                                               }
-    //                                                ];
-    //
-    //    [client enqueueHTTPRequestOperation:requestOperation];
-    [client startRequestMethod:RequestMethodDelete
-                           url:logoutPath
-                    parameters:nil
-                       success:completion
-                       failure:^(AFHTTPRequestOperation *operation, NSError *error){
-                           completion();
-                       }];
-    //    return requestOperation;
 }
 
 

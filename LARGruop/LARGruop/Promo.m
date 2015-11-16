@@ -2,7 +2,7 @@
 //  Promo.m
 //  LARGruop
 //
-//  Created by Piero on 4/10/15.
+//  Created by Piero on 15/11/15.
 //  Copyright © 2015 prsp.org. All rights reserved.
 //
 

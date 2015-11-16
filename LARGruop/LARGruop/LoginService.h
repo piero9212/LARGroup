@@ -7,14 +7,15 @@
 //
 
 #import "GenericService.h"
-#import "Entities.h"
+#import "User.h"
 
 @interface LoginService : GenericService
 
 
 + (LoginService *)sharedService;
 
-- (void)cancelLoginRequests;
+- (void)cancelLoginRequestsWithUsername:(NSString *)username
+                               password:(NSString *)password;
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password;
 - (void)logoutWithNotification:(BOOL)showNotification;

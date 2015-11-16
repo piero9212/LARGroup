@@ -8,6 +8,7 @@
 
 #import "CustomerInfoViewController.h"
 #import "CustomerInterestLevelTableViewCell.h"
+#import "Customer.h"
 
 static NSString* const CUSTOMER_INFO_SELECTED_CELL= @"CUSTOMER_INFO_SELECTED_CELL";
 static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTED_CELL";

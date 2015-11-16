@@ -7,6 +7,7 @@
 //
 
 #import "GenericService.h"
+#import "Proyect.h"
 
 @interface ProyectService : GenericService
 
@@ -29,5 +30,5 @@
 
 - (NSArray *)getFilteredProyectsWithoutNulls;
 
-
+- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (NSArray *proyects))success;
 @end

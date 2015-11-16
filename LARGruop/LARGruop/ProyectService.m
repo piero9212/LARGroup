@@ -7,6 +7,10 @@
 //
 
 #import "ProyectService.h"
+#import "ProyectConnectionManager.h"
+#import "Proyect.h"
+#import "ProyectTranslator.h"
+#import "ErrorCodes.h"
 
 static NSMutableArray *_filterProyects;
 
@@ -98,6 +102,57 @@ static NSMutableArray *_filterProyects;
     NSMutableArray *filteredProyects = [NSMutableArray arrayWithArray:[ProyectService filterProyects]];
     [filteredProyects removeObjectIdenticalTo:[NSNull null]];
     return filteredProyects;
+}
+
+- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (NSArray *proyects))success
+{
+    NSMutableArray* proyects = [[NSMutableArray alloc] init];
+    [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            
+            for (NSDictionary *proyectDictionary in responseDictionary)
+            {
+                id proyectIdObject = [proyectDictionary valueForKeyPath:@"id"];
+                NSString *proyectID = ([proyectIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", proyectIdObject] : nil;
+                
+                if (!proyectID && !proyectDictionary) {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^(void){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAllProyectsFailed object:self userInfo:userInfo];
+                    });
+                    
+                    self.requestSuccessErrorHandler(nil, showAlertView, userInfo);
+                    return;
+                }
+                
+                Proyect *proyect = [[Proyect alloc]init];
+                proyect.uid = proyectID;
+                [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect];
+                [proyects addObject:proyect];
+            }
+            if(responseDictionary.count == proyects.count && responseDictionary.count!=0)
+            {
+                success(proyects);
+            }
+        }
+                       );}
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+         NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+         
+         if(operation && operation.response.statusCode == StatusCodeNoInternetConnection) {
+             showAlertView = [NSNumber numberWithBool:YES];
+         }
+         else {
+             self.requestFailureErrorHandler(operation, error, YES, nil);
+         }
+         
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAllProyectsFailed object:self userInfo:userInfo];
+         });
+     }];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GenericService.h"
+#import "Proyect.h"
 
 static NSString * const GROUP_BY_KEY = @"GroupBy";
 static NSString * const LISTS_KEY = @"Lists";

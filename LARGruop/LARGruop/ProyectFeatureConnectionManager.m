@@ -7,6 +7,7 @@
 //
 
 #import "ProyectFeatureConnectionManager.h"
+#import "ServiceClient.h"
 
 @implementation ProyectFeatureConnectionManager
 

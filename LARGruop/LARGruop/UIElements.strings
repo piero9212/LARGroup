@@ -5,3 +5,27 @@
   Created by piero.sifuentes on 9/09/15.
   Copyright (c) 2015 prsp.org. All rights reserved.
 */
+
+
+//Messages
+
+"kNoInternetConnectionMessage" = "Por favor verifica tu connección a internet";
+"kUnexpectedErrorMessage" = "Hubo un error involuntario, por favor intente denuevo";
+"kNotFoundErrorMessage" = "Esto a sido removido o eliminado de nuestra base de datos";
+"kInternalServerErrorMessage" = "Hubo un error en el servidor, por favor intente denuevo";
+"kLoginNoUserMessage" = "El Usuario no existe o los datos estan errados, intente denuevo";
+//Titles
+
+"kDefaultTitle" = "Grupo LAR";
+
+//Button Tittles
+
+"kErrorButtonOk" = "OK";
+"kErrorButtonAcept" = "Aceptar";
+"kErrorButtonCancel" = "Cancelar";
+"kErrorButtonExit" = "Salir";
+"kErrorButtonRefresh" = "Reintentar";
+"kErrorButtonYes" = "Si";
+"kErrorButtonNo" = "No";
+
+

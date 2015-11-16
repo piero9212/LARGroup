@@ -11,6 +11,7 @@
 #import "ProyectService.h"
 #import "ProyectDetailViewController.h"
 #import <Haneke/Haneke.h>
+#import "Proyect.h"
 
 static NSString* const PROYECT_CELL = @"PROYECT_CELL";
 static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";

@@ -10,6 +10,7 @@
 #import "ProyectFeaturesViewController.h"
 #import "ProyectDetailItemViewController.h"
 #import <Haneke/Haneke.h>
+#import "Proyect.h"
 
 static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 

@@ -6,11 +6,12 @@
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
-#import "GenericConnectionManager.h"
+#import "BaseConnectionManager.h"
 
-@interface LoginConnectionManager : GenericConnectionManager
+@interface LoginConnectionManager : BaseConnectionManager
 
-+ (void)cancelLoginRequests;
++ (void)cancelLoginRequestsWithUsername:(NSString *)username
+                               password:(NSString *)password;
 
 + (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password

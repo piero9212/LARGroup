@@ -8,7 +8,7 @@
 
 #import "MapMarkDetailViewController.h"
 #import <Haneke/Haneke.h>
-
+#import "Proyect.h"
 
 @implementation MapMarkDetailViewController
 

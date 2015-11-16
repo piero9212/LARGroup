@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "Rate.h"
 
 @interface CustomerRateDetailViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 

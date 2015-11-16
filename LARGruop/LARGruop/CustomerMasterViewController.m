@@ -8,6 +8,7 @@
 
 #import "CustomerMasterViewController.h"
 #import <CGLAlphabetizer/CGLAlphabetizer.h>
+#import "Customer.h"
 
 static NSString* const CUSTOMER_INFO_CELL = @"CUSTOMER_INFO_CELL";
 static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";

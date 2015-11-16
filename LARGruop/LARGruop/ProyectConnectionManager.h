@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
-#import "GenericConnectionManager.h"
+#import "BaseConnectionManager.h"
 
-@interface ProyectConnectionManager : GenericConnectionManager
+@interface ProyectConnectionManager : BaseConnectionManager
 
 
 + (void)getAllProyectsWithsuccess:(void (^) (NSDictionary *responseDictionary))success

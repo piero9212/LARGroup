@@ -22,6 +22,10 @@ static NSString * const kNotificationLogoutFinished = @"LogoutFinishedNotificati
 static NSString * const kNotificationLogoutActionRequested = @"LogoutActionRequestedNotification";
 static NSString * const kNotificationInvalidTokenDetected = @"InvalidTokenDetectedNotification";
 
+//LOGIN NOTIFICATIONS
+
+static NSString * const kNotificationAllProyectsFailed = @"AllProyectsFailedNotification";
+
 //SETTINGS NOTIFICATIONS
 static NSString * const kNotificationReloadAllData = @"ReloadAllDataNotification";
 static NSString * const kNotificationReloadAllDataControllers = @"ReloadAllDataNotificationControllers";

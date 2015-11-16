@@ -10,6 +10,7 @@
 #import "ProyectPointAnnotation.h"
 #import "AnnotationView.h"
 #import "ProyectPointAnnotation.h"
+#import "Proyect.h"
 
 static NSString *MAP_ANNOTATION__LOCATE_IDENTIFIER = @"MAP_ANNOTATION__LOCATE_IDENTIFIER";
 

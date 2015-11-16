@@ -8,6 +8,8 @@
 
 #import "ProyectDetailDepartamentsViewController.h"
 #import "DepartmentCollectionViewCell.h"
+#import "Proyect.h"
+#import "Plant.h"
 
 static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 

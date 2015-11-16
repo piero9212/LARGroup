@@ -2,7 +2,7 @@
 //  Customer+CoreDataProperties.m
 //  LARGruop
 //
-//  Created by Piero on 4/10/15.
+//  Created by Piero on 15/11/15.
 //  Copyright © 2015 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,7 +18,7 @@
 @dynamic interestLevel;
 @dynamic lastName;
 @dynamic phoneNumber;
-@dynamic registerDate;
+@dynamic type;
 @dynamic rates;
 
 @end

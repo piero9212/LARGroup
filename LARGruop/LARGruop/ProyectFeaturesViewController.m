@@ -9,6 +9,8 @@
 #import "ProyectFeaturesViewController.h"
 #import "ProyectFeatureService.h"
 #import "FeatureTableViewCell.h"
+#import "Proyect.h"
+#import "ProyectFeature.h"
 
 static NSString* const FEATURE_CELL = @"FEATURE_CELL";
 

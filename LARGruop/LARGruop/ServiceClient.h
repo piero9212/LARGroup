@@ -7,19 +7,11 @@
 //
 
 #import "AFHTTPRequestOperationManager.h"
+#import "RequestMethod.h"
 
-static NSString * const BaseURLString = @"theString";
-
-typedef enum {
-    RequestMethodGet = 0,
-    RequestMethodPost,
-    RequestMethodPut,
-    RequestMethodDelete
-}RequestMethod;
+static NSString * const BaseURLString = @"http://45.55.152.89/grupolar/public/";
 
 @interface ServiceClient : AFHTTPRequestOperationManager
-
-@property (strong, nonatomic) NSString *oauthToken;
 
 + (ServiceClient *)sharedClient;
 - (void)setBaseURL:(NSURL *)baseURL;
@@ -30,5 +22,8 @@ typedef enum {
                    failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
 - (void)cancelAllHTTPOperationsWithMethod:(NSString*)method path:(NSString*)path;
+
+
+
 
 @end

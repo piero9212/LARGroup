@@ -2,7 +2,7 @@
 //  Entity+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by Piero on 4/10/15.
+//  Created by Piero on 15/11/15.
 //  Copyright © 2015 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *changeState;
 @property (nullable, nonatomic, retain) NSDate *lastModified;
 @property (nullable, nonatomic, retain) NSString *uid;
+@property (nullable, nonatomic, retain) NSDate *created;
 
 @end
 

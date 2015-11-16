@@ -8,6 +8,7 @@
 
 #import "ProyectDetailPanoramicViewController.h"
 #import <Haneke/Haneke.h>
+#import "Proyect.h"
 
 @interface ProyectDetailPanoramicViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *proyectPanoramicImageView;
