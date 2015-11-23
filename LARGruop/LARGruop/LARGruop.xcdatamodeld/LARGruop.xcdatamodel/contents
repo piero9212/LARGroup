@@ -16,13 +16,18 @@
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Flat" representedClassName="Flat" parentEntity="Entity" syncable="YES">
+        <attribute name="flatDetail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="flatImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posX" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posY" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectUID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="floors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="flat" inverseEntity="Floor" syncable="YES"/>
         <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="flats" inverseEntity="Plant" syncable="YES"/>
+        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="flats" inverseEntity="Proyect" syncable="YES"/>
         <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="flat" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="FlatFeature" representedClassName="FlatFeature" parentEntity="Entity" syncable="YES">
@@ -65,6 +70,7 @@
         <attribute name="proyectDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="features" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProyectFeature" inverseName="proyect" inverseEntity="ProyectFeature" syncable="YES"/>
+        <relationship name="flats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flat" inverseName="proyect" inverseEntity="Flat" syncable="YES"/>
         <relationship name="outsideImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Outside" inverseName="proyect" inverseEntity="Outside" syncable="YES"/>
         <relationship name="plants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Plant" inverseName="proyect" inverseEntity="Plant" syncable="YES"/>
         <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="proyect" inverseEntity="Rate" syncable="YES"/>
@@ -90,17 +96,17 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Customer" positionX="-9" positionY="99" width="128" height="150"/>
         <element name="Entity" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Flat" positionX="-9" positionY="117" width="128" height="165"/>
+        <element name="Flat" positionX="-9" positionY="117" width="128" height="240"/>
         <element name="FlatFeature" positionX="-9" positionY="153" width="128" height="60"/>
         <element name="Floor" positionX="0" positionY="162" width="128" height="105"/>
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
         <element name="Plant" positionX="-27" positionY="144" width="128" height="105"/>
         <element name="Promo" positionX="-36" positionY="135" width="128" height="60"/>
-        <element name="Proyect" positionX="-36" positionY="54" width="128" height="330"/>
+        <element name="Proyect" positionX="-36" positionY="54" width="128" height="345"/>
         <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
         <element name="Rate" positionX="-27" positionY="135" width="128" height="135"/>
         <element name="User" positionX="-18" positionY="90" width="128" height="135"/>
-        <element name="Customer" positionX="-9" positionY="99" width="128" height="150"/>
     </elements>
 </model>

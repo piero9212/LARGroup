@@ -2,7 +2,7 @@
 //  Flat+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by Piero on 15/11/15.
+//  Created by Piero on 22/11/15.
 //  Copyright © 2015 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -20,9 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *size;
 @property (nullable, nonatomic, retain) NSString *status;
 @property (nullable, nonatomic, retain) NSString *type;
+@property (nullable, nonatomic, retain) NSString *flatDetail;
+@property (nullable, nonatomic, retain) NSString *projectUID;
+@property (nullable, nonatomic, retain) NSString *posX;
+@property (nullable, nonatomic, retain) NSString *posY;
 @property (nullable, nonatomic, retain) Floor *floors;
 @property (nullable, nonatomic, retain) Plant *plant;
 @property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
+@property (nullable, nonatomic, retain) Proyect *proyect;
 
 @end
 

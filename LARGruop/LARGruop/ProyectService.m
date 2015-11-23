@@ -9,8 +9,10 @@
 #import "ProyectService.h"
 #import "ProyectConnectionManager.h"
 #import "Proyect.h"
+#import "Entity.h"
 #import "ProyectTranslator.h"
 #import "ErrorCodes.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 static NSMutableArray *_filterProyects;
 
@@ -50,7 +52,7 @@ static NSMutableArray *_filterProyects;
 }
 - (NSArray *)getAllProyects
 {
-    NSArray *proyects = [Proyect MR_findAllSortedBy:@"name" ascending:YES];
+    NSArray *proyects = [Proyect MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
     return proyects;
 }
 
@@ -104,13 +106,14 @@ static NSMutableArray *_filterProyects;
     return filteredProyects;
 }
 
-- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (NSArray *proyects))success
+- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 {
-    NSMutableArray* proyects = [[NSMutableArray alloc] init];
     [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-            
-            for (NSDictionary *proyectDictionary in responseDictionary)
+        NSArray *proyectsResponse = (NSArray*)responseDictionary;
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+            [Proyect MR_truncateAllInContext:localContext];
+            for (NSDictionary *proyectDictionary in proyectsResponse)
             {
                 id proyectIdObject = [proyectDictionary valueForKeyPath:@"id"];
                 NSString *proyectID = ([proyectIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", proyectIdObject] : nil;
@@ -125,17 +128,19 @@ static NSMutableArray *_filterProyects;
                     return;
                 }
                 
-                Proyect *proyect = [[Proyect alloc]init];
+                Proyect *proyect = [Proyect MR_createEntityInContext:localContext];
                 proyect.uid = proyectID;
-                [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect];
-                [proyects addObject:proyect];
+                [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect context:localContext];
             }
-            if(responseDictionary.count == proyects.count && responseDictionary.count!=0)
-            {
-                success(proyects);
-            }
+
+            
+        } completion:^(BOOL contextDidSave, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(YES);
+            });
+        }];
         }
-                       );}
+        );}
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          

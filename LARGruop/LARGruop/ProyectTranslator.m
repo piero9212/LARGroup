@@ -8,10 +8,11 @@
 
 #import "ProyectTranslator.h"
 #import "Flat.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @implementation ProyectTranslator
 
-+ (void)proyectDictionary:(NSDictionary *)proyectDictionary toProyectEntity:(Proyect *)proyect
++ (void)proyectDictionary:(NSDictionary *)proyectDictionary toProyectEntity:(Proyect *)proyect context:(NSManagedObjectContext *)context
 {
     id uidObject = [proyectDictionary valueForKeyPath:@"id"];
     proyect.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
@@ -47,7 +48,11 @@
     proyect.videoURL = ([videoObject isKindOfClass:[NSString class]])? videoObject: nil;
     
     id departamentsObject = [proyectDictionary valueForKeyPath:@"deparments"];
-    NSDictionary *departamentsDictionary = ([departamentsObject isKindOfClass:[NSDictionary class]])? departamentsObject : nil;
+    NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
+    NSDictionary* departamentDictionary = [departamentDictionaries objectAtIndex:0];
+    Flat* flat = [Flat MR_createEntityInContext:context];
+    [self departamentDictionary:departamentDictionary toFlatEntity:flat];
+    [proyect addFlatsObject:flat];
 
     
 }
@@ -57,6 +62,28 @@
 
 + (void)departamentDictionary:(NSDictionary *)departamentDictionary toFlatEntity:(Flat *)flat
 {
+    id uidObject = [departamentDictionary valueForKeyPath:@"id"];
+    flat.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
+    
+    id nameObject = [departamentDictionary valueForKeyPath:@"name"];
+    flat.name = ([nameObject isKindOfClass:[NSString class]])? nameObject: nil;
+    
+    id sizeObject = [departamentDictionary valueForKeyPath:@"size"];
+    flat.size = ([sizeObject isKindOfClass:[NSString class]])? sizeObject: nil;
+    
+    id imageObject = [departamentDictionary valueForKeyPath:@"image"];
+    flat.flatImageURL = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
+    
+    id descriptionObject = [departamentDictionary valueForKeyPath:@"description"];
+    flat.flatDetail = ([descriptionObject isKindOfClass:[NSString class]])? descriptionObject: nil;
+    
+    id proyectIDObject = [departamentDictionary valueForKeyPath:@"project_id"];
+    flat.projectUID = ([proyectIDObject isKindOfClass:[NSString class]])? proyectIDObject: ((NSNumber*)uidObject).stringValue;
+    
+    id posXObject = [departamentDictionary valueForKeyPath:@"posX"];
+    flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)uidObject).stringValue;
+    id posYObject = [departamentDictionary valueForKeyPath:@"posY"];
+    flat.posX = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)uidObject).stringValue;
 }
 
 @end

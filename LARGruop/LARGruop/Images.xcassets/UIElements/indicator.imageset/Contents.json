@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Unknown-3.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Oval 36 + Back Button@2x.png",
       "scale" : "2x"
     },
     {

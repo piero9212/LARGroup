@@ -10,5 +10,5 @@
 #import "TopBarProtocol.h"
 
 @interface HomeViewController : BaseViewController <TopBarProtocolDelegate,UIGestureRecognizerDelegate>
-
+@property (nonatomic,strong) NSArray* proyects;
 @end

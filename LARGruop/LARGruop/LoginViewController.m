@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginService.h"
 #import "HomeViewController.h"
+#import "ProyectService.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -16,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
-@property CLLocationManager *locationManager;
 
 @end
 
@@ -38,9 +38,10 @@
     if([[LoginService sharedService]lastLoggedInUser] && [[LoginService sharedService]lastUsername])
     {
         [self showHUDOnView:self.view];
+        self.view.userInteractionEnabled=false;
         self.userTextField.text = [[LoginService sharedService]lastUsername];
         self.passwordTextField.text = @"**********";
-        [self performSelector:@selector(doLogin:) withObject:self afterDelay:2.0];
+        [self performSelector:@selector(doLogin:) withObject:self afterDelay:0];
     }
     [self initSetup];
 }
@@ -54,12 +55,6 @@
 
 -(void)setupViews
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
-    {
-        [self.locationManager requestAlwaysAuthorization];
-    }
     [self.navigationController setNavigationBarHidden:TRUE];
     [self.loginButton makeCircleShapeWithBorderWidth:1 borderColor:[UIColor blackColor] andBorderRadius:10];
     [self.userTextField makeUnderlineWithBordeWidth:1 color:[UIColor grayColor] andAlpha:0.3];
@@ -155,7 +150,15 @@
 
 -(void)doLogin:(id)sender
 {
-    [self performSegueWithIdentifier:HOME_SEGUE sender:self];
+    [[ProyectService sharedService] apiGetProyectsWithErrorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+        if(succeeded)
+        {
+            self.view.userInteractionEnabled=true;
+            [self hideHUDOnView:self.view];
+            [self performSegueWithIdentifier:HOME_SEGUE sender:self];
+        }
+    }];
+
 }
 
 #pragma mark -
@@ -181,8 +184,7 @@
 
 - (void)loginSucceeded:(NSNotification *)notification
 {
-    [self hideHUDOnView:self.view];
-    [self performSegueWithIdentifier:HOME_SEGUE sender:self];
+    [self doLogin:nil];
 }
 
 #pragma mark -
@@ -228,7 +230,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:HOME_SEGUE])
     {
-        HomeViewController* destinationVC = segue.destinationViewController;
+        UINavigationController* navigationVC = segue.destinationViewController;
+        UITabBarController* tabBarVC = navigationVC.childViewControllers[0];
+        HomeViewController* destinationVC = tabBarVC.selectedViewController;
     }
 
 }

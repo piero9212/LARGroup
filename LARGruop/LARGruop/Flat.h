@@ -2,14 +2,14 @@
 //  Flat.h
 //  LARGruop
 //
-//  Created by Piero on 15/11/15.
+//  Created by Piero on 22/11/15.
 //  Copyright © 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "Entity.h"
 
-@class Floor, Plant, Rate;
+@class Floor, Plant, Proyect, Rate;
 
 NS_ASSUME_NONNULL_BEGIN
 

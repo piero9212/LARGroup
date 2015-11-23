@@ -19,12 +19,7 @@ static NSString* const allProyectsPath = @"ws/getProyects";
 {
     
     ServiceClient *client = [ServiceClient sharedClient];
-    
-    
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                @"",
-                                nil];
-    
+    NSDictionary *parameters = nil;
     [client cancelAllHTTPOperationsWithMethod:@"GET" path:allProyectsPath];
     [client startRequestMethod:RequestMethodGet url:allProyectsPath parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);

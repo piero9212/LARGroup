@@ -2,18 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "magnifying-glass34.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "magnifying-glass34-2.png"
+      "filename" : "Fill 63@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "magnifying-glass34-3.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -30,5 +30,5 @@
 
 - (NSArray *)getFilteredProyectsWithoutNulls;
 
-- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (NSArray *proyects))success;
+- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 @end

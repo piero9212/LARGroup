@@ -2,7 +2,7 @@
 //  Proyect+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by Piero on 15/11/15.
+//  Created by Piero on 22/11/15.
 //  Copyright © 2015 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<Outside *> *outsideImages;
 @property (nullable, nonatomic, retain) NSSet<Plant *> *plants;
 @property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
+@property (nullable, nonatomic, retain) NSSet<Flat *> *flats;
 
 @end
 
@@ -58,6 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeRatesObject:(Rate *)value;
 - (void)addRates:(NSSet<Rate *> *)values;
 - (void)removeRates:(NSSet<Rate *> *)values;
+
+- (void)addFlatsObject:(Flat *)value;
+- (void)removeFlatsObject:(Flat *)value;
+- (void)addFlats:(NSSet<Flat *> *)values;
+- (void)removeFlats:(NSSet<Flat *> *)values;
 
 @end
 

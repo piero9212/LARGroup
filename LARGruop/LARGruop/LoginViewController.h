@@ -9,6 +9,5 @@
 #import "BaseViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface LoginViewController : BaseViewController <UITextFieldDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
-
+@interface LoginViewController : BaseViewController <UITextFieldDelegate,UIAlertViewDelegate>
 @end

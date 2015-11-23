@@ -14,6 +14,7 @@ static NSString* const LOGIN_SEGUE = @"LOGIN_SEGUE";
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property CLLocationManager *locationManager;
 
 @end
 
@@ -26,6 +27,12 @@ static NSString* const LOGIN_SEGUE = @"LOGIN_SEGUE";
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [self.locationManager requestAlwaysAuthorization];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
