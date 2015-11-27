@@ -112,7 +112,12 @@
     self.alertViewSender = AlertViewSenderLogin;
     self.isAlertReaded=false;
     if(![self isValidUsername:self.userTextField.text andPassword:self.passwordTextField.text])
+    {
+        [self hideHUDOnView:self.view];
+        self.view.userInteractionEnabled = YES;
+        [[AlertViewFactory alertViewForNoUserCredentials]show];
         return;
+    }
     @try {
         if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
             
@@ -178,7 +183,7 @@
     if (showAlertView.boolValue && !self.isAlertReaded) {
         self.isAlertReaded=true;
         self.alertViewSender = AlertViewSenderLoginError;
-        [[AlertViewFactory alertViewForLoginErrorWithDelegate:self]show];
+        [[AlertViewFactory alertViewForLoginError]show];
     }
 }
 

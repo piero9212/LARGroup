@@ -49,10 +49,16 @@
     return alertView;
 }
 
-+(UIAlertView *)alertViewForLoginErrorWithDelegate:(id)delegate
++(UIAlertView *)alertViewForLoginError
 {
-    UIAlertView* alertView = [self createAlertViewWithTitle:GLARUI(@"kDefaultTitle") message:GLARUI(@"kLoginNoUserMessage") cancelButtonTitle:GLARUI(@"kErrorButtonCancel") otherButtonTitle:GLARUI(@"kErrorButtonOk") AndDelegate:delegate];
+    UIAlertView* alertView = [self createAlertViewWithTitle:GLARUI(@"kDefaultTitle") message:GLARUI(@"kLoginNoUserMessage") cancelButtonTitle:GLARUI(@"kErrorButtonOk") otherButtonTitle:nil AndDelegate:nil];
     alertView.tag = AlertViewTagLoginError;
+    return alertView;
+}
+
++(UIAlertView *)alertViewForNoUserCredentials
+{
+    UIAlertView* alertView = [self createAlertViewWithTitle:GLARUI(@"kDefaultTitle") message:GLARUI(@"kLoginNoUserCredentials") cancelButtonTitle:GLARUI(@"kErrorButtonOk") otherButtonTitle:nil AndDelegate:nil];
     return alertView;
 }
 

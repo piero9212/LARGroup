@@ -18,5 +18,6 @@
 + (UIAlertView *)alertViewForUnexpectedErrorWithDelegate:(id)delegate;
 + (UIAlertView *)alertViewForNotFoundErrorWithDelegate:(id)delegate;
 + (UIAlertView *)alertViewForNotInternalServerErrorWithDelegate:(id)delegate;
-+(UIAlertView *)alertViewForLoginErrorWithDelegate:(id)delegate;
++(UIAlertView *)alertViewForLoginError;
++(UIAlertView *)alertViewForNoUserCredentials;
 @end

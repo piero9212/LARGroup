@@ -14,6 +14,7 @@
 #import "StandardDefaultConstants.h"
 #import "ErrorCodes.h"
 #import "Entity.h"
+#import "KeyConstants.h"
 
 @implementation LoginService
 
@@ -139,22 +140,22 @@
                                      password:password
                                       success:^(NSDictionary *responseDictionary) {
                                           
-                                          
+                                          NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+                                          NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+                                          id errorObject = [responseDictionary valueForKeyPath:@"error"];
+                                          NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+                                          if([error isEqualToString:LOGIN_ERROR_KEY])
+                                              {
+                                                  
+                                                  dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
+                                                  });
+                                                  return;
+                                                  
+                                              }
                                           id userIdObject = [responseDictionary valueForKeyPath:@"id"];
                                           NSString *userId = ([userIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", userIdObject] : nil;
                                           
-                                          NSNumber *showAlertView = [NSNumber numberWithBool:NO];
-                                          NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
-                                          
-                                          if (!responseDictionary) {
-                                              dispatch_async(dispatch_get_main_queue(), ^(void){
-                                                  [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
-                                              });
-                                              
-                                              self.requestSuccessErrorHandler(nil, YES, nil);
-                                              return;
-                                              
-                                          }
                                           
                                           User *lastLoggedInUser = [self lastLoggedInUser];
                                           

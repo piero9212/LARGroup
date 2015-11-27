@@ -41,7 +41,7 @@
                                             <constraint firstAttribute="width" constant="160" id="5hn-9G-WWc"/>
                                             <constraint firstAttribute="height" constant="50" id="khb-q7-N84"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="22"/>
                                         <state key="normal" title="Iniciar Sesión">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -135,7 +135,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Yav-un-4QH"/>
                                     <constraint firstAttribute="width" constant="130" id="pqh-kC-w3b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="19"/>
                                 <state key="normal" title="Iniciar Sesión">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,7 +145,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grn-bg-UEU">
-                                <rect key="frame" x="554" y="20" width="30" height="30"/>
+                                <rect key="frame" x="538" y="52" width="30" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GyC-fJ-70a"/>
@@ -165,6 +165,7 @@
                                     <constraint firstAttribute="width" constant="180" id="blC-Cp-NTm"/>
                                     <constraint firstAttribute="height" constant="30" id="tnK-OK-V7f"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                 <state key="normal" title="¿Olvidaste tu contraseña?">
                                     <color key="titleColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,7 +193,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Grn-bg-UEU" firstAttribute="top" secondItem="we7-1f-GdY" secondAttribute="bottom" id="4Ob-Xy-yTe"/>
+                            <constraint firstItem="Grn-bg-UEU" firstAttribute="top" secondItem="we7-1f-GdY" secondAttribute="bottom" constant="32" id="4Ob-Xy-yTe"/>
                             <constraint firstItem="Od6-zT-cuu" firstAttribute="top" secondItem="VUO-ge-QeM" secondAttribute="bottom" constant="30" id="7fp-Fx-ORf"/>
                             <constraint firstAttribute="centerX" secondItem="VUO-ge-QeM" secondAttribute="centerX" id="96k-O4-pzv"/>
                             <constraint firstAttribute="centerX" secondItem="cva-Mc-M0W" secondAttribute="centerX" id="AKN-WH-2dS"/>
@@ -200,7 +201,7 @@
                             <constraint firstItem="T8H-zy-4Sy" firstAttribute="top" secondItem="cva-Mc-M0W" secondAttribute="bottom" constant="25" id="My3-iq-xQc"/>
                             <constraint firstItem="cva-Mc-M0W" firstAttribute="top" secondItem="Od6-zT-cuu" secondAttribute="bottom" constant="25" id="QOL-H0-qTK"/>
                             <constraint firstItem="Od6-zT-cuu" firstAttribute="width" secondItem="cva-Mc-M0W" secondAttribute="width" id="Srk-9F-lds"/>
-                            <constraint firstAttribute="trailing" secondItem="Grn-bg-UEU" secondAttribute="trailing" constant="16" id="UGk-de-brG"/>
+                            <constraint firstAttribute="trailing" secondItem="Grn-bg-UEU" secondAttribute="trailing" constant="32" id="UGk-de-brG"/>
                             <constraint firstAttribute="centerX" secondItem="l1B-LP-2IT" secondAttribute="centerX" constant="-1" id="ag6-kY-Zm9"/>
                             <constraint firstItem="VUO-ge-QeM" firstAttribute="top" secondItem="we7-1f-GdY" secondAttribute="bottom" constant="50" id="cFj-yH-gLf"/>
                             <constraint firstItem="Od6-zT-cuu" firstAttribute="height" secondItem="cva-Mc-M0W" secondAttribute="height" id="cdf-I5-Exd"/>
@@ -241,14 +242,14 @@
                                     <constraint firstAttribute="width" constant="120" id="AF7-x0-3de"/>
                                     <constraint firstAttribute="height" constant="50" id="umJ-8B-2qa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="19"/>
                                 <state key="normal" title="Enviar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYk-i0-Qql">
-                                <rect key="frame" x="554" y="20" width="30" height="30"/>
+                                <rect key="frame" x="538" y="52" width="30" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Pg2-ko-4lu"/>
@@ -273,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72r-Zn-9fG">
-                                <rect key="frame" x="16" y="20" width="30" height="30"/>
+                                <rect key="frame" x="32" y="52" width="30" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="KWf-z1-ZtS"/>
@@ -287,7 +288,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recorde mi contraseña" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3y9-mH-83p">
-                                <rect key="frame" x="61" y="26" width="179" height="21"/>
+                                <rect key="frame" x="77" y="58" width="179" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="179" id="lAK-q5-Sro"/>
@@ -315,14 +316,14 @@
                             <constraint firstItem="3y9-mH-83p" firstAttribute="centerY" secondItem="72r-Zn-9fG" secondAttribute="centerY" constant="1" id="GIB-BC-Cay"/>
                             <constraint firstAttribute="centerX" secondItem="W49-UC-pQU" secondAttribute="centerX" id="LpR-uP-J2Y"/>
                             <constraint firstItem="3y9-mH-83p" firstAttribute="leading" secondItem="72r-Zn-9fG" secondAttribute="trailing" constant="15" id="MDa-Kf-3Xh"/>
-                            <constraint firstItem="72r-Zn-9fG" firstAttribute="leading" secondItem="PWp-fN-1Sn" secondAttribute="leading" constant="16" id="aWR-vp-N0w"/>
+                            <constraint firstItem="72r-Zn-9fG" firstAttribute="leading" secondItem="PWp-fN-1Sn" secondAttribute="leading" constant="32" id="aWR-vp-N0w"/>
                             <constraint firstAttribute="centerX" secondItem="W49-UC-pQU" secondAttribute="centerX" id="cRd-W0-HXl"/>
                             <constraint firstItem="W49-UC-pQU" firstAttribute="top" secondItem="Mv2-oH-Bzp" secondAttribute="bottom" constant="25" id="daa-x0-bcY"/>
-                            <constraint firstItem="72r-Zn-9fG" firstAttribute="top" secondItem="qET-j0-ci8" secondAttribute="bottom" id="ezj-jT-h3H"/>
+                            <constraint firstItem="72r-Zn-9fG" firstAttribute="top" secondItem="qET-j0-ci8" secondAttribute="bottom" constant="32" id="ezj-jT-h3H"/>
                             <constraint firstItem="Mv2-oH-Bzp" firstAttribute="top" secondItem="C15-Lp-RIG" secondAttribute="bottom" constant="40" id="gbp-Cy-hxp"/>
                             <constraint firstAttribute="centerX" secondItem="Mv2-oH-Bzp" secondAttribute="centerX" id="kKZ-jm-OCU"/>
-                            <constraint firstItem="IYk-i0-Qql" firstAttribute="top" secondItem="qET-j0-ci8" secondAttribute="bottom" id="msK-0E-wxI"/>
-                            <constraint firstAttribute="trailing" secondItem="IYk-i0-Qql" secondAttribute="trailing" constant="16" id="v53-xz-Yde"/>
+                            <constraint firstItem="IYk-i0-Qql" firstAttribute="top" secondItem="qET-j0-ci8" secondAttribute="bottom" constant="32" id="msK-0E-wxI"/>
+                            <constraint firstAttribute="trailing" secondItem="IYk-i0-Qql" secondAttribute="trailing" constant="32" id="v53-xz-Yde"/>
                             <constraint firstAttribute="centerX" secondItem="C15-Lp-RIG" secondAttribute="centerX" id="wDd-1M-E59"/>
                         </constraints>
                     </view>

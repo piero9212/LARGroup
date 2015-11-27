@@ -46,8 +46,6 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>LARGroup quiere acceder a tu localización</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

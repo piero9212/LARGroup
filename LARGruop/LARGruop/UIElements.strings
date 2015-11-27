@@ -6,7 +6,6 @@
   Copyright (c) 2015 prsp.org. All rights reserved.
 */
 
-
 //Messages
 
 "kNoInternetConnectionMessage" = "Por favor verifica tu connección a internet";
@@ -14,6 +13,8 @@
 "kNotFoundErrorMessage" = "Esto a sido removido o eliminado de nuestra base de datos";
 "kInternalServerErrorMessage" = "Hubo un error en el servidor, por favor intente denuevo";
 "kLoginNoUserMessage" = "El Usuario no existe o los datos estan errados, intente denuevo";
+"kLoginNoUserCredentials" = "Ingrese un Usuario y/o Contraseña validos";
+
 //Titles
 
 "kDefaultTitle" = "Grupo LAR";
