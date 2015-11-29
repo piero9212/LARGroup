@@ -10,6 +10,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <AFNetworking/AFNetworking.h>
 #import "GenericService.h"
+@import HockeySDK;
 
 @interface AppDelegate ()
 
@@ -24,6 +25,12 @@
     [self firstRunApp];
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    NSLog(@"%@",[paths objectAtIndex:0]);
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"9c1085eb7d6f487681e4eff152a50c11"];
+    // Do some additional configuration if needed here
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator
+     authenticateInstallation];
+
     return YES;
 }
 

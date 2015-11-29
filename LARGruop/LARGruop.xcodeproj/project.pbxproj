@@ -1002,6 +1002,7 @@
 				353D963B1B9DF8B800E4A618 /* Frameworks */,
 				353D963C1B9DF8B800E4A618 /* Resources */,
 				EE1B4D1534C0C3BB3691006E /* Copy Pods Resources */,
+				919EA971184AF54F90FE92FE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1091,6 +1092,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		919EA971184AF54F90FE92FE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LARGruop/Pods-LARGruop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D3D00BF5994FB8715F484E47 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
