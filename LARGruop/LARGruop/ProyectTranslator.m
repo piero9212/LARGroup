@@ -8,6 +8,8 @@
 
 #import "ProyectTranslator.h"
 #import "Flat.h"
+#import "Outside.h"
+#import "ProyectFeature.h"
 #import <MagicalRecord/MagicalRecord.h>
 
 @implementation ProyectTranslator
@@ -30,7 +32,7 @@
     proyect.imageURL = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
     
     id dimageObject = [proyectDictionary valueForKeyPath:@"dimage"];
-    proyect.mapImageURL = ([dimageObject isKindOfClass:[NSString class]])? dimageObject: nil;
+    proyect.mapImageURL = ([dimageObject isKindOfClass:[NSString class]])? imageObject: nil;
     
     id descriptionObject = [proyectDictionary valueForKeyPath:@"description"];
     proyect.proyectDescription = ([descriptionObject isKindOfClass:[NSString class]])? descriptionObject: nil;
@@ -38,21 +40,42 @@
     id mapDescriptionObject = [proyectDictionary valueForKeyPath:@"summary"];
     proyect.mapDescription = ([mapDescriptionObject isKindOfClass:[NSString class]])? mapDescriptionObject: nil;
     
+    id featuresObject = [proyectDictionary valueForKeyPath:@"features"];
+    NSArray *featuresArray = ([featuresObject isKindOfClass:[NSArray class]])? featuresObject : nil;
+    for(NSString* feature in featuresArray)
+    {
+        ProyectFeature* proyectFeature = [ProyectFeature MR_createEntityInContext:context];
+        proyectFeature.featureDescription = feature;
+        [proyect addFeaturesObject:proyectFeature];
+    }
+    
     id latObject = [proyectDictionary valueForKeyPath:@"lat"];
-    proyect.latitud = ([latObject isKindOfClass:[NSString class]])? latObject: nil;
+    proyect.latitud = ([latObject isKindOfClass:[NSNumber class]])? latObject: nil;
     
     id longObject = [proyectDictionary valueForKeyPath:@"lng"];
-    proyect.longitude = ([longObject isKindOfClass:[NSString class]])? longObject: nil;
+    proyect.longitude = ([longObject isKindOfClass:[NSNumber class]])? longObject: nil;
     
     id videoObject = [proyectDictionary valueForKeyPath:@"video"];
     proyect.videoURL = ([videoObject isKindOfClass:[NSString class]])? videoObject: nil;
     
+    id exteriorsObject = [proyectDictionary valueForKeyPath:@"exteriors"];
+    NSArray *exteriorsArray = ([exteriorsObject isKindOfClass:[NSArray class]])? exteriorsObject : nil;
+    for(NSString* exterior in exteriorsArray)
+    {
+        Outside* outside = [Outside MR_createEntityInContext:context];
+        outside.imageURL = exterior;
+        outside.outsideDescription = @"";
+        [proyect addOutsideImagesObject:outside];
+    }
+    
     id departamentsObject = [proyectDictionary valueForKeyPath:@"deparments"];
     NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
-    NSDictionary* departamentDictionary = [departamentDictionaries objectAtIndex:0];
-    Flat* flat = [Flat MR_createEntityInContext:context];
-    [self departamentDictionary:departamentDictionary toFlatEntity:flat];
-    [proyect addFlatsObject:flat];
+    for(NSDictionary* departamentDictionary in departamentDictionaries)
+    {
+        Flat* flat = [Flat MR_createEntityInContext:context];
+        [self departamentDictionary:departamentDictionary toFlatEntity:flat];
+        [proyect addFlatsObject:flat];
+    }
 
     
 }
@@ -78,12 +101,12 @@
     flat.flatDetail = ([descriptionObject isKindOfClass:[NSString class]])? descriptionObject: nil;
     
     id proyectIDObject = [departamentDictionary valueForKeyPath:@"project_id"];
-    flat.projectUID = ([proyectIDObject isKindOfClass:[NSString class]])? proyectIDObject: ((NSNumber*)uidObject).stringValue;
+    flat.projectUID = ([proyectIDObject isKindOfClass:[NSString class]])? proyectIDObject: ((NSNumber*)proyectIDObject).stringValue;
     
     id posXObject = [departamentDictionary valueForKeyPath:@"posX"];
-    flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)uidObject).stringValue;
+    flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)posXObject).stringValue;
     id posYObject = [departamentDictionary valueForKeyPath:@"posY"];
-    flat.posX = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)uidObject).stringValue;
+    flat.posX = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)posYObject).stringValue;
 }
 
 @end

@@ -68,16 +68,19 @@
 
 - (ProyectDetailOutsideViewController *)viewControllerAtIndex:(NSUInteger)index {
     
+   
     ProyectDetailOutsideViewController *childViewController =  (ProyectDetailOutsideViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailOutsideViewController"];
-    childViewController.index = index;
-    Outside* outside = self.outsides[index];
-    if([outside isFault])
-        outside = (Outside *)[[NSManagedObjectContext MR_defaultContext] objectWithID:outside.objectID];
-    NSURL* url = [NSURL URLWithString:outside.imageURL];
-
-    CGRect frame = childViewController.view.frame;
-    childViewController.outsideImageView.frame = frame;
-    [childViewController.outsideImageView hnk_setImageFromURL:url placeholder:nil];
+    if(self.outsides && self.outsides.count>0)
+    {
+        childViewController.index = index;
+        Outside* outside = self.outsides[index];
+        if([outside isFault])
+            outside = (Outside *)[[NSManagedObjectContext MR_defaultContext] objectWithID:outside.objectID];
+        NSURL* url = [NSURL URLWithString:outside.imageURL];
+        
+        CGRect frame = childViewController.view.frame;
+        childViewController.outsideImageView.frame = frame;
+        [childViewController.outsideImageView hnk_setImageFromURL:url placeholder:nil];}
     return childViewController;
     
 }

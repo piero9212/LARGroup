@@ -9,6 +9,10 @@
 #import "ProfileViewController.h"
 #import "NewCustomerViewController.h"
 #import "TopBarViewController.h"
+#import "LoginService.h"
+
+static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
+
 @implementation ProfileViewController
 
 #pragma mark -
@@ -24,6 +28,7 @@
 {
     [super viewWillAppear:TRUE];
     [self setupViews];
+    [self setupNotifications];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -40,19 +45,30 @@
     
 }
 
+-(void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutSuccess:)
+                                                 name:kNotificationLogoutFinished object:nil];
+}
 
 
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -
 
+- (IBAction)logout:(UIButton *)sender {
+    [[LoginService sharedService] logoutWithNotification:TRUE];
+}
 
 
 #pragma mark -
 #pragma mark - Actions
 #pragma mark -
 
-
+-(void)logoutSuccess:(NSNotification*)notification
+{
+    [self performSegueWithIdentifier:LOGOUT_SEGUE sender:nil];
+}
 
 #pragma mark -
 #pragma mark - Top Bar Delegate

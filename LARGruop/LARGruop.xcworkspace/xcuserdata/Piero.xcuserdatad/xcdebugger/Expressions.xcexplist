@@ -10,5 +10,21 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "-[MapViewController loadPins]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.proyects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MapViewController setupVars]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.proyects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

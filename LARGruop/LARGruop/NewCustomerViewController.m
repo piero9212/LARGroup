@@ -8,12 +8,19 @@
 
 #import "NewCustomerViewController.h"
 #import "NewCustomerTableViewCell.h"
+#import "ClientService.h"
+#import "AlertViewFactory.h"
 
 static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
+static NSString* const NAME_KEY= @"NAME_KEY";
+static NSString* const PHONE_KEY= @"PHONE_KEY";
+static NSString* const COMMENT_KEY= @"COMMENT_KEY";
+static NSString* const MAIL_KEY= @"MAIL_KEY";
 
 @interface NewCustomerViewController ()
 @property NSMutableArray* fields;
 @property NSMutableArray* placeholders;
+@property NSMutableDictionary* fieldValues;
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @end
 
@@ -54,6 +61,7 @@ static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
 {
     self.fields = [[NSMutableArray alloc]initWithObjects:@"Nombre del Cliente", @"Télefono", @"Correo del Cliente", @"Agregar Comentarios", nil];
     self.placeholders = [[NSMutableArray alloc]initWithObjects:@"Ingrese aqui el nombre de  su cliente", @"Ejem: 999405033", @"cliente@correo.com", @"Escribe tu comentario", nil];
+    self.fieldValues = [[NSMutableDictionary alloc]init];
 }
 
 - (void)viewWillLayoutSubviews
@@ -101,6 +109,7 @@ static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
     cell.fieldInputTextField.tag = indexPath.row;
     if([cell.fieldTitleLabel.text isEqualToString:@"Télefono" ])
         cell.fieldInputTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
     else if ([cell.fieldTitleLabel.text isEqualToString:@"Correo del Cliente" ])
         cell.fieldInputTextField.keyboardType = UIKeyboardTypeEmailAddress;
     else
@@ -118,6 +127,18 @@ static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
 #pragma mark - TextField Delegate
 #pragma mark -
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.keyboardType == UIKeyboardTypeNumberPad)
+    {
+        if ([string rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location != NSNotFound)
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField*)textField
 {
     NSInteger nextTag = textField.tag + 1;
@@ -132,15 +153,51 @@ static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
     }
     return NO; // We do not want UITextField to insert line-breaks.
 }
-
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if(self.fields && textField.tag < self.fields.count)
+    {
+        switch (textField.tag) {
+            case 0:
+                [self.fieldValues setObject:textField.text forKey:NAME_KEY];
+                break;
+            case 1:
+                [self.fieldValues setObject:textField.text forKey:MAIL_KEY];
+                break;
+            case 2:
+                [self.fieldValues setObject:textField.text forKey:PHONE_KEY];
+                break;
+            case 3:
+                [self.fieldValues setObject:textField.text forKey:COMMENT_KEY];
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -
 
 - (IBAction)saveCustomer:(UIButton *)sender {
+    for (UIView *view in self.view.subviews) {
+        if (view.isFirstResponder && [view isKindOfClass:[UITextField class]]) {
+            [((UITextField*)view) resignFirstResponder];
+        }
+    }
+    NSString* name = [self.fieldValues objectForKey:NAME_KEY];
+    NSString* email = [self.fieldValues objectForKey:MAIL_KEY];
+    NSString* phone = [self.fieldValues objectForKey:PHONE_KEY];
+    NSString* interest = @"1";
+    NSString* comment = [self.fieldValues objectForKey:COMMENT_KEY];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if(name && email && phone && interest && comment)
+    {
+        [[ClientService sharedService] apiCreateClientWithUsername:name email:email phone:phone interest:interest comment:comment errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
 }
 
 #pragma mark -
@@ -182,6 +239,12 @@ static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    UIView *view = otherGestureRecognizer.view;
+    if (view.class != UIView.class) {
+        if (view.class == [UITableView class] || view.class == [UITextField class]) {
+            return NO;
+        }
+    }
     return YES;
 }
 

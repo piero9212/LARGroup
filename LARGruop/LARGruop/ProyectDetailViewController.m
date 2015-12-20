@@ -37,6 +37,10 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {

@@ -56,7 +56,7 @@
     self.proyectAnnotationImageView.layer.cornerRadius = self.proyectAnnotationImageView.frame.size.height /2;
     self.proyectAnnotationImageView.layer.masksToBounds = YES;
     self.proyectAnnotationImageView.layer.borderWidth = 5.0;
-    self.proyectAnnotationImageView.layer.borderColor =[UIColor colorForAvaibleDepartmentsCount:proyect.leftDepartaments.integerValue].CGColor;
+    self.proyectAnnotationImageView.layer.borderColor =[UIColor colorForAvaibleDepartmentsCount:proyect.flats.count].CGColor;
     [self.proyectAnnotationImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.mapImageURL]];
     [self.mapDesciptionLabel sizeToFit];
 }

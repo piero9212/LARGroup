@@ -219,22 +219,12 @@
 - (void)logoutWithNotification:(BOOL)showNotification
 {
     
-    //    [GenericConnectionManager setDefaultXHaikuAuthHeader];
-    //[GenericConnectionManager setXHaikuAuthHeaderWithToken:[[LoginService sharedService] lastToken] userId:[[LoginService sharedService] lastLoggedInUser].uid];
     
+    [self dropDatabase];
     [[GenericService sharedService] cancelAllPreviousRequests];
-    
-    [LoginConnectionManager logoutWithCompletion:^{
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLogoutFinished object:self userInfo:nil];
-        });
-        
-    }];
-    
-    if (showNotification) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInvalidTokenDetected object:nil];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLogoutFinished object:self userInfo:nil];
+    });
 }
 
 

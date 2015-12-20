@@ -23,6 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self showHUDOnView:self.view];
     [self presentSelectedViewController];
 }
 
@@ -56,7 +62,10 @@
      {
          [fromViewController removeFromParentViewController];
          [newChildViewController didMoveToParentViewController:self];
-     } completion:nil];
+     } completion:^(BOOL finished) {
+         [self hideHUDOnView:self.view];
+     }];
+    
 }
 
 -(UIViewController*)getCurrentViewController
@@ -64,7 +73,7 @@
     UIViewController* fromVC;
     for (UIViewController*  vc in self.childViewControllers)
     {
-        if([vc isKindOfClass:[ProyectDetailOutsideViewController class]] || [vc isKindOfClass:[ProyectDetailDepartamentsViewController class]] ||  [vc isKindOfClass:[ProyectDetailLocateViewController class]])
+        if([vc isKindOfClass:[ProyectDetailOutsideViewController class]] || [vc isKindOfClass:[ProyectDetailDepartamentsViewController class]] ||  [vc isKindOfClass:[ProyectDetailLocateViewController class]] || [vc isKindOfClass:[ProyectDetailVideoViewController class]] || [vc isKindOfClass:[ProyectDetailPanoramicViewController class]])
             fromVC =vc;
         
     }

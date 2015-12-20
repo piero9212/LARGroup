@@ -22,9 +22,19 @@ static NSString * const kNotificationLogoutFinished = @"LogoutFinishedNotificati
 static NSString * const kNotificationLogoutActionRequested = @"LogoutActionRequestedNotification";
 static NSString * const kNotificationInvalidTokenDetected = @"InvalidTokenDetectedNotification";
 
-//LOGIN NOTIFICATIONS
+//PROYECTS NOTIFICATIONS
 
 static NSString * const kNotificationAllProyectsFailed = @"AllProyectsFailedNotification";
+
+//CLIENTS NOTIFICATIONS
+
+static NSString * const kNotificationAllClientsFailed = @"AllClientsFailedNotification";
+static NSString * const kNotificationAllClientsSucced = @"AllClientsSuccedNotification";
+static NSString * const kNotificationNewClientSucced = @"NewClientSuccedNotification";
+
+static NSString * const kNotificationNewClientFailed = @"NewClientFailedNotification";
+
+
 
 //SETTINGS NOTIFICATIONS
 static NSString * const kNotificationReloadAllData = @"ReloadAllDataNotification";

@@ -27,5 +27,9 @@ static NSString* const allProyectsPath = @"ws/getProyects";
     } failure:failure];
 }
 
++ (void)cancelALLProyectsRequest
+{
+    [[ServiceClient sharedClient] cancelAllHTTPOperationsWithMethod:@"GET" path:allProyectsPath];
+}
 
 @end

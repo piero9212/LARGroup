@@ -2,23 +2,29 @@
 //  Plant.h
 //  LARGruop
 //
-//  Created by Piero on 22/11/15.
-//  Copyright © 2015 prsp.org. All rights reserved.
+//  Created by piero.sifuentes on 18/12/15.
+//  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Entity.h"
 
 @class Flat, Proyect;
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Plant : Entity
 
-// Insert code here to declare functionality of your managed object subclass
-
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * plainURL;
+@property (nonatomic, retain) NSSet *flats;
+@property (nonatomic, retain) Proyect *proyect;
 @end
 
-NS_ASSUME_NONNULL_END
+@interface Plant (CoreDataGeneratedAccessors)
 
-#import "Plant+CoreDataProperties.h"
+- (void)addFlatsObject:(Flat *)value;
+- (void)removeFlatsObject:(Flat *)value;
+- (void)addFlats:(NSSet *)values;
+- (void)removeFlats:(NSSet *)values;
+
+@end

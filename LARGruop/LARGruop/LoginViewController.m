@@ -47,6 +47,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self setupDeallocNotifications];
 }
 - (void)didReceiveMemoryWarning {
@@ -72,17 +73,19 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginFailed:) name:kNotificationLoginFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSucceeded:) name:kNotificationLoginSucceeded object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProyectsFailed:) name:kNotificationAllProyectsFailed object:nil];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationNoInternetConnection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationUnauthorized object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationNotFound object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotifcication:) name:kNotificationNotFound object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationInternalServerError object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationUnexpectedError object:nil];
 }
 
 -(void)setupDeallocNotifications
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationAllProyectsFailed object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationLoginFailed object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationLoginSucceeded object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationNoInternetConnection object:nil];
@@ -159,7 +162,6 @@
         if(succeeded)
         {
             self.view.userInteractionEnabled=true;
-            [self hideHUDOnView:self.view];
             [self performSegueWithIdentifier:HOME_SEGUE sender:self];
         }
     }];
@@ -183,6 +185,21 @@
     if (showAlertView.boolValue && !self.isAlertReaded) {
         self.isAlertReaded=true;
         self.alertViewSender = AlertViewSenderLoginError;
+        [[AlertViewFactory alertViewForLoginError]show];
+    }
+}
+
+-(void)getProyectsFailed:(NSNotification*)notification
+{
+    [self hideHUDOnView:self.view];
+    self.view.userInteractionEnabled = YES;
+    [[ProyectService sharedService] cancelAllProyectsRequest];
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *showAlertView = [userInfo objectForKey:USER_INFO_SHOW_ALERT_VIEW];
+    if (showAlertView.boolValue && !self.isAlertReaded) {
+        self.isAlertReaded=true;
+        self.alertViewSender = AlertViewSenderAllProyectsFailed;
         [[AlertViewFactory alertViewForLoginError]show];
     }
 }

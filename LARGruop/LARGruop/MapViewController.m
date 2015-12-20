@@ -15,13 +15,14 @@
 
 static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
+BOOL pinsLoaded = false;
 
 @interface MapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *proyectsMapView;
-@property CLLocationManager *locationManager;
 @property NSMutableArray* proyects;
 @property (nonatomic,strong) UIPopoverController* popover;
+
 @end
 
 @implementation MapViewController
@@ -33,50 +34,52 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    pinsLoaded=false;
+    [self hideHUDOnView:self.view];
+    [self showHUDOnView:self.view];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
     [self setupVars];
-    [self setupViews];
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self setupMap];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)setupViews
+-(void)setupMap
 {
     [self.navigationController setNavigationBarHidden:TRUE];
-    [self loadPins];
+    if(!pinsLoaded)
+    {
+        [self loadPins];
+    }else
+    {
+        [self hideHUDOnView:self.view];
+    }
 }
 
 -(void)setupVars
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
     self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
 }
 
 -(void)loadPins
 {
-    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
-    
-    if (authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        self.locationManager.delegate =self;
-        [self.locationManager startMonitoringSignificantLocationChanges];
-        [self.locationManager startUpdatingLocation];
-        
-        for (Proyect* proyect in self.proyects) {
-            CLLocationCoordinate2D location = CLLocationCoordinate2DMake(proyect.latitud.doubleValue, proyect.longitude.doubleValue);
-            ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
-            [annotation setCoordinate:location]; //Add cordinates
-            annotation.proyectImage = proyect.mapImageURL;
-            annotation.proyectUID = proyect.uid;
-            annotation.leftDepartments = proyect.leftDepartaments;
-            [self.proyectsMapView addAnnotation:annotation];
-        }
+    for (Proyect* proyect in self.proyects) {
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake(proyect.latitud.doubleValue, proyect.longitude.doubleValue);
+        ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
+        [annotation setCoordinate:location]; //Add cordinates
+        annotation.proyectImage = proyect.mapImageURL;
+        annotation.proyectUID = proyect.uid;
+        annotation.leftDepartments = [NSNumber numberWithInteger:proyect.flats.count];
+        [self.proyectsMapView addAnnotation:annotation];
     }
     [self displayCorrectZoom];
 }
@@ -91,6 +94,8 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
         zoomRect = MKMapRectUnion(zoomRect, pointRect);
     }
     [self.proyectsMapView setVisibleMapRect:zoomRect animated:YES];
+    pinsLoaded=TRUE;
+    [self hideHUDOnView:self.view];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
@@ -163,17 +168,6 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
 //    [subview removeFromSuperview];
 //    subview = nil;
     
-}
-
-#pragma mark -
-#pragma mark - Core Location Manager Methods
-#pragma mark -
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-}
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"Error type: %@ \n", error.localizedDescription);
 }
 
 - (IBAction)displayProyectTouch:(UIButton *)sender {

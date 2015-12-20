@@ -2,23 +2,32 @@
 //  Customer.h
 //  LARGruop
 //
-//  Created by Piero on 22/11/15.
-//  Copyright © 2015 prsp.org. All rights reserved.
+//  Created by piero.sifuentes on 18/12/15.
+//  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Entity.h"
 
 @class Rate;
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Customer : Entity
 
-// Insert code here to declare functionality of your managed object subclass
-
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * firstName;
+@property (nonatomic, retain) NSNumber * interestLevel;
+@property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSString * phoneNumber;
+@property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSSet *rates;
 @end
 
-NS_ASSUME_NONNULL_END
+@interface Customer (CoreDataGeneratedAccessors)
 
-#import "Customer+CoreDataProperties.h"
+- (void)addRatesObject:(Rate *)value;
+- (void)removeRatesObject:(Rate *)value;
+- (void)addRates:(NSSet *)values;
+- (void)removeRates:(NSSet *)values;
+
+@end

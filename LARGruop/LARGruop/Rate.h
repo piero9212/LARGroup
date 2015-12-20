@@ -2,23 +2,23 @@
 //  Rate.h
 //  LARGruop
 //
-//  Created by Piero on 22/11/15.
-//  Copyright © 2015 prsp.org. All rights reserved.
+//  Created by piero.sifuentes on 18/12/15.
+//  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Entity.h"
 
 @class Customer, Flat, Floor, Proyect;
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Rate : Entity
 
-// Insert code here to declare functionality of your managed object subclass
+@property (nonatomic, retain) NSNumber * interestLevel;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) Customer *customer;
+@property (nonatomic, retain) Flat *flat;
+@property (nonatomic, retain) Floor *floor;
+@property (nonatomic, retain) Proyect *proyect;
 
 @end
-
-NS_ASSUME_NONNULL_END
-
-#import "Rate+CoreDataProperties.h"

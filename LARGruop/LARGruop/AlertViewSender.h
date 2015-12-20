@@ -13,5 +13,7 @@ typedef enum {
     AlertViewSenderLoginError,
     AlertViewSenderMap,
     AlertViewSenderMapLocation,
+    AlertViewSenderAllProyectsFailed,
+
     
 } AlertViewSender;

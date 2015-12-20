@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) BOOL allClassesSelected;
 
 + (ProyectService *)sharedService;
-
+- (void)cancelAllProyectsRequest;
 + (NSMutableArray *)filterProyects;
 + (void)setFilterProyects:(NSMutableArray *)filterProyects;
 

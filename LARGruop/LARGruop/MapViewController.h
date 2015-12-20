@@ -13,6 +13,6 @@
 #import "AnnotationView.h"
 #import "ProyectAnnotationProtocol.h"
 
-@interface MapViewController : BaseViewController <MKMapViewDelegate,CLLocationManagerDelegate,UIPopoverControllerDelegate,ProyectAnnotationDelegate>
+@interface MapViewController : BaseViewController <MKMapViewDelegate,UIPopoverControllerDelegate,ProyectAnnotationDelegate>
 
 @end

@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface NewCustomerViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate>
+@interface NewCustomerViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 
 @property (readwrite) CGSize popOverViewSize;
 @end

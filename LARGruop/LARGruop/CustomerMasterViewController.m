@@ -30,6 +30,11 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -40,6 +45,7 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
 {
     [super viewWillAppear:animated];
     [self setupVars];
+    [self setupNotifications];
 }
 
 -(void)setupVars
@@ -51,9 +57,20 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
     [self.customerTableView reloadData];
 }
 
--(void)getCustomersFromWebService
+-(void)viewWillDisappear:(BOOL)animated
 {
-    
+    [super viewWillDisappear:animated];
+    [self setupDeallocNotifications];
+}
+
+-(void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getClientsSucced:) name:kNotificationAllClientsSucced object:nil];
+}
+
+-(void)setupDeallocNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationAllClientsSucced object:nil];
 }
 
 #pragma mark -
@@ -96,7 +113,17 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
     return cell;
 }
 
+#pragma mark - API & Notifications
 
+-(void)getClientsSucced:(NSNotification*)notification
+{
+    if(self.customers && self.customers.count>0)
+    {
+        [self.customerTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:true scrollPosition:UITableViewScrollPositionMiddle];
+        [self performSegueWithIdentifier:CUSTOMER_DETAIL_SEGUE sender:self];
+
+    }
+}
 
 #pragma mark -
 #pragma mark - Actions

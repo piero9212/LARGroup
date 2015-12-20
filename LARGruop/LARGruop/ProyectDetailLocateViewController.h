@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ProyectDetailLocateViewController : BaseViewController <MKMapViewDelegate,CLLocationManagerDelegate>
+@interface ProyectDetailLocateViewController : BaseViewController <MKMapViewDelegate>
 
 
 @property (nonatomic,strong) NSString* selectedProyectID;

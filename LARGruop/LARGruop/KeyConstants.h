@@ -7,3 +7,4 @@
 //
 
 static NSString* const LOGIN_ERROR_KEY=@"Usuario no valido";
+static NSString* const GET_PROYECTS_ERROR_KEY=@"Usuario no valido";

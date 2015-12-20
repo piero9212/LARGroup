@@ -85,9 +85,9 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     cell.proyectAddressLabel.text = proyect.address;
     cell.districtLabel.text = proyect.district;
     [cell.districtLabel sizeToFit];
-    cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: 0%@",proyect.leftDepartaments.stringValue];
-    [cell.departamentsLeftLabel setTextColor:[UIColor colorForAvaibleDepartmentsCount:proyect.leftDepartaments.integerValue]];
-    [cell.buildImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.listImageURL]];
+    cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: %lu",(unsigned long)proyect.flats.count];
+    [cell.departamentsLeftLabel setTextColor:[UIColor colorForAvaibleDepartmentsCount:proyect.flats.count]];
+    [cell.buildImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.imageURL]];
     return cell;
     
     

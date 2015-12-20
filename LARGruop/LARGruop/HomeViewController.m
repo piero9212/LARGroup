@@ -42,6 +42,10 @@
     [self setupVars];
     [self setupNotifications];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -107,7 +111,8 @@
      {
          [fromViewController removeFromParentViewController];
          [newChildViewController didMoveToParentViewController:self];
-     } completion:nil];
+     } completion:^(BOOL finished) {
+     }];
 }
 
 -(UIViewController*)getCurrentViewController

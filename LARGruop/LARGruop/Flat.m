@@ -2,8 +2,8 @@
 //  Flat.m
 //  LARGruop
 //
-//  Created by Piero on 22/11/15.
-//  Copyright © 2015 prsp.org. All rights reserved.
+//  Created by piero.sifuentes on 18/12/15.
+//  Copyright (c) 2015 prsp.org. All rights reserved.
 //
 
 #import "Flat.h"
@@ -12,8 +12,21 @@
 #import "Proyect.h"
 #import "Rate.h"
 
+
 @implementation Flat
 
-// Insert code here to add functionality to your managed object subclass
+@dynamic flatDetail;
+@dynamic flatImageURL;
+@dynamic name;
+@dynamic posX;
+@dynamic posY;
+@dynamic projectUID;
+@dynamic size;
+@dynamic status;
+@dynamic type;
+@dynamic floors;
+@dynamic plant;
+@dynamic proyect;
+@dynamic rates;
 
 @end

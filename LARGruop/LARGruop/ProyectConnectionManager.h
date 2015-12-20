@@ -14,6 +14,7 @@
 + (void)getAllProyectsWithsuccess:(void (^) (NSDictionary *responseDictionary))success
                                      failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
++ (void)cancelALLProyectsRequest;
 
 
 @end

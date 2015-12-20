@@ -13,11 +13,10 @@
 #import "Proyect.h"
 
 static NSString *MAP_ANNOTATION__LOCATE_IDENTIFIER = @"MAP_ANNOTATION__LOCATE_IDENTIFIER";
-
+BOOL isPinLoaded = false;
 @interface ProyectDetailLocateViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *proyectMapView;
-@property CLLocationManager *locationManager;
 @property Proyect* selectedProyect;
 @end
 
@@ -29,59 +28,57 @@ static NSString *MAP_ANNOTATION__LOCATE_IDENTIFIER = @"MAP_ANNOTATION__LOCATE_ID
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isPinLoaded = FALSE;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self setupMap];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self setupVars];
-    [self setupViews];
     CGRect frame = self.view.frame;
     frame.size.width = self.containerSize.width;
     frame.size.height = self.containerSize.height;
     self.view.frame = frame;
 }
 
--(void)setupViews
+-(void)setupMap
 {
     [self.navigationController setNavigationBarHidden:TRUE];
-    [self loadPins];
+    if(!isPinLoaded)
+        [self loadPins];
 }
 
 -(void)setupVars
 {
     self.selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    [self loadPins];
 }
 
 -(void)loadPins
 {
-    CLAuthorizationStatus authorizationStatus= [CLLocationManager authorizationStatus];
+    self.proyectMapView.showsUserLocation = YES;
     
-    if (authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-        authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        self.locationManager.delegate =self;
-        [self.locationManager startMonitoringSignificantLocationChanges];
-        [self.locationManager startUpdatingLocation];
-        self.proyectMapView.showsUserLocation = YES;
-       
-        if(self.selectedProyect)
-        {
-            CLLocationCoordinate2D location = CLLocationCoordinate2DMake(self.selectedProyect.latitud.doubleValue, self.selectedProyect.longitude.doubleValue);
-            ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
-            [annotation setCoordinate:location]; //Add cordinates
-            annotation.proyectImage = self.selectedProyect.mapImageURL;
-            annotation.proyectUID = self.selectedProyect.uid;
-            annotation.leftDepartments = self.selectedProyect.leftDepartaments;
-            [self.proyectMapView addAnnotation:annotation];
-        }
+    if(self.selectedProyect)
+    {
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake(self.selectedProyect.latitud.doubleValue, self.selectedProyect.longitude.doubleValue);
+        ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
+        [annotation setCoordinate:location]; //Add cordinates
+        annotation.proyectImage = self.selectedProyect.mapImageURL;
+        annotation.proyectUID = self.selectedProyect.uid;
+        annotation.leftDepartments = [NSNumber numberWithInteger:self.selectedProyect.flats.count];
+        [self.proyectMapView addAnnotation:annotation];
     }
+    
+    
     [self displayCorrectZoom];
 }
 
@@ -94,6 +91,7 @@ static NSString *MAP_ANNOTATION__LOCATE_IDENTIFIER = @"MAP_ANNOTATION__LOCATE_ID
         MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
         zoomRect = MKMapRectUnion(zoomRect, pointRect);
     }
+    isPinLoaded= TRUE;
     [self.proyectMapView setVisibleMapRect:zoomRect animated:YES];
 }
 
@@ -136,17 +134,6 @@ static NSString *MAP_ANNOTATION__LOCATE_IDENTIFIER = @"MAP_ANNOTATION__LOCATE_ID
     return pinView;
     
     
-}
-
-#pragma mark -
-#pragma mark - Core Location Manager Methods
-#pragma mark -
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-}
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"Error type: %@ \n", error.localizedDescription);
 }
 
 

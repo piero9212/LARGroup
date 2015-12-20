@@ -28,6 +28,10 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -39,7 +43,6 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
     [super viewWillAppear:animated];
     [self setupVars];
 }
-
 -(void)setupVars
 {
     self.sections = [[NSArray alloc]initWithObjects:@"Nombre",@"Correo",@"Teléfono",@"Nivel de interes",@"Cotizaciones enviadas", nil];
