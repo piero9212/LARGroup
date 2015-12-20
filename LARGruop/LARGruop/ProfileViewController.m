@@ -10,6 +10,7 @@
 #import "NewCustomerViewController.h"
 #import "TopBarViewController.h"
 #import "LoginService.h"
+#import "HomeViewController.h"
 
 static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 
@@ -92,6 +93,17 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 
 - (void)showSearch
 {
+    for(UIViewController* controller in self.navigationController.childViewControllers)
+    {
+        if([controller isKindOfClass:[UITabBarController class]])
+        {
+            UITabBarController* tabBarController = (UITabBarController*)controller;
+            HomeViewController* home = [tabBarController.viewControllers objectAtIndex:0];
+            [home showSearch];
+            tabBarController.selectedViewController
+            = home;
+        }
+    }
 }
 
 #pragma mark -

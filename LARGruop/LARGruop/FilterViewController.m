@@ -48,9 +48,8 @@
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
-    self.lowValueLabel.text = [NSString stringWithFormat:@"%f", (float)self.sliderView.lowerValue];
-    self.highValueLabel.text =[NSString stringWithFormat:@"%f", (float)self.sliderView.upperValue];
-    }
+    [self cleanFilters:nil];
+}
 
 -(void)setupVars
 {
@@ -69,8 +68,6 @@
 - (IBAction)applyFilters:(UIButton *)sender {
     NSDictionary *userInfo = @{NOTIFICATION_SENDER: FILTER_SENDER, FILTER_MODE: @TRUE};
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationApplyFilters object:self userInfo:userInfo];
-    
-    //TODO APPLY FILTERS
 }
 
 - (IBAction)resetFilter:(UIButton *)sender {
@@ -93,9 +90,10 @@
     
 }
 - (IBAction)sliderValueChanged:(NMRangeSlider *)sender {
-    
-    self.lowValueLabel.text = [NSString stringWithFormat:@"%f", (float)sender.lowerValue];
-    self.highValueLabel.text =[NSString stringWithFormat:@"%f", (float)sender.upperValue];
+    int min = (sender.lowerValue+ 0.2) * 100000;
+    int max = sender.upperValue * 100000;
+    self.lowValueLabel.text = [NSString stringWithFormat:@"S/%d", min];
+    self.highValueLabel.text =[NSString stringWithFormat:@"S/%d", max];
 }
 
 #pragma mark -
@@ -104,9 +102,14 @@
 
 -(void)cleanFilters:(NSNotification*)notification
 {
+    self.rommsSelected = 0;
     [self.avaibleProyectsSwitch setOn:FALSE];
     self.roomsLabel.text= @"No seleccionado";
-    //TODO CLEAN SLIDER
+    [self configureMetalSlider];
+    int min = (self.sliderView.lowerValue+ 0.2) * 100000;
+    int max = self.sliderView.upperValue * 100000;
+    self.lowValueLabel.text = [NSString stringWithFormat:@"S/%d", min];
+    self.highValueLabel.text =[NSString stringWithFormat:@"S/%d", max];
 }
 
 #pragma mark -

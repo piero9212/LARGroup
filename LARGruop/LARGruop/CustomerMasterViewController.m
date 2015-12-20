@@ -44,11 +44,11 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setupVars];
     [self setupNotifications];
+    [self setupTable];
 }
 
--(void)setupVars
+-(void)setupTable
 {
      self.customers = [[NSMutableArray alloc]initWithArray:[Customer MR_findAll]];
     self.alphabetizedDictionary = [CGLAlphabetizer alphabetizedDictionaryFromObjects:_customers usingKeyPath:@"lastName"];
@@ -117,6 +117,7 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
 
 -(void)getClientsSucced:(NSNotification*)notification
 {
+    [self setupTable];
     if(self.customers && self.customers.count>0)
     {
         [self.customerTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:true scrollPosition:UITableViewScrollPositionMiddle];

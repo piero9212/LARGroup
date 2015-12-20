@@ -4,6 +4,51 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>CGLAlphabetizer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>EDStarRating.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>Haneke.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>HockeySDK-HockeySDKResources.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>JTCalendar.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+		<key>MRProgress.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>MagicalRecord.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 		<key>Pods-LARGruop-AFNetworking.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -59,6 +104,16 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
+		<key>SCLAlertView-Objective-C.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -78,6 +133,11 @@
 			<true/>
 		</dict>
 		<key>1089FF99F8542D9F292C69DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>155D7BAFD632C50E79D6E7354FCA2F0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +182,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3C014F737BF0E4D82F49D1E8DBB98C79</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3D956BC598363498145E0AE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>41AF7688E961294E7AC2DD44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41FE7D83DA210B0DE51668B1EA79DEC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,7 +237,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6E7D726ADA8D51194A8E9EDBDECCADF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>73438704847BEB5503963B43</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8570A42CA7975311B4D2DDCB2303977B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,12 +277,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>96E061D7DF5A18633C56080A8C8E152D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9BEE5F063D739BF8536958FD76629434</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9C2DEAC6B7352AA61AEDB27D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9E7FDF0396A7B6A24712C57D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3AD7E342840A1BEA026D1D3A2D9C1A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,12 +327,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D54AB3ECEB9A8FBA15D4F73CBE326692</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E139C43ECD4D1CD7A2A5E0A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E9826CEA156F310FD3FF770C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F82C0E66E8CC90BEBBBA0C9ECDF9DF36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

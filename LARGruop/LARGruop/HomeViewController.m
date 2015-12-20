@@ -12,6 +12,7 @@
 #import "NewCustomerViewController.h"
 #import "TopBarViewController.h"
 #import "FilterViewController.h"
+#import "ProyectService.h"
 
 @interface HomeViewController ()
 
@@ -38,9 +39,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
+    [self setupNotifications];
     [self setupViews];
     [self setupVars];
-    [self setupNotifications];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -71,10 +72,30 @@
 
 -(void)setupNotifications
 {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProyectsFailed:) name:kNotificationAllProyectsFailed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilters:)
                                                  name:kNotificationApplyFilters object:nil];
 }
 
+#pragma mark -
+#pragma mark - API & Notifications
+#pragma mark -
+
+-(void)getProyectsFailed:(NSNotification*)notification
+{
+    [self hideHUDOnView:self.view];
+    self.view.userInteractionEnabled = YES;
+    [[ProyectService sharedService] cancelAllProyectsRequest];
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *showAlertView = [userInfo objectForKey:USER_INFO_SHOW_ALERT_VIEW];
+    if (showAlertView.boolValue && !self.isAlertReaded) {
+        self.isAlertReaded=true;
+        self.alertViewSender = AlertViewSenderAllProyectsFailed;
+        [[AlertViewFactory alertViewForLoginError]show];
+    }
+}
 
 #pragma mark -
 #pragma mark - IBActions
@@ -283,6 +304,8 @@
 
 - (void)showSearch
 {
+    [self.containerSegmentedControl setSelectedSegmentIndex:1];
+    [self tapSelected:self.containerSegmentedControl];
 }
 
 #pragma mark -

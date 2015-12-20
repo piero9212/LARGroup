@@ -34,7 +34,7 @@
 - (void)apiGetClientsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
     [ClientConnectionManager getAllClientsWithsuccess:^(NSDictionary *responseDictionary)     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        dispatch_async(dispatch_get_main_queue(), ^(void){
             NSArray *customerResponse = (NSArray*)responseDictionary;
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 
@@ -96,7 +96,7 @@
                      errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
     [ClientConnectionManager createNewUserWithUsername:name email:email phone:phone interest:interest comment:comment success:^(NSDictionary *responseDictionary)     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        dispatch_async(dispatch_get_main_queue(), ^{
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 
                 NSNumber *showAlertView = [NSNumber numberWithBool:YES];
