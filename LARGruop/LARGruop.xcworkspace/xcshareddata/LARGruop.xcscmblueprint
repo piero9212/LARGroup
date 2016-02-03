@@ -1,15 +1,13 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "67E96EA0BB1D80AF3D324B249DF65C600696B648",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D170DCD3A2DA997229C6A9DD5DFDD1A6B9E6E0E4",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "67E96EA0BB1D80AF3D324B249DF65C600696B648" : 0,
     "D170DCD3A2DA997229C6A9DD5DFDD1A6B9E6E0E4" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A75F46E1-0891-41F6-906D-FD802CE3898E",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "67E96EA0BB1D80AF3D324B249DF65C600696B648" : "LAR\/",
     "D170DCD3A2DA997229C6A9DD5DFDD1A6B9E6E0E4" : "LARGroup"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "LARGruop",
@@ -19,7 +17,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/piero_sifuentes\/largroup.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67E96EA0BB1D80AF3D324B249DF65C600696B648"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D170DCD3A2DA997229C6A9DD5DFDD1A6B9E6E0E4"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/piero9212\/LARGroup.git",
