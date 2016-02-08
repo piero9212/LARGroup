@@ -20,8 +20,12 @@
     id fullNameObject = [userDictionary valueForKeyPath:@"name"];
     
     NSArray *components=[fullNameObject componentsSeparatedByString:@" "];
-    user.firstName  = components[0];
-    user.lastName  = components[1];
+    if(components)
+    {
+        user.firstName  = components[0];
+        if(components.count>1)
+            user.lastName  = components[1];
+    }
     
     id usernameObject = [userDictionary valueForKeyPath:@"username"];
     user.username = ([usernameObject isKindOfClass:[NSString class]])? usernameObject: nil;

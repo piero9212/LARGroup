@@ -142,7 +142,7 @@
                                           
                                           NSNumber *showAlertView = [NSNumber numberWithBool:YES];
                                           NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
-                                          id errorObject = [responseDictionary valueForKeyPath:@"error"];
+                                            id errorObject = [responseDictionary valueForKeyPath:@"error"];
                                           NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
                                           if([error isEqualToString:LOGIN_ERROR_KEY])
                                               {

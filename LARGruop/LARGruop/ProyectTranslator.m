@@ -10,6 +10,7 @@
 #import "Flat.h"
 #import "Outside.h"
 #import "ProyectFeature.h"
+#import "Floor.h"
 #import <MagicalRecord/MagicalRecord.h>
 
 @implementation ProyectTranslator
@@ -68,16 +69,26 @@
         [proyect addOutsideImagesObject:outside];
     }
     
-    id departamentsObject = [proyectDictionary valueForKeyPath:@"deparments"];
-    NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
-    for(NSDictionary* departamentDictionary in departamentDictionaries)
+    id floorsObject = [proyectDictionary valueForKeyPath:@"floors"];
+    NSArray *floorsDictionaries = ([floorsObject isKindOfClass:[NSArray class]])? floorsObject : nil;
+    if(floorsDictionaries)
     {
-        Flat* flat = [Flat MR_createEntityInContext:context];
-        [self departamentDictionary:departamentDictionary toFlatEntity:flat];
-        [proyect addFlatsObject:flat];
+        int i =1;
+        for(NSDictionary* floorDictionary in floorsDictionaries)
+        {
+            Floor* floor = [Floor MR_createEntityInContext:context];
+            [self floorDictionary:floorDictionary toFloorEntity:floor andFloorNumber:i];
+            id departamentsObject = [floorDictionary valueForKeyPath:@"deparments"];
+            NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
+            for(NSDictionary* departamentDictionary in departamentDictionaries)
+            {
+                Flat* flat = [Flat MR_createEntityInContext:context];
+                [self departamentDictionary:departamentDictionary toFlatEntity:flat];
+                flat.floor = floor;
+                [proyect addFlatsObject:flat];
+            }
+        }
     }
-
-    
 }
 
 + (void)recipientDictionary:(NSDictionary *)userDictionary toProyectEntity:(Proyect *)proyect
@@ -107,6 +118,13 @@
     flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)posXObject).stringValue;
     id posYObject = [departamentDictionary valueForKeyPath:@"posY"];
     flat.posX = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)posYObject).stringValue;
+}
+
++ (void)floorDictionary:(NSDictionary *)floorDictionary toFloorEntity:(Floor *)floor andFloorNumber:(int)number
+{
+    id uidObject = [floorDictionary valueForKeyPath:@"id"];
+    floor.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
+    floor.number = [NSNumber numberWithInt:number];
 }
 
 @end

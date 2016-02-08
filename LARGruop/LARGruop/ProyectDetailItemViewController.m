@@ -87,7 +87,7 @@
     
     switch (self.itemType) {
         case ProyectDetailItemTypeDepartaments:
-            self.proyectDetailItemLabel.text = @"Departamentos";
+            self.proyectDetailItemLabel.text = @"Departamentos por esquema";
             destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];
             ((ProyectDetailDepartamentsViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
             ((ProyectDetailDepartamentsViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;

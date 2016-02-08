@@ -10,5 +10,7 @@
 
 @interface DepartmentCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *departmentNameLabel;
-@property (nonatomic) BOOL selectedPlant;
+@property (nonatomic) BOOL isSolidColor;
+@property (strong,nonatomic) UIColor* color;
+-(void)setupCellWithFloorNumber:(NSString*)floorNumber color:(UIColor*)color isSolidColor:(BOOL)isSolidColor;
 @end

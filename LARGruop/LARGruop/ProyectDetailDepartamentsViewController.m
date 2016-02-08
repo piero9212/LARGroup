@@ -14,9 +14,11 @@
 static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 
 @interface ProyectDetailDepartamentsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *legendTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *departmentCollectionView;
-@property (weak, nonatomic) IBOutlet UIWebView *departmentPlanWebView;
 @property (strong,nonatomic) NSArray* proyectPlants;
+@property (weak, nonatomic) IBOutlet UILabel *proyectNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *proyectActionButton;
 @property (nonatomic) NSIndexPath* selectedPlantIndexPath;
 @end
 
@@ -59,7 +61,7 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
         Plant* plant = [self.proyectPlants objectAtIndex:0];
         NSURL *websiteUrl = [NSURL URLWithString:plant.plainURL];
         NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-        [self.departmentPlanWebView loadRequest:urlRequest];
+        //[self.departmentPlanWebView loadRequest:urlRequest];
     }
     self.selectedPlantIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.departmentCollectionView reloadData];
@@ -100,7 +102,7 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
     Plant* plant = [self.proyectPlants objectAtIndex:indexPath.row];
     NSURL *websiteUrl = [NSURL URLWithString:plant.plainURL];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-    [self.departmentPlanWebView loadRequest:urlRequest];
+    //[self.departmentPlanWebView loadRequest:urlRequest];
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {

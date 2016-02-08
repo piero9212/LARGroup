@@ -78,7 +78,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationNoInternetConnection object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationUnauthorized object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotifcication:) name:kNotificationNotFound object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationNotFound object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationInternalServerError object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationUnexpectedError object:nil];
 }
@@ -252,9 +252,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:HOME_SEGUE])
     {
-        UINavigationController* navigationVC = segue.destinationViewController;
-        UITabBarController* tabBarVC = navigationVC.childViewControllers[0];
-        HomeViewController* destinationVC = tabBarVC.selectedViewController;
+//        UINavigationController* navigationVC = segue.destinationViewController;
+//        UITabBarController* tabBarVC = navigationVC.childViewControllers[0];
+//        HomeViewController* destinationVC = tabBarVC.selectedViewController;
     }
 
 }

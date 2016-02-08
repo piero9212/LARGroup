@@ -10,4 +10,16 @@
 
 @implementation DepartmentCollectionViewCell
 
+-(void)setupCellWithFloorNumber:(NSString*)floorNumber color:(UIColor*)color isSolidColor:(BOOL)isSolidColor;
+{
+    self.color = color;
+    self.isSolidColor = isSolidColor;
+    self.departmentNameLabel.text = floorNumber;
+    if(isSolidColor)
+    {
+        self.backgroundColor = color;
+        self.departmentNameLabel.text = @"";
+    }
+}
+
 @end

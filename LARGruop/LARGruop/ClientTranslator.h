@@ -11,6 +11,5 @@
 @interface ClientTranslator : NSObject
 
 + (void)clientDictionary:(NSDictionary *)clientDictionary toCustomerEntity:(Customer *)client context:(NSManagedObjectContext *)context;
-+ (void)recipientDictionary:(NSDictionary *)clientDictionary toCustomerEntity:(Customer *)client;
 
 @end
