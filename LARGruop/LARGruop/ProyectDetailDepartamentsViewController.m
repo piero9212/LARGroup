@@ -16,10 +16,10 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 @interface ProyectDetailDepartamentsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *legendTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *departmentCollectionView;
-@property (strong,nonatomic) NSArray* proyectPlants;
+@property (strong,nonatomic) NSArray* proyectFloors;
+@property (strong,nonatomic) NSArray* leyendItems;
 @property (weak, nonatomic) IBOutlet UILabel *proyectNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *proyectActionButton;
-@property (nonatomic) NSIndexPath* selectedPlantIndexPath;
 @end
 
 @implementation ProyectDetailDepartamentsViewController

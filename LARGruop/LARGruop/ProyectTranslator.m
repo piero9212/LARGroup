@@ -78,7 +78,7 @@
         {
             Floor* floor = [Floor MR_createEntityInContext:context];
             [self floorDictionary:floorDictionary toFloorEntity:floor andFloorNumber:i];
-            id departamentsObject = [floorDictionary valueForKeyPath:@"deparments"];
+            id departamentsObject = [floorDictionary valueForKeyPath:@"departments"];
             NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
             for(NSDictionary* departamentDictionary in departamentDictionaries)
             {

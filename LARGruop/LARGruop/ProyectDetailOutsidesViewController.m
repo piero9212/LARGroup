@@ -61,7 +61,6 @@
     self.currentIndex=0;
 }
 
-
 #pragma mark -
 #pragma mark - Page Controller Delegate
 #pragma mark -

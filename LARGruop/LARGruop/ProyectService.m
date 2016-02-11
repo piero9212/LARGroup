@@ -115,7 +115,7 @@ static NSMutableArray *_filterProyects;
 - (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 {
     [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
-        dispatch_async(dispatch_get_main_queue(), ^(void){
+        //dispatch_async(dispatch_get_main_queue(), ^(void){
             
         NSArray *proyectsResponse = (NSArray*)responseDictionary;
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
@@ -148,8 +148,8 @@ static NSMutableArray *_filterProyects;
                 completion(YES);
             });
         }];
-        }
-        );}
+        //});
+     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
          
