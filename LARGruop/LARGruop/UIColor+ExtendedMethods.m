@@ -124,4 +124,11 @@
     return statusColor;
 }
 
++(UIColor*)colorForDepartmentsStatus:(NSInteger)status
+{
+    UIColor* statusColor;
+    return statusColor;
+
+}
+
 @end

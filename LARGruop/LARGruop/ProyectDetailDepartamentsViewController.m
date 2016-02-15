@@ -10,20 +10,26 @@
 #import "DepartmentCollectionViewCell.h"
 #import "Proyect.h"
 #import "Plant.h"
+#import "Flat.h"
+#import "Floor.h"
 
-static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
+static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
 
 @interface ProyectDetailDepartamentsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *legendTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *departmentCollectionView;
 @property (strong,nonatomic) NSArray* proyectFloors;
+@property (strong,nonatomic) NSArray* proyectDepartments;
 @property (strong,nonatomic) NSArray* leyendItems;
 @property (weak, nonatomic) IBOutlet UILabel *proyectNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *proyectActionButton;
 @end
 
 @implementation ProyectDetailDepartamentsViewController
-
+{
+    NSInteger maxFloors;
+    NSInteger maxFlatsPerFloor;
+}
 #pragma mark -
 #pragma mark - View Life Cicle
 #pragma mark -
@@ -53,17 +59,34 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 -(void)setupVars
 {
     Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
-    self.proyectPlants =[NSArray arrayWithArray:[selectedProyect.plants allObjects]];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    self.proyectPlants=[self.proyectPlants sortedArrayUsingDescriptors:@[sort]];
-    if(self.proyectPlants && self.proyectPlants.count!=0)
+    maxFloors = selectedProyect.floorsCount.integerValue;
+    self.proyectDepartments =[NSArray arrayWithArray:[selectedProyect.flats allObjects]];
+    NSInteger floorWithMaxFlats =-1;
+    for(int i = 0; i <self.proyectDepartments.count ; i++)
     {
-        Plant* plant = [self.proyectPlants objectAtIndex:0];
-        NSURL *websiteUrl = [NSURL URLWithString:plant.plainURL];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-        //[self.departmentPlanWebView loadRequest:urlRequest];
+        if(i==0)
+        {
+            floorWithMaxFlats = i;
+        }
+        else
+        {
+            Flat * currentFlat = self.proyectDepartments[i];
+            Flat * lastFalt = self.proyectDepartments[i-1];
+            if(currentFlat.floor.flats.count> lastFalt.floor.flats.count )
+            {
+                floorWithMaxFlats = i;
+            }
+            else
+            {
+                floorWithMaxFlats = i-1;
+            }
+        }
     }
-    self.selectedPlantIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    if(floorWithMaxFlats != -1)
+    {
+        Flat* maxFlat= self.proyectDepartments[floorWithMaxFlats];
+        maxFlatsPerFloor = maxFlat.floor.flats.count;
+    }
     [self.departmentCollectionView reloadData];
 }
 
@@ -72,69 +95,57 @@ static NSString* const DEPARTMENT_PLAIN_CELL = @"DEPARTMENT_PLAIN_CELL";
 #pragma mark - Collection View Delegate
 #pragma mark -
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    DepartmentCollectionViewCell* cell = [self.departmentCollectionView dequeueReusableCellWithReuseIdentifier:DEPARTMENT_PLAIN_CELL forIndexPath:indexPath];
-    Plant* plant = [self.proyectPlants objectAtIndex:indexPath.row];
-    
-    cell.layer.masksToBounds = YES;
-    cell.layer.cornerRadius = 6;
-    cell.departmentNameLabel.text = plant.name;
-    if(self.selectedPlantIndexPath.row ==indexPath.row)
-    {
-        cell.backgroundColor = [UIColor LARSkyBlueColor];
-        cell.departmentNameLabel.textColor = [UIColor whiteColor];
-        cell.selected =true;
-    }
-    else
-    {
-        cell.backgroundColor = [UIColor clearColor];
-        cell.departmentNameLabel.textColor = [UIColor blackColor];
-        cell.selected =false;
-    }
-    return cell;
-}
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.selectedPlantIndexPath = indexPath;
-    [self.departmentCollectionView reloadData];
-    Plant* plant = [self.proyectPlants objectAtIndex:indexPath.row];
-    NSURL *websiteUrl = [NSURL URLWithString:plant.plainURL];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
-    //[self.departmentPlanWebView loadRequest:urlRequest];
-}
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    if(!self.proyectPlants)
-        return 0;
-    else
-        return self.proyectPlants.count;
-}
-
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    UIEdgeInsets insets;
-    if(self.proyectPlants && self.proyectPlants.count!=0)
+    if(!self.proyectDepartments)
+        return 0;
+    else
+        return maxFlatsPerFloor+1;
+}
+
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView registerNib:[UINib nibWithNibName:@"DepartmentCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:DEPARTAMENT_SQUARE_CELL];
+    DepartmentCollectionViewCell* cell = [self.departmentCollectionView dequeueReusableCellWithReuseIdentifier:DEPARTAMENT_SQUARE_CELL forIndexPath:indexPath];
+    NSString* floorNumber;
+    BOOL isSolidColor;
+    UIColor* color;
+    Flat* flat = [self.proyectDepartments objectAtIndex:indexPath.item];
+    if(indexPath.row == self.proyectDepartments.count-1 || indexPath.item == 0) // INDEX
     {
-        float space = self.containerSize.width/(self.proyectPlants.count);
-        space = space+20;
-        insets = UIEdgeInsetsMake(10, space, 0, space);
+        isSolidColor = false;
+        UIColor* color = [UIColor clearColor];
     }
     else
-        insets  = UIEdgeInsetsMake(10, 10, 0, 10);
-    
-    return  insets;
-    
+    {
+        isSolidColor = true;
+        UIColor* color = flat.status;//
+    }
+    [cell setupCellWithFloorNumber:floorNumber color:color isSolidColor:isSolidColor];
+    return cell;
 }
+
+
+//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+//{
+//    UIEdgeInsets insets;
+//    if(self.proyectPlants && self.proyectPlants.count!=0)
+//    {
+//        float space = self.containerSize.width/(self.proyectPlants.count);
+//        space = space+20;
+//        insets = UIEdgeInsetsMake(10, space, 0, space);
+//    }
+//    else
+//        insets  = UIEdgeInsetsMake(10, 10, 0, 10);
+//    
+//    return  insets;
+//    
+//}
 @end

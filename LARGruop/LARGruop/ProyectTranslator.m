@@ -88,6 +88,7 @@
                 [proyect addFlatsObject:flat];
             }
         }
+        proyect.floorsCount = [NSNumber numberWithInteger:floorsDictionaries.count];
     }
 }
 
