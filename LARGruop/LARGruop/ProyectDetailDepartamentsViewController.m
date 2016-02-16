@@ -7,13 +7,15 @@
 //
 
 #import "ProyectDetailDepartamentsViewController.h"
-#import "DepartmentCollectionViewCell.h"
+#import "FlatGroupCollectionViewCell.h"
 #import "Proyect.h"
 #import "Plant.h"
 #import "Flat.h"
 #import "Floor.h"
+#import "FlatLegendTableViewCell.h"
 
-static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
+static NSString* const DEPARTAMENT_SQUARE_LEGEND_CELL = @"DEPARTAMENT_SQUARE_LEGEND_CELL";
+static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 
 @interface ProyectDetailDepartamentsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *legendTableView;
@@ -102,36 +104,76 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if(!self.proyectDepartments)
-        return 0;
-    else
-        return maxFlatsPerFloor+1;
+    return maxFloors+1;
 }
-
-
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [collectionView registerNib:[UINib nibWithNibName:@"DepartmentCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:DEPARTAMENT_SQUARE_CELL];
-    DepartmentCollectionViewCell* cell = [self.departmentCollectionView dequeueReusableCellWithReuseIdentifier:DEPARTAMENT_SQUARE_CELL forIndexPath:indexPath];
-    NSString* floorNumber;
-    BOOL isSolidColor;
-    UIColor* color;
-    Flat* flat = [self.proyectDepartments objectAtIndex:indexPath.item];
-    if(indexPath.row == self.proyectDepartments.count-1 || indexPath.item == 0) // INDEX
+    [collectionView registerNib:[UINib nibWithNibName:@"FlatGroupCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:DEPARTAMENT_LINES_CELL];
+    FlatGroupCollectionViewCell* cell = [self.departmentCollectionView dequeueReusableCellWithReuseIdentifier:DEPARTAMENT_LINES_CELL forIndexPath:indexPath];
+    
+    NSPredicate *floorPredicate =
+    [NSPredicate predicateWithFormat:@"SELF.floor.number == %d",indexPath.item];
+    NSArray *flats =
+    [self.proyectDepartments filteredArrayUsingPredicate:floorPredicate];
+    BOOL isHeader;
+    if(indexPath.item == 0)
     {
-        isSolidColor = false;
-        UIColor* color = [UIColor clearColor];
+        isHeader=true;
     }
     else
     {
-        isSolidColor = true;
-        UIColor* color = flat.status;//
+        isHeader=false;
     }
-    [cell setupCellWithFloorNumber:floorNumber color:color isSolidColor:isSolidColor];
+    NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.row];
+    [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isHeader andFlatsArray:flats andMaxFlatsPerFloor:maxFlatsPerFloor];
     return cell;
 }
 
+#pragma mark -
+#pragma mark - Table View Delegate
+#pragma mark -
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView registerNib:[UINib nibWithNibName:@"FlatLegendTableViewCell" bundle:nil] forCellReuseIdentifier:DEPARTAMENT_SQUARE_LEGEND_CELL];
+    FlatLegendTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:DEPARTAMENT_SQUARE_LEGEND_CELL];
+    NSString* legendName =@"";
+    NSInteger legendStatus = indexPath.row;
+    switch (indexPath.row) {
+        case 0:
+            legendName = @"Libre";
+            break;
+        case 1:
+            legendName = @"Separada";
+            break;
+        case 2:
+            legendName = @"Contrato (Minuta)";
+            break;
+        case 3:
+            legendName = @"Escriturado";
+            break;
+        case 4:
+            legendName = @"Bloqueado";
+            break;
+    }
+    [cell setupCellWithLegendStatus:legendStatus andLegendName:legendName];
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.departmentCollectionView.frame.size.width, self.departmentCollectionView.frame.size.height/(maxFloors+1));
+}
 
 //-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 //{

@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface ProyectDetailDepartamentsViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ProyectDetailDepartamentsViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSString* selectedProyectID;
 @property (nonatomic) CGSize containerSize;

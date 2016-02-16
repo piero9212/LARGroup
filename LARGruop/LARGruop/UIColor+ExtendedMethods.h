@@ -24,4 +24,5 @@
 +(UIColor*)colorForInterestLevel:(NSInteger)interestLevel;
 +(UIColor*)colorForInterestLevel:(NSInteger)interestLevel andColorShape:(UIColor*)color;
 +(UIColor*)LARSkyBlueColor;
++(UIColor*)colorForDepartmentsStatus:(NSInteger)status;
 @end

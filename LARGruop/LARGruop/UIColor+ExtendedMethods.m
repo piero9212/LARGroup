@@ -44,6 +44,14 @@
 {
     return UIColorFromRGB(0x262626);
 }
++(UIColor *)LARPurpleColor
+{
+    return UIColorFromRGB(0xB470EB);
+}
++(UIColor *)LARBrownColor
+{
+    return UIColorFromRGB(0x710915);
+}
 
 +(UIColor*)colorForInterestLevel:(NSInteger)interestLevel
 {
@@ -127,6 +135,23 @@
 +(UIColor*)colorForDepartmentsStatus:(NSInteger)status
 {
     UIColor* statusColor;
+    switch (status) {
+        case 0:
+            statusColor = [self LARGreenColor];
+            break;
+        case 1:
+            statusColor = [self LAROrangeColor];
+            break;
+        case 2:
+            statusColor = [self LARRedColor];
+            break;
+        case 3:
+            statusColor = [self LARPurpleColor];
+            break;
+        case 4:
+            statusColor = [self LARBrownColor];
+            break;
+    }
     return statusColor;
 
 }

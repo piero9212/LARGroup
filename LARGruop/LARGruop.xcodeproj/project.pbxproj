@@ -55,6 +55,10 @@
 		7601584C1BAA672300411629 /* ProyectDetailLocateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */; };
 		7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */; };
 		760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */; };
+		760159691C72B1640003069F /* FlatLegendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760159671C72B1640003069F /* FlatLegendTableViewCell.m */; };
+		7601596A1C72B1640003069F /* FlatLegendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 760159681C72B1640003069F /* FlatLegendTableViewCell.xib */; };
+		7601596E1C72DB900003069F /* FlatGroupCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7601596C1C72DB900003069F /* FlatGroupCollectionViewCell.m */; };
+		7601596F1C72DB900003069F /* FlatGroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7601596D1C72DB900003069F /* FlatGroupCollectionViewCell.xib */; };
 		762820E71BF03A0C004306B4 /* BaseConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 762820E61BF03A0C004306B4 /* BaseConnectionManager.m */; };
 		762E8B901C67D4900027C7D6 /* DepartmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762E8B8F1C67D4900027C7D6 /* DepartmentCollectionViewCell.xib */; };
 		762E8BC11C684B520027C7D6 /* Rate+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 762E8B921C684B520027C7D6 /* Rate+CoreDataProperties.m */; };
@@ -214,6 +218,12 @@
 		7601584E1BAA67A500411629 /* ProyectDetailOutsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailOutsideViewController.m; sourceTree = "<group>"; };
 		760158501BAA67C200411629 /* ProyectDetailDepartamentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailDepartamentsViewController.h; sourceTree = "<group>"; };
 		760158511BAA67C200411629 /* ProyectDetailDepartamentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProyectDetailDepartamentsViewController.m; sourceTree = "<group>"; };
+		760159661C72B1640003069F /* FlatLegendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatLegendTableViewCell.h; sourceTree = "<group>"; };
+		760159671C72B1640003069F /* FlatLegendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatLegendTableViewCell.m; sourceTree = "<group>"; };
+		760159681C72B1640003069F /* FlatLegendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlatLegendTableViewCell.xib; sourceTree = "<group>"; };
+		7601596B1C72DB900003069F /* FlatGroupCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatGroupCollectionViewCell.h; sourceTree = "<group>"; };
+		7601596C1C72DB900003069F /* FlatGroupCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatGroupCollectionViewCell.m; sourceTree = "<group>"; };
+		7601596D1C72DB900003069F /* FlatGroupCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlatGroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		762820E51BF03A0C004306B4 /* BaseConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseConnectionManager.h; sourceTree = "<group>"; };
 		762820E61BF03A0C004306B4 /* BaseConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseConnectionManager.m; sourceTree = "<group>"; };
 		762A8D461C080F6700412D88 /* KeyConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyConstants.h; sourceTree = "<group>"; };
@@ -455,6 +465,7 @@
 		352FA6461BA093EC00FEC040 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				760159641C72B1270003069F /* Flat Legend Cell */,
 				3584DFA91BB094C400DDE5CD /* Customer Interest Level Cell */,
 				3560F79F1BAA20730061BAD4 /* Feature Cell */,
 				352FA6421BA093B000FEC040 /* New Customer Cell */,
@@ -863,9 +874,10 @@
 		354526021BB4995C00D14FF8 /* Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				354526031BB499DB00D14FF8 /* DepartmentCollectionViewCell.h */,
-				354526041BB499DB00D14FF8 /* DepartmentCollectionViewCell.m */,
-				762E8B8F1C67D4900027C7D6 /* DepartmentCollectionViewCell.xib */,
+				760159651C72B13D0003069F /* Flat Cell */,
+				7601596B1C72DB900003069F /* FlatGroupCollectionViewCell.h */,
+				7601596C1C72DB900003069F /* FlatGroupCollectionViewCell.m */,
+				7601596D1C72DB900003069F /* FlatGroupCollectionViewCell.xib */,
 			);
 			name = "Collection View Cells";
 			sourceTree = "<group>";
@@ -924,6 +936,26 @@
 				3541E21D1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m */,
 			);
 			name = "Detail Items";
+			sourceTree = "<group>";
+		};
+		760159641C72B1270003069F /* Flat Legend Cell */ = {
+			isa = PBXGroup;
+			children = (
+				760159661C72B1640003069F /* FlatLegendTableViewCell.h */,
+				760159671C72B1640003069F /* FlatLegendTableViewCell.m */,
+				760159681C72B1640003069F /* FlatLegendTableViewCell.xib */,
+			);
+			name = "Flat Legend Cell";
+			sourceTree = "<group>";
+		};
+		760159651C72B13D0003069F /* Flat Cell */ = {
+			isa = PBXGroup;
+			children = (
+				354526031BB499DB00D14FF8 /* DepartmentCollectionViewCell.h */,
+				354526041BB499DB00D14FF8 /* DepartmentCollectionViewCell.m */,
+				762E8B8F1C67D4900027C7D6 /* DepartmentCollectionViewCell.xib */,
+			);
+			name = "Flat Cell";
 			sourceTree = "<group>";
 		};
 		76323AC41BF9160300059C3B /* Model */ = {
@@ -1095,9 +1127,11 @@
 				353D96501B9DF8B800E4A618 /* Main.storyboard in Resources */,
 				352FA64F1BA0C25700FEC040 /* UIElements.strings in Resources */,
 				762E8B901C67D4900027C7D6 /* DepartmentCollectionViewCell.xib in Resources */,
+				7601596F1C72DB900003069F /* FlatGroupCollectionViewCell.xib in Resources */,
 				353D96551B9DF8B900E4A618 /* LaunchScreen.xib in Resources */,
 				353D96521B9DF8B900E4A618 /* Images.xcassets in Resources */,
 				76ABFEBA1BF44D7600E0E9F0 /* TestLocationSurquillo.gpx in Resources */,
+				7601596A1C72B1640003069F /* FlatLegendTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,10 +1244,12 @@
 				35FC0F971BB305FE00F67EA9 /* AnnotationView.m in Sources */,
 				3560F79E1BAA14450061BAD4 /* ProyectFeatureService.m in Sources */,
 				353D969E1B9E4B1500E4A618 /* HomeViewController.m in Sources */,
+				760159691C72B1640003069F /* FlatLegendTableViewCell.m in Sources */,
 				352F77E91BA8DD1D0080B004 /* GenericService.m in Sources */,
 				762E8BD01C684B520027C7D6 /* Plant.m in Sources */,
 				353D968F1B9E24F900E4A618 /* LoginViewController.m in Sources */,
 				352FA68E1BA0DBCD00FEC040 /* CustomerContainerViewController.m in Sources */,
+				7601596E1C72DB900003069F /* FlatGroupCollectionViewCell.m in Sources */,
 				764946721C02C13B00240AAC /* NSString+Utils.m in Sources */,
 				353D96471B9DF8B800E4A618 /* AppDelegate.m in Sources */,
 				764946741C02C13B00240AAC /* UIColor+ExtendedMethods.m in Sources */,

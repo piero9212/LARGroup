@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DEPARTAMENT_LINES_CELL" id="gTV-IL-0wX" customClass="FlatGroupCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="40"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eht-QY-VKe">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="PHt-bn-IuN">
+                            <size key="itemSize" width="30" height="30"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="5" maxX="10" maxY="5"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="eht-QY-VKe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Cf5-8w-vdQ"/>
+                <constraint firstAttribute="trailing" secondItem="eht-QY-VKe" secondAttribute="trailing" id="W0c-Dj-H7P"/>
+                <constraint firstAttribute="bottom" secondItem="eht-QY-VKe" secondAttribute="bottom" id="Xsg-wq-2Id"/>
+                <constraint firstItem="eht-QY-VKe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ed3-qV-iqy"/>
+            </constraints>
+            <size key="customSize" width="234" height="171"/>
+            <connections>
+                <outlet property="cubesCollectionView" destination="eht-QY-VKe" id="apE-fB-uzq"/>
+            </connections>
+            <point key="canvasLocation" x="-19" y="196"/>
+        </collectionViewCell>
+    </objects>
+</document>
