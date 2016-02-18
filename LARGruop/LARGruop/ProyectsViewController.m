@@ -12,6 +12,7 @@
 #import "ProyectDetailViewController.h"
 #import <Haneke/Haneke.h>
 #import "Proyect.h"
+#import "StatusCode.h"
 
 static NSString* const PROYECT_CELL = @"PROYECT_CELL";
 static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
@@ -39,6 +40,7 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     [super viewWillAppear:TRUE];
     [self setupViews];
     [self setupVars];
+    [self setupNotifications];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,7 +53,19 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
 
 -(void)setupVars
 {
-    self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
+    if([[[ProyectService sharedService] getAllProyects] isEqual:[ProyectService filterProyects]])
+    {
+        self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
+    }
+    else
+    {
+        self.proyects = [[NSMutableArray alloc]initWithArray:[ProyectService filterProyects]];
+    }
+}
+-(void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilters:)
+                                                 name:kNotificationApplyFilters object:nil];
 }
 
 #pragma mark -
@@ -85,8 +99,15 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     cell.proyectAddressLabel.text = proyect.address;
     cell.districtLabel.text = proyect.district;
     [cell.districtLabel sizeToFit];
-    cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: %lu",(unsigned long)proyect.flats.count];
-    [cell.departamentsLeftLabel setTextColor:[UIColor colorForAvaibleDepartmentsCount:proyect.flats.count]];
+    
+    NSArray* flats = [proyect.flats allObjects];
+    NSPredicate *flatsPredicate =
+    [NSPredicate predicateWithFormat:@"SELF.status == %@",[NSString stringWithFormat:@"%d",StatusCodeFree]];
+    NSArray *fileterdflats =
+    [flats filteredArrayUsingPredicate:flatsPredicate];
+    
+    cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: %lu",(unsigned long)fileterdflats.count];
+    [cell.departamentsLeftLabel setTextColor:[UIColor colorForAvaibleDepartmentsCount:fileterdflats.count]];
     [cell.buildImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.imageURL]];
     return cell;
     
@@ -98,6 +119,16 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     
     [self performSegueWithIdentifier:PROYECT_DETAIL_SEGUE sender:indexPath];
     
+}
+
+#pragma mark -
+#pragma mark - Actions
+#pragma mark -
+
+-(void)applyFilters:(NSNotification *)notification
+{
+    self.proyects = [[NSMutableArray alloc]initWithArray:[ProyectService filterProyects]];
+    [self.proyectsCollectionView reloadData];
 }
 
 

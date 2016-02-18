@@ -7,17 +7,21 @@
 //
 
 #import "FilterViewController.h"
-
+#import "ProyectService.h"
+#import "StatusCode.h"
 @interface FilterViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lowValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *highValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roomsLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *avaibleProyectsSwitch;
 @property (nonatomic) int rommsSelected;
+@property (nonatomic) BOOL avaibleProyectsOnly;
 @end
 
 @implementation FilterViewController
-
+{
+    NSPredicate* finalPredicate;
+}
 #pragma mark -
 #pragma mark - View Life Cycle
 #pragma mark -
@@ -30,7 +34,8 @@
         self.roomsLabel.text= @"No seleccionado";
     else
         self.roomsLabel.text = [NSNumber numberWithInt:self.rommsSelected ].stringValue;
-
+    
+    //[[ProyectService sharedService] filterProyectsPredicate]
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -66,12 +71,43 @@
 #pragma mark -
 
 - (IBAction)applyFilters:(UIButton *)sender {
+    
+    NSArray* proyects = [[ProyectService sharedService]getAllProyects];
+    NSPredicate* avaibleProyectsOnlyPredicate;
+    NSPredicate* roomsPredicate;
+    
+    if(self.avaibleProyectsOnly && self.rommsSelected >0)
+    {
+        avaibleProyectsOnlyPredicate = [NSPredicate predicateWithFormat:@"SELF.state >= %@",@1];
+        roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected]];
+        finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:@[avaibleProyectsOnlyPredicate,roomsPredicate]];
+    }
+    else
+    {
+        if(self.avaibleProyectsOnly)
+        {
+            avaibleProyectsOnlyPredicate = [NSPredicate predicateWithFormat:@"SELF.state >= %@",@1];
+            
+            finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:@[avaibleProyectsOnlyPredicate]];
+        }
+        else if(self.rommsSelected >0)
+        {
+            roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected]];
+            finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:@[roomsPredicate]];
+        }
+        else
+            finalPredicate = nil;
+    }
+    [[ProyectService sharedService] setfilterProyectsPredicate:finalPredicate];
+    NSArray* filteredProyects = [proyects filteredArrayUsingPredicate:finalPredicate];
+    [ProyectService setFilterProyects:filteredProyects.mutableCopy];
     NSDictionary *userInfo = @{NOTIFICATION_SENDER: FILTER_SENDER, FILTER_MODE: @TRUE};
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationApplyFilters object:self userInfo:userInfo];
 }
 
 - (IBAction)resetFilter:(UIButton *)sender {
     [self cleanFilters:nil];
+    [[ProyectService sharedService] resetProyectsFilter];
 }
 
 - (IBAction)addRooms:(UIButton *)sender {
@@ -87,7 +123,7 @@
 }
 
 - (IBAction)avaibleProyectsValueChanged:(UISwitch *)sender {
-    
+    self.avaibleProyectsOnly = sender.on;
 }
 - (IBAction)sliderValueChanged:(NMRangeSlider *)sender {
     int min = (sender.lowerValue+ 0.2) * 100000;

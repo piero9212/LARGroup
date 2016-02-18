@@ -22,6 +22,11 @@
 - (NSArray *)getAllProyects;
 
 
+- (NSPredicate *)filterProyectsPredicate;
+- (void)setfilterProyectsPredicate:(NSPredicate *)predicate;
+
+
+- (NSArray *)getProyectsWithPredicate:(NSCompoundPredicate*)predicate;
 
 - (Proyect *)getProyect:(Proyect *)proyect fromContext:(NSManagedObjectContext *)context;
 - (Proyect *)newProyect;

@@ -15,6 +15,8 @@ static NSString * const LAST_LOGGED_IN_USER_ID = @"LastLoggedInUserId";
 static NSString * const DATE_OF_LAST_LOGGED_IN = @"dateOfLastLoggedIn";
 static NSString * const LAST_USERNAME = @"LastUsername";
 static NSString * const REMEMBER = @"RememberUsername";
+static NSString * const PROYECTS_FILTER = @"proyects_filter";
+
 
 
 static NSString * const FIRST_RUN_KEY = @"FirstRun";

@@ -16,7 +16,7 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
 
 @implementation FlatGroupCollectionViewCell
 {
-    BOOL areSolidColor;
+    NSNumber* areSolidColor;
     NSString* floorNumber;
     NSInteger maxFlatsPerFloor;
 }
@@ -29,12 +29,12 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
 
 -(void)setupBottomHeaderCellsWithFloorNumber:(NSString*)floor allItemsSolidColor:(BOOL)allAreSolidColor andFlatsArray:(NSArray*)array andMaxFlatsPerFloor:(NSInteger)maxFlats
 {
-    areSolidColor = allAreSolidColor;
+    areSolidColor = [NSNumber numberWithBool:allAreSolidColor];
     maxFlatsPerFloor = maxFlats;
     floorNumber = floor;
+    self.items = array;
     self.cubesCollectionView.dataSource =self;
     self.cubesCollectionView.delegate = self;
-    self.items = array;
     [self.cubesCollectionView reloadData];
 }
 
@@ -53,10 +53,10 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
         return 0;
     else
     {
-        if(areSolidColor)
+        if(areSolidColor.boolValue == true)
             return self.items.count+1;
         else
-            return maxFlatsPerFloor;
+            return maxFlatsPerFloor+1;
     }
 }
 
@@ -68,7 +68,7 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
     BOOL isSolidColor;
     UIColor* color;
     NSInteger item = indexPath.item-1;
-    if(!areSolidColor)
+    if(areSolidColor.boolValue ==false)
     {
         if(item == -1) // empty corner
         {
@@ -78,8 +78,8 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
         {
             isSolidColor = false;
             color = [UIColor clearColor];
-            floorNumber = [NSString stringWithFormat:@"0%ld",(long)item+1];
-            [cell setupCellWithFloorNumber:floorNumber color:color isSolidColor:isSolidColor];
+            NSString* flatNumber = [NSString stringWithFormat:@"0%ld",(long)item+1];
+            [cell setupCellWithFloorNumber:flatNumber color:color isSolidColor:isSolidColor];
         }
     }
     else
@@ -88,7 +88,6 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
         {
             isSolidColor = false;
             color = [UIColor clearColor];
-            floorNumber = [NSString stringWithFormat:@"%ld",(long)item];
         }
         else
         {

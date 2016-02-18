@@ -11,7 +11,7 @@
 
 static NSString* const FORGET_PASSWORD_SEGUE = @"FORGET_PASSWORD_SEGUE";
 static NSString* const HOME_SEGUE = @"HOME_SEGUE";
-
+static NSString* const PLANTS_SEGUE = @"PLANTS_SEGUE";
 
 #pragma mark - Cell Identifiers
 

@@ -14,6 +14,7 @@
 #import "ErrorCodes.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "KeyConstants.h"
+#import "StandardDefaultConstants.h"
 
 static NSMutableArray *_filterProyects;
 
@@ -54,6 +55,12 @@ static NSMutableArray *_filterProyects;
 - (NSArray *)getAllProyects
 {
     NSArray *proyects = [Proyect MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    return proyects;
+}
+
+- (NSArray *)getProyectsWithPredicate:(NSCompoundPredicate*)predicate
+{
+    NSArray *proyects = [Proyect MR_findAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
     return proyects;
 }
 
@@ -112,10 +119,23 @@ static NSMutableArray *_filterProyects;
     [ProyectConnectionManager cancelALLProyectsRequest];
 }
 
+- (NSPredicate *)filterProyectsPredicate
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSPredicate *proyectFilter = [defaults objectForKey:PROYECTS_FILTER];
+    return proyectFilter;
+}
+- (void)setfilterProyectsPredicate:(NSPredicate *)predicate
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:predicate forKey:PROYECTS_FILTER];
+    [defaults synchronize];
+}
+
 - (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 {
     [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
-        //dispatch_async(dispatch_get_main_queue(), ^(void){
+        dispatch_async(dispatch_get_main_queue(), ^(void){
             
         NSArray *proyectsResponse = (NSArray*)responseDictionary;
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
@@ -145,10 +165,11 @@ static NSMutableArray *_filterProyects;
             
         } completion:^(BOOL contextDidSave, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self resetProyectsFilter];
                 completion(YES);
             });
         }];
-        //});
+        });
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {

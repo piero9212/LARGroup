@@ -12,6 +12,7 @@
 #import "ProyectFeature.h"
 #import "Floor.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import "StatusCode.h"
 
 @implementation ProyectTranslator
 
@@ -56,6 +57,12 @@
     id longObject = [proyectDictionary valueForKeyPath:@"lng"];
     proyect.longitude = ([longObject isKindOfClass:[NSNumber class]])? longObject: nil;
     
+    id minRoomsObject = [proyectDictionary valueForKeyPath:@"min_rooms"];
+    proyect.minRooms = ([minRoomsObject isKindOfClass:[NSNumber class]])? minRoomsObject: nil;
+    
+    id maxRoomsObject = [proyectDictionary valueForKeyPath:@"max_rooms"];
+    proyect.maxRooms = ([maxRoomsObject isKindOfClass:[NSNumber class]])? maxRoomsObject: nil;
+    
     id videoObject = [proyectDictionary valueForKeyPath:@"video"];
     proyect.videoURL = ([videoObject isKindOfClass:[NSString class]])? videoObject: nil;
     
@@ -87,8 +94,12 @@
                 flat.floor = floor;
                 [proyect addFlatsObject:flat];
             }
+            i++;
         }
         proyect.floorsCount = [NSNumber numberWithInteger:floorsDictionaries.count];
+        NSPredicate* flatStatusPredicate = [NSPredicate predicateWithFormat:@"SELF.status == %@",[NSString stringWithFormat:@"%d",StatusCodeFree]];
+        NSArray* flats = [proyect.flats allObjects];
+        proyect.state = [NSNumber numberWithInteger:[flats filteredArrayUsingPredicate:flatStatusPredicate].count];
     }
 }
 
@@ -119,6 +130,9 @@
     flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)posXObject).stringValue;
     id posYObject = [departamentDictionary valueForKeyPath:@"posY"];
     flat.posX = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)posYObject).stringValue;
+    
+    id statusObject = [departamentDictionary valueForKey:@"state"];
+    flat.status = ([statusObject isKindOfClass:[NSNumber class]]) ? ((NSNumber*)statusObject).stringValue : nil;
 }
 
 + (void)floorDictionary:(NSDictionary *)floorDictionary toFloorEntity:(Floor *)floor andFloorNumber:(int)number

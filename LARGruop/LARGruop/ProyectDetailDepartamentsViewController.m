@@ -13,6 +13,8 @@
 #import "Flat.h"
 #import "Floor.h"
 #import "FlatLegendTableViewCell.h"
+#import "StatusCode.h"
+#import "FlatPlantsViewController.h"
 
 static NSString* const DEPARTAMENT_SQUARE_LEGEND_CELL = @"DEPARTAMENT_SQUARE_LEGEND_CELL";
 static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
@@ -25,6 +27,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 @property (strong,nonatomic) NSArray* leyendItems;
 @property (weak, nonatomic) IBOutlet UILabel *proyectNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *proyectActionButton;
+@property (weak, nonatomic) IBOutlet UIButton *plantButton;
 @end
 
 @implementation ProyectDetailDepartamentsViewController
@@ -61,6 +64,11 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 -(void)setupVars
 {
     Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
+    self.plantButton.layer.borderWidth = 3.0;
+    self.plantButton.layer.borderColor = [UIColor orangeLARColor].CGColor;
+    self.plantButton.layer.cornerRadius = 20;
+    self.plantButton.layer.masksToBounds = true;
+    [self.proyectNameLabel setText:[NSString stringWithFormat:@"Proyecto %@",selectedProyect.name]];
     maxFloors = selectedProyect.floorsCount.integerValue;
     self.proyectDepartments =[NSArray arrayWithArray:[selectedProyect.flats allObjects]];
     NSInteger floorWithMaxFlats =-1;
@@ -113,20 +121,20 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     FlatGroupCollectionViewCell* cell = [self.departmentCollectionView dequeueReusableCellWithReuseIdentifier:DEPARTAMENT_LINES_CELL forIndexPath:indexPath];
     
     NSPredicate *floorPredicate =
-    [NSPredicate predicateWithFormat:@"SELF.floor.number == %d",indexPath.item];
+    [NSPredicate predicateWithFormat:@"SELF.floor.number == %d",indexPath.item+1];
     NSArray *flats =
     [self.proyectDepartments filteredArrayUsingPredicate:floorPredicate];
-    BOOL isHeader;
-    if(indexPath.item == 0)
+    BOOL isSolidColor;
+    if(indexPath.item == maxFloors)
     {
-        isHeader=true;
+        isSolidColor=false;
     }
     else
     {
-        isHeader=false;
+        isSolidColor=true;
     }
-    NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.row];
-    [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isHeader andFlatsArray:flats andMaxFlatsPerFloor:maxFlatsPerFloor];
+    NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.row+1];
+    [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isSolidColor andFlatsArray:flats andMaxFlatsPerFloor:maxFlatsPerFloor];
     return cell;
 }
 
@@ -151,19 +159,19 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     NSString* legendName =@"";
     NSInteger legendStatus = indexPath.row;
     switch (indexPath.row) {
-        case 0:
+        case StatusCodeFree:
             legendName = @"Libre";
             break;
-        case 1:
+        case StatusCodeReserved:
             legendName = @"Separada";
             break;
-        case 2:
+        case StatusCodeContract:
             legendName = @"Contrato (Minuta)";
             break;
-        case 3:
+        case StatusCodesWrited:
             legendName = @"Escriturado";
             break;
-        case 4:
+        case StatusCodeBlocked:
             legendName = @"Bloqueado";
             break;
     }
@@ -172,22 +180,30 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.departmentCollectionView.frame.size.width, self.departmentCollectionView.frame.size.height/(maxFloors+1));
+    CGFloat height = self.departmentCollectionView.frame.size.height/(maxFloors+1);
+    return CGSizeMake(self.departmentCollectionView.frame.size.width, height );
 }
 
-//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    UIEdgeInsets insets;
-//    if(self.proyectPlants && self.proyectPlants.count!=0)
-//    {
-//        float space = self.containerSize.width/(self.proyectPlants.count);
-//        space = space+20;
-//        insets = UIEdgeInsetsMake(10, space, 0, space);
-//    }
-//    else
-//        insets  = UIEdgeInsetsMake(10, 10, 0, 10);
-//    
-//    return  insets;
-//    
-//}
+#pragma mark -
+#pragma mark - IBActions
+#pragma mark -
+
+- (IBAction)goToPlantsTapped:(UIButton *)sender {
+    [self performSegueWithIdentifier:PLANTS_SEGUE sender:nil];
+}
+
+#pragma mark -
+#pragma mark - Navigation
+#pragma mark -
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.destinationViewController isKindOfClass:[FlatPlantsViewController class]])
+    {
+        FlatPlantsViewController* destinationVC = segue.destinationViewController;
+        destinationVC.selectedProyectID = self.selectedProyectID;
+        destinationVC.containerSize = self.containerSize;
+    }
+}
 @end

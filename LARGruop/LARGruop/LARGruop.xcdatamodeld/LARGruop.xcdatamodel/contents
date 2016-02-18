@@ -65,10 +65,13 @@
         <attribute name="mapDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mapImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="maxPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxRooms" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="minPrice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minRooms" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="panoramicImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="proyectDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="features" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProyectFeature" inverseName="proyect" inverseEntity="ProyectFeature" syncable="YES"/>
         <relationship name="flats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flat" inverseName="proyect" inverseEntity="Flat" syncable="YES"/>
@@ -105,7 +108,7 @@
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
         <element name="Plant" positionX="-27" positionY="144" width="128" height="105"/>
         <element name="Promo" positionX="-36" positionY="135" width="128" height="60"/>
-        <element name="Proyect" positionX="-36" positionY="54" width="128" height="360"/>
+        <element name="Proyect" positionX="-36" positionY="54" width="128" height="405"/>
         <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
         <element name="Rate" positionX="-27" positionY="135" width="128" height="135"/>
         <element name="User" positionX="-18" positionY="90" width="128" height="135"/>
