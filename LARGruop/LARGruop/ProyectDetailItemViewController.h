@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger,ProyectDetailItemType) {
     ProyectDetailItemTypeVideo,
     ProyectDetailItemTypePanoramic,
     ProyectDetailItemTypeDepartaments,
+    ProyectDetailItemTypeSchemeDepartments,
 };
 
 @interface ProyectDetailItemViewController : BaseViewController

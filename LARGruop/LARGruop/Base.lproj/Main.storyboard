@@ -580,7 +580,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-9o-LXX">
-                                <rect key="frame" x="64" y="538" width="100" height="30"/>
+                                <rect key="frame" x="16" y="538" width="132" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="i1f-Yq-dnn"/>
                                     <constraint firstAttribute="height" constant="30" id="lu2-Mc-0b8"/>
@@ -588,12 +588,18 @@
                                 <state key="normal" title="Cerrar Sesión">
                                     <color key="titleColor" red="0.90196078430000004" green="0.29803921570000003" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="i1f-Yq-dnn"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="logout:" destination="qFO-6J-PF3" eventType="touchUpInside" id="ECc-Mh-Tbl"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nsw-Rd-YQu">
                                 <rect key="frame" x="16" y="131" width="132" height="132"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.29803921570000003" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="W0i-Dv-awV"/>
                                     <constraint firstAttribute="height" constant="132" id="WKv-0H-XVH"/>
@@ -605,16 +611,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pf-5o-O2p">
-                                <rect key="frame" x="16" y="271" width="132" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fR0-az-2zt"/>
-                                </constraints>
-                                <state key="normal" title="Editar Foto">
-                                    <color key="titleColor" red="0.90196078430000004" green="0.29803921570000003" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BR-nl-XRF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BR-nl-XRF">
                                 <rect key="frame" x="195" y="131" width="373" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Mag-bY-CjY"/>
@@ -623,8 +620,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAW-hm-aW1">
-                                <rect key="frame" x="195" y="237" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teléfono" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAW-hm-aW1">
+                                <rect key="frame" x="195" y="237" width="66" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ron-8k-Nkt"/>
                                 </constraints>
@@ -632,8 +629,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="283-oY-cu2">
-                                <rect key="frame" x="195" y="290" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Celular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="283-oY-cu2">
+                                <rect key="frame" x="195" y="290" width="54" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5KZ-JX-NRi"/>
                                 </constraints>
@@ -698,9 +695,12 @@
                                 <state key="normal" title="Editar Datos">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="editInfoTapped:" destination="qFO-6J-PF3" eventType="touchUpInside" id="Iin-7Z-L5g"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1l-FV-SNM">
-                                <rect key="frame" x="195" y="184" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1l-FV-SNM">
+                                <rect key="frame" x="195" y="184" width="53" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="92n-iS-4vg"/>
                                 </constraints>
@@ -708,6 +708,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pf-5o-O2p">
+                                <rect key="frame" x="16" y="271" width="132" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fR0-az-2zt"/>
+                                </constraints>
+                                <state key="normal" title="Editar Foto">
+                                    <color key="titleColor" red="0.90196078430000004" green="0.29803921570000003" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePictureTapped:" destination="qFO-6J-PF3" eventType="touchUpInside" id="DIA-yo-GYB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -723,7 +735,9 @@
                             <constraint firstItem="8Pf-5o-O2p" firstAttribute="top" secondItem="nsw-Rd-YQu" secondAttribute="bottom" constant="8" id="8U6-cy-Un9"/>
                             <constraint firstItem="8Pf-5o-O2p" firstAttribute="leading" secondItem="nsw-Rd-YQu" secondAttribute="leading" id="93D-P5-QPi"/>
                             <constraint firstItem="UAW-hm-aW1" firstAttribute="leading" secondItem="2BR-nl-XRF" secondAttribute="leading" id="DhJ-CV-UJ7"/>
+                            <constraint firstItem="qrP-9o-LXX" firstAttribute="leading" secondItem="8Pf-5o-O2p" secondAttribute="leading" id="GmB-qQ-RCP"/>
                             <constraint firstItem="GXu-WZ-eyB" firstAttribute="top" secondItem="LLK-aZ-0F1" secondAttribute="bottom" constant="32" id="GnJ-Yc-mgf"/>
+                            <constraint firstItem="qrP-9o-LXX" firstAttribute="trailing" secondItem="8Pf-5o-O2p" secondAttribute="trailing" id="HRs-Ui-YY7"/>
                             <constraint firstItem="N1l-FV-SNM" firstAttribute="leading" secondItem="2BR-nl-XRF" secondAttribute="leading" id="MaR-Np-Xeg"/>
                             <constraint firstAttribute="trailing" secondItem="m1G-1O-Whq" secondAttribute="trailing" constant="32" id="OWe-fD-bqK"/>
                             <constraint firstItem="qrP-9o-LXX" firstAttribute="leading" secondItem="gwX-CM-ryo" secondAttribute="leading" constant="64" id="Oo1-BY-rjv"/>
@@ -755,12 +769,21 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="4lL-MZ-EG9"/>
+                                <exclude reference="Oo1-BY-rjv"/>
                                 <exclude reference="RwX-fq-stf"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mi Perfil" image="profile" id="rNa-jR-axo"/>
                     <connections>
+                        <outlet property="cellPhoneLabel" destination="eMq-tv-QiS" id="h8R-CO-Jd1"/>
+                        <outlet property="changePictureButton" destination="8Pf-5o-O2p" id="zap-Ob-5cr"/>
+                        <outlet property="logoutButton" destination="qrP-9o-LXX" id="ZHr-bJ-Wgd"/>
+                        <outlet property="phoneLabel" destination="4MD-8O-5Mf" id="5G7-MG-mNQ"/>
+                        <outlet property="userEmailLabel" destination="m1G-1O-Whq" id="05O-QR-Xf8"/>
+                        <outlet property="userFullNameLabel" destination="0RQ-LV-fQA" id="JeX-HE-hhk"/>
+                        <outlet property="userNameLabel" destination="GXu-WZ-eyB" id="Doh-gr-Mx8"/>
+                        <outlet property="userPictureImageView" destination="nsw-Rd-YQu" id="tjr-Pc-rSb"/>
                         <segue destination="oZK-KZ-kKz" kind="presentation" identifier="LOGOUT_SEGUE" id="fWF-xX-mIx"/>
                     </connections>
                 </viewController>
@@ -2136,7 +2159,6 @@
                         <outlet property="plantButton" destination="4eD-aM-KdD" id="6QW-da-N7x"/>
                         <outlet property="proyectActionButton" destination="4eD-aM-KdD" id="RSy-ck-WEe"/>
                         <outlet property="proyectNameLabel" destination="rAj-qq-C8G" id="fKW-Sf-ptw"/>
-                        <segue destination="57l-YB-G0c" kind="show" identifier="PLANTS_SEGUE" id="SIJ-ZM-L8F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pP7-O4-kkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2152,10 +2174,10 @@
                         <viewControllerLayoutGuide type="bottom" id="CuR-li-sdC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oy2-8y-lfG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4vk-he-AKA">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4vk-he-AKA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2183,7 +2205,7 @@
                                     <outlet property="delegate" destination="57l-YB-G0c" id="Ycg-ZJ-iB9"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-Vc-O6D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-Vc-O6D">
                                 <rect key="frame" x="0.0" y="60" width="600" height="470"/>
                             </imageView>
                         </subviews>

@@ -39,12 +39,20 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setupViews];
     [self setupVars];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)setupViews{
+    CGRect frame = self.view.frame;
+    frame.size.width = self.containerSize.width;
+    frame.size.height = self.containerSize.height;
+    self.view.frame = frame;
 }
 
 -(void)setupVars
@@ -114,22 +122,25 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath* lastSelectedIndexPath = selectedIndexPath;
-    selectedIndexPath = indexPath;
-    NSArray* indexPaths = @[selectedIndexPath, lastSelectedIndexPath];
-    [collectionView reloadItemsAtIndexPaths:indexPaths];
-    
-    Flat* flat = [self.proyectDepartments objectAtIndex:indexPath.row];//ACA DEBE SER PISO
-    NSURL* url = [NSURL URLWithString:flat.flatImageURL];
-    [self showHUDOnView:self.plantImageView];
-    [self.plantImageView hnk_setImageFromURL:url placeholder:nil success:^(UIImage *image) {
-        [self.plantImageView setImage:image];
-        [self hideHUDOnView:self.plantImageView];
-    } failure:^(NSError *error) {
-        [self hideHUDOnView:self.plantImageView];
-        
-    }];
-    
+   if(selectedIndexPath != indexPath)
+   {
+       NSIndexPath* lastSelectedIndexPath = selectedIndexPath;
+       selectedIndexPath = indexPath;
+       NSArray* indexPaths = @[selectedIndexPath, lastSelectedIndexPath];
+       [collectionView reloadItemsAtIndexPaths:indexPaths];
+       
+       Flat* flat = [self.proyectDepartments objectAtIndex:indexPath.row];//ACA DEBE SER PISO
+       NSURL* url = [NSURL URLWithString:flat.flatImageURL];
+       [self showHUDOnView:self.plantImageView];
+       [self.plantImageView hnk_setImageFromURL:url placeholder:nil success:^(UIImage *image) {
+           [self.plantImageView setImage:image];
+           [self hideHUDOnView:self.plantImageView];
+       } failure:^(NSError *error) {
+           [self hideHUDOnView:self.plantImageView];
+           
+       }];
+
+   }
 }
 
 #pragma mark -

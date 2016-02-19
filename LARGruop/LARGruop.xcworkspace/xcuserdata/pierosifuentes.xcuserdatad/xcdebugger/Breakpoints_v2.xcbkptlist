@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LARGruop/ProfileViewController.m"
-            timestampString = "463527984.393338"
+            timestampString = "477584631.762076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-showAddCustomerViewController"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

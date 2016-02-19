@@ -13,6 +13,7 @@
 #import "ProyectDetailOutsidesViewController.h"
 #import "ProyectDetailPanoramicViewController.h"
 #import "ProyectDetailVideoViewController.h"
+#import "FlatPlantsViewController.h"
 
 @interface ProyectDetailItemViewController ()
 
@@ -73,7 +74,7 @@
     UIViewController* fromVC;
     for (UIViewController*  vc in self.childViewControllers)
     {
-        if([vc isKindOfClass:[ProyectDetailOutsideViewController class]] || [vc isKindOfClass:[ProyectDetailDepartamentsViewController class]] ||  [vc isKindOfClass:[ProyectDetailLocateViewController class]] || [vc isKindOfClass:[ProyectDetailVideoViewController class]] || [vc isKindOfClass:[ProyectDetailPanoramicViewController class]])
+        if([vc isKindOfClass:[ProyectDetailOutsideViewController class]] || [vc isKindOfClass:[ProyectDetailDepartamentsViewController class]] ||  [vc isKindOfClass:[ProyectDetailLocateViewController class]] || [vc isKindOfClass:[ProyectDetailVideoViewController class]] || [vc isKindOfClass:[ProyectDetailPanoramicViewController class]] || [vc isKindOfClass:[FlatPlantsViewController class]])
             fromVC =vc;
         
     }
@@ -115,6 +116,12 @@
             destinationVC = (ProyectDetailVideoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailVideoViewController"];
             ((ProyectDetailVideoViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
             ((ProyectDetailVideoViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
+            break;
+        case ProyectDetailItemTypeSchemeDepartments:
+            self.proyectDetailItemLabel.text = @"Departamentos";
+            destinationVC = (ProyectDetailVideoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"FlatPlantsViewController"];
+            ((FlatPlantsViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
+            ((FlatPlantsViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
         default:
             destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];

@@ -131,6 +131,7 @@
 		3505A7771C7656AC00AD6FD1 /* PlantButtonCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlantButtonCollectionViewCell.xib; sourceTree = "<group>"; };
 		3505A77A1C76739A00AD6FD1 /* FlatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatDetailViewController.h; sourceTree = "<group>"; };
 		3505A77B1C76739A00AD6FD1 /* FlatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatDetailViewController.m; sourceTree = "<group>"; };
+		3505A77D1C77625000AD6FD1 /* ProyectDetailProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectDetailProtocol.h; sourceTree = "<group>"; };
 		352F77B01BA872910080B004 /* CustomerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerInfoViewController.h; sourceTree = "<group>"; };
 		352F77B11BA872910080B004 /* CustomerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfoViewController.m; sourceTree = "<group>"; };
 		352F77B31BA872A80080B004 /* CustomerMarketRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerMarketRateViewController.h; sourceTree = "<group>"; };
@@ -619,6 +620,7 @@
 			children = (
 				353E65071B9F76BD0004E4F2 /* TopBarProtocol.h */,
 				35FC0FA41BB3598100F67EA9 /* ProyectAnnotationProtocol.h */,
+				3505A77D1C77625000AD6FD1 /* ProyectDetailProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

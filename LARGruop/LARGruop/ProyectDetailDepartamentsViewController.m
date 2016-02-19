@@ -189,7 +189,6 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 #pragma mark -
 
 - (IBAction)goToPlantsTapped:(UIButton *)sender {
-    [self performSegueWithIdentifier:PLANTS_SEGUE sender:nil];
 }
 
 #pragma mark -

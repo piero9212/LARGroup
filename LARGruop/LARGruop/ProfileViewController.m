@@ -11,8 +11,21 @@
 #import "TopBarViewController.h"
 #import "LoginService.h"
 #import "HomeViewController.h"
+#import "User.h"
 
 static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
+
+@interface ProfileViewController()
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *changePictureButton;
+@property (weak, nonatomic) IBOutlet UILabel *userFullNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cellPhoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userPictureImageView;
+
+@end
 
 @implementation ProfileViewController
 
@@ -39,6 +52,40 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 {
     [self.navigationController setNavigationBarHidden:TRUE];
     [[UITabBar appearance] setTintColor:[UIColor orangeLARColor]];
+    User* user = [[LoginService sharedService]lastLoggedInUser];
+    if(user.firstName && user.lastName)
+    {
+        [self.userFullNameLabel setText:[NSString stringWithFormat:@"%@ %@",user.firstName,user.lastName]];
+    }
+    else if(user.firstName)
+    {
+        [self.userFullNameLabel setText:[NSString stringWithFormat:@"%@",user.firstName]];
+    }
+    else
+        [self.userFullNameLabel setText:@"----"];
+
+    if(user.email)
+         [self.userEmailLabel setText:user.email];
+    else
+        [self.userFullNameLabel setText:@"----"];
+    
+    if(user)//TODO: GET CELPPHONE
+        [self.cellPhoneLabel setText:@"----"];
+    else
+        [self.cellPhoneLabel setText:@"----"];
+        
+    if(user)//TODO: GET PHONE
+        [self.phoneLabel setText:@"----"];
+    else
+        [self.phoneLabel setText:@"----"];
+    
+    
+    [self.userNameLabel setText:user.username];
+    float radius = self.userPictureImageView.frame.size.width/2;
+    self.userPictureImageView.layer.cornerRadius =  radius;
+    self.logoutButton.layer.cornerRadius= self.changePictureButton.layer.cornerRadius = 10;
+    self.logoutButton.layer.borderWidth = self.changePictureButton.layer.borderWidth = 3 ;
+    self.logoutButton.layer.borderColor = self.changePictureButton.layer.borderColor = [UIColor orangeLARColor].CGColor;
 }
 
 -(void)setupVars
@@ -60,7 +107,11 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 - (IBAction)logout:(UIButton *)sender {
     [[LoginService sharedService] logoutWithNotification:TRUE];
 }
+- (IBAction)changePictureTapped:(UIButton *)sender {
+}
 
+- (IBAction)editInfoTapped:(UIButton *)sender {
+}
 
 #pragma mark -
 #pragma mark - Actions

@@ -24,6 +24,7 @@
 {
     [super viewWillAppear:TRUE];
     [self setupViews];
+    [self setupVars];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,7 +52,8 @@
 
 -(void)setupVars
 {
-    
+    float radius = self.userImageView.frame.size.width/2;
+    self.userImageView.layer.cornerRadius =  radius;
 }
 
 
