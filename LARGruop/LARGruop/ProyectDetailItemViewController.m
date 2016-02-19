@@ -92,6 +92,7 @@
             destinationVC = (ProyectDetailDepartamentsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectDetailDepartamentsViewController"];
             ((ProyectDetailDepartamentsViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
             ((ProyectDetailDepartamentsViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
+            ((ProyectDetailDepartamentsViewController*)destinationVC).proyectDelegate = self;
             break;
         case ProyectDetailItemTypeLocate:
             self.proyectDetailItemLabel.text = @"Ubicación";
@@ -119,7 +120,7 @@
             break;
         case ProyectDetailItemTypeSchemeDepartments:
             self.proyectDetailItemLabel.text = @"Departamentos";
-            destinationVC = (ProyectDetailVideoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"FlatPlantsViewController"];
+            destinationVC = (FlatPlantsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"FlatPlantsViewController"];
             ((FlatPlantsViewController*)destinationVC).selectedProyectID = self.selectedProyectID;
             ((FlatPlantsViewController*)destinationVC).containerSize = self.proyectItemContainerView.frame.size;
             break;
@@ -130,6 +131,17 @@
     
     [self setViewControllerChildWith:destinationVC from:currentVC];
 }
+
+#pragma mark -
+#pragma mark - Proyect Delegate
+#pragma mark -
+
+-(void)changeChildViewController
+{
+    self.itemType = ProyectDetailItemTypeSchemeDepartments;
+    [self presentSelectedViewController];
+}
+
 #pragma mark -
 #pragma mark - Navigation
 #pragma mark -

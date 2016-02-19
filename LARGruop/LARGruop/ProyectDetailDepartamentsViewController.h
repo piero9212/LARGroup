@@ -7,10 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "ProyectDetailProtocol.h"
 
 @interface ProyectDetailDepartamentsViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSString* selectedProyectID;
 @property (nonatomic) CGSize containerSize;
 
+@property (weak,nonatomic) id<ProyecDetailProtocol> proyectDelegate;
 @end

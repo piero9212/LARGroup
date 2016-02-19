@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "ProyectDetailProtocol.h"
 
 typedef NS_ENUM(NSInteger,ProyectDetailItemType) {
     ProyectDetailItemTypeLocate,
@@ -17,7 +18,7 @@ typedef NS_ENUM(NSInteger,ProyectDetailItemType) {
     ProyectDetailItemTypeSchemeDepartments,
 };
 
-@interface ProyectDetailItemViewController : BaseViewController
+@interface ProyectDetailItemViewController : BaseViewController <ProyecDetailProtocol>
 
 @property (weak, nonatomic) IBOutlet UIView *proyectItemContainerView;
 @property (nonatomic) ProyectDetailItemType itemType;

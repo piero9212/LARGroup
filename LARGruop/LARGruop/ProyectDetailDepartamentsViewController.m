@@ -133,7 +133,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     {
         isSolidColor=true;
     }
-    NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.row+1];
+    NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.item+1];
     [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isSolidColor andFlatsArray:flats andMaxFlatsPerFloor:maxFlatsPerFloor];
     return cell;
 }
@@ -189,6 +189,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 #pragma mark -
 
 - (IBAction)goToPlantsTapped:(UIButton *)sender {
+    [self.proyectDelegate changeChildViewController];
 }
 
 #pragma mark -

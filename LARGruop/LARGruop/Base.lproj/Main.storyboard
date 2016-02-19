@@ -2168,17 +2168,17 @@
         <!--Flat Plants View Controller-->
         <scene sceneID="mNO-vs-UrJ">
             <objects>
-                <viewController id="57l-YB-G0c" customClass="FlatPlantsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FlatPlantsViewController" id="57l-YB-G0c" customClass="FlatPlantsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NhR-VT-QHI"/>
                         <viewControllerLayoutGuide type="bottom" id="CuR-li-sdC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oy2-8y-lfG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4vk-he-AKA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4vk-he-AKA">
+                                <rect key="frame" x="0.0" y="20" width="600" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="NHj-7p-AgC"/>
@@ -2205,8 +2205,8 @@
                                     <outlet property="delegate" destination="57l-YB-G0c" id="Ycg-ZJ-iB9"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-Vc-O6D">
-                                <rect key="frame" x="0.0" y="60" width="600" height="470"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-Vc-O6D">
+                                <rect key="frame" x="0.0" y="80" width="600" height="450"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2220,6 +2220,8 @@
                             <constraint firstItem="Mpz-Vc-O6D" firstAttribute="top" secondItem="4vk-he-AKA" secondAttribute="bottom" id="z4I-zN-yDC"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="530"/>
                     <connections>
                         <outlet property="buttonsCollectionView" destination="4vk-he-AKA" id="vHB-mk-C12"/>
                         <outlet property="plantImageView" destination="Mpz-Vc-O6D" id="sY6-3V-pDZ"/>
@@ -2228,7 +2230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5k-Xe-TjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7691" y="-5274"/>
+            <point key="canvasLocation" x="7652" y="-5274"/>
         </scene>
         <!--Flat Detail View Controller-->
         <scene sceneID="h3g-J3-N8Z">
