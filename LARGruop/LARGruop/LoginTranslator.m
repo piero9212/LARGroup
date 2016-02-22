@@ -35,13 +35,13 @@
     
     id typeObject = [userDictionary valueForKeyPath:@"type"];
     user.type = ([typeObject isKindOfClass:[NSString class]])? typeObject: nil;
-    //TODO:THE DATE IS CURRENTLY GETTING NIL, CHECK OUT THIS LATER
+    
     id createdDateObject = [userDictionary valueForKeyPath:@"created_at"];
-    NSDate* createdDate = ([createdDateObject isKindOfClass:[NSString class]])?[NSString toDateFromDateString:createdDateObject] : createdDateObject;
+    NSDate* createdDate = ([createdDateObject isKindOfClass:[NSMutableString class]])?[NSString toDateFromDateString:createdDateObject] : nil;
     user.created = createdDate;
     
     id updatedDateObject = [userDictionary valueForKeyPath:@"updated_at"];
-    NSDate* updateDate = ([updatedDateObject isKindOfClass:[NSString class]])?[NSString toDateFromDateString:updatedDateObject] : updatedDateObject;
+    NSDate* updateDate = ([updatedDateObject isKindOfClass:[NSMutableString class]])?[NSString toDateFromDateString:updatedDateObject] : nil;
     user.lastModified = updateDate;
     
 }

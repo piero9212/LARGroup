@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *roomsLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *avaibleProyectsSwitch;
 @property (nonatomic) int rommsSelected;
+@property (nonatomic) CGFloat minPrice;
+@property (nonatomic) CGFloat maxPrice;
 @property (nonatomic) BOOL avaibleProyectsOnly;
 @end
 
@@ -59,6 +61,8 @@
 -(void)setupVars
 {
     self.rommsSelected = 0;
+    self.minPrice = self.maxPrice = 0;
+    self.avaibleProyectsOnly= false;
 }
 
 -(void)setupNotifications
@@ -75,34 +79,35 @@
     NSArray* proyects = [[ProyectService sharedService]getAllProyects];
     NSPredicate* avaibleProyectsOnlyPredicate;
     NSPredicate* roomsPredicate;
+    NSPredicate* pricePredicate;
     
-    if(self.avaibleProyectsOnly && self.rommsSelected >0)
+    NSMutableArray* subpredicates = [[NSMutableArray alloc]init];
+    
+    if(self.avaibleProyectsOnly)
     {
         avaibleProyectsOnlyPredicate = [NSPredicate predicateWithFormat:@"SELF.state >= %@",@1];
-        roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected]];
-        finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:@[avaibleProyectsOnlyPredicate,roomsPredicate]];
+        [subpredicates addObject:avaibleProyectsOnlyPredicate];
     }
-    else
+    if(self.rommsSelected >0)
     {
-        if(self.avaibleProyectsOnly)
-        {
-            avaibleProyectsOnlyPredicate = [NSPredicate predicateWithFormat:@"SELF.state >= %@",@1];
-            
-            finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:@[avaibleProyectsOnlyPredicate]];
-        }
-        else if(self.rommsSelected >0)
-        {
-            roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected]];
-            finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:@[roomsPredicate]];
-        }
-        else
-            finalPredicate = nil;
+        roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected]];
+        [subpredicates addObject:roomsPredicate];
     }
-    [[ProyectService sharedService] setfilterProyectsPredicate:finalPredicate];
-    NSArray* filteredProyects = [proyects filteredArrayUsingPredicate:finalPredicate];
-    [ProyectService setFilterProyects:filteredProyects.mutableCopy];
-    NSDictionary *userInfo = @{NOTIFICATION_SENDER: FILTER_SENDER, FILTER_MODE: @TRUE};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationApplyFilters object:self userInfo:userInfo];
+    if(self.minPrice >0 && self.maxPrice>0)
+    {
+        pricePredicate = [NSPredicate predicateWithFormat:@"SELF.minPrice >= %@ && SELF.maxPrice <=%@",[NSNumber numberWithFloat:self.minPrice].stringValue,[NSNumber numberWithFloat:self.maxPrice].stringValue];
+        [subpredicates addObject:pricePredicate];
+    }
+    if(subpredicates && subpredicates.count>0)
+    {
+        finalPredicate= [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
+        [[ProyectService sharedService] setfilterProyectsPredicate:finalPredicate];
+        NSArray* filteredProyects = [proyects filteredArrayUsingPredicate:finalPredicate];
+        [ProyectService setFilterProyects:filteredProyects.mutableCopy];
+        NSDictionary *userInfo = @{NOTIFICATION_SENDER: FILTER_SENDER, FILTER_MODE: @TRUE};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationApplyFilters object:self userInfo:userInfo];
+    }
+   
 }
 
 - (IBAction)resetFilter:(UIButton *)sender {
@@ -128,6 +133,8 @@
 - (IBAction)sliderValueChanged:(NMRangeSlider *)sender {
     int min = (sender.lowerValue+ 0.2) * 100000;
     int max = sender.upperValue * 100000;
+    self.minPrice = min;
+    self.maxPrice = max;
     self.lowValueLabel.text = [NSString stringWithFormat:@"S/%d", min];
     self.highValueLabel.text =[NSString stringWithFormat:@"S/%d", max];
 }

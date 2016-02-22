@@ -33,7 +33,7 @@
     id imageObject = [proyectDictionary valueForKeyPath:@"image"];
     proyect.imageURL = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
     
-    id dimageObject = [proyectDictionary valueForKeyPath:@"dimage"];
+    //id dimageObject = [proyectDictionary valueForKeyPath:@"dimage"];
     proyect.mapImageURL = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
     
     id descriptionObject = [proyectDictionary valueForKeyPath:@"description"];
@@ -62,6 +62,12 @@
     
     id maxRoomsObject = [proyectDictionary valueForKeyPath:@"max_rooms"];
     proyect.maxRooms = ([maxRoomsObject isKindOfClass:[NSNumber class]])? maxRoomsObject: nil;
+    
+    id minPriceObject = [proyectDictionary valueForKeyPath:@"min_price"];
+    proyect.minPrice = ([minPriceObject isKindOfClass:[NSString class]])? minPriceObject : nil;
+    
+    id maxPriceObject = [proyectDictionary valueForKeyPath:@"max_price"];
+    proyect.maxPrice = ([maxPriceObject isKindOfClass:[NSString class]])? maxPriceObject : nil;
     
     id videoObject = [proyectDictionary valueForKeyPath:@"video"];
     proyect.videoURL = ([videoObject isKindOfClass:[NSString class]])? videoObject: nil;
