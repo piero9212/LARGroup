@@ -17,12 +17,12 @@
 @property (nonatomic) int rommsSelected;
 @property (nonatomic) CGFloat minPrice;
 @property (nonatomic) CGFloat maxPrice;
-@property (nonatomic) BOOL avaibleProyectsOnly;
+@property (nonatomic) NSNumber* avaibleProyectsOnly;
 @end
 
 @implementation FilterViewController
 {
-    NSPredicate* finalPredicate;
+    NSCompoundPredicate* finalPredicate;
 }
 #pragma mark -
 #pragma mark - View Life Cycle
@@ -32,19 +32,14 @@
 {
     [super viewDidLoad];
     [self configureMetalSlider];
-    if(self.rommsSelected == 0)
-        self.roomsLabel.text= @"No seleccionado";
-    else
-        self.roomsLabel.text = [NSNumber numberWithInt:self.rommsSelected ].stringValue;
     
-    //[[ProyectService sharedService] filterProyectsPredicate]
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
-    [self setupViews];
     [self setupVars];
+    [self setupViews];
     [self setupNotifications];
 }
 
@@ -55,14 +50,37 @@
 -(void)setupViews
 {
     [self.navigationController setNavigationBarHidden:TRUE];
+    [self defaultSetup];//TODO: GET IF IS DEFAULT OR THERE IS A PREVIOUS FILTERED VALUE
+}
+
+-(void)defaultSetup
+{
     [self cleanFilters:nil];
+    if(self.rommsSelected == 0)
+        self.roomsLabel.text= @"No seleccionado";
+    else
+        self.roomsLabel.text = [NSNumber numberWithInt:self.rommsSelected ].stringValue;
+}
+
+-(void)customSetup
+{
+    NSPredicate* predicate =[[ProyectService sharedService] filterProyectsPredicate];
+    if(predicate)
+    {
+        NSArray* proyects = [[ProyectService sharedService]getAllProyects];
+        NSArray* filteredProyects = [proyects filteredArrayUsingPredicate:finalPredicate];
+        [ProyectService setFilterProyects:filteredProyects.mutableCopy];
+        NSDictionary *userInfo = @{NOTIFICATION_SENDER: FILTER_SENDER, FILTER_MODE: @TRUE};
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationApplyFilters object:self userInfo:userInfo];
+
+    }
 }
 
 -(void)setupVars
 {
     self.rommsSelected = 0;
     self.minPrice = self.maxPrice = 0;
-    self.avaibleProyectsOnly= false;
+    self.avaibleProyectsOnly= [NSNumber numberWithBool:false];
 }
 
 -(void)setupNotifications
@@ -83,20 +101,31 @@
     
     NSMutableArray* subpredicates = [[NSMutableArray alloc]init];
     
-    if(self.avaibleProyectsOnly)
+    if(self.avaibleProyectsOnly.boolValue==true)
     {
         avaibleProyectsOnlyPredicate = [NSPredicate predicateWithFormat:@"SELF.state >= %@",@1];
         [subpredicates addObject:avaibleProyectsOnlyPredicate];
     }
     if(self.rommsSelected >0)
     {
-        roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected]];
+        roomsPredicate = [NSPredicate predicateWithFormat:@"SELF.minRooms >= %@ || SELF.maxRooms >= %@",[NSNumber numberWithInteger:self.rommsSelected],[NSNumber numberWithInteger:self.rommsSelected]];
         [subpredicates addObject:roomsPredicate];
     }
     if(self.minPrice >0 && self.maxPrice>0)
     {
         pricePredicate = [NSPredicate predicateWithFormat:@"SELF.minPrice >= %@ && SELF.maxPrice <=%@",[NSNumber numberWithFloat:self.minPrice].stringValue,[NSNumber numberWithFloat:self.maxPrice].stringValue];
         [subpredicates addObject:pricePredicate];
+    }
+    else{
+        if(self.minPrice > 0)
+        {
+            pricePredicate = [NSPredicate predicateWithFormat:@"SELF.minPrice >= %@",[NSNumber numberWithFloat:self.minPrice].stringValue,[NSNumber numberWithFloat:self.maxPrice].stringValue];
+
+        }
+        if(self.maxPrice >0)
+        {
+            pricePredicate = [NSPredicate predicateWithFormat:@"SELF.maxPrice <= %@",[NSNumber numberWithFloat:self.minPrice].stringValue,[NSNumber numberWithFloat:self.maxPrice].stringValue];
+        }
     }
     if(subpredicates && subpredicates.count>0)
     {
@@ -128,7 +157,7 @@
 }
 
 - (IBAction)avaibleProyectsValueChanged:(UISwitch *)sender {
-    self.avaibleProyectsOnly = sender.on;
+    self.avaibleProyectsOnly = [NSNumber numberWithBool:sender.on];
 }
 - (IBAction)sliderValueChanged:(NMRangeSlider *)sender {
     int min = (sender.lowerValue+ 0.2) * 100000;

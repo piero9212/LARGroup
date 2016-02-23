@@ -125,11 +125,12 @@ static NSMutableArray *_filterProyects;
     NSPredicate *proyectFilter = [defaults objectForKey:PROYECTS_FILTER];
     return proyectFilter;
 }
+
 - (void)setfilterProyectsPredicate:(NSPredicate *)predicate
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:predicate forKey:PROYECTS_FILTER];
-    [defaults synchronize];
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setObject:[NSKeyedArchiver archivedDataWithRootObject:predicate] forKey:PROYECTS_FILTER];
+    [def synchronize];
 }
 
 - (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;

@@ -42,6 +42,13 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     [self setupVars];
     [self setupNotifications];
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self deallocNotifications];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -66,6 +73,11 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilters:)
                                                  name:kNotificationApplyFilters object:nil];
+}
+
+-(void)deallocNotifications
+{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:kNotificationApplyFilters];
 }
 
 #pragma mark -

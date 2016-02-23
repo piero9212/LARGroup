@@ -42,6 +42,7 @@ BOOL pinsLoaded = false;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
+    [self setupNotifications];
     [self setupVars];
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -56,6 +57,7 @@ BOOL pinsLoaded = false;
 -(void)setupMap
 {
     [self.navigationController setNavigationBarHidden:TRUE];
+    [self.proyectsMapView removeAnnotations:self.proyectsMapView.annotations];
     if(!pinsLoaded)
     {
         [self loadPins];
@@ -67,7 +69,25 @@ BOOL pinsLoaded = false;
 
 -(void)setupVars
 {
-    self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
+    if([[[ProyectService sharedService] getAllProyects] isEqual:[ProyectService filterProyects]])
+    {
+        self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
+    }
+    else
+    {
+        self.proyects = [[NSMutableArray alloc]initWithArray:[ProyectService filterProyects]];
+    }
+}
+
+-(void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyFilters:)
+                                                 name:kNotificationApplyFilters object:nil];
+}
+
+-(void)deallocNotifications
+{
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:kNotificationApplyFilters];
 }
 
 -(void)loadPins
@@ -171,6 +191,15 @@ BOOL pinsLoaded = false;
 }
 
 - (IBAction)displayProyectTouch:(UIButton *)sender {
+}
+
+
+-(void)applyFilters:(NSNotification *)notification
+{
+    [self showHUDOnView:self.view];
+    self.proyects = [[NSMutableArray alloc]initWithArray:[ProyectService filterProyects]];
+    pinsLoaded = false;
+    [self setupMap];
 }
 
 #pragma mark -
