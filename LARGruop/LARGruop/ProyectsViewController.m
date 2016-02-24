@@ -117,7 +117,6 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     [NSPredicate predicateWithFormat:@"SELF.status == %@",[NSString stringWithFormat:@"%d",StatusCodeFree]];
     NSArray *fileterdflats =
     [flats filteredArrayUsingPredicate:flatsPredicate];
-    
     cell.departamentsLeftLabel.text = [NSString stringWithFormat:@"Departamentos disponibles: %lu",(unsigned long)fileterdflats.count];
     [cell.departamentsLeftLabel setTextColor:[UIColor colorForAvaibleDepartmentsCount:fileterdflats.count]];
     [cell.buildImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.imageURL]];

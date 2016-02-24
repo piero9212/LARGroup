@@ -105,4 +105,18 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
     return CGSizeMake(30,30);
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger item = indexPath.item-1;
+    if(areSolidColor.boolValue ==true)
+    {
+        if(item != -1)
+        {
+            Flat* flat = [self.items objectAtIndex:item];
+            NSLog(@"Depa: %@",flat.name);
+        }
+    }
+    
+}
+
 @end

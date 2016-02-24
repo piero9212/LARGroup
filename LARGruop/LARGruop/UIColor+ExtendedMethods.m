@@ -34,11 +34,11 @@
 }
 +(UIColor*)LARGreenColor
 {
-    return UIColorFromRGB(0x63F05A);
+    return UIColorFromRGB(0x8FDC40);
 }
 +(UIColor*)LARRedColor
 {
-    return UIColorFromRGB(0xED5154);
+    return UIColorFromRGB(0xD0021B);
 }
 +(UIColor *)LARGreyColor
 {

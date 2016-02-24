@@ -70,32 +70,32 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     self.plantButton.layer.masksToBounds = true;
     [self.proyectNameLabel setText:[NSString stringWithFormat:@"Proyecto %@",selectedProyect.name]];
     maxFloors = selectedProyect.floorsCount.integerValue;
-    self.proyectDepartments =[NSArray arrayWithArray:[selectedProyect.flats allObjects]];
+    self.proyectDepartments = [selectedProyect.flats allObjects];
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    self.proyectDepartments=[self.proyectDepartments sortedArrayUsingDescriptors:@[sort]];
+    
+    
     NSInteger floorWithMaxFlats =-1;
     for(int i = 0; i <self.proyectDepartments.count ; i++)
     {
+        Flat * currentFlat = self.proyectDepartments[i];
         if(i==0)
         {
-            floorWithMaxFlats = i;
+            maxFlatsPerFloor = currentFlat.floor.flats.count;
         }
         else
         {
-            Flat * currentFlat = self.proyectDepartments[i];
             Flat * lastFalt = self.proyectDepartments[i-1];
             if(currentFlat.floor.flats.count> lastFalt.floor.flats.count )
             {
-                floorWithMaxFlats = i;
+                floorWithMaxFlats = currentFlat.floor.flats.count;
             }
             else
             {
-                floorWithMaxFlats = i-1;
+                floorWithMaxFlats = lastFalt.floor.flats.count;
             }
         }
-    }
-    if(floorWithMaxFlats != -1)
-    {
-        Flat* maxFlat= self.proyectDepartments[floorWithMaxFlats];
-        maxFlatsPerFloor = maxFlat.floor.flats.count;
     }
     [self.departmentCollectionView reloadData];
 }
@@ -138,6 +138,11 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     return cell;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = self.departmentCollectionView.frame.size.height/(maxFloors+1);
+    return CGSizeMake(self.departmentCollectionView.frame.size.width, height );
+}
+
 #pragma mark -
 #pragma mark - Table View Delegate
 #pragma mark -
@@ -175,14 +180,12 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
             legendName = @"Bloqueado";
             break;
     }
+    cell.backgroundColor = [UIColor clearColor];
     [cell setupCellWithLegendStatus:legendStatus andLegendName:legendName];
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = self.departmentCollectionView.frame.size.height/(maxFloors+1);
-    return CGSizeMake(self.departmentCollectionView.frame.size.width, height );
-}
+
 
 #pragma mark -
 #pragma mark - IBActions
