@@ -15,6 +15,7 @@
 #import "FlatLegendTableViewCell.h"
 #import "StatusCode.h"
 #import "FlatPlantsViewController.h"
+#import "FlatDetailViewController.h"
 
 static NSString* const DEPARTAMENT_SQUARE_LEGEND_CELL = @"DEPARTAMENT_SQUARE_LEGEND_CELL";
 static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
@@ -135,6 +136,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     }
     NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.item+1];
     [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isSolidColor andFlatsArray:flats andMaxFlatsPerFloor:maxFlatsPerFloor];
+    cell.flatDelegate=self;
     return cell;
 }
 
@@ -185,7 +187,14 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     return cell;
 }
 
+#pragma mark -
+#pragma mark - Flat Detail Protocol
+#pragma mark -
 
+- (void)presentFlatModalDetailWithFlat:(Flat*)flat
+{
+    [self performSegueToFlatDetailWithFlat:flat];
+}
 
 #pragma mark -
 #pragma mark - IBActions
@@ -193,6 +202,20 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 
 - (IBAction)goToPlantsTapped:(UIButton *)sender {
     [self.proyectDelegate changeChildViewController];
+}
+
+
+-(void)performSegueToFlatDetailWithFlat:(Flat*)flat
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FlatDetailViewController *flatDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"FlatDetailViewController"];
+    
+    flatDetailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:flatDetailViewController animated:YES completion:nil];
+    
+    CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
+    [flatDetailViewController setPopOverViewSize:temporalPopoverSize];
+    flatDetailViewController.selectedFlat = flat;
 }
 
 #pragma mark -

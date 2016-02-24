@@ -2,7 +2,7 @@
 //  Proyect+CoreDataProperties.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 16/02/16.
+//  Created by piero.sifuentes on 24/02/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -24,18 +24,19 @@
 @dynamic mapDescription;
 @dynamic mapImageURL;
 @dynamic maxPrice;
+@dynamic maxRooms;
 @dynamic minPrice;
+@dynamic minRooms;
 @dynamic name;
 @dynamic panoramicImageURL;
 @dynamic proyectDescription;
-@dynamic videoURL;
-@dynamic minRooms;
-@dynamic maxRooms;
 @dynamic state;
+@dynamic videoURL;
 @dynamic features;
 @dynamic flats;
 @dynamic outsideImages;
 @dynamic plants;
 @dynamic rates;
+@dynamic floors;
 
 @end

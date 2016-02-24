@@ -12,7 +12,6 @@
 @protocol ProyecDetailProtocol <NSObject>
 
 - (void)changeChildViewController;
-
 @end
 
 #endif /* ProyectDetailProtocol_h */

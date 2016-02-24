@@ -113,6 +113,7 @@ static NSString* const DEPARTAMENT_SQUARE_CELL = @"DEPARTAMENT_SQUARE_CELL";
         if(item != -1)
         {
             Flat* flat = [self.items objectAtIndex:item];
+            [self.flatDelegate presentFlatModalDetailWithFlat:flat];
             NSLog(@"Depa: %@",flat.name);
         }
     }

@@ -21,8 +21,8 @@
     self.plantButton.layer.cornerRadius = 10;
     if(isSelected)
     {
-        [self.plantButton setBackgroundColor:[UIColor LARSkyBlueColor]];
         [self.plantButton.titleLabel setTextColor:[UIColor whiteColor]];
+        [self.plantButton setBackgroundColor:[UIColor LARSkyBlueColor]];
     }
     else
     {

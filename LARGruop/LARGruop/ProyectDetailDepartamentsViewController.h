@@ -8,8 +8,9 @@
 
 #import "BaseViewController.h"
 #import "ProyectDetailProtocol.h"
+#import "FlatDetailProtocol.h"
 
-@interface ProyectDetailDepartamentsViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ProyectDetailDepartamentsViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,FlatDetailProtocol>
 
 @property (nonatomic,strong) NSString* selectedProyectID;
 @property (nonatomic) CGSize containerSize;

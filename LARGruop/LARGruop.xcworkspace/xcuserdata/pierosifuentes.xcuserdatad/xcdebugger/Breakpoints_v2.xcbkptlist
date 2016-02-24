@@ -528,11 +528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LARGruop/ProyectDetailDepartamentsViewController.m"
-            timestampString = "477519465.076646"
+            timestampString = "478040118.675612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -544,11 +544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LARGruop/ProyectDetailDepartamentsViewController.m"
-            timestampString = "477519465.076646"
+            timestampString = "478040118.675612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "@implementation ProyectDetailDepartamentsViewController"
             landmarkType = "3">
          </BreakpointContent>

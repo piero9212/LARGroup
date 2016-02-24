@@ -91,6 +91,7 @@
         {
             Floor* floor = [Floor MR_createEntityInContext:context];
             [self floorDictionary:floorDictionary toFloorEntity:floor andFloorNumber:i];
+            [proyect addFloorsObject:floor];
             id departamentsObject = [floorDictionary valueForKeyPath:@"departments"];
             NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
             for(NSDictionary* departamentDictionary in departamentDictionaries)
@@ -132,10 +133,10 @@
     id proyectIDObject = [departamentDictionary valueForKeyPath:@"project_id"];
     flat.projectUID = ([proyectIDObject isKindOfClass:[NSString class]])? proyectIDObject: ((NSNumber*)proyectIDObject).stringValue;
     
-    id posXObject = [departamentDictionary valueForKeyPath:@"posX"];
+    id posXObject = [departamentDictionary valueForKeyPath:@"pos_x"];
     flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)posXObject).stringValue;
-    id posYObject = [departamentDictionary valueForKeyPath:@"posY"];
-    flat.posX = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)posYObject).stringValue;
+    id posYObject = [departamentDictionary valueForKeyPath:@"pos_y"];
+    flat.posY = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)posYObject).stringValue;
     
     id statusObject = [departamentDictionary valueForKey:@"state"];
     flat.status = ([statusObject isKindOfClass:[NSNumber class]]) ? ((NSNumber*)statusObject).stringValue : nil;
@@ -146,6 +147,21 @@
     id uidObject = [floorDictionary valueForKeyPath:@"id"];
     floor.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
     floor.number = [NSNumber numberWithInt:number];
+    
+    id nameObject = [floorDictionary valueForKeyPath:@"name"];
+    floor.name = ([nameObject isKindOfClass:[NSString class]])? nameObject: nil;
+    
+    id imageObject = [floorDictionary valueForKeyPath:@"image"];
+    floor.image = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
+    
+    NSString* imageWidthObject = [floorDictionary valueForKeyPath:@"image_width"];
+    floor.imageWidth = [NSNumber numberWithFloat:imageWidthObject.floatValue];
+    
+    NSString* imageHeightObject = [floorDictionary valueForKeyPath:@"image_height"];
+    floor.imageHeight = [NSNumber numberWithFloat:imageHeightObject.floatValue];
+    
+    id proyectidObject = [floorDictionary valueForKeyPath:@"project_id"];
+    floor.proyectID = ([uidObject isKindOfClass:[NSString class]])? proyectidObject: ((NSNumber*)proyectidObject).stringValue;
 }
 
 @end

@@ -2,7 +2,7 @@
 //  Proyect+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 16/02/16.
+//  Created by piero.sifuentes on 24/02/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -26,19 +26,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *mapDescription;
 @property (nullable, nonatomic, retain) NSString *mapImageURL;
 @property (nullable, nonatomic, retain) NSString *maxPrice;
+@property (nullable, nonatomic, retain) NSNumber *maxRooms;
 @property (nullable, nonatomic, retain) NSString *minPrice;
+@property (nullable, nonatomic, retain) NSNumber *minRooms;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *panoramicImageURL;
 @property (nullable, nonatomic, retain) NSString *proyectDescription;
-@property (nullable, nonatomic, retain) NSString *videoURL;
-@property (nullable, nonatomic, retain) NSNumber *minRooms;
-@property (nullable, nonatomic, retain) NSNumber *maxRooms;
 @property (nullable, nonatomic, retain) NSNumber *state;
+@property (nullable, nonatomic, retain) NSString *videoURL;
 @property (nullable, nonatomic, retain) NSSet<ProyectFeature *> *features;
 @property (nullable, nonatomic, retain) NSSet<Flat *> *flats;
 @property (nullable, nonatomic, retain) NSSet<Outside *> *outsideImages;
 @property (nullable, nonatomic, retain) NSSet<Plant *> *plants;
 @property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
+@property (nullable, nonatomic, retain) NSSet<Floor *> *floors;
 
 @end
 
@@ -68,6 +69,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeRatesObject:(Rate *)value;
 - (void)addRates:(NSSet<Rate *> *)values;
 - (void)removeRates:(NSSet<Rate *> *)values;
+
+- (void)addFloorsObject:(Floor *)value;
+- (void)removeFloorsObject:(Floor *)value;
+- (void)addFloors:(NSSet<Floor *> *)values;
+- (void)removeFloors:(NSSet<Floor *> *)values;
 
 @end
 

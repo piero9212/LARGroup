@@ -2,7 +2,7 @@
 //  Floor+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 16/02/16.
+//  Created by piero.sifuentes on 24/02/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,8 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSNumber *number;
+@property (nullable, nonatomic, retain) NSString *image;
+@property (nullable, nonatomic, retain) NSNumber *imageWidth;
+@property (nullable, nonatomic, retain) NSNumber *imageHeight;
+@property (nullable, nonatomic, retain) NSString *proyectID;
 @property (nullable, nonatomic, retain) NSSet<Flat *> *flats;
 @property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
+@property (nullable, nonatomic, retain) Proyect *proyect;
 
 @end
 
