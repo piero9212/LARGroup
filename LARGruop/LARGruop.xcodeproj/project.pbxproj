@@ -79,6 +79,9 @@
 		3587669A1C80A7A500D26E0D /* FlatPreviousReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358766991C80A7A500D26E0D /* FlatPreviousReserveViewController.m */; };
 		3587669F1C80C79200D26E0D /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3587669E1C80C79200D26E0D /* CustomNavigationViewController.m */; };
 		358766A31C80C8A200D26E0D /* FlatReserveContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358766A21C80C8A200D26E0D /* FlatReserveContainerViewController.m */; };
+		358766A91C80EAF500D26E0D /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358766A81C80EAF500D26E0D /* ReserveViewController.m */; };
+		358766AC1C80FB5500D26E0D /* ReserveStepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358766AB1C80FB5500D26E0D /* ReserveStepOneViewController.m */; };
+		358766AF1C80FB6400D26E0D /* ReserveStepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358766AE1C80FB6400D26E0D /* ReserveStepTwoViewController.m */; };
 		35FC0F971BB305FE00F67EA9 /* AnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0F961BB305FE00F67EA9 /* AnnotationView.m */; };
 		35FC0F9A1BB3093600F67EA9 /* ProyectPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0F991BB3093600F67EA9 /* ProyectPointAnnotation.m */; };
 		35FC0FA31BB34D3A00F67EA9 /* MapMarkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC0FA21BB34D3900F67EA9 /* MapMarkDetailViewController.m */; };
@@ -266,6 +269,12 @@
 		358766A21C80C8A200D26E0D /* FlatReserveContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatReserveContainerViewController.m; sourceTree = "<group>"; };
 		358766A41C80C91400D26E0D /* FlatContainerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatContainerProtocol.h; sourceTree = "<group>"; };
 		358766A51C80CC6D00D26E0D /* FlatDetailViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatDetailViewControllerProtocol.h; sourceTree = "<group>"; };
+		358766A71C80EAF500D26E0D /* ReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveViewController.h; sourceTree = "<group>"; };
+		358766A81C80EAF500D26E0D /* ReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveViewController.m; sourceTree = "<group>"; };
+		358766AA1C80FB5500D26E0D /* ReserveStepOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveStepOneViewController.h; sourceTree = "<group>"; };
+		358766AB1C80FB5500D26E0D /* ReserveStepOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveStepOneViewController.m; sourceTree = "<group>"; };
+		358766AD1C80FB6400D26E0D /* ReserveStepTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReserveStepTwoViewController.h; sourceTree = "<group>"; };
+		358766AE1C80FB6400D26E0D /* ReserveStepTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReserveStepTwoViewController.m; sourceTree = "<group>"; };
 		35FC0F951BB305FE00F67EA9 /* AnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationView.h; sourceTree = "<group>"; };
 		35FC0F961BB305FE00F67EA9 /* AnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationView.m; sourceTree = "<group>"; };
 		35FC0F981BB3093600F67EA9 /* ProyectPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectPointAnnotation.h; sourceTree = "<group>"; };
@@ -634,6 +643,7 @@
 		353D966D1B9DFBFD00E4A618 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				358766A61C80EAD300D26E0D /* Reserve */,
 				358766A01C80C87F00D26E0D /* Container */,
 				3587669C1C80C76700D26E0D /* Navigation */,
 				352FA68F1BA0E3CF00FEC040 /* Filter */,
@@ -865,7 +875,6 @@
 		353E64F31B9F4BCD0004E4F2 /* Proyects */ = {
 			isa = PBXGroup;
 			children = (
-				358766971C80A78200D26E0D /* Flat */,
 				760158491BAA66DC00411629 /* Detail Items */,
 				353E64F41B9F4BE30004E4F2 /* ProyectsViewController.h */,
 				353E64F51B9F4BE30004E4F2 /* ProyectsViewController.m */,
@@ -943,6 +952,8 @@
 		358766971C80A78200D26E0D /* Flat */ = {
 			isa = PBXGroup;
 			children = (
+				3505A77A1C76739A00AD6FD1 /* FlatDetailViewController.h */,
+				3505A77B1C76739A00AD6FD1 /* FlatDetailViewController.m */,
 				358766981C80A7A500D26E0D /* FlatPreviousReserveViewController.h */,
 				358766991C80A7A500D26E0D /* FlatPreviousReserveViewController.m */,
 			);
@@ -967,6 +978,19 @@
 			name = Container;
 			sourceTree = "<group>";
 		};
+		358766A61C80EAD300D26E0D /* Reserve */ = {
+			isa = PBXGroup;
+			children = (
+				358766A71C80EAF500D26E0D /* ReserveViewController.h */,
+				358766A81C80EAF500D26E0D /* ReserveViewController.m */,
+				358766AA1C80FB5500D26E0D /* ReserveStepOneViewController.h */,
+				358766AB1C80FB5500D26E0D /* ReserveStepOneViewController.m */,
+				358766AD1C80FB6400D26E0D /* ReserveStepTwoViewController.h */,
+				358766AE1C80FB6400D26E0D /* ReserveStepTwoViewController.m */,
+			);
+			name = Reserve;
+			sourceTree = "<group>";
+		};
 		3851064E127162C714D9F4AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +1004,7 @@
 		760158491BAA66DC00411629 /* Detail Items */ = {
 			isa = PBXGroup;
 			children = (
+				358766971C80A78200D26E0D /* Flat */,
 				7601584A1BAA672300411629 /* ProyectDetailLocateViewController.h */,
 				7601584B1BAA672300411629 /* ProyectDetailLocateViewController.m */,
 				7601584D1BAA67A500411629 /* ProyectDetailOutsideViewController.h */,
@@ -994,8 +1019,6 @@
 				3541E21D1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m */,
 				3505A7701C763B4000AD6FD1 /* FlatPlantsViewController.h */,
 				3505A7711C763B4000AD6FD1 /* FlatPlantsViewController.m */,
-				3505A77A1C76739A00AD6FD1 /* FlatDetailViewController.h */,
-				3505A77B1C76739A00AD6FD1 /* FlatDetailViewController.m */,
 			);
 			name = "Detail Items";
 			sourceTree = "<group>";
@@ -1241,6 +1264,7 @@
 				3541E21B1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m in Sources */,
 				3560F7981BAA085E0061BAD4 /* ProyectFeaturesViewController.m in Sources */,
 				358766901C7FB4F900D26E0D /* User.m in Sources */,
+				358766AF1C80FB6400D26E0D /* ReserveStepTwoViewController.m in Sources */,
 				358766851C7FB4F900D26E0D /* ProyectFeature+CoreDataProperties.m in Sources */,
 				763583071C0BE2C90025FE92 /* ClientTranslator.m in Sources */,
 				353D967F1B9E154A00E4A618 /* BaseViewController.m in Sources */,
@@ -1252,6 +1276,7 @@
 				762820E71BF03A0C004306B4 /* BaseConnectionManager.m in Sources */,
 				763583011C0BBB600025FE92 /* ClientConnectionManager.m in Sources */,
 				352F77B51BA872A80080B004 /* CustomerMarketRateViewController.m in Sources */,
+				358766A91C80EAF500D26E0D /* ReserveViewController.m in Sources */,
 				3505A7781C7656AC00AD6FD1 /* PlantButtonCollectionViewCell.m in Sources */,
 				353E65011B9F6BB70004E4F2 /* ProyectCollectionViewCell.m in Sources */,
 				3560F7A51BAA25220061BAD4 /* ProyectDetailItemViewController.m in Sources */,
@@ -1266,6 +1291,7 @@
 				358766891C7FB4F900D26E0D /* Plant+CoreDataProperties.m in Sources */,
 				354526051BB499DB00D14FF8 /* DepartmentCollectionViewCell.m in Sources */,
 				3587669F1C80C79200D26E0D /* CustomNavigationViewController.m in Sources */,
+				358766AC1C80FB5500D26E0D /* ReserveStepOneViewController.m in Sources */,
 				760158521BAA67C200411629 /* ProyectDetailDepartamentsViewController.m in Sources */,
 				764946731C02C13B00240AAC /* UIButton+ExtendedMethods.m in Sources */,
 				35FC0FA31BB34D3A00F67EA9 /* MapMarkDetailViewController.m in Sources */,
