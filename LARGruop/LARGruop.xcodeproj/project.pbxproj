@@ -28,7 +28,6 @@
 		353D96501B9DF8B800E4A618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353D964E1B9DF8B800E4A618 /* Main.storyboard */; };
 		353D96521B9DF8B900E4A618 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 353D96511B9DF8B900E4A618 /* Images.xcassets */; };
 		353D96551B9DF8B900E4A618 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 353D96531B9DF8B900E4A618 /* LaunchScreen.xib */; };
-		353D96611B9DF8B900E4A618 /* LARGruopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D96601B9DF8B900E4A618 /* LARGruopTests.m */; };
 		353D967F1B9E154A00E4A618 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D967E1B9E154A00E4A618 /* BaseViewController.m */; };
 		353D96821B9E157A00E4A618 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D96811B9E157A00E4A618 /* InitViewController.m */; };
 		353D968F1B9E24F900E4A618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D968E1B9E24F900E4A618 /* LoginViewController.m */; };
@@ -115,16 +114,6 @@
 		AB454D0776761BFCF8BD2AF7 /* libPods-LARGruop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A7C4E77596FE6656D2AE0F /* libPods-LARGruop.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		353D965B1B9DF8B900E4A618 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 353D96361B9DF8B800E4A618 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 353D963D1B9DF8B800E4A618;
-			remoteInfo = LARGruop;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		05A7C4E77596FE6656D2AE0F /* libPods-LARGruop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LARGruop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3505A7701C763B4000AD6FD1 /* FlatPlantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatPlantsViewController.h; sourceTree = "<group>"; };
@@ -168,7 +157,6 @@
 		353D964F1B9DF8B800E4A618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		353D96511B9DF8B900E4A618 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		353D96541B9DF8B900E4A618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		353D965A1B9DF8B900E4A618 /* LARGruopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LARGruopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		353D965F1B9DF8B900E4A618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		353D96601B9DF8B900E4A618 /* LARGruopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LARGruopTests.m; sourceTree = "<group>"; };
 		353D967D1B9E154A00E4A618 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -360,13 +348,6 @@
 				352FA6971BA0E59E00FEC040 /* QuartzCore.framework in Frameworks */,
 				353E64E91B9F46700004E4F2 /* MapKit.framework in Frameworks */,
 				AB454D0776761BFCF8BD2AF7 /* libPods-LARGruop.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		353D96571B9DF8B900E4A618 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +549,6 @@
 			isa = PBXGroup;
 			children = (
 				353D963E1B9DF8B800E4A618 /* LARGruop.app */,
-				353D965A1B9DF8B900E4A618 /* LARGruopTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1146,24 +1126,6 @@
 			productReference = 353D963E1B9DF8B800E4A618 /* LARGruop.app */;
 			productType = "com.apple.product-type.application";
 		};
-		353D96591B9DF8B900E4A618 /* LARGruopTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 353D96671B9DF8B900E4A618 /* Build configuration list for PBXNativeTarget "LARGruopTests" */;
-			buildPhases = (
-				353D96561B9DF8B900E4A618 /* Sources */,
-				353D96571B9DF8B900E4A618 /* Frameworks */,
-				353D96581B9DF8B900E4A618 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				353D965C1B9DF8B900E4A618 /* PBXTargetDependency */,
-			);
-			name = LARGruopTests;
-			productName = LARGruopTests;
-			productReference = 353D965A1B9DF8B900E4A618 /* LARGruopTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1176,10 +1138,6 @@
 					353D963D1B9DF8B800E4A618 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = PDKJ4D5B5H;
-					};
-					353D96591B9DF8B900E4A618 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 353D963D1B9DF8B800E4A618;
 					};
 				};
 			};
@@ -1197,7 +1155,6 @@
 			projectRoot = "";
 			targets = (
 				353D963D1B9DF8B800E4A618 /* LARGruop */,
-				353D96591B9DF8B900E4A618 /* LARGruopTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1216,13 +1173,6 @@
 				353D96521B9DF8B900E4A618 /* Images.xcassets in Resources */,
 				76ABFEBA1BF44D7600E0E9F0 /* TestLocationSurquillo.gpx in Resources */,
 				7601596A1C72B1640003069F /* FlatLegendTableViewCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		353D96581B9DF8B900E4A618 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1377,23 +1327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		353D96561B9DF8B900E4A618 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				353D96611B9DF8B900E4A618 /* LARGruopTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		353D965C1B9DF8B900E4A618 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 353D963D1B9DF8B800E4A618 /* LARGruop */;
-			targetProxy = 353D965B1B9DF8B900E4A618 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		353D964E1B9DF8B800E4A618 /* Main.storyboard */ = {
@@ -1528,42 +1462,6 @@
 			};
 			name = Release;
 		};
-		353D96681B9DF8B900E4A618 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LARGruopTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "prsp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LARGruop.app/LARGruop";
-			};
-			name = Debug;
-		};
-		353D96691B9DF8B900E4A618 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LARGruopTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "prsp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LARGruop.app/LARGruop";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1581,15 +1479,6 @@
 			buildConfigurations = (
 				353D96651B9DF8B900E4A618 /* Debug */,
 				353D96661B9DF8B900E4A618 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		353D96671B9DF8B900E4A618 /* Build configuration list for PBXNativeTarget "LARGruopTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				353D96681B9DF8B900E4A618 /* Debug */,
-				353D96691B9DF8B900E4A618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
