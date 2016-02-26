@@ -9,12 +9,15 @@
 #import "FlatDetailViewController.h"
 #import <Haneke.h>
 #import "StatusCode.h"
+#import "FlatFeature.h"
+#import "FlatPreviousReserveViewController.h"
 
 @interface FlatDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flatNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *seeFlatButton;
 @property (weak, nonatomic) IBOutlet UIImageView *flatImageView;
 @property (weak, nonatomic) IBOutlet UILabel *flatStatusLabel;
+@property (nonatomic,strong) NSArray* flatFeatures;
 
 @end
 
@@ -49,10 +52,10 @@
 
 -(void)setupVars
 {
+    self.flatFeatures = [self.selectedFlat.features allObjects];
     NSURL* url = [NSURL URLWithString:self.selectedFlat.flatImageURL];
     [self.flatImageView hnk_setImageFromURL:url];
     [self.flatNameLabel setText:[NSString stringWithFormat:@"Modelo %@ %@m2",self.selectedFlat.name,self.selectedFlat.size]];
-    self.flatStatusLabel.text = self.selectedFlat.status;
     self.seeFlatButton.layer.cornerRadius = 10;
     self.seeFlatButton.layer.borderWidth =  2 ;
     self.seeFlatButton.layer.borderColor = [UIColor orangeLARColor].CGColor;
@@ -79,15 +82,6 @@
     [self.flatStatusLabel setTextColor:statusColor];
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    self.view.superview.bounds = CGRectMake(0, 0, _popOverViewSize.width, _popOverViewSize.height);
-    
-    self.view.superview.layer.cornerRadius  = 5.0;
-    self.view.superview.layer.masksToBounds = YES;
-}
-
 -(void)setupDismissOnTouch
 {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapBehind:)];
@@ -96,7 +90,6 @@
     [self.view.window addGestureRecognizer:recognizer];
     recognizer.delegate = self;
 }
-
 
 #pragma mark -
 #pragma mark - Actions
@@ -124,6 +117,37 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
+}
+
+#pragma mark -
+#pragma mark - Tale View Delegate & Data source
+#pragma mark -
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.flatFeatures.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:FLAT_FEATURE_IDENTIFIER forIndexPath:indexPath];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FlatFeature* feature = [self.flatFeatures objectAtIndex:indexPath.row];
+    cell.textLabel.text = feature.featureDescription;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30;
 }
 
 #pragma mark -
@@ -155,7 +179,7 @@
 #pragma mark - IBActions
 #pragma mark -
 - (IBAction)seeFlatTapped:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"" sender:nil];
+    [self.flatDelegate flatDetailViewControllerupdateToExpandedSize:self];
 }
 
 #pragma mark -
@@ -164,6 +188,16 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.destinationViewController isKindOfClass:[FlatPreviousReserveViewController class]])
+    {
+//        Flat* flat = sender;
+//        CGSize temporalPopoverSize = CGSizeMake(screenHeight, screenWidth);
+//        FlatPreviousReserveViewController* destinationVC = segue.destinationViewController;
+//        [destinationVC setCustomViewSize:temporalPopoverSize];
+//        destinationVC.preferredContentSize = temporalPopoverSize;
+//        destinationVC.selectedFlat = flat;
+    }
+
 }
 
 @end

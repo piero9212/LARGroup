@@ -15,7 +15,8 @@
 #import "FlatLegendTableViewCell.h"
 #import "StatusCode.h"
 #import "FlatPlantsViewController.h"
-#import "FlatDetailViewController.h"
+#import "FlatReserveContainerViewController.h"
+#import "CustomNavigationViewController.h"
 
 static NSString* const DEPARTAMENT_SQUARE_LEGEND_CELL = @"DEPARTAMENT_SQUARE_LEGEND_CELL";
 static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
@@ -29,6 +30,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 @property (weak, nonatomic) IBOutlet UILabel *proyectNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *proyectActionButton;
 @property (weak, nonatomic) IBOutlet UIButton *plantButton;
+@property (strong, nonatomic) CustomNavigationViewController* customNavigationController;
 @end
 
 @implementation ProyectDetailDepartamentsViewController
@@ -75,29 +77,6 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     self.proyectDepartments=[self.proyectDepartments sortedArrayUsingDescriptors:@[sort]];
-    
-    
-    NSInteger floorWithMaxFlats =-1;
-    for(int i = 0; i <self.proyectDepartments.count ; i++)
-    {
-        Flat * currentFlat = self.proyectDepartments[i];
-        if(i==0)
-        {
-            maxFlatsPerFloor = currentFlat.floor.flats.count;
-        }
-        else
-        {
-            Flat * lastFalt = self.proyectDepartments[i-1];
-            if(currentFlat.floor.flats.count> lastFalt.floor.flats.count )
-            {
-                floorWithMaxFlats = currentFlat.floor.flats.count;
-            }
-            else
-            {
-                floorWithMaxFlats = lastFalt.floor.flats.count;
-            }
-        }
-    }
     [self.departmentCollectionView reloadData];
 }
 
@@ -208,14 +187,36 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 -(void)performSegueToFlatDetailWithFlat:(Flat*)flat
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FlatDetailViewController *flatDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"FlatDetailViewController"];
+    self.customNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"CustomNavigationViewController"];
+    FlatReserveContainerViewController *flatContainerViewController = (FlatReserveContainerViewController *)self.customNavigationController.topViewController;
+    flatContainerViewController.delegate = self;
+    flatContainerViewController.selectedFlat = flat;
+    [self.customNavigationController setCustomViewSize:CGSizeMake(450.0f, 450.0f)];
+    self.customNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    self.customNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:self.customNavigationController animated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark - Flat Container Protocol
+#pragma mark -
+
+- (void)flatContainerViewControllerupdateToNormalSize:(FlatReserveContainerViewController *)sender
+{
+    if (self.customNavigationController) {
+        [self.customNavigationController setCustomViewSize:CGSizeMake(450.0f, 450.0f)];
+        [self.customNavigationController updateViewSize];
+    }
     
-    flatDetailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:flatDetailViewController animated:YES completion:nil];
-    
-    CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
-    [flatDetailViewController setPopOverViewSize:temporalPopoverSize];
-    flatDetailViewController.selectedFlat = flat;
+}
+
+- (void)flatContainerViewControllerupdateToExpandedSize:(FlatReserveContainerViewController *)sender
+{
+    if (self.customNavigationController) {
+        CGSize size = CGSizeMake(screenWidth, screenHeight);
+        [self.customNavigationController setCustomViewSize:size];
+        [self.customNavigationController updateViewSize];
+    }
 }
 
 #pragma mark -

@@ -16,7 +16,7 @@ static NSString* const FEATURE_CELL = @"FEATURE_CELL";
 
 @interface ProyectFeaturesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
-@property (weak, nonatomic) IBOutlet UILabel *featureDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *featureDescriptionLabel;
 @property (strong,nonatomic) NSArray* features;
 @end
 

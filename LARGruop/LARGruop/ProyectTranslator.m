@@ -13,6 +13,7 @@
 #import "Floor.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "StatusCode.h"
+#import "FlatFeature.h"
 
 @implementation ProyectTranslator
 
@@ -97,7 +98,7 @@
             for(NSDictionary* departamentDictionary in departamentDictionaries)
             {
                 Flat* flat = [Flat MR_createEntityInContext:context];
-                [self departamentDictionary:departamentDictionary toFlatEntity:flat];
+                [self departamentDictionary:departamentDictionary toFlatEntity:flat context:context];
                 flat.floor = floor;
                 [proyect addFlatsObject:flat];
             }
@@ -113,7 +114,8 @@
 + (void)recipientDictionary:(NSDictionary *)userDictionary toProyectEntity:(Proyect *)proyect
 {}
 
-+ (void)departamentDictionary:(NSDictionary *)departamentDictionary toFlatEntity:(Flat *)flat
++ (void)departamentDictionary:(NSDictionary *)departamentDictionary toFlatEntity:(Flat *)flat context:(NSManagedObjectContext *)context
+
 {
     id uidObject = [departamentDictionary valueForKeyPath:@"id"];
     flat.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
@@ -140,6 +142,16 @@
     
     id statusObject = [departamentDictionary valueForKey:@"state"];
     flat.status = ([statusObject isKindOfClass:[NSNumber class]]) ? ((NSNumber*)statusObject).stringValue : nil;
+    
+    id featuresObject = [departamentDictionary valueForKeyPath:@"features"];
+    NSArray *featuresArray = ([featuresObject isKindOfClass:[NSArray class]])? featuresObject : nil;
+    for(NSString* feature in featuresArray)
+    {
+        FlatFeature* flatFeature = [FlatFeature MR_createEntityInContext:context];
+        flatFeature.featureDescription = feature;
+        [flat addFeaturesObject:flatFeature];
+    }
+
 }
 
 + (void)floorDictionary:(NSDictionary *)floorDictionary toFloorEntity:(Floor *)floor andFloorNumber:(int)number

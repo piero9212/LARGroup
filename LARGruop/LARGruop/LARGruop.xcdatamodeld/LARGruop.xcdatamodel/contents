@@ -25,6 +25,7 @@
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="features" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlatFeature" inverseName="flat" inverseEntity="FlatFeature" syncable="YES"/>
         <relationship name="floor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="flats" inverseEntity="Floor" syncable="YES"/>
         <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="flats" inverseEntity="Plant" syncable="YES"/>
         <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="flats" inverseEntity="Proyect" syncable="YES"/>
@@ -32,6 +33,7 @@
     </entity>
     <entity name="FlatFeature" representedClassName="FlatFeature" parentEntity="Entity" syncable="YES">
         <attribute name="featureDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="flat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flat" inverseName="features" inverseEntity="Flat" syncable="YES"/>
     </entity>
     <entity name="Floor" representedClassName="Floor" parentEntity="Entity" syncable="YES">
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
@@ -108,8 +110,8 @@
     <elements>
         <element name="Customer" positionX="-9" positionY="99" width="128" height="150"/>
         <element name="Entity" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Flat" positionX="-9" positionY="117" width="128" height="240"/>
-        <element name="FlatFeature" positionX="-9" positionY="153" width="128" height="60"/>
+        <element name="Flat" positionX="-9" positionY="117" width="128" height="255"/>
+        <element name="FlatFeature" positionX="-9" positionY="153" width="128" height="75"/>
         <element name="Floor" positionX="0" positionY="162" width="128" height="180"/>
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
         <element name="Plant" positionX="-27" positionY="144" width="128" height="105"/>

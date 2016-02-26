@@ -2,7 +2,7 @@
 //  FlatFeature+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 24/02/16.
+//  Created by piero.sifuentes on 25/02/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlatFeature (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *featureDescription;
+@property (nullable, nonatomic, retain) Flat *flat;
 
 @end
 

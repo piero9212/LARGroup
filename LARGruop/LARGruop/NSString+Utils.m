@@ -20,8 +20,7 @@
 +(NSDate *)toDateFromDateString :(NSString *)dateString {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date = [[NSDate alloc] init];
-    date = [dateFormatter dateFromString:dateString];
+    NSDate *date = [dateFormatter dateFromString:dateString];
     return date;
 }
 @end

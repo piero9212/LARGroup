@@ -2,7 +2,7 @@
 //  Flat+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 24/02/16.
+//  Created by piero.sifuentes on 25/02/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) Plant *plant;
 @property (nullable, nonatomic, retain) Proyect *proyect;
 @property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
+@property (nullable, nonatomic, retain) NSSet<FlatFeature *> *features;
 
 @end
 
@@ -37,6 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeRatesObject:(Rate *)value;
 - (void)addRates:(NSSet<Rate *> *)values;
 - (void)removeRates:(NSSet<Rate *> *)values;
+
+- (void)addFeaturesObject:(FlatFeature *)value;
+- (void)removeFeaturesObject:(FlatFeature *)value;
+- (void)addFeatures:(NSSet<FlatFeature *> *)values;
+- (void)removeFeatures:(NSSet<FlatFeature *> *)values;
 
 @end
 

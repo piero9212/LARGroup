@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "Flat.h"
+#import "FlatDetailViewControllerProtocol.h"
 
-@interface FlatDetailViewController : BaseViewController <UIGestureRecognizerDelegate>
+@interface FlatDetailViewController : BaseViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (readwrite) CGSize popOverViewSize;
+
 @property (strong,nonatomic) Flat* selectedFlat;
+@property (nonatomic,weak) id<FlatDetailViewControllerProtocol> flatDelegate;
 @end

@@ -8,7 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface ProyectDetailViewController : BaseViewController
+@interface ProyectDetailViewController : BaseViewController 
 
 @property (nonatomic,strong) NSString* selectedProyectID;
+
 @end

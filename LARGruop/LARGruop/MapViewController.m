@@ -47,6 +47,7 @@ BOOL pinsLoaded = false;
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [self setupMap];
 }
 

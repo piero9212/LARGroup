@@ -120,11 +120,13 @@
         if(self.minPrice > 0)
         {
             pricePredicate = [NSPredicate predicateWithFormat:@"SELF.minPrice >= %@",[NSNumber numberWithFloat:self.minPrice].stringValue,[NSNumber numberWithFloat:self.maxPrice].stringValue];
+            [subpredicates addObject:pricePredicate];
 
         }
         if(self.maxPrice >0)
         {
             pricePredicate = [NSPredicate predicateWithFormat:@"SELF.maxPrice <= %@",[NSNumber numberWithFloat:self.minPrice].stringValue,[NSNumber numberWithFloat:self.maxPrice].stringValue];
+            [subpredicates addObject:pricePredicate];
         }
     }
     if(subpredicates && subpredicates.count>0)

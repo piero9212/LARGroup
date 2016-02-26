@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "ProyectDetailProtocol.h"
+#import "FlatContainerProtocol.h"
 
-@interface FlatPlantsViewController : BaseViewController <UICollectionViewDataSource, UICollectionViewDelegate,UIGestureRecognizerDelegate>
+@interface FlatPlantsViewController : BaseViewController <UICollectionViewDataSource, UICollectionViewDelegate,UIGestureRecognizerDelegate,FlatContainerProtocol>
 
 @property (nonatomic,strong) NSString* selectedProyectID;
 @property (nonatomic) CGSize containerSize;

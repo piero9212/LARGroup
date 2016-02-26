@@ -13,7 +13,6 @@
 @interface ProyectTranslator : NSObject
 
 + (void)proyectDictionary:(NSDictionary *)proyectDictionary toProyectEntity:(Proyect *)proyect context:(NSManagedObjectContext *)context;
-+ (void)recipientDictionary:(NSDictionary *)proyectDictionary toProyectEntity:(Proyect *)proyect;
 
-+ (void)departamentDictionary:(NSDictionary *)departamentDictionary toFlatEntity:(Flat *)flat;
++(void)departamentDictionary:(NSDictionary *)departamentDictionary toFlatEntity:(Flat *)flat context:(NSManagedObjectContext *)context;
 @end

@@ -10,7 +10,7 @@
 #define ProyectDetailProtocol_h
 
 @protocol ProyecDetailProtocol <NSObject>
-
+@optional
 - (void)changeChildViewController;
 @end
 

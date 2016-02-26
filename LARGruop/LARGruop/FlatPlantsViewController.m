@@ -13,6 +13,8 @@
 #import "PlantButtonCollectionViewCell.h"
 #import <Haneke.h>
 #import "FlatDetailViewController.h"
+#import "CustomNavigationViewController.h"
+#import "FlatReserveContainerViewController.h"
 
 static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 
@@ -21,7 +23,7 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 @property (strong,nonatomic) NSArray* proyectFloors;
 @property (weak, nonatomic) IBOutlet UICollectionView *buttonsCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *plantImageView;
-
+@property (strong, nonatomic) CustomNavigationViewController* customNavigationController;
 @end
 
 @implementation FlatPlantsViewController
@@ -190,14 +192,36 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 -(void)performSegueToFlatDetailWithFlat:(Flat*)flat
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FlatDetailViewController *flatDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"FlatDetailViewController"];
-    
-    flatDetailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:flatDetailViewController animated:YES completion:nil];
-    
-    CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
-    [flatDetailViewController setPopOverViewSize:temporalPopoverSize];
-    flatDetailViewController.selectedFlat = flat;
+    self.customNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"CustomNavigationViewController"];
+    FlatReserveContainerViewController *flatContainerViewController = (FlatReserveContainerViewController *)self.customNavigationController.topViewController;
+    flatContainerViewController.delegate = self;
+    flatContainerViewController.selectedFlat = flat;
+    [self.customNavigationController setCustomViewSize:CGSizeMake(450.0f, 450.0f)];
+    self.customNavigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    self.customNavigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:self.customNavigationController animated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark - Flat Container Protocol
+#pragma mark -
+
+- (void)flatContainerViewControllerupdateToNormalSize:(FlatReserveContainerViewController *)sender
+{
+    if (self.customNavigationController) {
+        [self.customNavigationController setCustomViewSize:CGSizeMake(450.0f, 450.0f)];
+        [self.customNavigationController updateViewSize];
+    }
+
+}
+
+- (void)flatContainerViewControllerupdateToExpandedSize:(FlatReserveContainerViewController *)sender
+{
+    if (self.customNavigationController) {
+        CGSize size = CGSizeMake(screenWidth, screenHeight);
+        [self.customNavigationController setCustomViewSize:size];
+        [self.customNavigationController updateViewSize];
+    }
 }
 
 #pragma mark -
@@ -206,14 +230,6 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.destinationViewController isKindOfClass:[FlatDetailViewController class]])
-    {
-        Flat* flat = sender;
-        CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
-        FlatDetailViewController* destinationVC = segue.destinationViewController;
-        [destinationVC setPopOverViewSize:temporalPopoverSize];
-        destinationVC.selectedFlat = flat;
-    }
 }
 
 @end

@@ -2,7 +2,7 @@
 //  Floor+CoreDataProperties.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 24/02/16.
+//  Created by piero.sifuentes on 25/02/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,14 +13,14 @@
 
 @implementation Floor (CoreDataProperties)
 
+@dynamic image;
+@dynamic imageHeight;
+@dynamic imageWidth;
 @dynamic name;
 @dynamic number;
-@dynamic image;
-@dynamic imageWidth;
-@dynamic imageHeight;
 @dynamic proyectID;
 @dynamic flats;
-@dynamic rates;
 @dynamic proyect;
+@dynamic rates;
 
 @end
