@@ -33,7 +33,6 @@
 		353D968F1B9E24F900E4A618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D968E1B9E24F900E4A618 /* LoginViewController.m */; };
 		353D96961B9E3AD200E4A618 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D96951B9E3AD200E4A618 /* ForgetViewController.m */; };
 		353D969E1B9E4B1500E4A618 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353D969D1B9E4B1500E4A618 /* HomeViewController.m */; };
-		353E64E91B9F46700004E4F2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353E64E81B9F46700004E4F2 /* MapKit.framework */; };
 		353E64F11B9F46F40004E4F2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E64F01B9F46F40004E4F2 /* ProfileViewController.m */; };
 		353E64F61B9F4BE30004E4F2 /* ProyectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E64F51B9F4BE30004E4F2 /* ProyectsViewController.m */; };
 		353E64F91B9F4C470004E4F2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E64F81B9F4C470004E4F2 /* MapViewController.m */; };
@@ -99,6 +98,11 @@
 		763583011C0BBB600025FE92 /* ClientConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 763583001C0BBB600025FE92 /* ClientConnectionManager.m */; };
 		763583041C0BC7AA0025FE92 /* ClientService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763583031C0BC7AA0025FE92 /* ClientService.m */; };
 		763583071C0BE2C90025FE92 /* ClientTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 763583061C0BE2C90025FE92 /* ClientTranslator.m */; };
+		763888941C854D020084813A /* PromoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763888931C854D020084813A /* PromoService.m */; };
+		763888971C854D110084813A /* QuotesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763888961C854D110084813A /* QuotesService.m */; };
+		763888991C8562BD0084813A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763888981C8562BD0084813A /* CoreLocation.framework */; };
+		7638889C1C8563C10084813A /* PromoConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7638889B1C8563C10084813A /* PromoConnectionManager.m */; };
+		7638889F1C8563D30084813A /* QuotesConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7638889E1C8563D30084813A /* QuotesConnectionManager.m */; };
 		763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97B1BA93151003D1E4F /* ServiceClient.m */; };
 		763EF9801BA9344B003D1E4F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF97F1BA9344B003D1E4F /* LoginService.m */; };
 		763EF98A1BA9384E003D1E4F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 763EF9891BA9384E003D1E4F /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -173,7 +177,6 @@
 		353D96951B9E3AD200E4A618 /* ForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
 		353D969C1B9E4B1500E4A618 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		353D969D1B9E4B1500E4A618 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		353E64E81B9F46700004E4F2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		353E64EF1B9F46F40004E4F2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		353E64F01B9F46F40004E4F2 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		353E64F41B9F4BE30004E4F2 /* ProyectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProyectsViewController.h; sourceTree = "<group>"; };
@@ -307,6 +310,15 @@
 		763583031C0BC7AA0025FE92 /* ClientService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientService.m; sourceTree = "<group>"; };
 		763583051C0BE2C90025FE92 /* ClientTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientTranslator.h; sourceTree = "<group>"; };
 		763583061C0BE2C90025FE92 /* ClientTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientTranslator.m; sourceTree = "<group>"; };
+		763888921C854D020084813A /* PromoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoService.h; sourceTree = "<group>"; };
+		763888931C854D020084813A /* PromoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoService.m; sourceTree = "<group>"; };
+		763888951C854D110084813A /* QuotesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuotesService.h; sourceTree = "<group>"; };
+		763888961C854D110084813A /* QuotesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuotesService.m; sourceTree = "<group>"; };
+		763888981C8562BD0084813A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7638889A1C8563C10084813A /* PromoConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoConnectionManager.h; sourceTree = "<group>"; };
+		7638889B1C8563C10084813A /* PromoConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoConnectionManager.m; sourceTree = "<group>"; };
+		7638889D1C8563D30084813A /* QuotesConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuotesConnectionManager.h; sourceTree = "<group>"; };
+		7638889E1C8563D30084813A /* QuotesConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuotesConnectionManager.m; sourceTree = "<group>"; };
 		763EF97A1BA93151003D1E4F /* ServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceClient.h; sourceTree = "<group>"; };
 		763EF97B1BA93151003D1E4F /* ServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceClient.m; sourceTree = "<group>"; };
 		763EF97E1BA9344B003D1E4F /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
@@ -354,8 +366,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763888991C8562BD0084813A /* CoreLocation.framework in Frameworks */,
 				352FA6971BA0E59E00FEC040 /* QuartzCore.framework in Frameworks */,
-				353E64E91B9F46700004E4F2 /* MapKit.framework in Frameworks */,
 				AB454D0776761BFCF8BD2AF7 /* libPods-LARGruop.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +450,10 @@
 				3560F79D1BAA14450061BAD4 /* ProyectFeatureService.m */,
 				763583021C0BC7AA0025FE92 /* ClientService.h */,
 				763583031C0BC7AA0025FE92 /* ClientService.m */,
+				763888921C854D020084813A /* PromoService.h */,
+				763888931C854D020084813A /* PromoService.m */,
+				763888951C854D110084813A /* QuotesService.h */,
+				763888961C854D110084813A /* QuotesService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -466,6 +482,10 @@
 				762820E61BF03A0C004306B4 /* BaseConnectionManager.m */,
 				763582FF1C0BBB600025FE92 /* ClientConnectionManager.h */,
 				763583001C0BBB600025FE92 /* ClientConnectionManager.m */,
+				7638889A1C8563C10084813A /* PromoConnectionManager.h */,
+				7638889B1C8563C10084813A /* PromoConnectionManager.m */,
+				7638889D1C8563D30084813A /* QuotesConnectionManager.h */,
+				7638889E1C8563D30084813A /* QuotesConnectionManager.m */,
 			);
 			name = "Connection Managers";
 			sourceTree = "<group>";
@@ -994,8 +1014,8 @@
 		3851064E127162C714D9F4AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				763888981C8562BD0084813A /* CoreLocation.framework */,
 				352FA6961BA0E59E00FEC040 /* QuartzCore.framework */,
-				353E64E81B9F46700004E4F2 /* MapKit.framework */,
 				05A7C4E77596FE6656D2AE0F /* libPods-LARGruop.a */,
 			);
 			name = Frameworks;
@@ -1161,6 +1181,11 @@
 					353D963D1B9DF8B800E4A618 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = PDKJ4D5B5H;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -1256,12 +1281,14 @@
 			files = (
 				7601584F1BAA67A500411629 /* ProyectDetailOutsideViewController.m in Sources */,
 				3584DFAC1BB094F700DDE5CD /* CustomerInterestLevelTableViewCell.m in Sources */,
+				763888971C854D110084813A /* QuotesService.m in Sources */,
 				358766941C7FB4F900D26E0D /* Proyect.m in Sources */,
 				3560F7941BA9D4130061BAD4 /* ProyectDetailViewController.m in Sources */,
 				352FA6491BA09AF900FEC040 /* NewCustomerTableViewCell.m in Sources */,
 				3541E21E1BB5951100BD6AF9 /* ProyectDetailVideoViewController.m in Sources */,
 				76ABFEBD1BF44F0300E0E9F0 /* AlertViewFactory.m in Sources */,
 				3541E21B1BB594F500BD6AF9 /* ProyectDetailPanoramicViewController.m in Sources */,
+				763888941C854D020084813A /* PromoService.m in Sources */,
 				3560F7981BAA085E0061BAD4 /* ProyectFeaturesViewController.m in Sources */,
 				358766901C7FB4F900D26E0D /* User.m in Sources */,
 				358766AF1C80FB6400D26E0D /* ReserveStepTwoViewController.m in Sources */,
@@ -1311,6 +1338,7 @@
 				358766841C7FB4F900D26E0D /* Outside.m in Sources */,
 				3587668C1C7FB4F900D26E0D /* Rate.m in Sources */,
 				3587668F1C7FB4F900D26E0D /* User+CoreDataProperties.m in Sources */,
+				7638889C1C8563C10084813A /* PromoConnectionManager.m in Sources */,
 				7601596E1C72DB900003069F /* FlatGroupCollectionViewCell.m in Sources */,
 				3505A77C1C76739A00AD6FD1 /* FlatDetailViewController.m in Sources */,
 				358766811C7FB4F900D26E0D /* Flat+CoreDataProperties.m in Sources */,
@@ -1327,6 +1355,7 @@
 				3560F77E1BA9B1960061BAD4 /* ProyectService.m in Sources */,
 				3587668A1C7FB4F900D26E0D /* Plant.m in Sources */,
 				353E64F61B9F4BE30004E4F2 /* ProyectsViewController.m in Sources */,
+				7638889F1C8563D30084813A /* QuotesConnectionManager.m in Sources */,
 				358766A31C80C8A200D26E0D /* FlatReserveContainerViewController.m in Sources */,
 				763EF98D1BA93933003D1E4F /* LoginConnectionManager.m in Sources */,
 				763EF97C1BA93151003D1E4F /* ServiceClient.m in Sources */,

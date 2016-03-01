@@ -97,6 +97,9 @@
     [self.navigationController popViewControllerAnimated:true];
 }
 
+- (IBAction)reserve:(UIButton *)sender {
+    [self performSegueWithIdentifier:FLAT_RESERVE_SEGUE sender:nil];
+}
 
 
 /*
