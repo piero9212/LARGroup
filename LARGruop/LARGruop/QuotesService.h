@@ -14,14 +14,11 @@
 + (QuotesService *)sharedService;
 
 - (void)cancelAllQuotesRequests;
-+ (NSMutableArray *)quotes;
-+ (void)setQuotes:(NSMutableArray *)quotes;
 
 - (NSArray *)getAllQuotes;
 
-
-
 - (void)apiGetQuotesWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
+
 - (void)apiCreateQuoteWithClientID:(NSString *)clientID
                      departamentID:(NSString *)departamentID
                      errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;

@@ -63,11 +63,25 @@
     return lastLoggedInUser;
 }
 
+-(NSString *)lastPassword
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastPass = [defaults objectForKey:LAST_LOGGED_IN_PASS];
+    return lastPass;
+}
+
 - (void)setLastLoggedInUserID:(NSString *)lastLoggedInUserId
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:lastLoggedInUserId forKey:LAST_LOGGED_IN_USER_ID];
     [defaults setObject:[NSDate date] forKey:DATE_OF_LAST_LOGGED_IN];
+    [defaults synchronize];
+}
+
+- (void)setLastPassword:(NSString *)lastPassword
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:lastPassword forKey:LAST_LOGGED_IN_PASS];
     [defaults synchronize];
 }
 
@@ -104,25 +118,6 @@
     [defaults synchronize];
 }
 
-- (NSString *)lastPassword
-{
-    /*KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:HAIKU_KEYCHAIN_IDENTIFIER accessGroup:nil];
-     NSString *lastPassword = [keychainItem objectForKey:(__bridge id)(kSecValueData)];*/
-    
-    return nil;//lastPassword;
-}
-
-- (void)setLastPassword:(NSString *)lastPassword
-{
-    /*KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:HAIKU_KEYCHAIN_IDENTIFIER accessGroup:nil];
-     
-     if (lastPassword == nil) {
-     [keychainItem resetKeychainItem];
-     }
-     
-     [keychainItem setObject:lastPassword forKey:(__bridge id)(kSecValueData)];*/
-}
-
 
 #pragma mark -
 #pragma mark API Methods
@@ -140,6 +135,8 @@
                                      password:password
                                       success:^(NSDictionary *responseDictionary) {
                                           
+                                          dispatch_async(dispatch_get_main_queue(), ^(void){
+                                              
                                           NSNumber *showAlertView = [NSNumber numberWithBool:YES];
                                           NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
                                             id errorObject = [responseDictionary valueForKeyPath:@"error"];
@@ -185,6 +182,7 @@
                                                   User *lastLoggedInUser = [self lastLoggedInUser];
                                                   [self setLastLoggedInUserID:userId];
                                                   [self setLastUsername:lastLoggedInUser.username];
+                                                  [self setLastPassword:password];
                                                   [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginSucceeded object:self userInfo:nil];
                                               }
                                               else {
@@ -194,6 +192,7 @@
                                               }
                                           }
                                            ];
+                                          });
 
                                       }
                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -14,15 +14,11 @@
 + (ClientService *)sharedService;
 
 - (void)cancelAllClientsRequests;
-+ (NSMutableArray *)clients;
-+ (void)setClients:(NSMutableArray *)clients;
 
 - (NSArray *)getAllClients;
 
-- (Customer *)getCustomer:(Customer *)client fromContext:(NSManagedObjectContext *)context;
-
-
 - (void)apiGetClientsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
+
 - (void)apiCreateClientWithUsername:(NSString *)name
                           email:(NSString *)email
                           phone:(NSString *)phone

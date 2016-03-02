@@ -72,7 +72,7 @@ BOOL isPinLoaded = false;
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake(self.selectedProyect.latitud.doubleValue, self.selectedProyect.longitude.doubleValue);
         ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
         [annotation setCoordinate:location]; //Add cordinates
-        annotation.proyectImage = self.selectedProyect.mapImageURL;
+        annotation.proyectImage = self.selectedProyect.imageURL;
         annotation.proyectUID = self.selectedProyect.uid;
         annotation.leftDepartments = [NSNumber numberWithInteger:self.selectedProyect.flats.count];
         [self.proyectMapView addAnnotation:annotation];

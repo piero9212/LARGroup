@@ -27,14 +27,9 @@
     [QuotesConnectionManager cancelAllQuotesRequest];
 }
 
-
-+ (void)setQuotes:(NSMutableArray *)quotes
-{
-}
-
 - (NSArray *)getAllQuotes
 {
-    NSArray* quotes;
+    NSArray *quotes;// = [Customer MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
     return quotes;
 }
 

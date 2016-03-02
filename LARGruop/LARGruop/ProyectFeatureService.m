@@ -21,6 +21,7 @@
     
     return  _sharedProyectFeatureService;
 }
+
 - (NSArray *)getAllFeaturesWithProyect:(Proyect*)proyect
 {
     NSArray* features = [[NSArray alloc]initWithArray:[proyect.features allObjects]];

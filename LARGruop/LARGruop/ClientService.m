@@ -31,6 +31,13 @@
     [ClientConnectionManager cancelALLClientsRequest];
 }
 
+
+- (NSArray *)getAllClients
+{
+    NSArray *clients = [Customer MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    return clients;
+}
+
 - (void)apiGetClientsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
     [ClientConnectionManager getAllClientsWithsuccess:^(NSDictionary *responseDictionary)     {

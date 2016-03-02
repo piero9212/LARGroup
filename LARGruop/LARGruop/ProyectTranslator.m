@@ -34,9 +34,6 @@
     id imageObject = [proyectDictionary valueForKeyPath:@"image"];
     proyect.imageURL = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
     
-    //id dimageObject = [proyectDictionary valueForKeyPath:@"dimage"];
-    proyect.mapImageURL = ([imageObject isKindOfClass:[NSString class]])? imageObject: nil;
-    
     id descriptionObject = [proyectDictionary valueForKeyPath:@"description"];
     proyect.proyectDescription = ([descriptionObject isKindOfClass:[NSString class]])? descriptionObject: nil;
     

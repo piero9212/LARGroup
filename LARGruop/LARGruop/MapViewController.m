@@ -97,7 +97,7 @@ BOOL pinsLoaded = false;
         CLLocationCoordinate2D location = CLLocationCoordinate2DMake(proyect.latitud.doubleValue, proyect.longitude.doubleValue);
         ProyectPointAnnotation *annotation = [[ProyectPointAnnotation alloc] init];
         [annotation setCoordinate:location]; //Add cordinates
-        annotation.proyectImage = proyect.mapImageURL;
+        annotation.proyectImage = proyect.imageURL;
         annotation.proyectUID = proyect.uid;
         annotation.leftDepartments = [NSNumber numberWithInteger:proyect.flats.count];
         [self.proyectsMapView addAnnotation:annotation];

@@ -12,6 +12,8 @@
 static NSString * const LAST_TOKEN = @"LastToken";
 static NSString * const GROUPLAR_KEYCHAIN_IDENTIFIER = @"com.prsp.grouplar-ipad";
 static NSString * const LAST_LOGGED_IN_USER_ID = @"LastLoggedInUserId";
+static NSString * const LAST_LOGGED_IN_PASS = @"LastLoggedInUserPassword";
+
 static NSString * const DATE_OF_LAST_LOGGED_IN = @"dateOfLastLoggedIn";
 static NSString * const LAST_USERNAME = @"LastUsername";
 static NSString * const REMEMBER = @"RememberUsername";

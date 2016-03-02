@@ -35,15 +35,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:TRUE];
+    [self initSetup];
     if([[LoginService sharedService]lastLoggedInUser] && [[LoginService sharedService]lastUsername])
     {
-        [self showHUDOnView:self.view];
-        self.view.userInteractionEnabled=false;
         self.userTextField.text = [[LoginService sharedService]lastUsername];
-        self.passwordTextField.text = @"**********";
-        [self performSelector:@selector(doLogin:) withObject:self afterDelay:0];
+        self.passwordTextField.text = [[LoginService sharedService]lastPassword];
+        [self login:nil];
     }
-    [self initSetup];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -161,8 +159,10 @@
     [[ProyectService sharedService] apiGetProyectsWithErrorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
         if(succeeded)
         {
-            self.view.userInteractionEnabled=true;
-            [self performSegueWithIdentifier:HOME_SEGUE sender:self];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.view.userInteractionEnabled=true;
+                [self performSegueWithIdentifier:HOME_SEGUE sender:self];
+            });
         }
     }];
 
