@@ -7,8 +7,10 @@
 //
 
 #import "BaseViewController.h"
+@class Customer;
 
 @interface NewCustomerViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 
 @property (readwrite) CGSize popOverViewSize;
+@property (nonatomic,strong) Customer* selectedCustomer;
 @end

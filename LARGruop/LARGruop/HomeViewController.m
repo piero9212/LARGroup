@@ -61,6 +61,8 @@
     }
     else
     {
+        MapViewController* map = (MapViewController*)[self getCurrentViewController] ;
+        map.pinsLoaded = FALSE;
         self.containerSegmentedControl.selectedSegmentIndex = 0;
     }
     [[UITabBar appearance] setTintColor:[UIColor LAROrangeColor]];
@@ -114,6 +116,7 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             destinationVC = (MapViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+            ((MapViewController*)destinationVC).pinsLoaded = false;
             break;
         case 1:
             destinationVC = (ProyectsViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProyectsViewController"];
@@ -249,7 +252,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NewCustomerViewController *newCustomerViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewCustomerViewController"];
-    
+    newCustomerViewController.selectedCustomer = nil;
     newCustomerViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:newCustomerViewController animated:YES completion:nil];
     

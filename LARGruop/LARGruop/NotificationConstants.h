@@ -30,9 +30,10 @@ static NSString * const kNotificationAllProyectsFailed = @"AllProyectsFailedNoti
 
 static NSString * const kNotificationAllClientsFailed = @"AllClientsFailedNotification";
 static NSString * const kNotificationAllClientsSucced = @"AllClientsSuccedNotification";
-static NSString * const kNotificationNewClientSucced = @"NewClientSuccedNotification";
-
 static NSString * const kNotificationNewClientFailed = @"NewClientFailedNotification";
+static NSString * const kNotificationNewClientSucced = @"NewClientSuccedNotification";
+static NSString * const kNotificationEditClientSucced = @"EditClientSuccedNotification";
+static NSString * const kNotificationEditClientFailed = @"EditClientFailedNotification";
 
 
 

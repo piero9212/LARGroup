@@ -15,7 +15,6 @@
 
 static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
-BOOL pinsLoaded = false;
 
 @interface MapViewController ()
 
@@ -34,7 +33,7 @@ BOOL pinsLoaded = false;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    pinsLoaded=false;
+    self.pinsLoaded=false;
     [self hideHUDOnView:self.view];
     [self showHUDOnView:self.view];
 }
@@ -59,7 +58,7 @@ BOOL pinsLoaded = false;
 {
     [self.navigationController setNavigationBarHidden:TRUE];
     [self.proyectsMapView removeAnnotations:self.proyectsMapView.annotations];
-    if(!pinsLoaded)
+    if(!self.pinsLoaded)
     {
         [self loadPins];
     }else
@@ -120,7 +119,7 @@ BOOL pinsLoaded = false;
         zoomRect = MKMapRectUnion(zoomRect, pointRect);
     }
     [self.proyectsMapView setVisibleMapRect:zoomRect animated:YES];
-    pinsLoaded=TRUE;
+    self.pinsLoaded=TRUE;
     [self hideHUDOnView:self.view];
 }
 
@@ -204,7 +203,7 @@ BOOL pinsLoaded = false;
 {
     [self showHUDOnView:self.view];
     self.proyects = [[NSMutableArray alloc]initWithArray:[ProyectService filterProyects]];
-    pinsLoaded = false;
+    self.pinsLoaded = false;
     [self setupMap];
 }
 

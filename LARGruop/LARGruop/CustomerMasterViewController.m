@@ -51,7 +51,7 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
 -(void)setupTable
 {
      self.customers = [[NSMutableArray alloc]initWithArray:[Customer MR_findAll]];
-    self.alphabetizedDictionary = [CGLAlphabetizer alphabetizedDictionaryFromObjects:_customers usingKeyPath:@"lastName"];
+    self.alphabetizedDictionary = [CGLAlphabetizer alphabetizedDictionaryFromObjects:_customers usingKeyPath:@"firstName"];
     self.sections = [CGLAlphabetizer indexTitlesFromAlphabetizedDictionary:self.alphabetizedDictionary];
     
     [self.customerTableView reloadData];
@@ -71,6 +71,7 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
 -(void)setupNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getClientsSucced:) name:kNotificationAllClientsSucced object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateClient:) name:kNotificationEditClientSucced object:nil];
 }
 
 -(void)setupDeallocNotifications
@@ -129,6 +130,11 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
         [self performSegueWithIdentifier:CUSTOMER_DETAIL_SEGUE sender:self];
 
     }
+}
+
+-(void)updateClient:(NSNotification*)notification
+{
+    [self setupTable];
 }
 
 #pragma mark -

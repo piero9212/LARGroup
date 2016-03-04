@@ -14,5 +14,6 @@
 #import "ProyectAnnotationProtocol.h"
 
 @interface MapViewController : BaseViewController <MKMapViewDelegate,UIPopoverControllerDelegate,ProyectAnnotationDelegate>
+@property (nonatomic) BOOL pinsLoaded;
 
 @end

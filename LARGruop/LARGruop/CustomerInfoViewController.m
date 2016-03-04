@@ -9,6 +9,7 @@
 #import "CustomerInfoViewController.h"
 #import "CustomerInterestLevelTableViewCell.h"
 #import "Customer.h"
+#import "NewCustomerViewController.h"
 
 static NSString* const CUSTOMER_INFO_SELECTED_CELL= @"CUSTOMER_INFO_SELECTED_CELL";
 static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTED_CELL";
@@ -126,17 +127,17 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
         if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nombre"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            cell.textLabel.text = @"Nombre Apellido";
+            cell.textLabel.text = @"";
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Correo"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            cell.textLabel.text = @"cliente@correo.com";
+            cell.textLabel.text = @"";
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Teléfono"])
         {
             cell =  [tableView dequeueReusableCellWithIdentifier:CUSTOMER_INFO_SELECTED_CELL forIndexPath:indexPath];
-            cell.textLabel.text = @"999666999";
+            cell.textLabel.text = @"";
         }
         else if([[self.sections objectAtIndex:indexPath.section] isEqual:@"Nivel de interes"])
         {
@@ -169,5 +170,16 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
 #pragma mark - Actions
 #pragma mark -
 
+- (IBAction)editCustomer:(UIButton *)sender {
+    Customer* selectedCustomer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NewCustomerViewController *newCustomerViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewCustomerViewController"];
+    newCustomerViewController.selectedCustomer=selectedCustomer;
+    newCustomerViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:newCustomerViewController animated:YES completion:nil];
+    
+    CGSize temporalPopoverSize = CGSizeMake(450.0f, 540.0f);
+    [newCustomerViewController setPopOverViewSize:temporalPopoverSize];
+}
 
 @end

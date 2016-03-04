@@ -19,11 +19,19 @@
 
 - (void)apiGetClientsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 
-- (void)apiCreateClientWithUsername:(NSString *)name
+- (void)apiCreateClientWithName:(NSString *)name
                           email:(NSString *)email
                           phone:(NSString *)phone
                        interest:(NSString *)interest
                         comment:(NSString *)comment
                         errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
+
+- (void)apiEditClientWithID:(NSString*)uid
+                            name:(NSString *)name
+                              email:(NSString *)email
+                              phone:(NSString *)phone
+                           interest:(NSString *)interest
+                            comment:(NSString *)comment
+                     errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 
 @end

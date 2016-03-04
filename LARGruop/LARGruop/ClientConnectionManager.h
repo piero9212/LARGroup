@@ -13,12 +13,22 @@
 + (void)getAllClientsWithsuccess:(void (^) (NSDictionary *responseDictionary))success
                           failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
-+(void)createNewUserWithUsername:(NSString *)name
++(void)apiCreateNewClientWithName:(NSString *)name
                            email:(NSString *)email
                            phone:(NSString *)phone
                         interest:(NSString *)interest
                          comment:(NSString *)comment
                          success:(void (^) (NSDictionary *responseDictionary))success
                         failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
+
++(void)apiEditClientWithID:(NSString *)uid
+                            name:(NSString *)name
+                           email:(NSString *)email
+                           phone:(NSString *)phone
+                        interest:(NSString *)interest
+                         comment:(NSString *)comment
+                         success:(void (^) (NSDictionary *responseDictionary))success
+                         failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
+
 + (void)cancelALLClientsRequest;
 @end

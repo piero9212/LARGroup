@@ -18,23 +18,27 @@
     id nameObject = [clientDictionary valueForKeyPath:@"name"];
     NSString* firstName;
     NSString* lastName;
-    NSArray* nameArray = [nameObject componentsSeparatedByString: @" "];
-    if(nameArray.count>=2)
+    NSString* fullname = nameObject;
+    if(fullname)
     {
-        firstName = [nameArray objectAtIndex: 0];
-        lastName = [nameArray objectAtIndex: 1];
+        NSArray* nameArray = [nameObject componentsSeparatedByString: @" "];
+        if(nameArray.count>=2)
+        {
+            firstName = [nameArray objectAtIndex: 0];
+            lastName = [nameArray objectAtIndex: 1];
+        }
+        else if(nameArray.count==1)
+        {
+            firstName = [nameArray objectAtIndex:0];
+            lastName = @"";
+        }
+        else
+        {
+            firstName = @"Cliente Nuevo";
+            lastName =@"";
+        }
+
     }
-    else if(nameArray.count==1)
-    {
-        firstName = [nameArray objectAtIndex:0];
-        lastName = @"";
-    }
-    else
-    {
-        firstName = @"Cliente Nuevo";
-        lastName =@"";
-    }
-    
     client.firstName = firstName;
     client.lastName = lastName;
     
@@ -42,11 +46,14 @@
     client.phoneNumber = ([phoneObject isKindOfClass:[NSString class]])? phoneObject: nil;
     
     
+    id dniObject = [clientDictionary valueForKeyPath:@"dni"];
+    client.dni = ([dniObject isKindOfClass:[NSString class]])? [NSNumber numberWithInteger:((NSString*)dniObject).integerValue]: nil;
+    
     id emailObject = [clientDictionary valueForKeyPath:@"email"];
     client.email = ([emailObject isKindOfClass:[NSString class]])? emailObject: nil;
     
-    //id commentObject = [clientDictionary valueForKeyPath:@"comment"];
-    //client. = ([commentObject isKindOfClass:[NSString class]])? commentObject: nil;
+    id commentObject = [clientDictionary valueForKeyPath:@"comment"];
+    client.comment = ([commentObject isKindOfClass:[NSString class]])? commentObject: nil;
     
     id interestLevelObject = [clientDictionary valueForKeyPath:@"interest"];
     client.interestLevel = ([interestLevelObject isKindOfClass:[NSNumber class]])? interestLevelObject: nil;

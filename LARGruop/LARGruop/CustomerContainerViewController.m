@@ -93,7 +93,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NewCustomerViewController *newCustomerViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewCustomerViewController"];
-    
+    newCustomerViewController.selectedCustomer= nil;
     newCustomerViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:newCustomerViewController animated:YES completion:nil];
     

@@ -11,6 +11,8 @@
 
 static NSString* const allClientsPath = @"ws/getClients";
 static NSString* const createClientPath = @"ws/newClient?name=%@&email=%@&phone=%@&interest=%@&comment=%@";
+static NSString* const editClientPath = @"ws/editClient?id=%@&name=%@&email=%@&phone=%@&interest=%@&comment=%@";
+
 
 @implementation ClientConnectionManager
 
@@ -24,11 +26,12 @@ static NSString* const createClientPath = @"ws/newClient?name=%@&email=%@&phone=
         
     } failure:failure];
 }
-+(void)createNewUserWithUsername:(NSString *)name
-                        email:(NSString *)email
-                           phone:(NSString *)phone
-                        interest:(NSString *)interest
-                        comment:(NSString *)comment
+
++(void)apiCreateNewClientWithName:(NSString *)name
+                                email:(NSString *)email
+                                phone:(NSString *)phone
+                             interest:(NSString *)interest
+                              comment:(NSString *)comment
                          success:(void (^)(NSDictionary *))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     ServiceClient *client = [ServiceClient sharedClient];
@@ -41,6 +44,27 @@ static NSString* const createClientPath = @"ws/newClient?name=%@&email=%@&phone=
         
     } failure:failure];
 }
+
++(void)apiEditClientWithID:(NSString *)uid
+                      name:(NSString *)name
+                           email:(NSString *)email
+                           phone:(NSString *)phone
+                        interest:(NSString *)interest
+                         comment:(NSString *)comment
+                         success:(void (^) (NSDictionary *responseDictionary))success
+                         failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    ServiceClient *client = [ServiceClient sharedClient];
+    NSDictionary *parameters = nil;
+    NSString* path = [NSString stringWithFormat:editClientPath,uid,name,email,phone,interest,comment];
+    path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [client cancelAllHTTPOperationsWithMethod:@"GET" path:path];
+    [client startRequestMethod:RequestMethodGet url:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(responseObject);
+        
+    } failure:failure];
+}
+
 
 +(void)cancelALLClientsRequest
 {

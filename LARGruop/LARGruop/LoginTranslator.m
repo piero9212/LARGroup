@@ -18,10 +18,10 @@
     user.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
     
     id fullNameObject = [userDictionary valueForKeyPath:@"name"];
-    
-    if(fullNameObject && fullNameObject !=[NSNull class]  )
+    NSString* fullname = fullNameObject;
+    if(fullname)
     {
-        NSArray *components=[fullNameObject componentsSeparatedByString:@" "];
+        NSArray *components=[fullname componentsSeparatedByString:@" "];
         if(components)
         {
             user.firstName  = components[0];

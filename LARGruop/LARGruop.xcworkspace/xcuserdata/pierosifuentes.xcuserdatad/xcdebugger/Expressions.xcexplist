@@ -3,21 +3,32 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[CustomerInfoViewController tableView:cellForRowAtIndexPath:]:CustomerInfoViewController.m">
+         contextName = "+[ClientTranslator clientDictionary:toCustomerEntity:context:]:ClientTranslator.m">
          <PersistentStrings>
             <PersistentString
-               value = "selectedCustomer.firstName">
-            </PersistentString>
-            <PersistentString
-               value = "self.customerSelected.firstName">
+               value = "client.phoneNumber">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[FlatDetailViewController setupVars]:FlatDetailViewController.m">
+         contextName = "-[CustomerInfoViewController tableView:cellForRowAtIndexPath:]:CustomerInfoViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.flatFeatures">
+               value = "self.customerSelected.firstName">
+            </PersistentString>
+            <PersistentString
+               value = "selectedCustomer.firstName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[NewCustomerViewController saveCustomer:]:NewCustomerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view.subviews">
+            </PersistentString>
+            <PersistentString
+               value = "self.fieldValues">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -26,6 +37,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.proyectDetailDelegate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[FlatDetailViewController setupVars]:FlatDetailViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.flatFeatures">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

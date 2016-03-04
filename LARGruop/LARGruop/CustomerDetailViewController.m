@@ -53,6 +53,27 @@
     if (self.selectedCustomerUID) {
     }
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupNotifications];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self setupDeallocNotifications];
+}
+
+-(void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateClient:) name:kNotificationEditClientSucced object:nil];
+}
+
+-(void)setupDeallocNotifications
+{
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationEditClientSucced object:nil];
+}
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
@@ -147,6 +168,12 @@
         [((CustomerMarketRateViewController*)currentVC).customerMarketRatesTableView reloadData];
     }
 }
+
+-(void)updateClient:(NSNotification*)notification
+{
+    [self reloadTable];
+}
+
 #pragma mark -
 #pragma mark - Navigation
 #pragma mark -

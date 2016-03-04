@@ -43,8 +43,7 @@
     [ClientConnectionManager getAllClientsWithsuccess:^(NSDictionary *responseDictionary)     {
         dispatch_async(dispatch_get_main_queue(), ^(void){
             NSArray *customerResponse = (NSArray*)responseDictionary;
-            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-                
+            
                 NSNumber *showAlertView = [NSNumber numberWithBool:YES];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
                 id errorObject = [responseDictionary valueForKeyPath:@"error"];
@@ -56,6 +55,7 @@
                     });
                     return;
                 }
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 
                 [Customer MR_truncateAllInContext:localContext];
                 for (NSDictionary *customerDictionary in customerResponse)
@@ -95,14 +95,14 @@
      }];
 
 }
-- (void)apiCreateClientWithUsername:(NSString *)name
+- (void)apiCreateClientWithName:(NSString *)name
                               email:(NSString *)email
                               phone:(NSString *)phone
                            interest:(NSString *)interest
                             comment:(NSString *)comment
                      errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
-    [ClientConnectionManager createNewUserWithUsername:name email:email phone:phone interest:interest comment:comment success:^(NSDictionary *responseDictionary)     {
+    [ClientConnectionManager apiCreateNewClientWithName:name email:email phone:phone interest:interest comment:comment success:^(NSDictionary *responseDictionary)     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 
@@ -147,6 +147,79 @@
          });
      }];
     
+
+}
+
+- (void)apiEditClientWithID:(NSString*)uid name:(NSString*)name email:(NSString *)email phone:(NSString *)phone interest:(NSString *)interest comment:(NSString *)comment errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^)(BOOL))completion
+{
+    [ClientConnectionManager apiEditClientWithID:uid name:name email:email phone:phone interest:interest comment:comment success:^(NSDictionary *responseDictionary)     {
+        //dispatch_async(dispatch_get_main_queue(), ^{
+           
+                NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+                id errorObject = [responseDictionary valueForKeyPath:@"error"];
+                NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+                if([error isEqualToString:GET_PROYECTS_ERROR_KEY] || !responseDictionary)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^(void){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEditClientFailed object:self userInfo:userInfo];
+                    });
+                    return;
+                }
+                else
+                {
+                    NSDictionary *customerDictionary = responseDictionary;
+                    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                        id proyectIdObject = [customerDictionary valueForKeyPath:@"id"];
+                        NSString *customerID = ([proyectIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", proyectIdObject] : nil;
+                        Customer* customer = [Customer MR_findByAttribute:@"uid" withValue:customerID inContext:localContext].firstObject;
+                        if(customer)
+                        {
+                            [ClientTranslator clientDictionary:customerDictionary toCustomerEntity:customer context:localContext];
+                        }
+                        else
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^(void){
+                                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEditClientFailed object:self userInfo:userInfo];
+                            });
+                        }
+                    } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+                       
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEditClientSucced object:self userInfo:userInfo];
+                             if(!error)
+                                 completion(YES);
+                            else
+                                completion(NO);
+                        });
+
+                    }];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationEditClientFailed object:self userInfo:userInfo];
+                        completion(YES);
+                    });
+                    
+                }
+            //});
+    }
+                                                failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+         NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+         
+         if(operation && operation.response.statusCode == StatusCodeNoInternetConnection) {
+             showAlertView = [NSNumber numberWithBool:YES];
+         }
+         else {
+             self.requestFailureErrorHandler(operation, error, YES, nil);
+         }
+         
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewClientFailed object:self userInfo:userInfo];
+         });
+     }];
 
 }
 

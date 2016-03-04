@@ -11,7 +11,7 @@
 #import "User.h"
 
 static NSString* const loginPath = @"ws/login?username=%@&password=%@";
-static NSString* const editUserPath = @"ws/editUser?id=%@&username=%@&password=%@&email=%@&phone=%@&cell_phone=%@&type=%@&image=%@";
+static NSString* const editUserPath = @"ws/editUser?id=%@&username=%@&password=%@&email=%@&phone=%@&cell_phone=%@&type=%@&image=%@&name=%@";
 
 
 @implementation LoginConnectionManager
@@ -57,8 +57,8 @@ static NSString* const editUserPath = @"ws/editUser?id=%@&username=%@&password=%
                     failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSDictionary *parameters = nil;
-    NSString* path = [NSString stringWithFormat:editUserPath,user.uid,user.username,password,email, phone,mobilePhone,user.type,user.imageURL];
-    
+    NSString* path = [NSString stringWithFormat:editUserPath,user.uid,user.username,password,email, phone,mobilePhone,user.type,user.imageURL,name];
+    path  = [path stringByReplacingOccurrencesOfString:@" " withString: @"%20"];
     ServiceClient *client = [ServiceClient sharedClient];
     [client cancelAllHTTPOperationsWithMethod:@"GET" path:path];
     [client.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

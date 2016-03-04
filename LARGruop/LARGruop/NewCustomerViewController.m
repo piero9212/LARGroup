@@ -10,6 +10,7 @@
 #import "NewCustomerTableViewCell.h"
 #import "ClientService.h"
 #import "AlertViewFactory.h"
+#import "Customer.h"
 
 static NSString* const CUSTOMER_CELL= @"CUSTOMER_CELL";
 static NSString* const NAME_KEY= @"NAME_KEY";
@@ -21,6 +22,7 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
 @property NSMutableArray* fields;
 @property NSMutableArray* placeholders;
 @property NSMutableDictionary* fieldValues;
+@property (nonatomic,strong) UITextField* lastTextField;
 @property (weak, nonatomic) IBOutlet UITableView *fieldsTableView;
 @end
 
@@ -59,9 +61,31 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
 
 -(void)setupVars
 {
-    self.fields = [[NSMutableArray alloc]initWithObjects:@"Nombre del Cliente", @"Télefono", @"Correo del Cliente", @"Agregar Comentarios", nil];
-    self.placeholders = [[NSMutableArray alloc]initWithObjects:@"Ingrese aqui el nombre de  su cliente", @"Ejem: 999405033", @"cliente@correo.com", @"Escribe tu comentario", nil];
     self.fieldValues = [[NSMutableDictionary alloc]init];
+    if(self.selectedCustomer)
+    {
+        self.placeholders = nil;
+        NSString* name;
+        if(self.selectedCustomer.firstName && self.selectedCustomer.lastName)
+        {
+            name = [NSString stringWithFormat:@"%@ %@",self.selectedCustomer.firstName,self.selectedCustomer.lastName];
+        }
+        else if(self.selectedCustomer.firstName)
+        {
+            name = [NSString stringWithFormat:@"%@",self.selectedCustomer.firstName];
+        }
+
+        
+        [self.fieldValues setObject:name forKey:NAME_KEY];
+        [self.fieldValues setObject:self.selectedCustomer.email forKey:MAIL_KEY];
+        [self.fieldValues setObject:self.selectedCustomer.phoneNumber forKey:PHONE_KEY];
+        [self.fieldValues setObject:self.selectedCustomer.comment forKey:COMMENT_KEY];
+    }
+    else
+    {
+        self.placeholders = [[NSMutableArray alloc]initWithObjects:@"Ingrese aqui el nombre de  su cliente", @"Ejem: 999405033", @"cliente@correo.com", @"Escribe tu comentario", nil];
+    }
+    self.fields = [[NSMutableArray alloc]initWithObjects:@"Nombre del Cliente", @"Télefono", @"Correo del Cliente", @"Agregar Comentarios", nil];
 }
 
 - (void)viewWillLayoutSubviews
@@ -108,7 +132,32 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
     NewCustomerTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CUSTOMER_CELL forIndexPath: indexPath];
     
     cell.fieldTitleLabel.text = [self.fields objectAtIndex:indexPath.row];
-    cell.fieldInputTextField.placeholder = [self.placeholders objectAtIndex:indexPath.row];
+    if(self.placeholders)
+        cell.fieldInputTextField.placeholder = [self.placeholders objectAtIndex:indexPath.row];
+    else
+    {
+        NSString* value = @"";
+        if(self.fieldValues)
+        {
+            switch (indexPath.row) {
+                case 0:
+                    value = [self.fieldValues objectForKey:NAME_KEY];
+                    break;
+                case 1:
+                    value = [self.fieldValues objectForKey:PHONE_KEY];
+                    break;
+                case 2:
+                    value = [self.fieldValues objectForKey:MAIL_KEY];
+                    break;
+                case 3:
+                    value = [self.fieldValues objectForKey:COMMENT_KEY];
+                    break;
+                default:
+                    break;
+            }
+        }
+        cell.fieldInputTextField.text = value;
+    }
     cell.fieldInputTextField.delegate = self;
     cell.fieldInputTextField.tag = indexPath.row;
     if([cell.fieldTitleLabel.text isEqualToString:@"Télefono" ])
@@ -130,6 +179,11 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
 #pragma mark -
 #pragma mark - TextField Delegate
 #pragma mark -
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.lastTextField = textField;
+}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -166,10 +220,10 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
                 [self.fieldValues setObject:textField.text forKey:NAME_KEY];
                 break;
             case 1:
-                [self.fieldValues setObject:textField.text forKey:MAIL_KEY];
+                [self.fieldValues setObject:textField.text forKey:PHONE_KEY];
                 break;
             case 2:
-                [self.fieldValues setObject:textField.text forKey:PHONE_KEY];
+                [self.fieldValues setObject:textField.text forKey:MAIL_KEY];
                 break;
             case 3:
                 [self.fieldValues setObject:textField.text forKey:COMMENT_KEY];
@@ -185,11 +239,31 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
 #pragma mark -
 
 - (IBAction)saveCustomer:(UIButton *)sender {
-    for (UIView *view in self.view.subviews) {
+    for (UIView *view in self.fieldsTableView.subviews) {
         if (view.isFirstResponder && [view isKindOfClass:[UITextField class]]) {
-            [((UITextField*)view) resignFirstResponder];
+            UITextField* textField = (UITextField*)view;
+            [textField resignFirstResponder];
         }
     }
+    
+    switch (self.lastTextField.tag) {
+        case 0:
+            [self.fieldValues setObject:self.lastTextField.text forKey:NAME_KEY];
+            break;
+        case 1:
+            [self.fieldValues setObject:self.lastTextField.text forKey:PHONE_KEY];
+            break;
+        case 2:
+            [self.fieldValues setObject:self.lastTextField.text forKey:MAIL_KEY];
+            break;
+        case 3:
+            [self.fieldValues setObject:self.lastTextField.text forKey:COMMENT_KEY];
+            break;
+        default:
+            break;
+    }
+
+    
     NSString* name = [self.fieldValues objectForKey:NAME_KEY];
     NSString* email = [self.fieldValues objectForKey:MAIL_KEY];
     NSString* phone = [self.fieldValues objectForKey:PHONE_KEY];
@@ -198,9 +272,18 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
     
     if(name && email && phone && interest && comment)
     {
-        [[ClientService sharedService] apiCreateClientWithUsername:name email:email phone:phone interest:interest comment:comment errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+        if(self.selectedCustomer)
+        {
+            [[ClientService sharedService] apiEditClientWithID:self.selectedCustomer.uid name:name email:email phone:phone interest:interest comment:comment errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
                 [self dismissViewControllerAnimated:YES completion:nil];
-        }];
+            }];
+        }
+        else
+        {
+            [[ClientService sharedService] apiCreateClientWithName:name email:email phone:phone interest:interest comment:comment errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
     }
 }
 

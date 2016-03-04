@@ -32,6 +32,7 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *mobilePhoneTextField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 @end
 
@@ -135,7 +136,25 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 - (IBAction)editInfoTapped:(UIButton *)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.nameTextField.alpha = self.mailTextField.alpha = self.phoneTextField.alpha = self.mobilePhoneTextField.alpha = self.saveButton.alpha= 1.0;
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        self.editButton.alpha = 0;
+        User* user = [[LoginService sharedService]lastLoggedInUser];
+        NSString* name = @"----";
+        if(user.firstName && user.lastName)
+        {
+            name = [NSString stringWithFormat:@"%@ %@",user.firstName,user.lastName];
+        }
+        else if(user.firstName)
+        {
+            name = [NSString stringWithFormat:@"%@",user.firstName];
+        }
+
+        self.nameTextField.text = name;
+        self.mailTextField.text = user.email;
+        self.phoneTextField.text = user.phone;
+        self.mobilePhoneTextField.text = user.mobilePhone;
+        [self.nameTextField becomeFirstResponder];
+    }];
 }
 
 - (IBAction)saveButton:(UIButton *)sender {
@@ -153,7 +172,7 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
             User* user = [[LoginService sharedService]lastLoggedInUser];
             if((name && ![name  isEqual:@""]) || (email && ![email  isEqual:@""]) || (phone && ![phone  isEqual:@""]) || (mobilePhone && ![mobilePhone  isEqual:@""]))
             {
-                if(!name && [name  isEqual:@""])
+                if(!name && ![name  isEqual:@""])
                 {
                     if(user.firstName && user.lastName)
                     {
@@ -184,12 +203,15 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
                     {
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            self.editButton.alpha = 1;
                             [self setupViews];
                         });
                     }
                     else
                     {
-                        [[AlertViewFactory alertViewForUnexpectedErrorWithDelegate:self]show];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                                [[AlertViewFactory alertViewForUnexpectedErrorWithDelegate:self]show];
+                        });
                     }
                 }];
             }
@@ -213,7 +235,7 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NewCustomerViewController *newCustomerViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewCustomerViewController"];
-    
+    newCustomerViewController.selectedCustomer = nil;
     newCustomerViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:newCustomerViewController animated:YES completion:nil];
     
