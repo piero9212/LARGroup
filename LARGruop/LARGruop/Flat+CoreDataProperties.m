@@ -26,6 +26,6 @@
 @dynamic floor;
 @dynamic plant;
 @dynamic proyect;
-@dynamic rates;
+@dynamic quote;
 
 @end

@@ -7,10 +7,10 @@
 //
 
 #import "BaseViewController.h"
-#import "Rate.h"
+#import "Quote.h"
 
 @interface CustomerRateDetailViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic,strong) Rate* rate;
+@property (nonatomic,strong) Quote* quote;
 
 @end

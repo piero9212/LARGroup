@@ -16,9 +16,13 @@
 #import "Proyect.h"
 #import "ProyectFeature.h"
 #import "Outside.h"
-#import "Rate.h"
+#import "Quote.h"
 #import "Flat.h"
 #import "Customer.h"
+#import "Floor.h"
+#import "Promo.h"
+#import "Plant.h"
+#import "FlatFeature.h"
 
 static NSString * const STORE_NAME = @"LARGruop";
 
@@ -152,10 +156,14 @@ static NSString * const STORE_NAME = @"LARGruop";
         [Proyect MR_truncateAllInContext:localContext];
         [ProyectFeature MR_truncateAllInContext:localContext];
         [Outside MR_truncateAllInContext:localContext];
-        [Rate MR_truncateAllInContext:localContext];
+        [Quote MR_truncateAllInContext:localContext];
         [Flat MR_truncateAllInContext:localContext];
         [Customer MR_truncateAllInContext:localContext];
         [User MR_truncateAllInContext:localContext];
+        [Floor MR_truncateAllInContext:localContext];
+        [Promo MR_truncateAllInContext:localContext];
+        [FlatFeature MR_truncateAllInContext:localContext];
+        [Plant MR_truncateAllInContext:localContext];
         
     }];
 }

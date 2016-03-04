@@ -10,6 +10,7 @@
 #import "LoginService.h"
 #import "HomeViewController.h"
 #import "ProyectService.h"
+#import "PromoService.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -164,10 +165,16 @@
     [[ProyectService sharedService] apiGetProyectsWithErrorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
         if(succeeded)
         {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.view.userInteractionEnabled=true;
-                [self performSegueWithIdentifier:HOME_SEGUE sender:self];
-            });
+            [[PromoService sharedService] apiGetPromosWithErrorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+                if(succeeded)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.view.userInteractionEnabled=true;
+                        [self performSegueWithIdentifier:HOME_SEGUE sender:self];
+                    });
+                }
+            }];
+            
         }
     }];
 

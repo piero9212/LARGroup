@@ -37,6 +37,5 @@
 @dynamic outsideImages;
 @dynamic plants;
 @dynamic quotes;
-@dynamic rates;
 
 @end

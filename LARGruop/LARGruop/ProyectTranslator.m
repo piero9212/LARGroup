@@ -14,6 +14,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "StatusCode.h"
 #import "FlatFeature.h"
+#import "Customer.h"
 
 @implementation ProyectTranslator
 
@@ -97,6 +98,7 @@
                 Flat* flat = [Flat MR_createEntityInContext:context];
                 [self departamentDictionary:departamentDictionary toFlatEntity:flat context:context];
                 flat.floor = floor;
+                flat.proyect = proyect;
                 [proyect addFlatsObject:flat];
             }
             i++;
@@ -171,6 +173,54 @@
     
     id proyectidObject = [floorDictionary valueForKeyPath:@"project_id"];
     floor.proyectID = ([uidObject isKindOfClass:[NSString class]])? proyectidObject: ((NSNumber*)proyectidObject).stringValue;
+}
+
++(void)promoDictionary:(NSDictionary *)promoDictionary toPromoEntity:(Promo *)promo context:(NSManagedObjectContext *)context
+{
+    id uidObject = [promoDictionary valueForKeyPath:@"id"];
+    promo.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
+    
+    id nameObject = [promoDictionary valueForKeyPath:@"name"];
+    promo.name = ([nameObject isKindOfClass:[NSString class]])? nameObject: nil;
+    
+    id descObject = [promoDictionary valueForKeyPath:@"description"];
+    promo.promoDescription = ([descObject isKindOfClass:[NSString class]])? descObject: nil;
+    
+    NSNumber* timeObject = [promoDictionary valueForKeyPath:@"wait_time"];
+    promo.time = timeObject;
+    
+    NSString* discountWidthObject = [promoDictionary valueForKeyPath:@"discount_rate"];
+    promo.discount = ([discountWidthObject isKindOfClass:[NSString class]])? discountWidthObject: nil;
+}
+
++(void)quoteDictionary:(NSDictionary *)quoteDictionary toQuoteEntity:(Quote *)quote context:(NSManagedObjectContext *)context
+{
+    id uidObject = [quoteDictionary valueForKeyPath:@"id"];
+    quote.uid = ([uidObject isKindOfClass:[NSString class]])? uidObject: ((NSNumber*)uidObject).stringValue;
+    
+    id clientObject = [quoteDictionary valueForKeyPath:@"client_id"];
+    quote.clientID = ([clientObject isKindOfClass:[NSString class]])? clientObject: ((NSNumber*)clientObject).stringValue;
+    
+    id flatObject = [quoteDictionary valueForKeyPath:@"department_id"];
+    quote.flatID = ([flatObject isKindOfClass:[NSString class]])? flatObject: ((NSNumber*)flatObject).stringValue;
+    
+    id interestObject = [quoteDictionary valueForKeyPath:@"interest"];
+    NSNumber* interest = ([interestObject isKindOfClass:[NSNumber class]])? interestObject: nil;
+    if(interest.integerValue<=0)
+        interest = @1;
+    quote.interestLevel = interest;
+    
+    Customer* customer = [Customer MR_findByAttribute:@"uid" withValue:quote.clientID inContext:context].firstObject;
+    quote.customer = customer ;
+    
+    Flat* flat = [Flat MR_findByAttribute:@"uid" withValue:quote.flatID inContext:context].firstObject;
+    quote.flat = flat ;
+    
+    id promoIdObject = [quoteDictionary valueForKeyPath:@"promotion_id"];
+    NSString* promoID = ([promoIdObject isKindOfClass:[NSString class]])? promoIdObject: ((NSNumber*)promoIdObject).stringValue;
+    Promo* promo = [Promo MR_findByAttribute:@"uid" withValue:promoID inContext:context].firstObject;
+    
+    quote.promo = promo;
 }
 
 @end

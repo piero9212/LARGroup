@@ -16,8 +16,10 @@
 @dynamic clientID;
 @dynamic flatID;
 @dynamic proyectID;
-@dynamic client;
+@dynamic interestLevel;
+@dynamic customer;
 @dynamic promo;
 @dynamic proyect;
+@dynamic flat;
 
 @end

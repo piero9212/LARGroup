@@ -39,7 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<Outside *> *outsideImages;
 @property (nullable, nonatomic, retain) NSSet<Plant *> *plants;
 @property (nullable, nonatomic, retain) NSSet<Quote *> *quotes;
-@property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
 
 @end
 
@@ -74,11 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeQuotesObject:(Quote *)value;
 - (void)addQuotes:(NSSet<Quote *> *)values;
 - (void)removeQuotes:(NSSet<Quote *> *)values;
-
-- (void)addRatesObject:(Rate *)value;
-- (void)removeRatesObject:(Rate *)value;
-- (void)addRates:(NSSet<Rate *> *)values;
-- (void)removeRates:(NSSet<Rate *> *)values;
 
 @end
 

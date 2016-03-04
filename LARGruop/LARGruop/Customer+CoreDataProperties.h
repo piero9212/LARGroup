@@ -25,16 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *type;
 @property (nullable, nonatomic, retain) NSString *comment;
 @property (nullable, nonatomic, retain) Quote *quote;
-@property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
-
-@end
-
-@interface Customer (CoreDataGeneratedAccessors)
-
-- (void)addRatesObject:(Rate *)value;
-- (void)removeRatesObject:(Rate *)value;
-- (void)addRates:(NSSet<Rate *> *)values;
-- (void)removeRates:(NSSet<Rate *> *)values;
 
 @end
 

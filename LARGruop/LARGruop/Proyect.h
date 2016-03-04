@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Entity.h"
 
-@class Flat, Floor, Outside, Plant, ProyectFeature, Quote, Rate;
+@class Flat, Floor, Outside, Plant, ProyectFeature, Quote;
 
 NS_ASSUME_NONNULL_BEGIN
 

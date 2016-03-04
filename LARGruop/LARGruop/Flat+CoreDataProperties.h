@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) Floor *floor;
 @property (nullable, nonatomic, retain) Plant *plant;
 @property (nullable, nonatomic, retain) Proyect *proyect;
-@property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
+@property (nullable, nonatomic, retain) Quote *quote;
 
 @end
 
@@ -38,11 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeFeaturesObject:(FlatFeature *)value;
 - (void)addFeatures:(NSSet<FlatFeature *> *)values;
 - (void)removeFeatures:(NSSet<FlatFeature *> *)values;
-
-- (void)addRatesObject:(Rate *)value;
-- (void)removeRatesObject:(Rate *)value;
-- (void)addRates:(NSSet<Rate *> *)values;
-- (void)removeRates:(NSSet<Rate *> *)values;
 
 @end
 

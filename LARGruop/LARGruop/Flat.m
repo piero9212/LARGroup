@@ -11,7 +11,7 @@
 #import "Floor.h"
 #import "Plant.h"
 #import "Proyect.h"
-#import "Rate.h"
+#import "Quote.h"
 
 @implementation Flat
 

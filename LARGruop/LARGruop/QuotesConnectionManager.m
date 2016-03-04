@@ -46,16 +46,11 @@ static NSString* const editQuotePath = @"ws/editQuote?quote_id=%@&client_id=%@&d
     } failure:failure];
 }
 
-+ (void)cancelAllQuotesRequest
-{
-    [[ServiceClient sharedClient] cancelAllHTTPOperationsWithMethod:@"GET" path:allQuotesPath];
-}
-
 +(void)editNewQuoteWithQuoteID:(NSString *)quoteID
-                    ClientID:(NSString *)clientID
-                  departamentID:(NSString *)departamentID
-                        success:(void (^) (NSDictionary *responseDictionary))success
-                        failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure
+                      ClientID:(NSString *)clientID
+                 departamentID:(NSString *)departamentID
+                       success:(void (^) (NSDictionary *responseDictionary))success
+                       failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure
 {
     ServiceClient *client = [ServiceClient sharedClient];
     NSDictionary *parameters = nil;
@@ -66,6 +61,13 @@ static NSString* const editQuotePath = @"ws/editQuote?quote_id=%@&client_id=%@&d
         success(responseObject);
         
     } failure:failure];
-
+    
 }
+
++ (void)cancelAllQuotesRequest
+{
+    [[ServiceClient sharedClient] cancelAllHTTPOperationsWithMethod:@"GET" path:allQuotesPath];
+}
+
+
 @end

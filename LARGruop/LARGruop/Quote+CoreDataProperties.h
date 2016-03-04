@@ -18,9 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *clientID;
 @property (nullable, nonatomic, retain) NSString *flatID;
 @property (nullable, nonatomic, retain) NSString *proyectID;
-@property (nullable, nonatomic, retain) Customer *client;
+@property (nullable, nonatomic, retain) NSNumber *interestLevel;
+@property (nullable, nonatomic, retain) Customer *customer;
 @property (nullable, nonatomic, retain) Promo *promo;
 @property (nullable, nonatomic, retain) Proyect *proyect;
+@property (nullable, nonatomic, retain) Flat *flat;
 
 @end
 

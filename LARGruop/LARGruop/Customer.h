@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Entity.h"
 
-@class Quote, Rate;
+@class Quote;
 
 NS_ASSUME_NONNULL_BEGIN
 

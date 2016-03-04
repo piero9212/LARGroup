@@ -21,6 +21,5 @@
 @dynamic proyectID;
 @dynamic flats;
 @dynamic proyect;
-@dynamic rates;
 
 @end

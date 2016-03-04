@@ -12,6 +12,7 @@
 #import "ClientService.h"
 #import "HomeViewController.h"
 #import "ProfileViewController.h"
+#import "QuotesService.h"
 
 @interface CustomerContainerViewController ()
 
@@ -160,8 +161,13 @@
     [[ClientService sharedService] apiGetClientsWithErrorAlertView:YES userInfo:nil andCompletionHandler:^(BOOL succeeded) {
         if(succeeded)
         {
-            self.view.userInteractionEnabled=true;
-            [self hideHUDOnView:self.view];
+            [[QuotesService sharedService] apiGetQuotesWithErrorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^(void){
+                     self.view.userInteractionEnabled=true;
+                     [self hideHUDOnView:self.view];
+                 });
+             }];
         }
     }];
     

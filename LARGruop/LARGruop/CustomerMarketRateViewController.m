@@ -9,7 +9,7 @@
 #import "CustomerMarketRateViewController.h"
 #import "CustomerRateDetailViewController.h"
 #import "Customer.h"
-#import "Rate.h"
+#import "Quote.h"
 
 static NSString* const CUSTOMER_MARKET_RATES_CELL = @"CUSTOMER_MARKET_RATES_CELL";
 static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
@@ -48,7 +48,8 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 -(void)setupVars
 {
     Customer* customer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
-    self.marketRates = [NSArray arrayWithArray:[customer.rates allObjects]];
+    Quote* quote = customer.quote;
+    self.marketRates = [[NSArray alloc]initWithObjects:quote, nil];
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
@@ -76,8 +77,8 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.customerMarketRatesTableView dequeueReusableCellWithIdentifier:CUSTOMER_MARKET_RATES_CELL forIndexPath:indexPath];
     
-    Rate* rate = [self.marketRates objectAtIndex:indexPath.row];
-    cell.textLabel.text = rate.name;
+    Quote* rate = [self.marketRates objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Cotización 0%@",rate.uid];
     NSString* status;
     switch (rate.interestLevel.integerValue) {
         case 1:
@@ -102,7 +103,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     
-    Rate* rate = [self.marketRates objectAtIndex:indexPath.row];
+    Quote* rate = [self.marketRates objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:MARKET_RATE_DETAIL_SEGUE sender:rate];
 }
 
@@ -115,8 +116,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     if([segue.destinationViewController isKindOfClass:[CustomerRateDetailViewController class]])
     {
         CustomerRateDetailViewController* destinatopnVC = segue.destinationViewController;
-        destinatopnVC.rate = (Rate*)sender;
-        NSLog(@"ENTRO");
+        destinatopnVC.quote = (Quote*)sender;
     }
 }
 

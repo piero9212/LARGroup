@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *proyectID;
 @property (nullable, nonatomic, retain) NSSet<Flat *> *flats;
 @property (nullable, nonatomic, retain) Proyect *proyect;
-@property (nullable, nonatomic, retain) NSSet<Rate *> *rates;
 
 @end
 
@@ -33,11 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeFlatsObject:(Flat *)value;
 - (void)addFlats:(NSSet<Flat *> *)values;
 - (void)removeFlats:(NSSet<Flat *> *)values;
-
-- (void)addRatesObject:(Rate *)value;
-- (void)removeRatesObject:(Rate *)value;
-- (void)addRates:(NSSet<Rate *> *)values;
-- (void)removeRates:(NSSet<Rate *> *)values;
 
 @end
 

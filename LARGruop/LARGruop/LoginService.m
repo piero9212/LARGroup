@@ -264,7 +264,7 @@
 {
     [LoginConnectionManager apiEditUserWithName:name password:password email:email phone:phone mobilePhone:mobilePhone User:user success:^(NSDictionary *responseDictionary){
         
-        //dispatch_async(dispatch_get_main_queue(), ^(void){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             
             NSNumber *showAlertView = [NSNumber numberWithBool:YES];
             NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
@@ -294,7 +294,7 @@
                 }
             }
              ];
-        //});
+        });
     
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)

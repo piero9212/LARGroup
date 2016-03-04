@@ -10,8 +10,7 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="client" inverseEntity="Quote" syncable="YES"/>
-        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="customer" inverseEntity="Rate" syncable="YES"/>
+        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="customer" inverseEntity="Quote" syncable="YES"/>
     </entity>
     <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
         <attribute name="changeState" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -33,7 +32,7 @@
         <relationship name="floor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="flats" inverseEntity="Floor" syncable="YES"/>
         <relationship name="plant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plant" inverseName="flats" inverseEntity="Plant" syncable="YES"/>
         <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="flats" inverseEntity="Proyect" syncable="YES"/>
-        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="flat" inverseEntity="Rate" syncable="YES"/>
+        <relationship name="quote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quote" inverseName="flat" inverseEntity="Quote" syncable="YES"/>
     </entity>
     <entity name="FlatFeature" representedClassName="FlatFeature" parentEntity="Entity" syncable="YES">
         <attribute name="featureDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,7 +47,6 @@
         <attribute name="proyectID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="flats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flat" inverseName="floor" inverseEntity="Flat" syncable="YES"/>
         <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="floors" inverseEntity="Proyect" syncable="YES"/>
-        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="floor" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="Outside" representedClassName="Outside" parentEntity="Entity" syncable="YES">
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -93,7 +91,6 @@
         <relationship name="outsideImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Outside" inverseName="proyect" inverseEntity="Outside" syncable="YES"/>
         <relationship name="plants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Plant" inverseName="proyect" inverseEntity="Plant" syncable="YES"/>
         <relationship name="quotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quote" inverseName="proyect" inverseEntity="Quote" syncable="YES"/>
-        <relationship name="rates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rate" inverseName="proyect" inverseEntity="Rate" syncable="YES"/>
     </entity>
     <entity name="ProyectFeature" representedClassName="ProyectFeature" parentEntity="Entity" syncable="YES">
         <attribute name="featureDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -102,18 +99,12 @@
     <entity name="Quote" representedClassName="Quote" parentEntity="Entity" syncable="YES">
         <attribute name="clientID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="flatID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="interestLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="proyectID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="quote" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="quote" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="flat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flat" inverseName="quote" inverseEntity="Flat" syncable="YES"/>
         <relationship name="promo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Promo" inverseName="quotes" inverseEntity="Promo" syncable="YES"/>
         <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="quotes" inverseEntity="Proyect" syncable="YES"/>
-    </entity>
-    <entity name="Rate" representedClassName="Rate" parentEntity="Entity" syncable="YES">
-        <attribute name="interestLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="rates" inverseEntity="Customer" syncable="YES"/>
-        <relationship name="flat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flat" inverseName="rates" inverseEntity="Flat" syncable="YES"/>
-        <relationship name="floor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Floor" inverseName="rates" inverseEntity="Floor" syncable="YES"/>
-        <relationship name="proyect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proyect" inverseName="rates" inverseEntity="Proyect" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" parentEntity="Entity" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -127,18 +118,17 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Customer" positionX="-9" positionY="99" width="128" height="210"/>
+        <element name="Customer" positionX="-9" positionY="99" width="128" height="195"/>
         <element name="Entity" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Flat" positionX="-9" positionY="117" width="128" height="255"/>
         <element name="FlatFeature" positionX="-9" positionY="153" width="128" height="75"/>
-        <element name="Floor" positionX="0" positionY="162" width="128" height="180"/>
+        <element name="Floor" positionX="0" positionY="162" width="128" height="165"/>
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
         <element name="Plant" positionX="-27" positionY="144" width="128" height="105"/>
         <element name="Promo" positionX="-36" positionY="135" width="128" height="120"/>
-        <element name="Proyect" positionX="-36" positionY="54" width="128" height="420"/>
+        <element name="Proyect" positionX="-36" positionY="54" width="128" height="405"/>
         <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
-        <element name="Quote" positionX="-27" positionY="135" width="128" height="135"/>
-        <element name="Rate" positionX="-27" positionY="135" width="128" height="135"/>
+        <element name="Quote" positionX="-27" positionY="135" width="128" height="165"/>
         <element name="User" positionX="-18" positionY="90" width="128" height="180"/>
     </elements>
 </model>

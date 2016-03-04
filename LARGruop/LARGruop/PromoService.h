@@ -15,5 +15,5 @@
 + (void)setFilterProyects:(NSMutableArray *)filterPromos;
 
 - (NSArray *)getAllPromos;
-
+- (void)apiGetPromosWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 @end

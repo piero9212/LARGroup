@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[CustomerMarketRateViewController setupVars]:CustomerMarketRateViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.marketRates">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[CustomerInfoViewController tableView:cellForRowAtIndexPath:]:CustomerInfoViewController.m">
          <PersistentStrings>
             <PersistentString

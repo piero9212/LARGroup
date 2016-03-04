@@ -8,6 +8,7 @@
 
 #import "Quote.h"
 #import "Customer.h"
+#import "Flat.h"
 #import "Promo.h"
 #import "Proyect.h"
 

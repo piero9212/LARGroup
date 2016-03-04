@@ -136,10 +136,9 @@ static NSMutableArray *_filterProyects;
 - (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 {
     [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
-        dispatch_async(dispatch_get_main_queue(), ^(void){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             
         NSArray *proyectsResponse = (NSArray*)responseDictionary;
-            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 
             NSNumber *showAlertView = [NSNumber numberWithBool:YES];
             NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
@@ -152,16 +151,17 @@ static NSMutableArray *_filterProyects;
                 });
                 return;
             }
-                
-            [Proyect MR_truncateAllInContext:localContext];
-            for (NSDictionary *proyectDictionary in proyectsResponse)
-            {
-                id proyectIdObject = [proyectDictionary valueForKeyPath:@"id"];
-                NSString *proyectID = ([proyectIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", proyectIdObject] : nil;
-                Proyect *proyect = [Proyect MR_createEntityInContext:localContext];
-                proyect.uid = proyectID;
-                [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect context:localContext];
-            }
+            
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                [Proyect MR_truncateAllInContext:localContext];
+                for (NSDictionary *proyectDictionary in proyectsResponse)
+                {
+                    id proyectIdObject = [proyectDictionary valueForKeyPath:@"id"];
+                    NSString *proyectID = ([proyectIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", proyectIdObject] : nil;
+                    Proyect *proyect = [Proyect MR_createEntityInContext:localContext];
+                    proyect.uid = proyectID;
+                    [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect context:localContext];
+                }
 
             
         } completion:^(BOOL contextDidSave, NSError *error) {

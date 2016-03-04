@@ -8,7 +8,6 @@
 
 #import "Customer.h"
 #import "Quote.h"
-#import "Rate.h"
 
 @implementation Customer
 

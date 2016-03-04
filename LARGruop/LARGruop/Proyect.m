@@ -13,7 +13,6 @@
 #import "Plant.h"
 #import "ProyectFeature.h"
 #import "Quote.h"
-#import "Rate.h"
 
 @implementation Proyect
 

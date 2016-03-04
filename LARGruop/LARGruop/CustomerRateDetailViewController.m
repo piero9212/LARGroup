@@ -8,6 +8,9 @@
 
 #import "CustomerRateDetailViewController.h"
 #import "Proyect.h"
+#import "FlatFeature.h"
+#import "Flat.h"
+#import "Promo.h"
 
 static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RATE_FEATURE_CELL";
 
@@ -54,18 +57,21 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
     self.redShapeView.layer.borderColor = [UIColor LARRedColor].CGColor;
     self.greenShapeView.layer.borderColor = [UIColor LARGreenColor].CGColor;
     self.yellowShapeView.layer.borderColor = [UIColor LARYellowColor].CGColor;
-    self.proyectNameLabel.text = [NSString stringWithFormat:@"Proyecto %@",self.rate.proyect.name];
-    self.rateNameLabel.text = self.rate.name;
-    self.codeLabel.text = self.rate.uid;
-    self.promotionLabel.text = @"3";
-    self.redShapeView.backgroundColor = [UIColor colorForInterestLevel:self.rate.interestLevel.integerValue andColorShape:[UIColor redColor]];
-    self.yellowShapeView.backgroundColor = [UIColor colorForInterestLevel:self.rate.interestLevel.integerValue andColorShape:[UIColor yellowColor]];
-    self.greenShapeView.backgroundColor = [UIColor colorForInterestLevel:self.rate.interestLevel.integerValue andColorShape:[UIColor greenColor]];
+    Flat* flat = self.quote.flat;
+    Proyect* proyect = flat.proyect;
+    self.proyectNameLabel.text = [NSString stringWithFormat:@"Proyecto %@",proyect.name];
+    self.rateNameLabel.text = [NSString stringWithFormat:@"Cotización 0%@",self.quote.uid];
+    self.codeLabel.text = self.quote.uid;
+    Promo* promo = self.quote.promo;
+    self.promotionLabel.text = promo.name;
+    self.redShapeView.backgroundColor = [UIColor colorForInterestLevel:self.quote.interestLevel.integerValue andColorShape:[UIColor redColor]];
+    self.yellowShapeView.backgroundColor = [UIColor colorForInterestLevel:self.quote.interestLevel.integerValue andColorShape:[UIColor yellowColor]];
+    self.greenShapeView.backgroundColor = [UIColor colorForInterestLevel:self.quote.interestLevel.integerValue andColorShape:[UIColor greenColor]];
 }
 
 -(void)setupVars
 {
-    self.featuresTitles = [[NSArray alloc]initWithObjects:@"Planta",@"Área total",@"Dormitorios",@"Baños",@"Cocina",@"Sala",@"Comedor",@"Closets",@"Lavanderia", nil];
+    self.featuresTitles = [self.quote.flat.features allObjects];
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
@@ -93,10 +99,8 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.marketRateFeaturesTableView dequeueReusableCellWithIdentifier:CUSTOMER_MARKET_RATE_FEATURE_CELL forIndexPath:indexPath];
     
-    NSString* feature = [self.featuresTitles objectAtIndex:indexPath.row];
-    cell.textLabel.text = feature;
-    cell.detailTextLabel.text = @"Probando el tamano de los textos";
-    
+    FlatFeature* feature = [self.featuresTitles objectAtIndex:indexPath.row];
+    cell.textLabel.text = feature.featureDescription;
     return cell;
 }
 

@@ -23,6 +23,5 @@
 @dynamic type;
 @dynamic comment;
 @dynamic quote;
-@dynamic rates;
 
 @end

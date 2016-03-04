@@ -14,8 +14,5 @@
 @interface LoginTranslator : NSObject
 
 + (void)userDictionary:(NSDictionary *)userDictionary toUserEntity:(User *)user;
-+ (void)recipientDictionary:(NSDictionary *)userDictionary toUserEntity:(User *)user;
-
-
 
 @end

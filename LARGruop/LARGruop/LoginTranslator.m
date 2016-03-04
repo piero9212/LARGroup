@@ -54,20 +54,9 @@
     
     id imageObject = [userDictionary valueForKeyPath:@"image"];
     user.imageURL = ([usernameObject isKindOfClass:[NSString class]])? imageObject: nil;
-    user.imageURL = @"http://ia.media-imdb.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY317_CR4,0,214,317_AL_.jpg";
 }
 
-+ (void)recipientDictionary:(NSDictionary *)userDictionary toUserEntity:(User *)user
-{
-    id uidObject = [userDictionary valueForKeyPath:@"id"];
-    user.uid = ([uidObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", uidObject] : nil;
-    
-//    id fullNameObject = [userDictionary valueForKeyPath:@"full_name"];
-//    user.fullName = ([fullNameObject isKindOfClass:[NSString class]])? fullNameObject : nil;
-//    
-//    id avatarURLObject = [userDictionary valueForKeyPath:@"avatar_url"];
-//    user.avatarURL = ([avatarURLObject isKindOfClass:[NSString class]])? avatarURLObject : nil;
-}
+
 
 
 

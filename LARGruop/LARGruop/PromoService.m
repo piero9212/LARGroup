@@ -7,6 +7,12 @@
 //
 
 #import "PromoService.h"
+#import "Promo.h"
+#import "PromoConnectionManager.h"
+#import "KeyConstants.h"
+#import "ErrorCodes.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "ProyectTranslator.h"
 
 @implementation PromoService
 
@@ -23,7 +29,7 @@
 
 - (void)cancelAllPromoRequest
 {
-    //[ClientConnectionManager cancelALLClientsRequest];
+    [PromoConnectionManager cancelALLPromoRequest];
 }
 
 + (void)setFilterProyects:(NSMutableArray *)filterPromos
@@ -33,8 +39,65 @@
 
 - (NSArray *)getAllPromos
 {
-    NSArray* promos ;
-    
+    NSArray *promos = [Promo MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
     return promos;
 }
+
+- (void)apiGetPromosWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
+{
+    [PromoConnectionManager getAllPromosWithsuccess:^(NSDictionary *responseDictionary)     {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            NSArray *promoResponse = (NSArray*)responseDictionary;
+            
+            NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+            id errorObject = [responseDictionary valueForKeyPath:@"error"];
+            NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+            if([error isEqualToString:GET_PROYECTS_ERROR_KEY])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAllProyectsFailed object:self userInfo:userInfo];
+                });
+                return;
+            }
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                
+                [Promo MR_truncateAllInContext:localContext];
+                for (NSDictionary *promoDictionary in promoResponse)
+                {
+                    id promoIdObject = [promoDictionary valueForKeyPath:@"id"];
+                    NSString *promoID = ([promoIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", promoIdObject] : nil;
+                    Promo *promo = [Promo MR_createEntityInContext:localContext];
+                    promo.uid = promoID;
+                    [ProyectTranslator promoDictionary:promoDictionary toPromoEntity:promo context:localContext];
+                }
+                
+                
+            } completion:^(BOOL contextDidSave, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAllClientsSucced object:self userInfo:userInfo];
+                    completion(YES);
+                });
+            }];
+        }
+                       );}
+                                              failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+         NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+         
+         if(operation && operation.response.statusCode == StatusCodeNoInternetConnection) {
+             showAlertView = [NSNumber numberWithBool:YES];
+         }
+         else {
+             self.requestFailureErrorHandler(operation, error, YES, nil);
+         }
+         
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAllProyectsFailed object:self userInfo:userInfo];
+         });
+     }];
+}
+
 @end

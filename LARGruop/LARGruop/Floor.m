@@ -9,7 +9,6 @@
 #import "Floor.h"
 #import "Flat.h"
 #import "Proyect.h"
-#import "Rate.h"
 
 @implementation Floor
 

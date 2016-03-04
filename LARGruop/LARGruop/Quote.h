@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Entity.h"
 
-@class Customer, Promo, Proyect;
+@class Customer, Flat, Promo, Proyect;
 
 NS_ASSUME_NONNULL_BEGIN
 

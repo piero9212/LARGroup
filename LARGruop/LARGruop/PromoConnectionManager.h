@@ -10,4 +10,7 @@
 
 @interface PromoConnectionManager : BaseConnectionManager
 
++ (void)getAllPromosWithsuccess:(void (^) (NSDictionary *responseDictionary))success failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
+
++ (void)cancelALLPromoRequest;
 @end
