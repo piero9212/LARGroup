@@ -51,6 +51,11 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
     self.marketRates = [NSArray arrayWithArray:[customer.rates allObjects]];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 #pragma mark -
 #pragma mark - Table View Delegate
 #pragma mark -

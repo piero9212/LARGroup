@@ -50,4 +50,9 @@
     [self.proyectVideoWebView loadRequest:urlRequest];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 @end

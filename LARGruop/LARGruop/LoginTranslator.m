@@ -19,14 +19,16 @@
     
     id fullNameObject = [userDictionary valueForKeyPath:@"name"];
     
-    NSArray *components=[fullNameObject componentsSeparatedByString:@" "];
-    if(components)
+    if(fullNameObject && fullNameObject !=[NSNull class]  )
     {
-        user.firstName  = components[0];
-        if(components.count>1)
-            user.lastName  = components[1];
+        NSArray *components=[fullNameObject componentsSeparatedByString:@" "];
+        if(components)
+        {
+            user.firstName  = components[0];
+            if(components.count>1)
+                user.lastName  = components[1];
+        }
     }
-    
     id usernameObject = [userDictionary valueForKeyPath:@"username"];
     user.username = ([usernameObject isKindOfClass:[NSString class]])? usernameObject: nil;
     
@@ -44,6 +46,15 @@
     NSDate* updateDate = ([updatedDateObject isKindOfClass:[NSMutableString class]])?[NSString toDateFromDateString:updatedDateObject] : nil;
     user.lastModified = updateDate;
     
+    id cellPhoneObject = [userDictionary valueForKeyPath:@"cell_phone"];
+    user.mobilePhone = ([usernameObject isKindOfClass:[NSString class]])? cellPhoneObject: nil;
+    
+    id phoneObject = [userDictionary valueForKeyPath:@"phone"];
+    user.phone = ([usernameObject isKindOfClass:[NSString class]])? phoneObject: nil;
+    
+    id imageObject = [userDictionary valueForKeyPath:@"image"];
+    user.imageURL = ([usernameObject isKindOfClass:[NSString class]])? imageObject: nil;
+    user.imageURL = @"http://ia.media-imdb.com/images/M/MV5BMTY5NzY4NzgxNV5BMl5BanBnXkFtZTcwMzcyOTQwOQ@@._V1_UY317_CR4,0,214,317_AL_.jpg";
 }
 
 + (void)recipientDictionary:(NSDictionary *)userDictionary toUserEntity:(User *)user

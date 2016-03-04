@@ -10,4 +10,9 @@
 
 @implementation ReserveStepTwoViewController
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 @end

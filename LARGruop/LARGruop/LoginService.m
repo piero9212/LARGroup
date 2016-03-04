@@ -141,7 +141,7 @@
                                           NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
                                             id errorObject = [responseDictionary valueForKeyPath:@"error"];
                                           NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
-                                          if([error isEqualToString:LOGIN_ERROR_KEY])
+                                          if([error isEqualToString:LOGIN_ERROR_KEY] || [error isEqualToString:LOGIN_PASWORD_ERROR_KEY])
                                               {
                                                   
                                                   dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -253,5 +253,70 @@
     
     return [defaults objectForKey:DATE_OF_LAST_LOGGED_IN];
 }
+
+- (void)apiEditUserWithName:(NSString *)name
+                   password:(NSString *)password
+                      email:(NSString *)email
+                      phone:(NSString *)phone
+                mobilePhone:(NSString *)mobilePhone
+                       User:(User*)user
+                     errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
+{
+    [LoginConnectionManager apiEditUserWithName:name password:password email:email phone:phone mobilePhone:mobilePhone User:user success:^(NSDictionary *responseDictionary){
+        
+        //dispatch_async(dispatch_get_main_queue(), ^(void){
+            
+            NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+            id errorObject = [responseDictionary valueForKeyPath:@"error"];
+            NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+            if([error isEqualToString:LOGIN_EDIT_ERROR_KEY])
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
+                });
+                return;
+                
+            }
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                User *user = [self lastLoggedInUser];
+                if(user.isFault)
+                    user =(User *)[[NSManagedObjectContext MR_defaultContext] objectWithID:user.objectID];
+                [LoginTranslator userDictionary:responseDictionary toUserEntity:user];
+            } completion:^(BOOL success, NSError *error) {
+                
+                if (!error) {
+                    completion(YES);
+                }
+                else {
+                    completion(NO);
+                }
+            }
+             ];
+        //});
+    
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        
+         NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+        
+         if(operation && operation.response.statusCode == StatusCodeNoInternetConnection) {
+             showAlertView = [NSNumber numberWithBool:YES];
+         }
+         else {
+             self.requestFailureErrorHandler(operation, error, YES, nil);
+         }
+        
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewClientFailed object:self userInfo:userInfo];
+         });
+     }];
+    
+    
+}
+
 
 @end

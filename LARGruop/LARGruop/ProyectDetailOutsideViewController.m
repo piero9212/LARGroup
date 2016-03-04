@@ -34,4 +34,9 @@
     [super didReceiveMemoryWarning];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 @end

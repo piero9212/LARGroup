@@ -19,6 +19,14 @@
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password;
 - (void)logoutWithNotification:(BOOL)showNotification;
+- (void)apiEditUserWithName:(NSString *)name
+                   password:(NSString *)password
+                      email:(NSString *)email
+                      phone:(NSString *)phone
+                mobilePhone:(NSString *)mobilePhone
+                       User:(User*)user
+                 errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
+
 
 - (User *)lastLoggedInUser;
 - (User *)lastLoggedInUserFromContext:(NSManagedObjectContext *)context;

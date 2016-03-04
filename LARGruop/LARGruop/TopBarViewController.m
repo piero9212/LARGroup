@@ -7,6 +7,9 @@
 //
 
 #import "TopBarViewController.h"
+#import <Haneke.h>
+#import "User.h"
+#import "LoginService.h"
 
 @implementation TopBarViewController
 
@@ -52,10 +55,17 @@
 
 -(void)setupVars
 {
+    User* user = [[LoginService sharedService]lastLoggedInUser];
+    [self.userImageView hnk_setImageFromURL:[NSURL URLWithString:user.imageURL]];
     float radius = self.userImageView.frame.size.width/2;
     self.userImageView.layer.cornerRadius =  radius;
+    self.userImageView.clipsToBounds = YES;
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 #pragma mark -
 #pragma mark - IBActions
@@ -67,6 +77,9 @@
 
 - (IBAction)search:(id)sender {
     [self.delegate showSearch];
+}
+- (IBAction)tapProfile:(UITapGestureRecognizer *)sender {
+    [self.delegate showProfile];
 }
 
 - (IBAction)addCustomer:(id)sender {

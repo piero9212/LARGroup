@@ -49,5 +49,9 @@
     [self.proyectPanoramicImageView hnk_setImageFromURL:url];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 @end

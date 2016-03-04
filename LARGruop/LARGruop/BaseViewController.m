@@ -54,19 +54,27 @@
 
 -(void)showHUDOnView:(UIView*)view
 {
-    self.hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    self.hud.mode = MBProgressHUDModeIndeterminate;
-    self.hud.opacity = 0;
-    self.hud.activityIndicatorColor = [UIColor grayColor];
-    [self.hud show:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+        self.hud.mode = MBProgressHUDModeIndeterminate;
+        self.hud.opacity = 0;
+        self.hud.activityIndicatorColor = [UIColor grayColor];
+        [self.hud show:YES];
+    });
 }
 
 -(void)hideHUDOnView:(UIView*)view
 {
-    [MBProgressHUD hideHUDForView:view animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD hideHUDForView:view animated:YES];
+    });
     
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+}
 
 #pragma mark -
 #pragma mark - Request Error Handling

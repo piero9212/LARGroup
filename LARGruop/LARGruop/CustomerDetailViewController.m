@@ -54,6 +54,11 @@
     }
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -

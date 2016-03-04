@@ -91,6 +91,11 @@ BOOL pinsLoaded = false;
     //    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:kNotificationApplyFilters];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 -(void)loadPins
 {
     for (Proyect* proyect in self.proyects) {

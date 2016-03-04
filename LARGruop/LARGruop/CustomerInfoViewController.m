@@ -48,6 +48,11 @@ static NSString* const CUSTOMER_RATING_SELECTED_CELL = @"CUSTOMER_RATING_SELECTE
     self.sections = [[NSArray alloc]initWithObjects:@"Nombre",@"Correo",@"Teléfono",@"Nivel de interes",@"Cotizaciones enviadas", nil];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 -(void)getCustomersFromWebService
 {
     

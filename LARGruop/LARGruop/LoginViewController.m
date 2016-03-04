@@ -67,6 +67,11 @@
     [self setupNotifications];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 -(void)setupNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginFailed:) name:kNotificationLoginFailed object:nil];

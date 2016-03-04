@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 #import "TopBarProtocol.h"
 
-@interface ProfileViewController : BaseViewController<TopBarProtocolDelegate>
+@interface ProfileViewController : BaseViewController<TopBarProtocolDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 
 @end

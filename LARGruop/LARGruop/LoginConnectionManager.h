@@ -8,6 +8,8 @@
 
 #import "BaseConnectionManager.h"
 
+@class User;
+
 @interface LoginConnectionManager : BaseConnectionManager
 
 + (void)cancelLoginRequestsWithUsername:(NSString *)username
@@ -20,5 +22,12 @@
 
 + (void)logoutWithCompletion:(void (^) ())completion;
 
-
++ (void)apiEditUserWithName:(NSString *)name
+                   password:(NSString *)password
+                          email:(NSString *)email
+                          phone:(NSString *)phone
+                mobilePhone:(NSString *)mobilePhone
+                       User:(User*)user
+                        success:(void (^) (NSDictionary *responseDictionary))success
+                        failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

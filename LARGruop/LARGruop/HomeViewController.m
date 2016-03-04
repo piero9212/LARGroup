@@ -13,6 +13,7 @@
 #import "TopBarViewController.h"
 #import "FilterViewController.h"
 #import "ProyectService.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController ()
 
@@ -68,6 +69,11 @@
 -(void)setupVars
 {
     self.isShowFilter=false;
+}
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
 }
 
 -(void)setupNotifications
@@ -297,15 +303,27 @@
         }
 
     }
-
-    
-
 }
 
 - (void)showSearch
 {
     [self.containerSegmentedControl setSelectedSegmentIndex:1];
     [self tapSelected:self.containerSegmentedControl];
+}
+
+-(void)showProfile
+{
+    for(UIViewController* controller in self.navigationController.childViewControllers)
+    {
+        if([controller isKindOfClass:[UITabBarController class]])
+        {
+            UITabBarController* tabBarController = (UITabBarController*)controller;
+            ProfileViewController* profile = [tabBarController.viewControllers objectAtIndex:2];
+            tabBarController.selectedViewController
+            = profile;
+        }
+    }
+    
 }
 
 #pragma mark -

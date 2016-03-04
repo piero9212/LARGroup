@@ -11,6 +11,7 @@
 #import "TopBarViewController.h"
 #import "ClientService.h"
 #import "HomeViewController.h"
+#import "ProfileViewController.h"
 
 @interface CustomerContainerViewController ()
 
@@ -57,6 +58,10 @@
     [self setupDeallocNotifications];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 -(void)setupNotifications
 {
@@ -98,6 +103,19 @@
 
 - (void)showFilterViewController
 {
+    for(UIViewController* controller in self.navigationController.childViewControllers)
+    {
+        if([controller isKindOfClass:[UITabBarController class]])
+        {
+            UITabBarController* tabBarController = (UITabBarController*)controller;
+            HomeViewController* home = [tabBarController.viewControllers objectAtIndex:0];
+            [home showSearch];
+            tabBarController.selectedViewController
+            = home;
+            [home showFilterViewController];
+        }
+    }
+    
 }
 
 - (void)showSearch
@@ -111,6 +129,21 @@
             [home showSearch];
             tabBarController.selectedViewController
             = home;
+        }
+    }
+
+}
+
+-(void)showProfile
+{
+    for(UIViewController* controller in self.navigationController.childViewControllers)
+    {
+        if([controller isKindOfClass:[UITabBarController class]])
+        {
+            UITabBarController* tabBarController = (UITabBarController*)controller;
+            ProfileViewController* profile = [tabBarController.viewControllers objectAtIndex:2];
+            tabBarController.selectedViewController
+            = profile;
         }
     }
 

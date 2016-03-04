@@ -55,6 +55,11 @@ static NSString* const LOGIN_SEGUE = @"LOGIN_SEGUE";
     return UIStatusBarStyleDefault;
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -

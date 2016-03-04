@@ -9,7 +9,6 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "RequestMethod.h"
 
-static NSString * const BaseURLString = @"http://grupolar.mycommunity.com.pe/";
 
 @interface ServiceClient : AFHTTPRequestOperationManager
 

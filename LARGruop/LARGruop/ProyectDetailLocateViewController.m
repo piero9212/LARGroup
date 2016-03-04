@@ -63,6 +63,11 @@ BOOL isPinLoaded = false;
     self.selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 -(void)loadPins
 {
     self.proyectMapView.showsUserLocation = YES;

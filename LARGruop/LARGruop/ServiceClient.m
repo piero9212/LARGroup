@@ -7,7 +7,7 @@
 //
 
 #import "ServiceClient.h"
-
+#import "ApplicationConstants.h"
 
 @interface ServiceClient()
 

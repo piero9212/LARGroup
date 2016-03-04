@@ -61,6 +61,11 @@
     self.currentIndex=0;
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
+
 #pragma mark -
 #pragma mark - Page Controller Delegate
 #pragma mark -

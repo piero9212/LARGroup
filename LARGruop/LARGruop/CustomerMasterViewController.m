@@ -63,6 +63,11 @@ static NSString* const CUSTOMER_DETAIL_SEGUE = @"CUSTOMER_DETAIL_SEGUE";
     [self setupDeallocNotifications];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 -(void)setupNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getClientsSucced:) name:kNotificationAllClientsSucced object:nil];

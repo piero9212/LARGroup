@@ -73,6 +73,10 @@ static NSString* const MAIL_KEY= @"MAIL_KEY";
     self.view.superview.layer.masksToBounds = YES;
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 -(void)setupDismissOnTouch
 {

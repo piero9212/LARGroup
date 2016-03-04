@@ -41,6 +41,10 @@
     [super viewWillAppear:animated];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 #pragma mark -
 #pragma mark - Actions
 #pragma mark -

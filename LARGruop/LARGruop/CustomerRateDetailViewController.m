@@ -68,6 +68,11 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
     self.featuresTitles = [[NSArray alloc]initWithObjects:@"Planta",@"Área total",@"Dormitorios",@"Baños",@"Cocina",@"Sala",@"Comedor",@"Closets",@"Lavanderia", nil];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 #pragma mark -
 #pragma mark - Table View Delegate
 #pragma mark -

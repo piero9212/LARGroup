@@ -43,7 +43,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 - (IBAction)tapFloor:(UITapGestureRecognizer *)sender {
     

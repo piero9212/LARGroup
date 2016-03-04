@@ -80,6 +80,10 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     [self.departmentCollectionView reloadData];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 #pragma mark -
 #pragma mark - Collection View Delegate

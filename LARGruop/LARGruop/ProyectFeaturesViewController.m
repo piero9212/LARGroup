@@ -56,6 +56,10 @@ static NSString* const FEATURE_CELL = @"FEATURE_CELL";
     self.features = [[ProyectFeatureService sharedService]getAllFeaturesWithProyect:selectedProyect];
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 #pragma mark -
 #pragma mark - Table View Delegate

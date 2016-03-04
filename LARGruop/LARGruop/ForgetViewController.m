@@ -43,6 +43,10 @@
     [self.sendButton makeCircleShapeWithBorderWidth:1 borderColor:[UIColor blackColor] andBorderRadius:10];
     [self.emailTextField makeUnderlineWithBordeWidth:1 color:[UIColor grayColor] andAlpha:0.3];
 }
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
 
 #pragma mark -
 #pragma mark - IBActions

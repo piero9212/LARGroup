@@ -41,6 +41,11 @@ static NSString * const FLAT_PRERESERVE_VIEW_CONTROLLER_SEGUE_IDENTIFIER = @"FLA
     return YES;
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 - (void)viewWillLayoutSubviews
 {
     self.navigationController.view.superview.layer.cornerRadius  = 5.0;

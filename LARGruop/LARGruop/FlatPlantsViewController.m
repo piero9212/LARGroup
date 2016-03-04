@@ -75,6 +75,11 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
     }
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 #pragma mark -
 #pragma mark - Collection View Delegate
 #pragma mark -

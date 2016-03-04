@@ -13,5 +13,5 @@
 - (void)showAddCustomerViewController;
 - (void)showFilterViewController;
 - (void)showSearch;
-
+- (void)showProfile;
 @end

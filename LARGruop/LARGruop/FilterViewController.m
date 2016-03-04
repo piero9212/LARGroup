@@ -76,6 +76,11 @@
     }
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 -(void)setupVars
 {
     self.rommsSelected = 0;

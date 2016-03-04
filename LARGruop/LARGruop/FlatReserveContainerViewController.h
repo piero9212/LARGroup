@@ -10,8 +10,9 @@
 #import "FlatContainerProtocol.h"
 #import "FlatDetailViewControllerProtocol.h"
 #import "Flat.h"
+#import "BaseViewController.h"
 
-@interface FlatReserveContainerViewController : UIViewController <FlatDetailViewControllerProtocol>
+@interface FlatReserveContainerViewController : BaseViewController <FlatDetailViewControllerProtocol>
 
 @property (weak, nonatomic) id<FlatContainerProtocol> delegate;
 @property (strong,nonatomic) Flat* selectedFlat;

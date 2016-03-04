@@ -67,6 +67,11 @@ static NSString* const FEATURE_MORE_DETAIL_SEGUE = @"FEATURE_MORE_DETAIL_SEGUE";
     
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return [super supportedInterfaceOrientations];
+}
+
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -

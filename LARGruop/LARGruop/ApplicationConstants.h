@@ -15,6 +15,11 @@
 
 #define GLAR_USER_AGENT_HEADER_DEFAULT_VALUE @"okhttp/2.3.0"
 
+#pragma mark - CONSTANTS
+
+static NSString * const BaseURLString = @"http://grupolar.mycommunity.com.pe/";
+
+
 #pragma mark - SENDERS
 
 static NSString * const NOTIFICATION_SENDER = @"NotificationSender";
