@@ -2,14 +2,14 @@
 //  Proyect.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 4/03/16.
+//  Created by Piero on 6/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "Entity.h"
 
-@class Flat, Floor, Outside, Plant, ProyectFeature, Quote;
+@class Floor, Outside, ProyectFeature;
 
 NS_ASSUME_NONNULL_BEGIN
 

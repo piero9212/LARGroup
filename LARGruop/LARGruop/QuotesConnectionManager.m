@@ -10,7 +10,7 @@
 #import "ServiceClient.h"
 
 static NSString* const allQuotesPath = @"ws/getQuotes";
-static NSString* const createQuotePath = @"ws/newQuote?client_id=%@&department_id=%@";
+static NSString* const createQuotePath = @"ws/newQuote?client_id=%@&department_id=%@&interest=%@";
 static NSString* const editQuotePath = @"ws/editQuote?quote_id=%@&client_id=%@&department_id=%@";
 
 @implementation QuotesConnectionManager
@@ -37,7 +37,7 @@ static NSString* const editQuotePath = @"ws/editQuote?quote_id=%@&client_id=%@&d
     
     ServiceClient *client = [ServiceClient sharedClient];
     NSDictionary *parameters = nil;
-    NSString* path = [NSString stringWithFormat:createQuotePath,clientID,departamentID];
+    NSString* path = [NSString stringWithFormat:createQuotePath,clientID,departamentID,@"1"];
     path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [client cancelAllHTTPOperationsWithMethod:@"GET" path:path];
     [client startRequestMethod:RequestMethodGet url:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {

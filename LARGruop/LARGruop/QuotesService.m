@@ -34,7 +34,22 @@
 
 - (NSArray *)getAllQuotes
 {
-    NSArray *quotes = [Quote MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    
+   NSArray *tempquotes = [Quote MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray* quotes = [[NSMutableArray alloc]init];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"uid" ascending:NO];
+    NSArray *sortedDescArray = [tempquotes sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    
+    for (Quote *quote in sortedDescArray)
+    {
+        if(!([[quotes valueForKeyPath:@"uid"] containsObject:quote.uid]))
+        {
+            [quotes addObject:quote];
+        }
+    }
+    
+    
     return quotes;
 }
 
@@ -101,13 +116,51 @@
                      departamentID:(NSString *)departamentID
                     errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
+    [QuotesConnectionManager createNewQuoteWithClientID:clientID departamentID:departamentID success:^(NSDictionary *responseDictionary)     {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                
+                NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+                id errorObject = [responseDictionary valueForKeyPath:@"error"];
+                NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+                if([error isEqualToString:GET_PROYECTS_ERROR_KEY] || !responseDictionary)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^(void){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewClientFailed object:self userInfo:userInfo];
+                    });
+                    return;
+                }
+                else
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(YES);
+                    });
+                    
+                }
+            }completion:^(BOOL contextDidSave, NSError *error) {
+            }];
+        }
+                       );}
+                                                failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+         NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+         
+         if(operation && operation.response.statusCode == StatusCodeNoInternetConnection) {
+             showAlertView = [NSNumber numberWithBool:YES];
+         }
+         else {
+             self.requestFailureErrorHandler(operation, error, YES, nil);
+         }
+         
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewClientFailed object:self userInfo:userInfo];
+         });
+     }];
+
 }
 
-- (void)apiEditQuoteWithQuoteID:(NSString *)quoteID
-                       ClientID:(NSString *)clientID
-                  departamentID:(NSString *)departamentID
-                 errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
-{
-}
 
 @end

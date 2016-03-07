@@ -10,6 +10,7 @@
 #import "Proyect.h"
 #import "FlatFeature.h"
 #import "Flat.h"
+#import <MagicalRecord/MagicalRecord.h>
 #import "Promo.h"
 
 static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RATE_FEATURE_CELL";
@@ -28,6 +29,10 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
 @end
 
 @implementation CustomerRateDetailViewController
+{
+    Flat* flat;
+    Promo* promo;
+}
 
 #pragma mark -
 #pragma mark - View Life Cycle
@@ -57,13 +62,19 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
     self.redShapeView.layer.borderColor = [UIColor LARRedColor].CGColor;
     self.greenShapeView.layer.borderColor = [UIColor LARGreenColor].CGColor;
     self.yellowShapeView.layer.borderColor = [UIColor LARYellowColor].CGColor;
-    Flat* flat = self.quote.flat;
-    Proyect* proyect = flat.proyect;
+    
+    
+    flat = [Flat MR_findByAttribute:@"uid" withValue:self.quote.flatID].firstObject;
+    
+    Proyect* proyect = [Proyect MR_findByAttribute:@"uid" withValue:flat.projectUID].firstObject;
     self.proyectNameLabel.text = [NSString stringWithFormat:@"Proyecto %@",proyect.name];
     self.rateNameLabel.text = [NSString stringWithFormat:@"Cotización 0%@",self.quote.uid];
     self.codeLabel.text = self.quote.uid;
-    Promo* promo = self.quote.promo;
-    self.promotionLabel.text = promo.name;
+    promo = [Promo MR_findByAttribute:@"uid" withValue:self.quote.promoID].firstObject;
+    if(!promo)
+        self.promotionLabel.text = @"-----";
+    else
+        self.promotionLabel.text = promo.name;
     self.redShapeView.backgroundColor = [UIColor colorForInterestLevel:self.quote.interestLevel.integerValue andColorShape:[UIColor redColor]];
     self.yellowShapeView.backgroundColor = [UIColor colorForInterestLevel:self.quote.interestLevel.integerValue andColorShape:[UIColor yellowColor]];
     self.greenShapeView.backgroundColor = [UIColor colorForInterestLevel:self.quote.interestLevel.integerValue andColorShape:[UIColor greenColor]];
@@ -71,7 +82,7 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
 
 -(void)setupVars
 {
-    self.featuresTitles = [self.quote.flat.features allObjects];
+    self.featuresTitles = [flat.features allObjects];
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
@@ -101,6 +112,7 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
     
     FlatFeature* feature = [self.featuresTitles objectAtIndex:indexPath.row];
     cell.textLabel.text = feature.featureDescription;
+    cell.detailTextLabel.text=  @"";
     return cell;
 }
 
@@ -112,6 +124,9 @@ static NSString* const CUSTOMER_MARKET_RATE_FEATURE_CELL = @"CUSTOMER_MARKET_RAT
 
 - (IBAction)cancelChanges:(id)sender {
     [self dismissAnimated];
+}
+
+- (IBAction)updateQuote:(UIButton *)sender {
 }
 
 #pragma mark -

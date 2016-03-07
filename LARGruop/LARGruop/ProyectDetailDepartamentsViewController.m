@@ -9,7 +9,6 @@
 #import "ProyectDetailDepartamentsViewController.h"
 #import "FlatGroupCollectionViewCell.h"
 #import "Proyect.h"
-#import "Plant.h"
 #import "Flat.h"
 #import "Floor.h"
 #import "FlatLegendTableViewCell.h"
@@ -31,13 +30,12 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 @property (weak, nonatomic) IBOutlet UIButton *proyectActionButton;
 @property (weak, nonatomic) IBOutlet UIButton *plantButton;
 @property (strong, nonatomic) CustomNavigationViewController* customNavigationController;
+@property (nonatomic,strong) NSNumber* maxFloors;
+@property (nonatomic,strong) NSNumber* maxFlatsPerFloor;
 @end
 
 @implementation ProyectDetailDepartamentsViewController
-{
-    NSInteger maxFloors;
-    NSInteger maxFlatsPerFloor;
-}
+
 #pragma mark -
 #pragma mark - View Life Cicle
 #pragma mark -
@@ -72,8 +70,25 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     self.plantButton.layer.cornerRadius = 20;
     self.plantButton.layer.masksToBounds = true;
     [self.proyectNameLabel setText:[NSString stringWithFormat:@"Proyecto %@",selectedProyect.name]];
-    maxFloors = selectedProyect.floorsCount.integerValue;
-    self.proyectDepartments = [selectedProyect.flats allObjects];
+    self.maxFloors = selectedProyect.floorsCount;
+    NSLog(@"%ld",self.maxFloors.integerValue);
+    NSArray* floors = [selectedProyect.floors allObjects];
+    NSMutableArray* flats = [[NSMutableArray alloc]init];
+    self.maxFlatsPerFloor = nil;
+    for (Floor* proyectFloor in floors) {
+        NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+        if(!self.maxFlatsPerFloor)
+        {
+            self.maxFlatsPerFloor = [NSNumber numberWithInteger:flatsPerFloor.count];
+        }
+        else
+        {
+            if(flatsPerFloor.count>self.maxFlatsPerFloor.intValue)
+                self.maxFlatsPerFloor = [NSNumber numberWithInteger:flatsPerFloor.count];
+        }
+        [flats addObjectsFromArray:flatsPerFloor];
+    }
+    self.proyectDepartments = flats;
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     self.proyectDepartments=[self.proyectDepartments sortedArrayUsingDescriptors:@[sort]];
@@ -96,7 +111,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return maxFloors+1;
+    return self.maxFloors.integerValue+1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -109,7 +124,7 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
     NSArray *flats =
     [self.proyectDepartments filteredArrayUsingPredicate:floorPredicate];
     BOOL isSolidColor;
-    if(indexPath.item == maxFloors)
+    if(indexPath.item == self.maxFloors.integerValue)
     {
         isSolidColor=false;
     }
@@ -118,13 +133,13 @@ static NSString* const DEPARTAMENT_LINES_CELL = @"DEPARTAMENT_LINES_CELL";
         isSolidColor=true;
     }
     NSString* floorNumber = [NSString stringWithFormat:@"%ld",indexPath.item+1];
-    [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isSolidColor andFlatsArray:flats andMaxFlatsPerFloor:maxFlatsPerFloor];
+    [cell setupBottomHeaderCellsWithFloorNumber:floorNumber allItemsSolidColor:isSolidColor andFlatsArray:flats andMaxFlatsPerFloor:self.maxFlatsPerFloor.integerValue];
     cell.flatDelegate=self;
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = self.departmentCollectionView.frame.size.height/(maxFloors+1);
+    CGFloat height = 30;
     return CGSizeMake(self.departmentCollectionView.frame.size.width, height );
 }
 

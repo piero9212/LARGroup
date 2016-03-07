@@ -9,6 +9,7 @@
 #import "ReserveViewController.h"
 #import "ReserveStepOneViewController.h"
 #import "ReserveStepTwoViewController.h"
+#import "PromoService.h"
 
 @interface ReserveViewController ()
 @property (weak, nonatomic) IBOutlet UIView *stepOneView;
@@ -32,8 +33,11 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    NSArray* promos= [[PromoService sharedService]getAllPromos];
+    self.randomPromo = [promos objectAtIndex: arc4random() % [promos count]];
     reserveViewType= 1;
     [self presentSelectedViewController];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -45,6 +49,8 @@
 {
     return [super supportedInterfaceOrientations];
 }
+
+
 #pragma mark -
 #pragma mark - Actions
 #pragma mark -
@@ -84,24 +90,62 @@
             self.stepOneView.backgroundColor = [UIColor blackColor];
             self.stepTwoView.backgroundColor = [UIColor clearColor];
             destinationVC = (ReserveStepOneViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ReserveStepOneViewController"];
+            ((ReserveStepOneViewController*)destinationVC).selectedFlat = self.selectedFlat;
+            ((ReserveStepOneViewController*)destinationVC).delegate = self.self;
             break;
         case 2:
             self.stepOneView.backgroundColor = [UIColor clearColor];
             self.stepTwoView.backgroundColor = [UIColor blackColor];
             destinationVC = (ReserveStepTwoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ReserveStepTwoViewController"];
-
+            ((ReserveStepTwoViewController*)destinationVC).selectedFlat = self.selectedFlat;
+            ((ReserveStepTwoViewController*)destinationVC).delegate =self;
+            ((ReserveStepTwoViewController*)destinationVC).randomPromo = self.randomPromo;
             break;
     }
     
     [self setViewControllerChildWith:destinationVC from:currentVC];
 }
+
+#pragma mark -
+#pragma mark - IBActions
+#pragma mark -
+
 - (IBAction)stepOneTapped:(id)sender {
     reserveViewType= 1;
     [self presentSelectedViewController];
 }
 - (IBAction)stepTwoTapped:(id)sender {
-    reserveViewType= 2;
-    [self presentSelectedViewController];
+//    reserveViewType= 2;
+//    [self presentSelectedViewController];
+}
+- (IBAction)closeTapped:(UIButton *)sender {
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+}
+
+#pragma mark -
+#pragma mark - Create Quote Protocol
+#pragma mark -
+
+
+
+-(void)changeReserveViewControllerWithCustomer:(Customer*)selectedCustomer
+{
+    if(reserveViewType== 1)
+    {
+        reserveViewType= 2;
+        self.stepOneView.backgroundColor = [UIColor clearColor];
+        self.stepTwoView.backgroundColor = [UIColor blackColor];
+        UIViewController* destinationVC;
+        UIViewController* currentVC = [self getCurrentViewController];
+        destinationVC = (ReserveStepTwoViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ReserveStepTwoViewController"];
+        ((ReserveStepTwoViewController*)destinationVC).selectedFlat = self.selectedFlat;
+        ((ReserveStepTwoViewController*)destinationVC).delegate = self;
+        ((ReserveStepTwoViewController*)destinationVC).selectedCustomer = selectedCustomer;
+        ((ReserveStepTwoViewController*)destinationVC).randomPromo = self.randomPromo;
+        
+    
+        [self setViewControllerChildWith:destinationVC from:currentVC];
+    }
 }
 
 @end

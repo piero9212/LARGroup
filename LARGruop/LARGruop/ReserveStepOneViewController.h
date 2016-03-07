@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "Flat.h"
+#import "CreateQuoteProtocol.h"
+@interface ReserveStepOneViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
+@property (strong,nonatomic) Flat* selectedFlat;
 
-@interface ReserveStepOneViewController : BaseViewController
-
+@property (weak,nonatomic) id<CreateQuoteProtocol> delegate;
 @end

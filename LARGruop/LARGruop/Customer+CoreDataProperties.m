@@ -2,7 +2,7 @@
 //  Customer+CoreDataProperties.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 4/03/16.
+//  Created by Piero on 6/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,6 +14,7 @@
 @implementation Customer (CoreDataProperties)
 
 @dynamic cellPhone;
+@dynamic comment;
 @dynamic dni;
 @dynamic email;
 @dynamic firstName;
@@ -21,7 +22,6 @@
 @dynamic lastName;
 @dynamic phoneNumber;
 @dynamic type;
-@dynamic comment;
-@dynamic quote;
+@dynamic quotes;
 
 @end

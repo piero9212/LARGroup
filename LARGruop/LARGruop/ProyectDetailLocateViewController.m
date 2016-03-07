@@ -11,6 +11,7 @@
 #import "AnnotationView.h"
 #import "ProyectPointAnnotation.h"
 #import "Proyect.h"
+#import "Floor.h"
 
 static NSString *MAP_ANNOTATION__LOCATE_IDENTIFIER = @"MAP_ANNOTATION__LOCATE_IDENTIFIER";
 BOOL isPinLoaded = false;
@@ -79,7 +80,13 @@ BOOL isPinLoaded = false;
         [annotation setCoordinate:location]; //Add cordinates
         annotation.proyectImage = self.selectedProyect.imageURL;
         annotation.proyectUID = self.selectedProyect.uid;
-        annotation.leftDepartments = [NSNumber numberWithInteger:self.selectedProyect.flats.count];
+        NSArray* floors = [self.selectedProyect.floors allObjects];
+        NSMutableArray* flats = [[NSMutableArray alloc]init];
+        for (Floor* proyectFloor in floors) {
+            NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+            [flats addObjectsFromArray:flatsPerFloor];
+        }
+        annotation.leftDepartments = [NSNumber numberWithInteger:flats.count];
         [self.proyectMapView addAnnotation:annotation];
     }
     

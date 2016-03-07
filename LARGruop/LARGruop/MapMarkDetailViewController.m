@@ -9,6 +9,7 @@
 #import "MapMarkDetailViewController.h"
 #import <Haneke/Haneke.h>
 #import "Proyect.h"
+#import "Floor.h"
 
 @implementation MapMarkDetailViewController
 
@@ -56,7 +57,15 @@
     self.proyectAnnotationImageView.layer.cornerRadius = self.proyectAnnotationImageView.frame.size.height /2;
     self.proyectAnnotationImageView.layer.masksToBounds = YES;
     self.proyectAnnotationImageView.layer.borderWidth = 5.0;
-    self.proyectAnnotationImageView.layer.borderColor =[UIColor colorForAvaibleDepartmentsCount:proyect.flats.count].CGColor;
+    
+    NSArray* floors = [proyect.floors allObjects];
+    NSMutableArray* flats = [[NSMutableArray alloc]init];
+    for (Floor* proyectFloor in floors) {
+        NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+        [flats addObjectsFromArray:flatsPerFloor];
+    }
+    
+    self.proyectAnnotationImageView.layer.borderColor =[UIColor colorForAvaibleDepartmentsCount:flats.count].CGColor;
     [self.proyectAnnotationImageView hnk_setImageFromURL:[NSURL URLWithString:proyect.imageURL]];
     [self.mapDesciptionLabel sizeToFit];
 }

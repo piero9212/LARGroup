@@ -2,7 +2,7 @@
 //  Quote+CoreDataProperties.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 4/03/16.
+//  Created by Piero on 6/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,11 +15,9 @@
 
 @dynamic clientID;
 @dynamic flatID;
-@dynamic proyectID;
 @dynamic interestLevel;
+@dynamic proyectID;
+@dynamic promoID;
 @dynamic customer;
-@dynamic promo;
-@dynamic proyect;
-@dynamic flat;
 
 @end

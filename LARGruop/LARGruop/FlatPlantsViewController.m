@@ -61,9 +61,10 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
 -(void)setupVars
 {
     Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
-    self.proyectFloors =[NSArray arrayWithArray:[selectedProyect.floors allObjects]];
+    self.proyectFloors =[selectedProyect.floors allObjects];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"number" ascending:YES];
     self.proyectFloors=[self.proyectFloors sortedArrayUsingDescriptors:@[sort]];
+    
 
     if(self.proyectFloors && self.proyectFloors.count>0)
     {
@@ -146,7 +147,15 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
     [self removeAllSubviewsOfPlantImageView];
     Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"SELF.floor.number == %@",floor.number];
-    NSArray* proyectDepartments = [[selectedProyect.flats allObjects] filteredArrayUsingPredicate:predicate];
+    NSArray* floors = [selectedProyect.floors allObjects];
+    NSMutableArray* flats = [[NSMutableArray alloc]init];
+    for (Floor* proyectFloor in floors) {
+        NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+        [flats addObjectsFromArray:flatsPerFloor];
+    }
+
+    
+    NSArray* proyectDepartments = [flats filteredArrayUsingPredicate:predicate];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     proyectDepartments=[proyectDepartments sortedArrayUsingDescriptors:@[sort]];
     
@@ -164,7 +173,7 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
         CGRect frame = CGRectMake(x, y, width*100, height*50);
         UIView* view = [[UIView alloc]initWithFrame:frame];
         view.tag = i;
-        [view setBackgroundColor:[UIColor redColor]];
+        [view setBackgroundColor:[UIColor clearColor]];
         [self.plantImageView addSubview:view];
         [view addGestureRecognizer:oneTap];
     }
@@ -187,7 +196,15 @@ static NSString* const PLANT_BUTTON_CELL = @"PLANT_BUTTON_CELL";
     
     Proyect* selectedProyect = [Proyect MR_findFirstByAttribute:@"uid" withValue:self.selectedProyectID];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"SELF.floor.number == %@",floor.number];
-    NSArray* proyectDepartments = [[selectedProyect.flats allObjects] filteredArrayUsingPredicate:predicate];
+    NSArray* floors = [selectedProyect.floors allObjects];
+    NSMutableArray* flats = [[NSMutableArray alloc]init];
+    for (Floor* proyectFloor in floors) {
+        NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+        [flats addObjectsFromArray:flatsPerFloor];
+    }
+
+    
+    NSArray* proyectDepartments = [flats filteredArrayUsingPredicate:predicate];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     proyectDepartments=[proyectDepartments sortedArrayUsingDescriptors:@[sort]];
     Flat* flat = [proyectDepartments objectAtIndex:index];

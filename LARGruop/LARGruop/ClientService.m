@@ -34,7 +34,20 @@
 
 - (NSArray *)getAllClients
 {
-    NSArray *clients = [Customer MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    
+    NSArray *tempcustomer =[Customer MR_findAllSortedBy:@"firstName" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray* clients = [[NSMutableArray alloc]init];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"uid" ascending:NO];
+    NSArray *sortedDescArray = [tempcustomer sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    
+    for (Customer *customer in sortedDescArray)
+    {
+        if(!([[clients valueForKeyPath:@"uid"] containsObject:customer.uid]))
+        {
+            [clients addObject:customer];
+        }
+    }
     return clients;
 }
 

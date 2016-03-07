@@ -13,6 +13,7 @@
 #import <Haneke/Haneke.h>
 #import "Proyect.h"
 #import "StatusCode.h"
+#import "Floor.h"
 
 static NSString* const PROYECT_CELL = @"PROYECT_CELL";
 static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
@@ -60,7 +61,7 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
 
 -(void)setupVars
 {
-    if([[[ProyectService sharedService] getAllProyects] isEqual:[ProyectService filterProyects]])
+    if([[ProyectService sharedService] filterActive] == NO)
     {
         self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
     }
@@ -117,7 +118,13 @@ static NSString* const PROYECT_DETAIL_SEGUE = @"PROYECT_DETAIL_SEGUE";
     cell.districtLabel.text = proyect.district;
     [cell.districtLabel sizeToFit];
     
-    NSArray* flats = [proyect.flats allObjects];
+    
+    NSArray* floors = [proyect.floors allObjects];
+    NSMutableArray* flats = [[NSMutableArray alloc]init];
+    for (Floor* proyectFloor in floors) {
+        NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+        [flats addObjectsFromArray:flatsPerFloor];
+    }
     NSPredicate *flatsPredicate =
     [NSPredicate predicateWithFormat:@"SELF.status == %@",[NSString stringWithFormat:@"%d",StatusCodeFree]];
     NSArray *fileterdflats =

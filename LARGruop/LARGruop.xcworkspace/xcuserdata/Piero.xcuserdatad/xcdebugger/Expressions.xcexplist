@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[ProyectDetailOutsideViewController setupVars]:ProyectDetailOutsideViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.outsideImages">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[MapViewController loadPins]:MapViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -19,10 +11,34 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ProyectDetailOutsideViewController setupVars]:ProyectDetailOutsideViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.outsideImages">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[MapViewController setupVars]:MapViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "self.proyects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ProyectsViewController setupVars]:ProyectsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.proyects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ProyectDetailDepartamentsViewController setupVars]:ProyectDetailDepartamentsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.maxFlatsPerFloor.intValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

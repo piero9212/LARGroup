@@ -39,7 +39,21 @@
 
 - (NSArray *)getAllPromos
 {
-    NSArray *promos = [Promo MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    NSArray *temppromos = [Promo MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    NSMutableArray* promos = [[NSMutableArray alloc]init];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"uid" ascending:NO];
+    NSArray *sortedDescArray = [temppromos sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    
+    for (Promo *promo in sortedDescArray)
+    {
+        if(!([[promos valueForKeyPath:@"uid"] containsObject:promo.uid]))
+        {
+            [promos addObject:promo];
+        }
+    }
+    
+
     return promos;
 }
 

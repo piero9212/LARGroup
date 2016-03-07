@@ -90,7 +90,6 @@
         {
             Floor* floor = [Floor MR_createEntityInContext:context];
             [self floorDictionary:floorDictionary toFloorEntity:floor andFloorNumber:i];
-            [proyect addFloorsObject:floor];
             id departamentsObject = [floorDictionary valueForKeyPath:@"departments"];
             NSArray *departamentDictionaries = ([departamentsObject isKindOfClass:[NSArray class]])? departamentsObject : nil;
             for(NSDictionary* departamentDictionary in departamentDictionaries)
@@ -98,14 +97,20 @@
                 Flat* flat = [Flat MR_createEntityInContext:context];
                 [self departamentDictionary:departamentDictionary toFlatEntity:flat context:context];
                 flat.floor = floor;
-                flat.proyect = proyect;
-                [proyect addFlatsObject:flat];
+                [floor addFlatsObject:flat];
             }
             i++;
+            [proyect addFloorsObject:floor];
         }
         proyect.floorsCount = [NSNumber numberWithInteger:floorsDictionaries.count];
         NSPredicate* flatStatusPredicate = [NSPredicate predicateWithFormat:@"SELF.status == %@",[NSString stringWithFormat:@"%d",StatusCodeFree]];
-        NSArray* flats = [proyect.flats allObjects];
+        NSArray* floors = [proyect.floors allObjects];
+        NSMutableArray* flats = [[NSMutableArray alloc]init];
+        for (Floor* proyectFloor in floors) {
+            NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+            [flats addObjectsFromArray:flatsPerFloor];
+        }
+
         proyect.state = [NSNumber numberWithInteger:[flats filteredArrayUsingPredicate:flatStatusPredicate].count];
     }
 }
@@ -211,16 +216,17 @@
     quote.interestLevel = interest;
     
     Customer* customer = [Customer MR_findByAttribute:@"uid" withValue:quote.clientID inContext:context].firstObject;
-    quote.customer = customer ;
+    [customer addQuotesObject:quote];
     
-    Flat* flat = [Flat MR_findByAttribute:@"uid" withValue:quote.flatID inContext:context].firstObject;
-    quote.flat = flat ;
+    //Flat* flat = [Flat MR_findByAttribute:@"uid" withValue:quote.flatID inContext:context].firstObject;
+    //quote.flat = flat ;
     
     id promoIdObject = [quoteDictionary valueForKeyPath:@"promotion_id"];
     NSString* promoID = ([promoIdObject isKindOfClass:[NSString class]])? promoIdObject: ((NSNumber*)promoIdObject).stringValue;
-    Promo* promo = [Promo MR_findByAttribute:@"uid" withValue:promoID inContext:context].firstObject;
+    quote.promoID = promoID;
+    //Promo* promo = [Promo MR_findByAttribute:@"uid" withValue:promoID inContext:context].firstObject;
     
-    quote.promo = promo;
+    //quote.promo = promo;
 }
 
 @end

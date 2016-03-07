@@ -21,7 +21,6 @@
 #import "Customer.h"
 #import "Floor.h"
 #import "Promo.h"
-#import "Plant.h"
 #import "FlatFeature.h"
 
 static NSString * const STORE_NAME = @"LARGruop";
@@ -143,6 +142,16 @@ static NSString * const STORE_NAME = @"LARGruop";
     }
 }
 
+- (void)reset
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    
+    [defaults synchronize];
+    
+
+}
+
 - (void)dropDatabase
 {
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
@@ -163,7 +172,6 @@ static NSString * const STORE_NAME = @"LARGruop";
         [Floor MR_truncateAllInContext:localContext];
         [Promo MR_truncateAllInContext:localContext];
         [FlatFeature MR_truncateAllInContext:localContext];
-        [Plant MR_truncateAllInContext:localContext];
         
     }];
 }

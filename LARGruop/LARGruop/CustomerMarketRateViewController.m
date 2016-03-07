@@ -48,8 +48,7 @@ static NSString* const MARKET_RATE_DETAIL_SEGUE = @"MARKET_RATE_DETAIL_SEGUE";
 -(void)setupVars
 {
     Customer* customer = [Customer MR_findByAttribute:@"uid" withValue:self.selectedCustomerUID].firstObject;
-    Quote* quote = customer.quote;
-    self.marketRates = [[NSArray alloc]initWithObjects:quote, nil];
+    self.marketRates = [customer.quotes allObjects];
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations

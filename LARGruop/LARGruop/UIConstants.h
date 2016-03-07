@@ -20,4 +20,6 @@ static NSString* const FLAT_RESERVE_SEGUE= @"FLAT_RESERVE_SEGUE";
 #pragma mark - Cell Identifiers
 
 static NSString* const FLAT_FEATURE_IDENTIFIER = @"FLAT_FEATURE_IDENTIFIER";
+static NSString* const CUSTOMER_QUOTE_IDENTIFIER = @"CUSTOMER_QUOTE_IDENTIFIER";
+static NSString* const FLAT_FEATURE_QUOTE_CELL = @"FLAT_FEATURE_QUOTE_CELL";
 #pragma mark - Constraints Values

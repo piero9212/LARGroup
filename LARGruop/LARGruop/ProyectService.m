@@ -47,14 +47,25 @@ static NSMutableArray *_filterProyects;
 
 - (void)resetProyectsFilter
 {
-    NSMutableArray *proyects = [[[ProyectService sharedService] getAllProyects] mutableCopy];
-    
-    [ProyectService setFilterProyects:proyects];
+    [ProyectService setFilterProyects:nil];
 
 }
 - (NSArray *)getAllProyects
 {
-    NSArray *proyects = [Proyect MR_findAllSortedBy:@"name" ascending:YES inContext: [NSManagedObjectContext MR_defaultContext]];
+    NSArray *tempproyects = self.proyects;
+    NSMutableArray* proyects = [[NSMutableArray alloc]init];
+   
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"uid" ascending:NO];
+    NSArray *sortedDescArray = [tempproyects sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    
+    for (Proyect *proyect in sortedDescArray)
+    {
+        if(!([[proyects valueForKeyPath:@"uid"] containsObject:proyect.uid]))
+        {
+            [proyects addObject:proyect];
+        }
+    }
+    
     return proyects;
 }
 
@@ -136,7 +147,7 @@ static NSMutableArray *_filterProyects;
 - (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 {
     [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        dispatch_async(dispatch_get_main_queue(), ^(void){
             
         NSArray *proyectsResponse = (NSArray*)responseDictionary;
                 
@@ -151,25 +162,36 @@ static NSMutableArray *_filterProyects;
                 });
                 return;
             }
+            NSArray* proyects = [Proyect MR_findAllSortedBy:@"uid" ascending:TRUE];
+            if (proyects) {
+                [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+                    [Proyect MR_truncateAllInContext:localContext];
+                }];
+            }
+            
             
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-                [Proyect MR_truncateAllInContext:localContext];
-                for (NSDictionary *proyectDictionary in proyectsResponse)
+                for (int i = 0; i< proyectsResponse.count; i++)
                 {
+                    NSDictionary *proyectDictionary = [proyectsResponse objectAtIndex:i];
                     id proyectIdObject = [proyectDictionary valueForKeyPath:@"id"];
                     NSString *proyectID = ([proyectIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", proyectIdObject] : nil;
-                    Proyect *proyect = [Proyect MR_createEntityInContext:localContext];
-                    proyect.uid = proyectID;
-                    [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect context:localContext];
+                    Proyect *proyect = [Proyect MR_findByAttribute:@"uid" withValue:proyectID].firstObject;
+                    if(!proyect)
+                    {
+                        proyect = [Proyect MR_createEntityInContext:localContext];
+                        proyect.uid = proyectID;
+                        [ProyectTranslator proyectDictionary:proyectDictionary toProyectEntity:proyect context:localContext];
+                    }
                 }
-
+            }completion:^(BOOL contextDidSave, NSError *error) {
             
-        } completion:^(BOOL contextDidSave, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self resetProyectsFilter];
-                completion(YES);
-            });
-        }];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.filterActive = false;
+                    self.proyects = [Proyect MR_findAllSortedBy:@"uid" ascending:TRUE];
+                    completion(YES);
+                });
+            }];
         });
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)

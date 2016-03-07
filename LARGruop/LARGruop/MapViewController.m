@@ -12,6 +12,7 @@
 #import "MapMarkDetailViewController.h"
 #import "ProyectDetailViewController.h"
 #import <Haneke/Haneke.h>
+#import "Floor.h"
 
 static NSString *MAP_ANNOTATION_IDENTIFIER = @"MAP_ANNOTATION_IDENTIFIER";
 static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
@@ -69,7 +70,7 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
 
 -(void)setupVars
 {
-    if([[[ProyectService sharedService] getAllProyects] isEqual:[ProyectService filterProyects]])
+    if([[ProyectService sharedService] filterActive] == NO)
     {
         self.proyects = [[NSMutableArray alloc]initWithArray:[[ProyectService sharedService]getAllProyects]];
     }
@@ -103,7 +104,14 @@ static NSString* const MAP_PROYECT_DETAIL_SEGUE = @"MAP_PROYECT_DETAIL_SEGUE";
         [annotation setCoordinate:location]; //Add cordinates
         annotation.proyectImage = proyect.imageURL;
         annotation.proyectUID = proyect.uid;
-        annotation.leftDepartments = [NSNumber numberWithInteger:proyect.flats.count];
+        
+        NSArray* floors = [proyect.floors allObjects];
+        NSMutableArray* flats = [[NSMutableArray alloc]init];
+        for (Floor* proyectFloor in floors) {
+            NSArray* flatsPerFloor = [proyectFloor.flats allObjects];
+            [flats addObjectsFromArray:flatsPerFloor];
+        }
+        annotation.leftDepartments = [NSNumber numberWithInteger:flats.count];
         [self.proyectsMapView addAnnotation:annotation];
     }
     [self displayCorrectZoom];

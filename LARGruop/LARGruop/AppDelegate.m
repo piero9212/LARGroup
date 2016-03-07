@@ -30,11 +30,11 @@
     [self firstRunApp];
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    NSLog(@"%@",[paths objectAtIndex:0]);
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"9c1085eb7d6f487681e4eff152a50c11"];
-    // Do some additional configuration if needed here
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator
-     authenticateInstallation];
+    
+//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"9c1085eb7d6f487681e4eff152a50c11"];
+//    [[BITHockeyManager sharedHockeyManager] startManager];
+//    [[BITHockeyManager sharedHockeyManager].authenticator
+//     authenticateInstallation];
 
     return YES;
 }
@@ -68,6 +68,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"firstRun"])
     {
+        [[GenericService sharedService] resetDatabase];
         [defaults setObject:[NSDate date] forKey:@"firstRun"];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -78,7 +79,6 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[GenericService sharedService] setupDatabase];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
     // Preloads keyboard so there's no lag on initial keyboard appearance.
     UITextField *lagFreeField = [[UITextField alloc] init];
     [self.window addSubview:lagFreeField];

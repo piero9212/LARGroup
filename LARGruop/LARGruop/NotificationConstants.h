@@ -35,16 +35,9 @@ static NSString * const kNotificationNewClientSucced = @"NewClientSuccedNotifica
 static NSString * const kNotificationEditClientSucced = @"EditClientSuccedNotification";
 static NSString * const kNotificationEditClientFailed = @"EditClientFailedNotification";
 
-
-
-//SETTINGS NOTIFICATIONS
-static NSString * const kNotificationReloadAllData = @"ReloadAllDataNotification";
-static NSString * const kNotificationReloadAllDataControllers = @"ReloadAllDataNotificationControllers";
-
-
-// SEARCH NOTIFICATIONS
-static NSString * const kNotificationSearchShouldDisplay = @"SearchShouldDisplayNotification";
-static NSString * const kNotificationSearchReturn = @"SearchReturnNotification";
+//PROMO NOTIFICATIONS
+static NSString * const kNotificationPromoAcepted = @"PromoAceptedNotification";
+static NSString * const kNotificationPromoCancel = @"PromoCancelNotification";
 
 //FILTER NOTIFICATIONS
 

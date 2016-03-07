@@ -2,7 +2,7 @@
 //  Customer+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 4/03/16.
+//  Created by Piero on 6/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Customer (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *cellPhone;
+@property (nullable, nonatomic, retain) NSString *comment;
 @property (nullable, nonatomic, retain) NSNumber *dni;
 @property (nullable, nonatomic, retain) NSString *email;
 @property (nullable, nonatomic, retain) NSString *firstName;
@@ -23,8 +24,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *lastName;
 @property (nullable, nonatomic, retain) NSString *phoneNumber;
 @property (nullable, nonatomic, retain) NSString *type;
-@property (nullable, nonatomic, retain) NSString *comment;
-@property (nullable, nonatomic, retain) Quote *quote;
+@property (nullable, nonatomic, retain) NSSet<Quote *> *quotes;
+
+@end
+
+@interface Customer (CoreDataGeneratedAccessors)
+
+- (void)addQuotesObject:(Quote *)value;
+- (void)removeQuotesObject:(Quote *)value;
+- (void)addQuotes:(NSSet<Quote *> *)values;
+- (void)removeQuotes:(NSSet<Quote *> *)values;
 
 @end
 

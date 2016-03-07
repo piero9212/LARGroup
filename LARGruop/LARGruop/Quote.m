@@ -2,15 +2,12 @@
 //  Quote.m
 //  LARGruop
 //
-//  Created by piero.sifuentes on 4/03/16.
+//  Created by Piero on 6/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 
 #import "Quote.h"
 #import "Customer.h"
-#import "Flat.h"
-#import "Promo.h"
-#import "Proyect.h"
 
 @implementation Quote
 

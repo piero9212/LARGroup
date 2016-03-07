@@ -30,6 +30,7 @@ typedef void(^RequestSuccessErrorHandlingBlock)(NSManagedObjectContext *context,
 - (void)setupDatabase;
 - (void)dropDatabase;
 - (void)resetDatabase;
+- (void)reset;
 
 - (BOOL)errorIsNotFoundErrorWithOperation:(AFHTTPRequestOperation *)operation error:(NSError *)error;
 

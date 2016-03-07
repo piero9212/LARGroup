@@ -153,45 +153,37 @@
                                           id userIdObject = [responseDictionary valueForKeyPath:@"id"];
                                           NSString *userId = ([userIdObject isKindOfClass:[NSNumber class]])? [NSString stringWithFormat:@"%@", userIdObject] : nil;
                                           
-                                          
-                                          User *lastLoggedInUser = [self lastLoggedInUser];
-                                          
-                                          if (lastLoggedInUser && ![userId isEqualToString:lastLoggedInUser.uid]) {
-                                              
-                                              [self dropDatabase];
-                                              
-                                          }
-                                        
+                                        User *lastLoggedInUser = [self lastLoggedInUser];
+                                        if (!lastLoggedInUser) {
+                                            //[self reset];
+                                        }
+                                        else if (lastLoggedInUser && ![userId isEqualToString:lastLoggedInUser.uid]) {
+                                            [self dropDatabase];
+                                        }
+                                    
                                           [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-                                              User *user = [self lastLoggedInUser];
-                                              if(user.isFault)
-                                                  user =(User *)[[NSManagedObjectContext MR_defaultContext] objectWithID:user.objectID];
-                                              if (user && [userId isEqualToString:user.uid])
-                                              {
-                                                  [LoginTranslator userDictionary:responseDictionary toUserEntity:user];
-                                              }
-                                              else
-                                              {
-                                                  if(!user)
-                                                      user = [User MR_createEntityInContext:localContext];
-                                                  [LoginTranslator userDictionary:responseDictionary toUserEntity:user];
-                                              }
-                                            } completion:^(BOOL success, NSError *error) {
+                                              User *lastLoggedInUser = [self lastLoggedInUserFromContext:localContext];
                                               
-                                              if (!error) {
-                                                  User *lastLoggedInUser = [self lastLoggedInUser];
-                                                  [self setLastLoggedInUserID:userId];
-                                                  [self setLastUsername:lastLoggedInUser.username];
-                                                  [self setLastPassword:password];
-                                                  [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginSucceeded object:self userInfo:nil];
+                                              if (!(lastLoggedInUser && [userId isEqualToString:lastLoggedInUser.uid])) {
+                                                  User *user = [User MR_createEntityInContext:localContext];
+                                                  [LoginTranslator userDictionary:responseDictionary toUserEntity:user];
                                               }
                                               else {
-                                                  [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
-                                                  
-                                                  self.requestSuccessErrorHandler(nil, YES, nil);
+                                                  [LoginTranslator userDictionary:responseDictionary toUserEntity:lastLoggedInUser];
                                               }
-                                          }
-                                           ];
+                                            } completion:^(BOOL success, NSError *error) {
+                                                if (success || !error) {
+                                                    [self setLastLoggedInUserID:userId];
+                                                    [self setLastUsername:lastLoggedInUser.username];
+                                                    [self setLastPassword:password];
+                                                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginSucceeded object:self userInfo:nil];
+                                                }
+                                                else {
+                                                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLoginFailed object:self userInfo:userInfo];
+                                                    
+                                                    self.requestSuccessErrorHandler(nil, YES, nil);
+                                                }
+                                          } ];
                                           });
 
                                       }

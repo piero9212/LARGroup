@@ -2,7 +2,7 @@
 //  Proyect+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by piero.sifuentes on 4/03/16.
+//  Created by Piero on 6/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -33,12 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *proyectDescription;
 @property (nullable, nonatomic, retain) NSNumber *state;
 @property (nullable, nonatomic, retain) NSString *videoURL;
+@property (nullable, nonatomic, retain) NSNumber *flatsCount;
 @property (nullable, nonatomic, retain) NSSet<ProyectFeature *> *features;
-@property (nullable, nonatomic, retain) NSSet<Flat *> *flats;
 @property (nullable, nonatomic, retain) NSSet<Floor *> *floors;
 @property (nullable, nonatomic, retain) NSSet<Outside *> *outsideImages;
-@property (nullable, nonatomic, retain) NSSet<Plant *> *plants;
-@property (nullable, nonatomic, retain) NSSet<Quote *> *quotes;
 
 @end
 
@@ -49,11 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addFeatures:(NSSet<ProyectFeature *> *)values;
 - (void)removeFeatures:(NSSet<ProyectFeature *> *)values;
 
-- (void)addFlatsObject:(Flat *)value;
-- (void)removeFlatsObject:(Flat *)value;
-- (void)addFlats:(NSSet<Flat *> *)values;
-- (void)removeFlats:(NSSet<Flat *> *)values;
-
 - (void)addFloorsObject:(Floor *)value;
 - (void)removeFloorsObject:(Floor *)value;
 - (void)addFloors:(NSSet<Floor *> *)values;
@@ -63,16 +56,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeOutsideImagesObject:(Outside *)value;
 - (void)addOutsideImages:(NSSet<Outside *> *)values;
 - (void)removeOutsideImages:(NSSet<Outside *> *)values;
-
-- (void)addPlantsObject:(Plant *)value;
-- (void)removePlantsObject:(Plant *)value;
-- (void)addPlants:(NSSet<Plant *> *)values;
-- (void)removePlants:(NSSet<Plant *> *)values;
-
-- (void)addQuotesObject:(Quote *)value;
-- (void)removeQuotesObject:(Quote *)value;
-- (void)addQuotes:(NSSet<Quote *> *)values;
-- (void)removeQuotes:(NSSet<Quote *> *)values;
 
 @end
 

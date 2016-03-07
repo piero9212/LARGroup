@@ -11,7 +11,8 @@
 
 @interface ProyectService : GenericService
 
-@property (nonatomic, readonly) BOOL allClassesSelected;
+@property (nonatomic) BOOL filterActive;
+@property (nonatomic,strong) NSArray* proyects;
 
 + (ProyectService *)sharedService;
 - (void)cancelAllProyectsRequest;
