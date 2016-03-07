@@ -46,16 +46,22 @@
 
 - (IBAction)aceptTapped:(UIButton *)sender {
     [self showHUDOnView:self.view];
-    [[QuotesService sharedService] apiCreateQuoteWithClientID:self.selectedCustomer.uid departamentID:self.selectedFlat.uid errorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
-        if(succeeded)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self dismissViewControllerAnimated:TRUE completion:nil];
-                [self hideHUDOnView:self.view];
-            });
-        }
-    }];
-    
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+        [[QuotesService sharedService] apiCreateQuoteWithClientID:self.selectedCustomer.uid departamentID:self.selectedFlat.uid promoID:self.selectedPromo.uid errorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+            if(succeeded)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self dismissViewControllerAnimated:TRUE completion:nil];
+                    [self hideHUDOnView:self.view];
+                });
+            }
+        }];
+    }
+    else {
+        [self hideHUDOnView:self.view];
+        self.view.userInteractionEnabled = YES;
+        [[AlertViewFactory alertViewForNoInternetConnectionErrorWithDelegate:self]show];
+    }
 }
 
 - (IBAction)cancelTapped:(UIButton *)sender {

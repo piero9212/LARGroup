@@ -114,9 +114,10 @@
 
 - (void)apiCreateQuoteWithClientID:(NSString *)clientID
                      departamentID:(NSString *)departamentID
+                      promoID:(NSString *)promoID
                     errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
-    [QuotesConnectionManager createNewQuoteWithClientID:clientID departamentID:departamentID success:^(NSDictionary *responseDictionary)     {
+    [QuotesConnectionManager createNewQuoteWithClientID:clientID departamentID:departamentID promoID:promoID success:^(NSDictionary *responseDictionary)     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 

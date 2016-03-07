@@ -69,7 +69,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self deallocNotifications];
+    //[self deallocNotifications];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -142,7 +142,7 @@
         promoViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:promoViewController animated:YES completion:nil];
         
-        CGSize temporalPopoverSize = CGSizeMake(400.0f, 400.0f);
+        CGSize temporalPopoverSize = CGSizeMake(300.0f, 400.0f);
         [promoViewController setPopOverViewSize:temporalPopoverSize];
     }
 }

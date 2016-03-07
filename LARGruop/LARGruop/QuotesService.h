@@ -21,6 +21,7 @@
 
 - (void)apiCreateQuoteWithClientID:(NSString *)clientID
                      departamentID:(NSString *)departamentID
+                    promoID:(NSString *)promoID
                      errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 
 - (void)apiEditQuoteWithQuoteID:(NSString *)quoteID

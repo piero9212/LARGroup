@@ -10,7 +10,7 @@
 #import "ServiceClient.h"
 
 static NSString* const allQuotesPath = @"ws/getQuotes";
-static NSString* const createQuotePath = @"ws/newQuote?client_id=%@&department_id=%@&interest=%@";
+static NSString* const createQuotePath = @"ws/newQuote?client=%@&deparment=%@&interest=%@&promotion_id=%@";
 static NSString* const editQuotePath = @"ws/editQuote?quote_id=%@&client_id=%@&department_id=%@";
 
 @implementation QuotesConnectionManager
@@ -31,13 +31,14 @@ static NSString* const editQuotePath = @"ws/editQuote?quote_id=%@&client_id=%@&d
 
 +(void)createNewQuoteWithClientID:(NSString *)clientID
                     departamentID:(NSString *)departamentID
+                          promoID:(NSString *)promoID
                           success:(void (^) (NSDictionary *responseDictionary))success
                           failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure
 {
     
     ServiceClient *client = [ServiceClient sharedClient];
     NSDictionary *parameters = nil;
-    NSString* path = [NSString stringWithFormat:createQuotePath,clientID,departamentID,@"1"];
+    NSString* path = [NSString stringWithFormat:createQuotePath,clientID,departamentID,@"1",promoID];
     path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [client cancelAllHTTPOperationsWithMethod:@"GET" path:path];
     [client startRequestMethod:RequestMethodGet url:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {

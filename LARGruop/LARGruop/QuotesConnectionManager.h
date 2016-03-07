@@ -14,7 +14,8 @@
                          failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
 +(void)createNewQuoteWithClientID:(NSString *)clientID
-                           departamentID:(NSString *)departamentID
+                    departamentID:(NSString *)departamentID
+                    promoID:(NSString *)promoID
                          success:(void (^) (NSDictionary *responseDictionary))success
                          failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
