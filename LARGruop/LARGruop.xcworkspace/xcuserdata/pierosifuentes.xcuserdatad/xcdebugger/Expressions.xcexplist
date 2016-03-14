@@ -3,10 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "+[ClientTranslator clientDictionary:toCustomerEntity:context:]:ClientTranslator.m">
+         contextName = "-[FlatReserveContainerViewController flatDetailViewControllerupdateToExpandedSize:]:FlatReserveContainerViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "client.phoneNumber">
+               value = "self.delegate">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,13 +19,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[QuoteConfirmationViewController viewWillAppear:]:QuoteConfirmationViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.selectedPromo">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[CustomerInfoViewController tableView:cellForRowAtIndexPath:]:CustomerInfoViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.customerSelected.firstName">
+               value = "selectedCustomer.firstName">
             </PersistentString>
             <PersistentString
-               value = "selectedCustomer.firstName">
+               value = "self.customerSelected.firstName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -57,18 +65,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__26-[AppDelegate firstRunApp]_block_invoke:AppDelegate.m">
+         contextName = "+[ClientTranslator clientDictionary:toCustomerEntity:context:]:ClientTranslator.m">
          <PersistentStrings>
             <PersistentString
-               value = "testRate2">
+               value = "client.phoneNumber">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[FlatReserveContainerViewController flatDetailViewControllerupdateToExpandedSize:]:FlatReserveContainerViewController.m">
+         contextName = "__26-[AppDelegate firstRunApp]_block_invoke:AppDelegate.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.delegate">
+               value = "testRate2">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

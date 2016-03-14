@@ -34,6 +34,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if(self.selectedPromo)
+    {
+        float percent = self.selectedPromo.discountValue.floatValue;
+        float finalValue = percent *self.selectedFlat.price.floatValue;
+        [self.quoteDetailLabel setText:[NSString stringWithFormat:@"El monto final de la operacion con un decuento de %@ es de S/.%.2f",self.selectedPromo.discount,finalValue]] ;
+    }
+    else
+        [self.quoteDetailLabel setText:[NSString stringWithFormat:@"El monto final de la operacion es de %@",self.selectedFlat.price]];
 }
 - (void)viewWillLayoutSubviews
 {

@@ -157,5 +157,6 @@
 {
     [self.promoLabel setHidden:TRUE];
     self.promoViwed = TRUE;
+    self.randomPromo = nil;
 }
 @end

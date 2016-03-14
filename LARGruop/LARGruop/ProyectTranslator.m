@@ -143,6 +143,10 @@
     flat.posX = ([posXObject isKindOfClass:[NSString class]])? posXObject: ((NSNumber*)posXObject).stringValue;
     id posYObject = [departamentDictionary valueForKeyPath:@"pos_y"];
     flat.posY = ([posYObject isKindOfClass:[NSString class]])? posYObject: ((NSNumber*)posYObject).stringValue;
+
+    
+    id priceObject = [departamentDictionary valueForKeyPath:@"price"];
+    flat.price = ([priceObject isKindOfClass:[NSString class]])? priceObject:((NSNumber*)priceObject).stringValue;
     
     id statusObject = [departamentDictionary valueForKey:@"state"];
     flat.status = ([statusObject isKindOfClass:[NSNumber class]]) ? ((NSNumber*)statusObject).stringValue : nil;
@@ -193,6 +197,9 @@
     
     NSNumber* timeObject = [promoDictionary valueForKeyPath:@"wait_time"];
     promo.time = timeObject;
+    
+    NSNumber* discpuntValObject = [promoDictionary valueForKeyPath:@"discount_rate"];
+    promo.discountValue = discpuntValObject;
     
     NSString* discountWidthObject = [promoDictionary valueForKeyPath:@"discount_rate"];
     promo.discount = ([discountWidthObject isKindOfClass:[NSString class]])? discountWidthObject: nil;

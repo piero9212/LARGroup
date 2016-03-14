@@ -2,7 +2,7 @@
 //  Quote+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by Piero on 6/03/16.
+//  Created by piero.sifuentes on 14/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *clientID;
 @property (nullable, nonatomic, retain) NSString *flatID;
 @property (nullable, nonatomic, retain) NSNumber *interestLevel;
-@property (nullable, nonatomic, retain) NSString *proyectID;
 @property (nullable, nonatomic, retain) NSString *promoID;
+@property (nullable, nonatomic, retain) NSString *proyectID;
 @property (nullable, nonatomic, retain) Customer *customer;
 
 @end
