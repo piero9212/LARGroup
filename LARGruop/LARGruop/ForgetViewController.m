@@ -8,6 +8,7 @@
 
 #import "ForgetViewController.h"
 #import "InitViewController.h"
+#import "LoginService.h"
 
 @interface ForgetViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
@@ -32,7 +33,15 @@
 {
     [super viewWillAppear:TRUE];
     [self setupViews];
+    [self setupNotifications];
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self setupDeallocNotifications];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -48,9 +57,59 @@
     return [super supportedInterfaceOrientations];
 }
 
+
+-(void)setupNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recoverSucceeded:) name:kNotificationRememberSucces object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recoverError:) name:kNotificationRememberFailed object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationNoInternetConnection object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationUnauthorized object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationNotFound object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationInternalServerError object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRequestErrorAlertViewWithNotification:) name:kNotificationUnexpectedError object:nil];
+}
+
+-(void)setupDeallocNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationRememberSucces object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationRememberFailed object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationNoInternetConnection object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationUnauthorized object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationNotFound object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationInternalServerError object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationUnexpectedError object:nil];
+}
+
+#pragma mark -
+#pragma mark - API & Notifications Actions
+#pragma mark -
+
+#pragma mark - Recover Actions
+
+- (void)recoverSucceeded:(NSNotification *)notification
+{
+    [self hideHUDOnView:self.view];
+    [[AlertViewFactory alertViewForPasswordRecovered]show];
+}
+
+- (void)recoverError:(NSNotification *)notification
+{
+    [self hideHUDOnView:self.view];
+    [[AlertViewFactory alertViewForPasswordRecoveredFailed]show];
+}
+
 #pragma mark -
 #pragma mark - IBActions
 #pragma mark -
+- (IBAction)send:(UIButton *)sender {
+    if(self.emailTextField.text>0 && ![self.emailTextField.text isEqualToString:@""])
+    {
+        [self showHUDOnView:self.view];
+        [[LoginService sharedService] apiRecoverPasswordWithEmail:self.emailTextField.text];
+    }
+}
 
 - (IBAction)returnToInit:(UIButton *)sender {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"

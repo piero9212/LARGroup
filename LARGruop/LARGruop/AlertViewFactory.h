@@ -20,4 +20,6 @@
 + (UIAlertView *)alertViewForNotInternalServerErrorWithDelegate:(id)delegate;
 +(UIAlertView *)alertViewForLoginError;
 +(UIAlertView *)alertViewForNoUserCredentials;
++(UIAlertView *)alertViewForPasswordRecovered;
++(UIAlertView *)alertViewForPasswordRecoveredFailed;
 @end
