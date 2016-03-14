@@ -21,6 +21,11 @@ static NSString * const kNotificationLoginFailed = @"LoginFailedNotification";
 static NSString * const kNotificationLogoutFinished = @"LogoutFinishedNotification";
 static NSString * const kNotificationLogoutActionRequested = @"LogoutActionRequestedNotification";
 static NSString * const kNotificationInvalidTokenDetected = @"InvalidTokenDetectedNotification";
+static NSString * const kNotificationRememberSucces= @"RememberSuccesNotification";
+static NSString * const kNotificationRememberFailed= @"RememberFailedNotification";
+static NSString * const kNotificationNewImageSucces= @"NewImageSuccesNotification";
+static NSString * const kNotificationNewImageFailed= @"NewImageFailedNotification";
+
 
 //PROYECTS NOTIFICATIONS
 

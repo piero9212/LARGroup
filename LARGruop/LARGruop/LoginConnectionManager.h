@@ -20,7 +20,12 @@
                   success:(void (^) (NSDictionary *responseDictionary))success
                   failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
++(void)recoverPasswordWithEmail:(NSString*)email success:(void (^) (NSDictionary *responseDictionary))success
+failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
+
 + (void)logoutWithCompletion:(void (^) ())completion;
++ (void)apiPostImageWithImage:(UIImage*)image success:(void (^) (NSDictionary *responseDictionary))success
+                      failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
 
 + (void)apiEditUserWithName:(NSString *)name
                    password:(NSString *)password

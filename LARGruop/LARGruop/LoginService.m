@@ -135,7 +135,7 @@
                                      password:password
                                       success:^(NSDictionary *responseDictionary) {
                                           
-                                          dispatch_async(dispatch_get_main_queue(), ^(void){
+                                          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
                                               
                                           NSNumber *showAlertView = [NSNumber numberWithBool:YES];
                                           NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
@@ -206,6 +206,50 @@
                                       }];
 }
 
+
+-(void)apiRecoverPasswordWithEmail:(NSString*)email
+{
+    [LoginConnectionManager recoverPasswordWithEmail:email success:^(NSDictionary *responseDictionary) 
+    {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+            id errorObject = [responseDictionary valueForKeyPath:@"error"];
+            NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+            if([error isEqualToString:LOGIN_ERROR_KEY] || [error isEqualToString:LOGIN_PASWORD_ERROR_KEY])
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRememberFailed object:self userInfo:userInfo];
+                });
+                return;
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRememberSucces object:self userInfo:userInfo];
+            });
+
+            
+        });
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+        
+        if(operation && operation.response.statusCode == StatusCodeUnauthorized) {
+            showAlertView = [NSNumber numberWithBool:YES];
+        }
+        else {
+            self.requestFailureErrorHandler(operation, error, YES, nil);
+        }
+        
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRememberFailed object:self userInfo:userInfo];
+        });
+        
+    }];
+}
 
 - (void)logoutWithNotification:(BOOL)showNotification
 {
@@ -309,6 +353,53 @@
     
     
 }
+
+
+- (void)apiPostNewImage:(UIImage*)image
+{
+    [LoginConnectionManager apiPostImageWithImage:image success:^(NSDictionary *responseDictionary)
+     {
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+             NSNumber *showAlertView = [NSNumber numberWithBool:YES];
+             NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+             id errorObject = [responseDictionary valueForKeyPath:@"error"];
+             NSString *error = ([errorObject isKindOfClass:[NSString class]])? errorObject : nil;
+             if([error isEqualToString:LOGIN_ERROR_KEY] || [error isEqualToString:LOGIN_PASWORD_ERROR_KEY])
+             {
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^(void){
+                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewImageFailed object:self userInfo:userInfo];
+                 });
+                 return;
+                 
+             }
+             dispatch_async(dispatch_get_main_queue(), ^(void){
+                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewImageFailed object:self userInfo:userInfo];
+             });
+             
+             
+         });
+
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+         NSNumber *showAlertView = [NSNumber numberWithBool:NO];
+         
+         if(operation && operation.response.statusCode == StatusCodeNoInternetConnection) {
+             showAlertView = [NSNumber numberWithBool:YES];
+         }
+         else {
+             self.requestFailureErrorHandler(operation, error, YES, nil);
+         }
+         
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:showAlertView, USER_INFO_SHOW_ALERT_VIEW, nil];
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewImageFailed object:self userInfo:userInfo];
+         });
+     }];
+}
+
 
 
 @end

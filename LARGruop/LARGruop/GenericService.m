@@ -133,13 +133,15 @@ static NSString * const STORE_NAME = @"LARGruop";
     [MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
     [MagicalRecord setupCoreDataStackWithStoreNamed:STORE_NAME];
     
-    if ([[[NSPersistentStoreCoordinator MR_defaultStoreCoordinator] persistentStores] count] == 0){
+    if ([[[NSPersistentStoreCoordinator MR_defaultStoreCoordinator] persistentStores] count] == 0)
+    {
         [MagicalRecord cleanUp];
         NSError *error;
         NSURL *fileURL = [NSPersistentStore MR_urlForStoreName:STORE_NAME];
         [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
         [MagicalRecord setupCoreDataStackWithStoreNamed:STORE_NAME];
     }
+    
 }
 
 - (void)reset
@@ -162,16 +164,16 @@ static NSString * const STORE_NAME = @"LARGruop";
 - (void)resetDatabase
 {
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        [Proyect MR_truncateAllInContext:localContext];
-        [ProyectFeature MR_truncateAllInContext:localContext];
-        [Outside MR_truncateAllInContext:localContext];
-        [Quote MR_truncateAllInContext:localContext];
-        [Flat MR_truncateAllInContext:localContext];
         [Customer MR_truncateAllInContext:localContext];
         [User MR_truncateAllInContext:localContext];
-        [Floor MR_truncateAllInContext:localContext];
+        [Quote MR_truncateAllInContext:localContext];
         [Promo MR_truncateAllInContext:localContext];
+        [Outside MR_truncateAllInContext:localContext];
         [FlatFeature MR_truncateAllInContext:localContext];
+        [Flat MR_truncateAllInContext:localContext];
+        [Floor MR_truncateAllInContext:localContext];
+        [ProyectFeature MR_truncateAllInContext:localContext];
+        [Proyect MR_truncateAllInContext:localContext];
         
     }];
 }
