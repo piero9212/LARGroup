@@ -37,8 +37,8 @@
     if(self.selectedPromo)
     {
         float percent = self.selectedPromo.discountValue.floatValue;
-        float finalValue = percent *self.selectedFlat.price.floatValue;
-        [self.quoteDetailLabel setText:[NSString stringWithFormat:@"El monto final de la operacion con un decuento de %@ es de S/.%.2f",self.selectedPromo.discount,finalValue]] ;
+        float finalValue = self.selectedFlat.price.floatValue-((percent/100.0)*self.selectedFlat.price.floatValue);
+        [self.quoteDetailLabel setText:[NSString stringWithFormat:@"El monto final de la operacion con un descuento del %0.f%% es de S/.%.2f",self.selectedPromo.discountValue.floatValue,finalValue]] ;
     }
     else
         [self.quoteDetailLabel setText:[NSString stringWithFormat:@"El monto final de la operacion es de %@",self.selectedFlat.price]];
