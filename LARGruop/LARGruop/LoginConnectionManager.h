@@ -32,6 +32,7 @@ failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;
                           email:(NSString *)email
                           phone:(NSString *)phone
                 mobilePhone:(NSString *)mobilePhone
+                      image:(NSString *)imageURL
                        User:(User*)user
                         success:(void (^) (NSDictionary *responseDictionary))success
                         failure:(void (^) (AFHTTPRequestOperation *operation, NSError *error))failure;

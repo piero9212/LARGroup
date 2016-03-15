@@ -24,6 +24,7 @@
                       email:(NSString *)email
                       phone:(NSString *)phone
                 mobilePhone:(NSString *)mobilePhone
+                      image:(NSString *)imageURL
                        User:(User*)user
                  errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 

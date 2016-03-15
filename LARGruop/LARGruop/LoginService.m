@@ -295,10 +295,11 @@
                       email:(NSString *)email
                       phone:(NSString *)phone
                 mobilePhone:(NSString *)mobilePhone
+                      image:(NSString *)imageURL
                        User:(User*)user
                      errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
-    [LoginConnectionManager apiEditUserWithName:name password:password email:email phone:phone mobilePhone:mobilePhone User:user success:^(NSDictionary *responseDictionary){
+    [LoginConnectionManager apiEditUserWithName:name password:password email:email phone:phone mobilePhone:mobilePhone image:imageURL User:user success:^(NSDictionary *responseDictionary){
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             
@@ -373,9 +374,35 @@
                  return;
                  
              }
-             dispatch_async(dispatch_get_main_queue(), ^(void){
-                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewImageFailed object:self userInfo:userInfo];
-             });
+             User* user = [self lastLoggedInUser];
+             NSString* name;
+             if(user.firstName && user.lastName)
+             {
+                 name = [NSString stringWithFormat:@"%@ %@",user.firstName,user.lastName];
+             }
+             else if(user.firstName)
+             {
+                 name = [NSString stringWithFormat:@"%@",user.firstName];
+             }
+             
+             NSString* pass = [[LoginService sharedService] lastPassword];
+             NSString* imagepath = [responseDictionary objectForKey:@"filename"];
+
+             [self apiEditUserWithName:name password:pass email:user.email phone:user.phone mobilePhone:user.mobilePhone image:imagepath User:user errorAlertView:NO userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+                 if(succeeded)
+                 {
+                     dispatch_async(dispatch_get_main_queue(), ^(void){
+                         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewImageSucces object:self userInfo:userInfo];
+                     });
+                 }
+                 else
+                 {
+                     dispatch_async(dispatch_get_main_queue(), ^(void){
+                         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNewImageFailed object:self userInfo:userInfo];
+                     });
+
+                 }
+             }];
              
              
          });

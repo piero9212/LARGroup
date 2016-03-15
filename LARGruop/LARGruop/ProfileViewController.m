@@ -15,6 +15,7 @@
 #import <Haneke.h>
 #import <AFNetworking.h>
 #import "ApplicationConstants.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 
@@ -96,7 +97,8 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
     
     [self.userNameLabel setText:user.username];
     
-    [self.userPictureImageView hnk_setImageFromURL:[NSURL URLWithString:user.imageURL]];
+    NSURL* url = [NSURL URLWithString:user.imageURL];
+    [self.userPictureImageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageRefreshCached];
     self.userPictureImageView.clipsToBounds = YES;
     float radius = self.userPictureImageView.frame.size.width/2;
     self.userPictureImageView.layer.cornerRadius =  radius;
@@ -201,7 +203,7 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
                     mobilePhone = user.mobilePhone;
                 }
                 NSString* pass = [[LoginService sharedService] lastPassword];
-                [[LoginService sharedService] apiEditUserWithName:name password:pass email:email phone:phone mobilePhone:mobilePhone User:user errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+                [[LoginService sharedService] apiEditUserWithName:name password:pass email:email phone:phone mobilePhone:mobilePhone image:user.imageURL User:user errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
                     [self hideHUDOnView:self.view];
                     if(succeeded)
                     {
