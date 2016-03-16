@@ -31,10 +31,10 @@
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    NSLog(@"%@",[paths objectAtIndex:0]);
     
-//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"9c1085eb7d6f487681e4eff152a50c11"];
-//    [[BITHockeyManager sharedHockeyManager] startManager];
-//    [[BITHockeyManager sharedHockeyManager].authenticator
-//     authenticateInstallation];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"9c1085eb7d6f487681e4eff152a50c11"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator
+     authenticateInstallation];
 
     return YES;
 }
