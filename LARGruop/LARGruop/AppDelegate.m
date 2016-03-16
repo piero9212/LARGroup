@@ -10,6 +10,8 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <AFNetworking/AFNetworking.h>
 #import "GenericService.h"
+#import "LoginService.h"
+
 @import HockeySDK;
 
 @interface AppDelegate ()
@@ -27,7 +29,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setupApp];
-    [self firstRunApp];
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //    NSLog(@"%@",[paths objectAtIndex:0]);
     
@@ -63,28 +64,28 @@
     [self saveContext];
 }
 
--(void)firstRunApp
+-(void)setupApp
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[GenericService sharedService] setupDatabase];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"firstRun"])
     {
         [[GenericService sharedService] resetDatabase];
+        [[LoginService sharedService] setLastLoggedInUserID:nil];
+        [[LoginService sharedService] setLastPassword:nil];
+        [[LoginService sharedService] setLastUsername:nil];
         [defaults setObject:[NSDate date] forKey:@"firstRun"];
+        [defaults synchronize];
     }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
--(void)setupApp
-{
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[GenericService sharedService] setupDatabase];
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    // Preloads keyboard so there's no lag on initial keyboard appearance.
+    
     UITextField *lagFreeField = [[UITextField alloc] init];
     [self.window addSubview:lagFreeField];
     [lagFreeField becomeFirstResponder];
     [lagFreeField resignFirstResponder];
     [lagFreeField removeFromSuperview];
+    
 }
 
 

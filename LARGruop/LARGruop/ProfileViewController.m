@@ -15,6 +15,7 @@
 #import <Haneke.h>
 #import <AFNetworking.h>
 #import "ApplicationConstants.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 
@@ -96,7 +97,8 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
     
     [self.userNameLabel setText:user.username];
     
-    [self.userPictureImageView hnk_setImageFromURL:[NSURL URLWithString:user.imageURL]];
+    NSURL* url = [NSURL URLWithString:user.imageURL];
+    [self.userPictureImageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageRefreshCached];
     self.userPictureImageView.clipsToBounds = YES;
     float radius = self.userPictureImageView.frame.size.width/2;
     self.userPictureImageView.layer.cornerRadius =  radius;
@@ -114,6 +116,10 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutSuccess:)
                                                  name:kNotificationLogoutFinished object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageLoaded:)
+                                                 name:kNotificationNewImageSucces object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageError:)
+                                                 name:kNotificationNewImageFailed object:nil];
 }
 
 
@@ -197,7 +203,7 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
                     mobilePhone = user.mobilePhone;
                 }
                 NSString* pass = [[LoginService sharedService] lastPassword];
-                [[LoginService sharedService] apiEditUserWithName:name password:pass email:email phone:phone mobilePhone:mobilePhone User:user errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
+                [[LoginService sharedService] apiEditUserWithName:name password:pass email:email phone:phone mobilePhone:mobilePhone image:user.imageURL User:user errorAlertView:TRUE userInfo:nil andCompletionHandler:^(BOOL succeeded) {
                     [self hideHUDOnView:self.view];
                     if(succeeded)
                     {
@@ -225,6 +231,18 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
 -(void)logoutSuccess:(NSNotification*)notification
 {
     [self performSegueWithIdentifier:LOGOUT_SEGUE sender:nil];
+}
+
+-(void)imageLoaded:(NSNotification*)notification
+{
+    [self hideHUDOnView:self.view];
+    NSLog(@"Exito");
+}
+
+-(void)imageError:(NSNotification*)notification
+{
+    [self hideHUDOnView:self.view];
+    NSLog(@"Error");
 }
 
 #pragma mark -
@@ -296,25 +314,8 @@ static NSString* LOGOUT_SEGUE = @"LOGOUT_SEGUE";
         self.userPictureImageView.clipsToBounds = YES;
         float radius = self.userPictureImageView.frame.size.width/2;
         self.userPictureImageView.layer.cornerRadius =  radius;
-        NSData *imageData = UIImagePNGRepresentation(newImage);
-        
-        // Init the URLRequest
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:BaseURLString]];
-        manager.requestSerializer.timeoutInterval = 0.30;
-        NSDictionary *parameters = @{@"username": [[LoginService sharedService] lastUsername], @"password" :  [[LoginService sharedService] lastPassword]};
-        AFHTTPRequestOperation *op = [manager POST:@"ACA_VA_LA_URL_QUE_FALTA" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            //do not put image inside parameters dictionary as I did, but append it!
-            [formData appendPartWithFileData:imageData name:@"" fileName:@"userPhoto.jpg" mimeType:@"image/jpeg"];
-        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"Success: %@ ***** %@", operation.responseString, responseObject);
-            [self hideHUDOnView:self.view];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@ ***** %@", operation.responseString, error);
-            [self hideHUDOnView:self.view];
-        }];
-        [op start];
+        [[LoginService sharedService] apiPostNewImage:newImage];
     }];
-    
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

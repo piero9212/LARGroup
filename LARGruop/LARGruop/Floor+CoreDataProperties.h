@@ -2,7 +2,7 @@
 //  Floor+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by Piero on 6/03/16.
+//  Created by piero.sifuentes on 14/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

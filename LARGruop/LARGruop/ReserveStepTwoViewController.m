@@ -27,6 +27,7 @@
 @property (nonatomic,strong) NSArray* featuresTitles;
 @property (weak, nonatomic) IBOutlet UILabel *promoLabel;
 @property (nonatomic) BOOL promoViwed;
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 
 @end
 
@@ -63,7 +64,7 @@
     self.sizeLabel.text = self.selectedFlat.size;
     self.featuresTitles = [self.selectedFlat.features allObjects];
     self.sendButton.layer.cornerRadius= 10;
-    self.promoLabel.text = [NSString stringWithFormat:@"Promoción %@",self.randomPromo.name];
+    self.promoLabel.text = [NSString stringWithFormat:@"%@",self.randomPromo.name];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -128,7 +129,7 @@
         quoteViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:quoteViewController animated:YES completion:nil];
         
-        CGSize temporalPopoverSize = CGSizeMake(300.0f, 300.0f);
+        CGSize temporalPopoverSize = CGSizeMake(400.0f, 300.0f);
         [quoteViewController setPopOverViewSize:temporalPopoverSize];
 
     }
@@ -142,7 +143,7 @@
         promoViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:promoViewController animated:YES completion:nil];
         
-        CGSize temporalPopoverSize = CGSizeMake(300.0f, 400.0f);
+        CGSize temporalPopoverSize = CGSizeMake(400.0f, 300.0f);
         [promoViewController setPopOverViewSize:temporalPopoverSize];
     }
 }
@@ -150,12 +151,20 @@
 -(void)promoAceptedTapped:(NSNotification*)notification
 {
     [self.promoLabel setHidden:false];
+    [self.amountLabel setHidden:FALSE];
     self.promoViwed = TRUE;
+    float percent = self.randomPromo.discountValue.floatValue;
+    float finalValue = self.selectedFlat.price.floatValue-((percent/100.0)*self.selectedFlat.price.floatValue);
+    self.amountLabel.text=[NSString stringWithFormat:@"Total: %0.2f",finalValue];
 }
 
 -(void)promoCancelTapped:(NSNotification*)notification
 {
     [self.promoLabel setHidden:TRUE];
+    [self.amountLabel setHidden:FALSE];
     self.promoViwed = TRUE;
+    self.randomPromo = nil;
+    float finalValue = self.selectedFlat.price.floatValue;
+    self.amountLabel.text=[NSString stringWithFormat:@"Total: %0.2f",finalValue];
 }
 @end

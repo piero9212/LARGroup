@@ -2,7 +2,7 @@
 //  Proyect+CoreDataProperties.h
 //  LARGruop
 //
-//  Created by Piero on 6/03/16.
+//  Created by piero.sifuentes on 14/03/16.
 //  Copyright © 2016 prsp.org. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *address;
 @property (nullable, nonatomic, retain) NSString *district;
+@property (nullable, nonatomic, retain) NSNumber *flatsCount;
 @property (nullable, nonatomic, retain) NSNumber *floorsCount;
 @property (nullable, nonatomic, retain) NSString *imageURL;
 @property (nullable, nonatomic, retain) NSNumber *latitud;
@@ -33,7 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *proyectDescription;
 @property (nullable, nonatomic, retain) NSNumber *state;
 @property (nullable, nonatomic, retain) NSString *videoURL;
-@property (nullable, nonatomic, retain) NSNumber *flatsCount;
 @property (nullable, nonatomic, retain) NSSet<ProyectFeature *> *features;
 @property (nullable, nonatomic, retain) NSSet<Floor *> *floors;
 @property (nullable, nonatomic, retain) NSSet<Outside *> *outsideImages;

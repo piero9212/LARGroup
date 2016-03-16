@@ -24,9 +24,12 @@
                       email:(NSString *)email
                       phone:(NSString *)phone
                 mobilePhone:(NSString *)mobilePhone
+                      image:(NSString *)imageURL
                        User:(User*)user
                  errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
 
+-(void)apiRecoverPasswordWithEmail:(NSString*)email;
+- (void)apiPostNewImage:(UIImage*)image;
 
 - (User *)lastLoggedInUser;
 - (User *)lastLoggedInUserFromContext:(NSManagedObjectContext *)context;
@@ -41,7 +44,6 @@
 - (User *)getUserWithUserID:(NSString *)userId;
 - (User *)getUserWith:(User *)user fromContext:(NSManagedObjectContext *)context;
 - (NSDate *)getDateOfLastLoggedIn;
-
 
 - (NSString *)lastToken;
 - (void)setLastToken:(NSString *)lastToken;

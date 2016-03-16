@@ -53,6 +53,13 @@
     return quotes;
 }
 
+- (void)apiEditQuoteWithQuoteID:(NSString *)quoteID
+                       ClientID:(NSString *)clientID
+                  departamentID:(NSString *)departamentID
+                 errorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
+{
+}
+
 
 - (void)apiGetQuotesWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {

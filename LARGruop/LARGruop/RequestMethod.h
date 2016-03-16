@@ -9,6 +9,7 @@
 typedef enum {
     RequestMethodGet = 0,
     RequestMethodPost,
+    RequestMethodPostImage,
     RequestMethodPut,
     RequestMethodDelete
 }RequestMethod;

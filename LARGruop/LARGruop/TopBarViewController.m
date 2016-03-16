@@ -10,6 +10,7 @@
 #import <Haneke.h>
 #import "User.h"
 #import "LoginService.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation TopBarViewController
 
@@ -56,7 +57,8 @@
 -(void)setupVars
 {
     User* user = [[LoginService sharedService]lastLoggedInUser];
-    [self.userImageView hnk_setImageFromURL:[NSURL URLWithString:user.imageURL]];
+    NSURL* url = [NSURL URLWithString:user.imageURL];
+    [self.userImageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageRefreshCached];
     float radius = self.userImageView.frame.size.width/2;
     self.userImageView.layer.cornerRadius =  radius;
     self.userImageView.clipsToBounds = YES;

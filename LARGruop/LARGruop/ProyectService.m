@@ -144,9 +144,10 @@ static NSMutableArray *_filterProyects;
     [def synchronize];
 }
 
-- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion;
+- (void)apiGetProyectsWithErrorAlertView:(BOOL)showAlertView userInfo:(NSDictionary *)userInfo andCompletionHandler:(void (^) (BOOL succeeded))completion
 {
-    [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)     {
+    [ProyectConnectionManager getAllProyectsWithsuccess:^(NSDictionary *responseDictionary)
+    {
         dispatch_async(dispatch_get_main_queue(), ^(void){
             
         NSArray *proyectsResponse = (NSArray*)responseDictionary;

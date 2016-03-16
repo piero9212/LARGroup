@@ -62,4 +62,16 @@
     return alertView;
 }
 
++(UIAlertView *)alertViewForPasswordRecovered
+{
+    UIAlertView* alertView = [self createAlertViewWithTitle:GLARUI(@"kDefaultTitle") message:@"La contraseña fue enviada al email ingresado" cancelButtonTitle:GLARUI(@"kErrorButtonOk") otherButtonTitle:nil AndDelegate:nil];
+    return alertView;
+}
+
++(UIAlertView *)alertViewForPasswordRecoveredFailed
+{
+    UIAlertView* alertView = [self createAlertViewWithTitle:GLARUI(@"kDefaultTitle") message:@"Hubo un error al enviar la contraseña, revise la cuenta de email ingresada e intente denuevo" cancelButtonTitle:GLARUI(@"kErrorButtonOk") otherButtonTitle:nil AndDelegate:nil];
+    return alertView;
+}
+
 @end

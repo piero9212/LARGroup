@@ -22,10 +22,8 @@
 - (void)resetProyectsFilter;
 - (NSArray *)getAllProyects;
 
-
 - (NSPredicate *)filterProyectsPredicate;
 - (void)setfilterProyectsPredicate:(NSPredicate *)predicate;
-
 
 - (NSArray *)getProyectsWithPredicate:(NSCompoundPredicate*)predicate;
 

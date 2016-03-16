@@ -24,6 +24,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posX" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posY" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectUID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
@@ -52,6 +53,7 @@
     </entity>
     <entity name="Promo" representedClassName="Promo" parentEntity="Entity" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="discountValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="promoDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -106,11 +108,11 @@
     <elements>
         <element name="Customer" positionX="-9" positionY="99" width="128" height="195"/>
         <element name="Entity" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Flat" positionX="-9" positionY="117" width="128" height="210"/>
+        <element name="Flat" positionX="-9" positionY="117" width="128" height="225"/>
         <element name="FlatFeature" positionX="-9" positionY="153" width="128" height="75"/>
         <element name="Floor" positionX="0" positionY="162" width="128" height="165"/>
         <element name="Outside" positionX="-18" positionY="108" width="128" height="90"/>
-        <element name="Promo" positionX="-36" positionY="135" width="128" height="105"/>
+        <element name="Promo" positionX="-36" positionY="135" width="128" height="120"/>
         <element name="Proyect" positionX="-36" positionY="54" width="128" height="375"/>
         <element name="ProyectFeature" positionX="-27" positionY="81" width="128" height="75"/>
         <element name="Quote" positionX="-27" positionY="135" width="128" height="135"/>

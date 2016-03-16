@@ -12,7 +12,8 @@ typedef enum {
     AlertViewTagLoginError = 2,
     AlertViewTagLocationError = 3,
     AlertViewTagMapLocationError = 4,
-    
+    AlertViewTagRecoverError = 5,
+
     
     
     AlertViewTagNoInternetConnection = 1001,
